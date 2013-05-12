@@ -24,6 +24,7 @@
 		82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E0173F248200E27BB3 /* WrapController.m */; };
 		82EDE1EA173F2ABA00E27BB3 /* displayMenuBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */; };
 		82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */; };
+		82EDE1EE173F3FC900E27BB3 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = displayMenuBtn.png; sourceTree = "<group>"; };
+		82EDE1EC173F3FC900E27BB3 /* ManageClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsViewController.h; sourceTree = "<group>"; };
+		82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */,
 				82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */,
 				82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */,
+				82EDE1EC173F3FC900E27BB3 /* ManageClientsViewController.h */,
+				82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				82EDE1E1173F248200E27BB3 /* IIViewDeckController.m in Sources */,
 				82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */,
 				82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */,
+				82EDE1EE173F3FC900E27BB3 /* ManageClientsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
