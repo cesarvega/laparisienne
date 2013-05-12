@@ -17,6 +17,11 @@
 		13283BCE1735B0CE00E2C286 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13283BCD1735B0CE00E2C286 /* Default-568h@2x.png */; };
 		13283BD11735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13283BCF1735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld */; };
 		13283BD81735B76800E2C286 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13283BD71735B76800E2C286 /* Storyboard.storyboard */; };
+		1332BC75173C6E490082D8A8 /* Invoice_Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC74173C6E490082D8A8 /* Invoice_Lines.m */; };
+		1332BC78173C6E810082D8A8 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC77173C6E810082D8A8 /* Customer.m */; };
+		1332BC7B173C6E910082D8A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC7A173C6E910082D8A8 /* User.m */; };
+		1332BC7E173C6EA00082D8A8 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC7D173C6EA00082D8A8 /* Invoice.m */; };
+		1332BC81173C6EB20082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC80173C6EB20082D8A8 /* Product.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
