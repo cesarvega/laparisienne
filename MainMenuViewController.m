@@ -40,10 +40,10 @@
     [titleOfSections addObject:@"Admin"];
     [titleOfSections addObject:@"Invoices"];
     //[titleOfSections addObject:@""];
-    [firstSection addObject:@"ManageClients"];
-    [firstSection addObject:@"ManageInvoices"];;
-    [firstSection addObject:@"ManagePorducts"];
-    [firstSection addObject:@"ManageUsers"];
+    [firstSection addObject:@"Manage Clients"];
+    [firstSection addObject:@"Manage Invoices"];;
+    [firstSection addObject:@"Manage Products"];
+    [firstSection addObject:@"Manage Users"];
     [secondSection addObject:@"Signed Invoices"];
 //    [secondSection addObject:@"Hangout Request"];
 //    [secondSection addObject:@"Message"];
@@ -129,6 +129,7 @@
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
     [headerView addSubview:label];
+   
     
     return headerView;
 }
@@ -164,17 +165,17 @@
 
     switch (indexPath.row) {
         case 0:
-            newController=@"profileView";
+            newController=@"ManageClients";
             break;
             
         case 1:
-            newController=@"Friends";
+            newController=@"ManageInvoices";
             break;
         case 2:
-            newController=@"Map";
+            newController=@"ManageProducts";
             break;
         case 3:
-            newController=@"Friend_Request";
+            newController=@"ManageUsers";
             break;
             
         case 4:
@@ -205,48 +206,4 @@
 
     
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
-
-
-
 @end
