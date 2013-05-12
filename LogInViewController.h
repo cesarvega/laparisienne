@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IIViewDeckController.h"
+#import "MainMenuViewController.h"
+@interface LogInViewController : UIViewController<UITextFieldDelegate>
 
-@interface LogInViewController : UIViewController
+@property (strong,nonatomic)MainMenuViewController* MainMenuViewControllerData;
+@property (retain, nonatomic) UIViewController *containerController;
+@property (strong, nonatomic) IBOutlet UITextField *UserName;
+@property (strong, nonatomic) IBOutlet UITextField *Password;
 
+
+
+- (IBAction)LoginButton:(id)sender;
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "LogInViewController.h"
-
 @interface LogInViewController ()
 
 @end
 
 @implementation LogInViewController
+
+@synthesize Password,UserName,containerController,MainMenuViewControllerData;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,7 +26,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning{
@@ -32,4 +34,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma-mark UITextField Delegade Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
+    [aTextField resignFirstResponder];
+     return YES;
+}
+
+#pragma-mark Buttons
+- (IBAction)LoginButton:(id)sender {
+   
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    
+    MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+    
+    [self presentViewController:centerController animated:YES completion:nil];
+    
+
+    
+}
 @end
