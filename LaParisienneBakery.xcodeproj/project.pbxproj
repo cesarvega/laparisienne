@@ -20,8 +20,6 @@
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
-		82EDE1E1173F248200E27BB3 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1DE173F248200E27BB3 /* IIViewDeckController.m */; };
-		82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E0173F248200E27BB3 /* WrapController.m */; };
 		82EDE1EA173F2ABA00E27BB3 /* displayMenuBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */; };
 		82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */; };
 		82EDE1EE173F3FC900E27BB3 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */; };
@@ -48,10 +46,6 @@
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		82EDE1DA173F1DF200E27BB3 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
-		82EDE1DD173F248200E27BB3 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		82EDE1DE173F248200E27BB3 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		82EDE1DF173F248200E27BB3 /* WrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrapController.h; sourceTree = "<group>"; };
-		82EDE1E0173F248200E27BB3 /* WrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrapController.m; sourceTree = "<group>"; };
 		82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = displayMenuBtn.png; sourceTree = "<group>"; };
@@ -80,7 +74,6 @@
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
 				13283BD91735B77000E2C286 /* Storyboard */,
-				82EDE1DC173F248100E27BB3 /* ViewDeck */,
 				82EDE1D3173F19C400E27BB3 /* Images */,
 				13283BB41735B0CE00E2C286 /* Frameworks */,
 				13283BB31735B0CE00E2C286 /* Products */,
@@ -162,17 +155,6 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		82EDE1DC173F248100E27BB3 /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				82EDE1DD173F248200E27BB3 /* IIViewDeckController.h */,
-				82EDE1DE173F248200E27BB3 /* IIViewDeckController.m */,
-				82EDE1DF173F248200E27BB3 /* WrapController.h */,
-				82EDE1E0173F248200E27BB3 /* WrapController.m */,
-			);
-			path = ViewDeck;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,8 +226,6 @@
 				13283BC81735B0CE00E2C286 /* AppDelegate.m in Sources */,
 				13283BD11735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld in Sources */,
 				82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */,
-				82EDE1E1173F248200E27BB3 /* IIViewDeckController.m in Sources */,
-				82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */,
 				82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */,
 				82EDE1EE173F3FC900E27BB3 /* ManageClientsViewController.m in Sources */,
 			);
