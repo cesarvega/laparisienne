@@ -22,6 +22,7 @@
 		1332BC8F173F59D80082D8A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC88173F59D80082D8A8 /* User.m */; };
 		1332BC90173F59D80082D8A8 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8A173F59D80082D8A8 /* Invoice.m */; };
 		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
+		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
@@ -29,7 +30,6 @@
 		82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E0173F248200E27BB3 /* WrapController.m */; };
 		82EDE1EA173F2ABA00E27BB3 /* displayMenuBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */; };
 		82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */; };
-		82EDE1EE173F3FC900E27BB3 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +59,8 @@
 		1332BC8A173F59D80082D8A8 /* Invoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Invoice.m; path = LaParisienneBakery/Invoice.m; sourceTree = "<group>"; };
 		1332BC8B173F59D80082D8A8 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = LaParisienneBakery/Product.h; sourceTree = "<group>"; };
 		1332BC8C173F59D80082D8A8 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = LaParisienneBakery/Product.m; sourceTree = "<group>"; };
+		133B4CC0173F5B7B00671615 /* UserManagmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentViewController.h; sourceTree = "<group>"; };
+		133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentViewController.m; sourceTree = "<group>"; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -191,6 +193,8 @@
 				82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */,
 				82EDE1EC173F3FC900E27BB3 /* ManageClientsViewController.h */,
 				82EDE1ED173F3FC900E27BB3 /* ManageClientsViewController.m */,
+				133B4CC0173F5B7B00671615 /* UserManagmentViewController.h */,
+				133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -285,6 +289,7 @@
 				1332BC8F173F59D80082D8A8 /* User.m in Sources */,
 				1332BC90173F59D80082D8A8 /* Invoice.m in Sources */,
 				1332BC91173F59D80082D8A8 /* Product.m in Sources */,
+				133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
