@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Customer" syncable="YES">
+    <entity name="Customer" representedClassName="Customer" syncable="YES">
         <attribute name="addressOne" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressTwo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="businessDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,7 +16,7 @@
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Invoice" syncable="YES">
+    <entity name="Invoice" representedClassName="Invoice" syncable="YES">
         <attribute name="custID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="docDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -24,20 +24,20 @@
         <attribute name="docTotal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="invoiceID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Invoice_Lines" syncable="YES">
+    <entity name="Invoice_Lines" representedClassName="Invoice_Lines" syncable="YES">
         <attribute name="invoiceOrderID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lineTotal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="parentInvoiceDocNum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Product" syncable="YES">
+    <entity name="Product" representedClassName="Product" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="unitPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES">
+    <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
