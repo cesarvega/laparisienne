@@ -17,6 +17,11 @@
 		13283BCE1735B0CE00E2C286 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13283BCD1735B0CE00E2C286 /* Default-568h@2x.png */; };
 		13283BD11735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13283BCF1735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld */; };
 		13283BD81735B76800E2C286 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13283BD71735B76800E2C286 /* Storyboard.storyboard */; };
+		1332BC8D173F59D80082D8A8 /* Invoice_Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC84173F59D70082D8A8 /* Invoice_Lines.m */; };
+		1332BC8E173F59D80082D8A8 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC86173F59D80082D8A8 /* Customer.m */; };
+		1332BC8F173F59D80082D8A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC88173F59D80082D8A8 /* User.m */; };
+		1332BC90173F59D80082D8A8 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8A173F59D80082D8A8 /* Invoice.m */; };
+		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
@@ -43,6 +48,16 @@
 		13283BCD1735B0CE00E2C286 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		13283BD01735B0CE00E2C286 /* LaParisienneBakery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LaParisienneBakery.xcdatamodel; sourceTree = "<group>"; };
 		13283BD71735B76800E2C286 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = LaParisienneBakery/Storyboard.storyboard; sourceTree = "<group>"; };
+		1332BC83173F59D70082D8A8 /* Invoice_Lines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Invoice_Lines.h; path = LaParisienneBakery/Invoice_Lines.h; sourceTree = "<group>"; };
+		1332BC84173F59D70082D8A8 /* Invoice_Lines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Invoice_Lines.m; path = LaParisienneBakery/Invoice_Lines.m; sourceTree = "<group>"; };
+		1332BC85173F59D80082D8A8 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Customer.h; path = LaParisienneBakery/Customer.h; sourceTree = "<group>"; };
+		1332BC86173F59D80082D8A8 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Customer.m; path = LaParisienneBakery/Customer.m; sourceTree = "<group>"; };
+		1332BC87173F59D80082D8A8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = LaParisienneBakery/User.h; sourceTree = "<group>"; };
+		1332BC88173F59D80082D8A8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = LaParisienneBakery/User.m; sourceTree = "<group>"; };
+		1332BC89173F59D80082D8A8 /* Invoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Invoice.h; path = LaParisienneBakery/Invoice.h; sourceTree = "<group>"; };
+		1332BC8A173F59D80082D8A8 /* Invoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Invoice.m; path = LaParisienneBakery/Invoice.m; sourceTree = "<group>"; };
+		1332BC8B173F59D80082D8A8 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = LaParisienneBakery/Product.h; sourceTree = "<group>"; };
+		1332BC8C173F59D80082D8A8 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = LaParisienneBakery/Product.m; sourceTree = "<group>"; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -74,6 +89,7 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
 				13283BD91735B77000E2C286 /* Storyboard */,
@@ -134,6 +150,23 @@
 				13283BD71735B76800E2C286 /* Storyboard.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		1332BC92173F59DF0082D8A8 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				1332BC83173F59D70082D8A8 /* Invoice_Lines.h */,
+				1332BC84173F59D70082D8A8 /* Invoice_Lines.m */,
+				1332BC85173F59D80082D8A8 /* Customer.h */,
+				1332BC86173F59D80082D8A8 /* Customer.m */,
+				1332BC87173F59D80082D8A8 /* User.h */,
+				1332BC88173F59D80082D8A8 /* User.m */,
+				1332BC89173F59D80082D8A8 /* Invoice.h */,
+				1332BC8A173F59D80082D8A8 /* Invoice.m */,
+				1332BC8B173F59D80082D8A8 /* Product.h */,
+				1332BC8C173F59D80082D8A8 /* Product.m */,
+			);
+			name = DataModels;
 			sourceTree = "<group>";
 		};
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
@@ -242,6 +275,11 @@
 				82EDE1E1173F248200E27BB3 /* IIViewDeckController.m in Sources */,
 				82EDE1E2173F248200E27BB3 /* WrapController.m in Sources */,
 				82EDE1EB173F2C7300E27BB3 /* MainMenuViewController.m in Sources */,
+				1332BC8D173F59D80082D8A8 /* Invoice_Lines.m in Sources */,
+				1332BC8E173F59D80082D8A8 /* Customer.m in Sources */,
+				1332BC8F173F59D80082D8A8 /* User.m in Sources */,
+				1332BC90173F59D80082D8A8 /* Invoice.m in Sources */,
+				1332BC91173F59D80082D8A8 /* Product.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
