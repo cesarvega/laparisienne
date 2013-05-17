@@ -7,7 +7,8 @@
 //
 
 #import "MainMenuViewController.h"
-
+#import "ManageClientsViewController.h"
+#import "Customer.h"
 @interface MainMenuViewController ()
 
 @end
@@ -45,9 +46,7 @@
     [firstSection addObject:@"Manage Products"];
     [firstSection addObject:@"Manage Users"];
     [secondSection addObject:@"Signed Invoices"];
-//    [secondSection addObject:@"Hangout Request"];
-//    [secondSection addObject:@"Message"];
-    //[thirdSection addObject:@""];
+
     
     NSDictionary *temporaryDictionary = [[NSDictionary alloc]initWithObjectsAndKeys:firstSection,@"0",secondSection,@"1",thirdSection,@"2",nil];
     self.menuDataSource = temporaryDictionary;
@@ -112,6 +111,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[self.menuDataSource objectForKey:[NSString stringWithFormat:@"%d",section]] count];
+    
+    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -161,37 +162,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     NSString * newController=@"";
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
 
     switch (indexPath.row) {
         case 0:
             newController=@"ManageClients";
+            
             break;
             
         case 1:
             newController=@"ManageInvoices";
+               
             break;
         case 2:
             newController=@"ManageProducts";
+              
             break;
         case 3:
             newController=@"ManageUsers";
+              
             break;
             
-        case 4:
-            newController=@"Hangouts_History";
-            break;
-        case 5:
-            newController=@"Massages";
-            break;
-        case 6:
-            newController=@"Feature_Hangouts";
-            break;
-        default:
-            break;
+        
     }
     
-    if ([newController isEqual: @"profileView"]) {
+    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"manageClientsView"];
+    
+    [self presentViewController:manageClientsViewController animated:YES completion:nil];
+    
+    
+   /** if ([newController isEqual: @"profileView"]) {
                
     }else if ([newController isEqual: @"Friends"]) {
     
@@ -200,7 +200,7 @@
         
        
         
-    }
+    }**/
 
 
 

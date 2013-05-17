@@ -38,15 +38,15 @@
                                     <outlet property="delegate" destination="hRT-eI-V89" id="Cxg-RV-jOO"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="USERNAME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u8V-fv-Hg8">
-                                <rect key="frame" x="90" y="448" width="179" height="36"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u8V-fv-Hg8">
+                                <rect key="frame" x="148" y="446" width="179" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PASSWORD:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftw-dI-Lk3">
-                                <rect key="frame" x="90" y="520" width="184" height="36"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ftw-dI-Lk3">
+                                <rect key="frame" x="155" y="520" width="184" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,7 +131,7 @@
         <!--Manage Clients View Controller-->
         <scene sceneID="1gQ-gT-jCG">
             <objects>
-                <viewController id="Fd2-tU-OhK" customClass="ManageClientsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="manageClientsView" id="Fd2-tU-OhK" customClass="ManageClientsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rmZ-c4-CTD">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,6 +185,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="clientsTableView" destination="9E3-zn-SmV" id="aa1-st-aKO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ono-gv-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,25 +224,6 @@
         <image name="BG.png" width="1536" height="2297"/>
         <image name="Logo.png" width="968" height="605"/>
     </resources>
-    <classes>
-        <class className="LogInViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="LoginButton:"/>
-                <relationship kind="outlet" name="Password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="UserName" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MainMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapTableViewDisplay" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ManageClientsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageClientsViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
