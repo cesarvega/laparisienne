@@ -24,6 +24,7 @@
 		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
+		82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
@@ -62,6 +63,8 @@
 		133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentViewController.m; sourceTree = "<group>"; };
 		133B4CC31745F7BD00671615 /* ManageClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsViewController.h; sourceTree = "<group>"; };
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
+		82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsDetailViewController.h; sourceTree = "<group>"; };
+		82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsDetailViewController.m; sourceTree = "<group>"; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -168,6 +171,17 @@
 			name = DataModels;
 			sourceTree = "<group>";
 		};
+		82A6CF991749412E00BDB8E8 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				133B4CC31745F7BD00671615 /* ManageClientsViewController.h */,
+				133B4CC41745F7BE00671615 /* ManageClientsViewController.m */,
+				82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */,
+				82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */,
+			);
+			name = Customer;
+			sourceTree = "<group>";
+		};
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,10 +195,9 @@
 		82EDE1D6173F19ED00E27BB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				82A6CF991749412E00BDB8E8 /* Customer */,
 				82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */,
 				82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */,
-				133B4CC31745F7BD00671615 /* ManageClientsViewController.h */,
-				133B4CC41745F7BE00671615 /* ManageClientsViewController.m */,
 				82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */,
 				82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */,
 				133B4CC0173F5B7B00671615 /* UserManagmentViewController.h */,
@@ -272,6 +285,7 @@
 				1332BC91173F59D80082D8A8 /* Product.m in Sources */,
 				133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */,
 				133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */,
+				82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

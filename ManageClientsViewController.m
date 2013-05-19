@@ -17,8 +17,7 @@
 
 @synthesize clientsTableView, clientsArray;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,19 +25,24 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
   delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
+    
 	// Do any additional setup after loading the view.
 }
+
+#pragma  Mark TableViewDelegate Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [clientsArray count];
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
@@ -48,7 +52,7 @@
     }
     
     
-   Customer *info = [clientsArray objectAtIndex:indexPath.row];
+    Customer * info = [clientsArray objectAtIndex:indexPath.row];
     cell.textLabel.text = info.businessName;
     
     
@@ -56,8 +60,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
