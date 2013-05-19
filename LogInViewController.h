@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IIViewDeckController.h"
 #import "MainMenuViewController.h"
 @interface LogInViewController : UIViewController<UITextFieldDelegate>
 
