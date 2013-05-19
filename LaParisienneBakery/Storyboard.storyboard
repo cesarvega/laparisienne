@@ -445,12 +445,12 @@
                         <outlet property="BusinessNameTextField" destination="GGP-9M-T2M" id="2pV-eE-ReK"/>
                         <outlet property="CityTextField" destination="UWm-fJ-eS1" id="VP0-0W-8AO"/>
                         <outlet property="ContactNameTextField" destination="Vng-Vh-j9u" id="b31-cF-suZ"/>
-                        <outlet property="EmailTextField" destination="dN5-iV-LxA" id="ef2-XW-Xo9"/>
+                        <outlet property="EmailTextField" destination="1XD-SE-aHf" id="3if-OF-S6B"/>
                         <outlet property="FaxTextField" destination="vuN-Nb-aFC" id="er3-Vl-rLa"/>
                         <outlet property="MobileTextField" destination="Nvg-np-eW5" id="3HM-Rw-ig7"/>
                         <outlet property="StateTextField" destination="Pce-1t-4W1" id="bGl-WW-c2J"/>
                         <outlet property="TelefoneTextField" destination="grg-kD-yfD" id="4cr-Xh-gXs"/>
-                        <outlet property="WebSiteTextField" destination="4SN-3o-Hvp" id="3Hm-f6-sjb"/>
+                        <outlet property="WebSiteTextField" destination="4SN-3o-Hvp" id="vf4-ld-PtU"/>
                         <outlet property="ZipcodeTextField" destination="x6K-lE-kth" id="CMR-dD-dDt"/>
                     </connections>
                 </viewController>

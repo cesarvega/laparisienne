@@ -36,7 +36,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *MobileTextField;
 @property (strong, nonatomic) IBOutlet UITextField *FaxTextField;
 @property (strong, nonatomic) IBOutlet UITextField *WebSiteTextField;
-@property (strong, nonatomic) IBOutlet UIView *EmailTextField;
+@property (strong, nonatomic) IBOutlet UITextField *EmailTextField;
 - (IBAction)SaveClient:(id)sender;
 
 

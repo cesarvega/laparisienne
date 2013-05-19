@@ -7,15 +7,17 @@
 //
 
 #import "ManageClientsDetailViewController.h"
-
+#import "Customer.h"
 @interface ManageClientsDetailViewController ()
 
 @end
 
 @implementation ManageClientsDetailViewController
 @synthesize addressOne, addressTwo, businessDescription, businessName;
-@synthesize city, contactName, custID, email, fax, mobile, telefone, website, zipcode;
-
+@synthesize city, contactName, custID, email, fax, mobile, telefone, website, zipcode, state;
+@synthesize ContactNameTextField, BusinessNameTextField , BusinessDescriptionTextField, AddressOneTextField;
+@synthesize AdressTwoTextField, CityTextField, ZipcodeTextField, StateTextField, TelefoneTextField, FaxTextField;
+@synthesize MobileTextField, WebSiteTextField, EmailTextField;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,6 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [ContactNameTextField setText:contactName];
+    [BusinessNameTextField setText:businessName];
+    [BusinessDescriptionTextField setText:businessDescription];
+    [AddressOneTextField setText:addressOne];
+    [AdressTwoTextField setText:addressTwo];
+    [CityTextField setText:city];
+    [ZipcodeTextField setText:zipcode];
+    [StateTextField setText:state];
+    [TelefoneTextField setText:telefone];
+    [FaxTextField setText:fax];
+    [MobileTextField setText:mobile];
+    [WebSiteTextField setText:website];
+    [EmailTextField setText:email];
 	// Do any additional setup after loading the view.
 }
 
@@ -103,5 +118,27 @@
 
 
 - (IBAction)SaveClient:(id)sender {
+    
+    Customer * Info ;
+    
+    Info.contactName = ContactNameTextField .text;
+    Info.businessName = BusinessDescriptionTextField.text;
+    Info.businessDescription = BusinessDescriptionTextField.text;
+    Info.addressOne = AddressOneTextField.text;
+    
+//    [BusinessDescriptionTextField setText:businessDescription];
+//    [AddressOneTextField setText:addressOne];
+//    [AdressTwoTextField setText:addressTwo];
+//    [CityTextField setText:city];
+//    [ZipcodeTextField setText:zipcode];
+//    [StateTextField setText:state];
+//    [TelefoneTextField setText:telefone];
+//    [FaxTextField setText:fax];
+//    [MobileTextField setText:mobile];
+//    [WebSiteTextField setText:website];
+//    [EmailTextField setText:email];
+
+    
+    
 }
 @end
