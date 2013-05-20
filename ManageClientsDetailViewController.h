@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ManageClientsDetailViewController : UIViewController<UITextFieldDelegate>
+@interface ManageClientsDetailViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
+{
+    AppDelegate *delegate;
+}
 @property (nonatomic, retain) NSString * addressOne;
 @property (nonatomic, retain) NSString * addressTwo;
 @property (nonatomic, retain) NSString * businessDescription;

@@ -8,6 +8,7 @@
 
 #import "ManageClientsDetailViewController.h"
 #import "Customer.h"
+
 @interface ManageClientsDetailViewController ()
 
 @end
@@ -30,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     [ContactNameTextField setText:contactName];
     [BusinessNameTextField setText:businessName];
     [BusinessDescriptionTextField setText:businessDescription];
@@ -119,26 +121,127 @@
 
 - (IBAction)SaveClient:(id)sender {
     
-    Customer * Info ;
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+   Customer *user = [NSEntityDescription
+                            insertNewObjectForEntityForName:@"Customer"
+                           inManagedObjectContext:context];
     
-    Info.contactName = ContactNameTextField .text;
-    Info.businessName = BusinessDescriptionTextField.text;
-    Info.businessDescription = BusinessDescriptionTextField.text;
-    Info.addressOne = AddressOneTextField.text;
+    user.addressOne = AddressOneTextField.text;
     
-//    [BusinessDescriptionTextField setText:businessDescription];
-//    [AddressOneTextField setText:addressOne];
-//    [AdressTwoTextField setText:addressTwo];
-//    [CityTextField setText:city];
-//    [ZipcodeTextField setText:zipcode];
-//    [StateTextField setText:state];
-//    [TelefoneTextField setText:telefone];
-//    [FaxTextField setText:fax];
-//    [MobileTextField setText:mobile];
-//    [WebSiteTextField setText:website];
-//    [EmailTextField setText:email];
+    user.addressTwo = AdressTwoTextField    .text;
+    user.businessDescription = BusinessDescriptionTextField.text;
+    user.businessName = BusinessNameTextField.text;
+    user.city = CityTextField.text;
+    user.contactName = ContactNameTextField.text;
+    user.email = EmailTextField.text;
+    user.fax = FaxTextField.text;
+    user.mobile = MobileTextField.text;
+    user.state = StateTextField.text;
+    user.telefone = TelefoneTextField.text;
+    user.website = WebSiteTextField.text;
+    user.zipcode = ZipcodeTextField.text;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customer" inManagedObjectContext:context];
+    
+    [request setEntity:entity];
+    
+    
+    
+    // Specify that the request should return dictionaries.
+    
+    [request setResultType:NSDictionaryResultType];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"custID"];
+    
+    NSExpression *maxCustIDExpression = [NSExpression expressionForFunction:@"max:"
+                                         
+                                                                  arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    
+    [expressionDescription setName:@"maxCustID"];
+    
+    [expressionDescription setExpression:maxCustIDExpression];
+    
+    [expressionDescription setExpressionResultType:NSDecimalAttributeType];
+    
+    [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    NSString *custID = @"";
+    if (objects == nil) {
+        
+        // Handle the error.
+        
+    }
+    
+    else {
+        
+        if ([objects count] > 0) {
+            
+            NSLog(@"Max custID: %@", [[objects objectAtIndex:0] valueForKey:@"maxCustID"]);
+            
+            custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
+            
+                      
+            if(custID == nil)
+            {
+                custID = @"0";
+            }
+            NSLog(custID);
+        }
+       
+        
+    }
+    
+    NSInteger *maxID = [custID integerValue];
+    
+    maxID = maxID+1;
+    NSString *finalString = [NSString stringWithFormat:@"%d", maxID];
+    
+    
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    //custID is a string
+    user.custID = [f numberFromString:custID];
+    
+    
+    
+
+  
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"                                                        message:@"Client successfully saved."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        
+       
+    }
+    
+    
+    
 
     
+    
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+	if([title isEqualToString:@"OK"])
+	{
+		
+        NSLog(@"Button OK was selected.");
+        
+        
+	}
     
 }
 @end
