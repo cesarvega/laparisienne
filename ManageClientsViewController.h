@@ -11,6 +11,7 @@
 @interface ManageClientsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate   >
 {
     AppDelegate *delegate;
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *clientsTableView;
 @property (weak, nonatomic) NSMutableArray *clientsArray;
