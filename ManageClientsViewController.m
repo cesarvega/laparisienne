@@ -33,6 +33,7 @@
   delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [self  InitArraysToHoldData];
+    
     [self FindClients];
     
     
