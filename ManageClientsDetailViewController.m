@@ -33,20 +33,10 @@
 {
     [super viewDidLoad];
       delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [ContactNameTextField setText:contactName];
-    [BusinessNameTextField setText:businessName];
-    [BusinessDescriptionTextField setText:businessDescription];
-    [AddressOneTextField setText:addressOne];
-    [AdressTwoTextField setText:addressTwo];
-    [CityTextField setText:city];
-    [ZipcodeTextField setText:zipcode];
-    [StateTextField setText:state];
-    [TelefoneTextField setText:telefone];
-    [FaxTextField setText:fax];
-    [MobileTextField setText:mobile];
-    [WebSiteTextField setText:website];
-    [EmailTextField setText:email];
-	// Do any additional setup after loading the view.
+    
+    [self SetTextLabelsText];
+    	
+ 	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -232,5 +222,24 @@
         
 	}
     
+}
+
+-(void)SetTextLabelsText{
+
+
+    [ContactNameTextField setText:contactName];
+    [BusinessNameTextField setText:businessName];
+    [BusinessDescriptionTextField setText:businessDescription];
+    [AddressOneTextField setText:addressOne];
+    [AdressTwoTextField setText:addressTwo];
+    [CityTextField setText:city];
+    [ZipcodeTextField setText:zipcode];
+    [StateTextField setText:state];
+    [TelefoneTextField setText:telefone];
+    [FaxTextField setText:fax];
+    [MobileTextField setText:mobile];
+    [WebSiteTextField setText:website];
+    [EmailTextField setText:email];
+
 }
 @end
