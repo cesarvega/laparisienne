@@ -15,7 +15,7 @@
 
 @implementation ManageClientsDetailViewController
 @synthesize addressOne, addressTwo, businessDescription, businessName;
-@synthesize city, contactName, custID, email, fax, mobile, telefone, website, zipcode, state;
+@synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
 @synthesize ContactNameTextField, BusinessNameTextField , BusinessDescriptionTextField, AddressOneTextField;
 @synthesize AdressTwoTextField, CityTextField, ZipcodeTextField, StateTextField, TelefoneTextField, FaxTextField;
 @synthesize MobileTextField, WebSiteTextField, EmailTextField;
@@ -56,15 +56,13 @@
 
 #pragma-mark UITextField Delegade Methods
 
-- (BOOL)textFieldShouldReturn:(UITextField*)aTextField
-{
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
     [aTextField resignFirstResponder];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
     
     [self animateTextField: textField up: YES];
     
@@ -79,13 +77,11 @@
     
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
+- (void)textFieldDidEndEditing:(UITextField *)textField{
     [self animateTextField: textField up: NO];
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up{
     if (textField.tag==1) {
         
     }else if(textField.tag==2){
@@ -118,7 +114,6 @@
 
 #pragma Mark Form Methods
 
-
 - (IBAction)SaveClient:(id)sender {
     
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -127,8 +122,7 @@
                            inManagedObjectContext:context];
     
     user.addressOne = AddressOneTextField.text;
-    
-    user.addressTwo = AdressTwoTextField    .text;
+    user.addressTwo = AdressTwoTextField.text;
     user.businessDescription = BusinessDescriptionTextField.text;
     user.businessName = BusinessNameTextField.text;
     user.city = CityTextField.text;
@@ -147,8 +141,6 @@
     
     [request setEntity:entity];
     
-    
-    
     // Specify that the request should return dictionaries.
     
     [request setResultType:NSDictionaryResultType];
@@ -156,7 +148,6 @@
     NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"custID"];
     
     NSExpression *maxCustIDExpression = [NSExpression expressionForFunction:@"max:"
-                                         
                                                                   arguments:[NSArray arrayWithObject:keyPathExpression]];
     
     NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
@@ -190,7 +181,7 @@
             {
                 custID = @"0";
             }
-            NSLog(custID);
+           // NSLog(custID);
         }
        
         
@@ -216,24 +207,19 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"                                                        message:@"Client successfully saved."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Client successfully saved."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
         
-        
-       
     }
     
-    
-    
-
-    
+     
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
 	if([title isEqualToString:@"OK"])
 	{

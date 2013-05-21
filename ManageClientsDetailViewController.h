@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString * businessName;
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSString * contactName;
-@property (nonatomic, retain) NSNumber * custID;
+@property (nonatomic, retain) NSNumber * custIDValue;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * fax;
 @property (nonatomic, retain) NSString * mobile;
