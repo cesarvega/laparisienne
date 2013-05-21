@@ -57,11 +57,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
- 
-    
-    Customer * info = [clientsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = info.businessName;
-    
+
+    cell.textLabel.text =  [businessName objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [businessDescription objectAtIndex:indexPath.row];
     
     return cell;
     
