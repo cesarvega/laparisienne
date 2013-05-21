@@ -1,18 +1,18 @@
 //
-//  UserManagmentViewController.m
+//  ManageProductsDetailViewController.m
 //  LaParisienneBakery
 //
-//  Created by cynthia besada on 5/12/13.
+//  Created by Cesar Vega on 5/20/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
 
-#import "UserManagmentViewController.h"
+#import "ManageProductsDetailViewController.h"
 
-@interface UserManagmentViewController ()
+@interface ManageProductsDetailViewController ()
 
 @end
 
-@implementation UserManagmentViewController
+@implementation ManageProductsDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -17,6 +17,8 @@
 @implementation ManageClientsViewController
 
 @synthesize clientsTableView, clientsArray;
+@synthesize addressOne, addressTwo, businessDescription, businessName;
+@synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,6 +31,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
   delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
+    [self  InitArraysToHoldData];
+    [self FindClients];
     
     
 	// Do any additional setup after loading the view.
@@ -74,38 +79,91 @@
     //Make sure the view is ready to recieve information
     if ([editClients view]) {
       
-        [editClients setContactName:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setBusinessName:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setBusinessDescription:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setAddressOne:[NSMutableArray arrayWithObject: [clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setAddressTwo:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setState:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setCity:[NSMutableArray arrayWithObject:[ clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setZipcode:[NSMutableArray arrayWithObject:[ clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setTelefone:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setMobile:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setFax:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
+        [editClients setContactName:[NSMutableArray arrayWithObject:[contactName objectAtIndex:indexPath.row]]];
+        [editClients setBusinessName:[NSMutableArray arrayWithObject:[businessName objectAtIndex:indexPath.row]]];
+        [editClients setBusinessDescription:[NSMutableArray arrayWithObject:[businessDescription objectAtIndex:indexPath.row]]];
+        [editClients setAddressOne:[NSMutableArray arrayWithObject: [addressOne objectAtIndex:indexPath.row]]];
+        [editClients setAddressTwo:[NSMutableArray arrayWithObject:[addressTwo objectAtIndex:indexPath.row]]];
+        [editClients setState:[NSMutableArray arrayWithObject:[state objectAtIndex:indexPath.row]]];
+        [editClients setCity:[NSMutableArray arrayWithObject:[ city objectAtIndex:indexPath.row]]];
+        [editClients setZipcode:[NSMutableArray arrayWithObject:[ zipcode objectAtIndex:indexPath.row]]];
+        [editClients setTelefone:[NSMutableArray arrayWithObject:[telefone objectAtIndex:indexPath.row]]];
+        [editClients setMobile:[NSMutableArray arrayWithObject:[mobile objectAtIndex:indexPath.row]]];
+        [editClients setFax:[NSMutableArray arrayWithObject:[fax objectAtIndex:indexPath.row]]];
         [editClients setWebsite:[NSMutableArray arrayWithObject: [clientsArray objectAtIndex:indexPath.row]]];
         [editClients setEmail:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
 
-        
-        
     }
     [self presentViewController:editClients animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)InitArraysToHoldData{
+    
+ 
+    addressOne = [[NSMutableArray alloc] init];
+    addressTwo = [[NSMutableArray alloc] init];
+    businessDescription = [[NSMutableArray alloc] init];
+    businessName = [[NSMutableArray alloc] init];
+    city = [[NSMutableArray alloc] init];
+    contactName = [[NSMutableArray alloc] init];
+    email = [[NSMutableArray alloc] init];
+    fax = [[NSMutableArray alloc] init];
+    mobile = [[NSMutableArray alloc] init];
+    state = [[NSMutableArray alloc] init];
+    telefone = [[NSMutableArray alloc] init];
+    website =  [[NSMutableArray alloc] init];
+    zipcode =  [[NSMutableArray alloc] init];
+
+}
+
+-(void)FindClients{
+    
+    
+    //** this array  "innerStringdictionary" is the fetch data from the data base just get an array of data
+    // this will handle the rest of the logic to populate the cells
+    NSArray * innerStringdictionary;
+    
+    for (NSArray *item in innerStringdictionary) {
+
+    
+    NSString *addressOnes = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressOne"]];
+    NSString *addressTwos = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressTwo"]];
+    NSString *businessDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessDescription"]];
+    NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
+    NSString *citys = [NSString stringWithFormat:@"%@",[item valueForKey:@"city"]];
+    NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
+    NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custIDValue"]];
+    NSString *emails = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
+    NSString *faxs = [NSString stringWithFormat:@"%@",[item valueForKey:@"fax"]];
+    NSString *mobiles = [NSString stringWithFormat:@"%@",[item valueForKey:@"mobile"]];
+    NSString *states = [NSString stringWithFormat:@"%@",[item valueForKey:@"state"]];
+    NSString *telefones = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
+    NSString *websites = [NSString stringWithFormat:@"%@",[item valueForKey:@"website"]];
+    NSString *zipcodes = [NSString stringWithFormat:@"%@",[item valueForKey:@"zipcode"]];
+
+    [addressOne addObject:addressOnes];
+    [addressTwo addObject:addressTwos];
+    [businessDescription addObject:businessDescriptions];
+    [businessName addObject: businessNames];
+    [city addObject: citys];
+    [contactName addObject:contactNames];
+    [custIDValue addObject:custIDValues];
+    [email addObject:emails];
+    [fax addObject: faxs];
+    [mobile addObject:mobiles];
+    [state addObject:states];
+    [telefone addObject:telefones];
+    [website addObject:websites];
+    [zipcode addObject:zipcodes];
+
+    }
 }
 
 @end

@@ -45,7 +45,7 @@
     [firstSection addObject:@"Manage Invoices"];;
     [firstSection addObject:@"Manage Products"];
     [firstSection addObject:@"Manage Users"];
-    [secondSection addObject:@"Signed Invoices"];
+    [firstSection addObject:@"Signed Invoices"];
 
     
     NSDictionary *temporaryDictionary = [[NSDictionary alloc]initWithObjectsAndKeys:firstSection,@"0",secondSection,@"1",thirdSection,@"2",nil];
@@ -183,10 +183,16 @@
               
             break;
             
+        case 4:
+            newController=@"ManageSignedInvoices";
+            
+            break;
+
+            
         
     }
     
-    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"manageClientsView"];
+    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];
     
     [self presentViewController:manageClientsViewController animated:YES completion:nil];
     

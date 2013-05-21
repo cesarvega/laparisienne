@@ -1,20 +1,21 @@
 //
-//  UserManagmentViewController.m
+//  ManageInvoicesDetailViewController.m
 //  LaParisienneBakery
 //
-//  Created by cynthia besada on 5/12/13.
+//  Created by Cesar Vega on 5/20/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
 
-#import "UserManagmentViewController.h"
+#import "ManageInvoicesDetailViewController.h"
 
-@interface UserManagmentViewController ()
+@interface ManageInvoicesDetailViewController ()
 
 @end
 
-@implementation UserManagmentViewController
+@implementation ManageInvoicesDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -22,12 +23,14 @@
     return self;
 }
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning{
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
