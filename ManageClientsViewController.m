@@ -88,20 +88,11 @@
         [editClients setWebsite:[NSMutableArray arrayWithObject: [clientsArray objectAtIndex:indexPath.row]]];
         [editClients setEmail:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
 
-        
-        
     }
     [self presentViewController:editClients animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];

@@ -186,7 +186,7 @@
         
     }
     
-    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"manageClientsView"];
+    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];
     
     [self presentViewController:manageClientsViewController animated:YES completion:nil];
     
