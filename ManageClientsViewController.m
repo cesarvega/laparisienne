@@ -33,6 +33,7 @@
   delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [self  InitArraysToHoldData];
+    
     [self FindClients];
     
     
@@ -46,7 +47,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [clientsArray count];
+    return [contactName count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,11 +58,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
- 
-    
-    Customer * info = [clientsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = info.businessName;
-    
+
+    cell.textLabel.text =  [businessName objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [businessDescription objectAtIndex:indexPath.row];
     
     return cell;
     

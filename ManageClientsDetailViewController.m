@@ -197,9 +197,9 @@
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     //custID is a string
     
-    NSLog(finalString);
+    NSLog(@"My string %@"  ,finalString);
     user.custID = [f numberFromString:finalString];
-    NSLog(user.custID);
+    NSLog(@"My string %@" ,user.custID);
     
     
     
