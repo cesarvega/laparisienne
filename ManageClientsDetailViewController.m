@@ -172,15 +172,13 @@
         
         if ([objects count] > 0) {
             
-            NSLog(@"Max custID: %@", [[objects objectAtIndex:0] valueForKey:@"maxCustID"]);
+            
             
             custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
+              
             
                       
-            if(custID == nil)
-            {
-                custID = @"0";
-            }
+            
            // NSLog(custID);
         }
        
@@ -190,14 +188,17 @@
     NSInteger *maxID = [custID integerValue];
     
     maxID = maxID+1;
-    NSString *finalString = [NSString stringWithFormat:@"%d", maxID];
+    NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
     
     
     
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     //custID is a string
-    user.custID = [f numberFromString:custID];
+    
+    NSLog(finalString);
+    user.custID = [f numberFromString:finalString];
+    NSLog(user.custID);
     
     
     
