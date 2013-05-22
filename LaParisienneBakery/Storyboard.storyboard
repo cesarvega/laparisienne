@@ -199,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ono-gv-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="-799"/>
+            <point key="canvasLocation" x="1083" y="-799"/>
         </scene>
         <!--Manage Clients Detail View Controller-->
         <scene sceneID="bmF-XX-rhZ">
@@ -715,7 +715,7 @@
         <!--View Controller-->
         <scene sceneID="7zJ-OF-c8D">
             <objects>
-                <viewController id="wyF-VV-nS3" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ManageProductsDetail" storyboardIdentifier="ManageProductsDetail" id="wyF-VV-nS3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxV-my-MEE">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

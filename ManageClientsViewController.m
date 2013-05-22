@@ -5,6 +5,8 @@
 //  Created by cynthia besada on 5/17/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
+//a comment
+//another comment
 
 #import "ManageClientsViewController.h"
 #import "Customer.h"
@@ -105,6 +107,7 @@
 
 -(void)InitArraysToHoldData{
     
+    //a comment
  
     addressOne = [[NSMutableArray alloc] init];
     addressTwo = [[NSMutableArray alloc] init];
