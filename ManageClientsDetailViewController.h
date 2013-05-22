@@ -13,12 +13,12 @@
 {
     AppDelegate *delegate;
 }
+@property (strong, nonatomic) NSString * contactName;
 @property (strong, nonatomic) NSString * addressOne;
 @property (strong, nonatomic) NSString * addressTwo;
 @property (strong, nonatomic) NSString * businessDescription;
 @property (strong, nonatomic) NSString * businessName;
 @property (strong, nonatomic) NSString * city;
-@property (strong, nonatomic) NSString * contactName;
 @property (strong, nonatomic) NSNumber * custIDValue;
 @property (strong, nonatomic) NSString * email;
 @property (strong, nonatomic) NSString * fax;

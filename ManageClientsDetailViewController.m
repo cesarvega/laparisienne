@@ -19,7 +19,7 @@
 @synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
 @synthesize ContactNameTextField, BusinessNameTextField , BusinessDescriptionTextField, AddressOneTextField;
 @synthesize AdressTwoTextField, CityTextField, ZipcodeTextField, StateTextField, TelefoneTextField, FaxTextField;
-@synthesize MobileTextField, WebSiteTextField, EmailTextField;
+@synthesize MobileTextField, WebSiteTextField, EmailTextField,title;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -183,11 +183,7 @@
     user.custID = [f numberFromString:finalString];
     NSLog(@"My string %@" ,user.custID);
     
-    
-    
-
-  
-    if (![context save:&error]) {
+        if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     else{
@@ -199,8 +195,6 @@
         
     }
     
-     
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -210,13 +204,12 @@
 		
         NSLog(@"Button OK was selected.");
         
-        
-        
 	}
     
 }
 
 -(void)SetTextLabelsText{
+    
     [ContactNameTextField setText:contactName];
     [BusinessNameTextField setText:businessName];
     [BusinessDescriptionTextField setText:businessDescription];
@@ -232,4 +225,9 @@
     [EmailTextField setText:email];
 
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 @end

@@ -34,8 +34,6 @@
     [super viewDidLoad];
   delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
-    [self  InitArraysToHoldData];
-    
     [self FindClients];
     
     
@@ -80,7 +78,7 @@
     //Make sure the view is ready to recieve information
     if ([editClients view]) {
       
-        [editClients setContactName:@"al;sdn;slkdcndjakn"];
+        [editClients setContactName:[contactName objectAtIndex:indexPath.row]];
         [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
         [editClients setBusinessDescription:[businessDescription objectAtIndex:indexPath.row]];
         [editClients setAddressOne:[addressOne objectAtIndex:indexPath.row]];
@@ -127,7 +125,7 @@
 
 -(void)FindClients{
     
-    
+    [self  InitArraysToHoldData];
     //** this array  "innerStringdictionary" is the fetch data from the data base just get an array of data
     // this will handle the rest of the logic to populate the cells
     
@@ -139,7 +137,6 @@
     [fetchRequest setEntity:entity];
    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
 
-    
     
     for (NSArray *item in innerStringdictionary) {
 
