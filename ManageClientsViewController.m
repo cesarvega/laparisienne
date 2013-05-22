@@ -78,19 +78,19 @@
     //Make sure the view is ready to recieve information
     if ([editClients view]) {
       
-        [editClients setContactName:[NSMutableArray arrayWithObject:[contactName objectAtIndex:indexPath.row]]];
-        [editClients setBusinessName:[NSMutableArray arrayWithObject:[businessName objectAtIndex:indexPath.row]]];
-        [editClients setBusinessDescription:[NSMutableArray arrayWithObject:[businessDescription objectAtIndex:indexPath.row]]];
-        [editClients setAddressOne:[NSMutableArray arrayWithObject: [addressOne objectAtIndex:indexPath.row]]];
-        [editClients setAddressTwo:[NSMutableArray arrayWithObject:[addressTwo objectAtIndex:indexPath.row]]];
-        [editClients setState:[NSMutableArray arrayWithObject:[state objectAtIndex:indexPath.row]]];
-        [editClients setCity:[NSMutableArray arrayWithObject:[ city objectAtIndex:indexPath.row]]];
-        [editClients setZipcode:[NSMutableArray arrayWithObject:[ zipcode objectAtIndex:indexPath.row]]];
-        [editClients setTelefone:[NSMutableArray arrayWithObject:[telefone objectAtIndex:indexPath.row]]];
-        [editClients setMobile:[NSMutableArray arrayWithObject:[mobile objectAtIndex:indexPath.row]]];
-        [editClients setFax:[NSMutableArray arrayWithObject:[fax objectAtIndex:indexPath.row]]];
-        [editClients setWebsite:[NSMutableArray arrayWithObject: [clientsArray objectAtIndex:indexPath.row]]];
-        [editClients setEmail:[NSMutableArray arrayWithObject:[clientsArray objectAtIndex:indexPath.row]]];
+        [editClients setContactName:@"al;sdn;slkdcndjakn"];
+        [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
+        [editClients setBusinessDescription:[businessDescription objectAtIndex:indexPath.row]];
+        [editClients setAddressOne:[addressOne objectAtIndex:indexPath.row]];
+        [editClients setAddressTwo:[addressTwo objectAtIndex:indexPath.row]];
+        [editClients setState:[state objectAtIndex:indexPath.row]];
+        [editClients setCity:[ city objectAtIndex:indexPath.row]];
+        [editClients setZipcode:[ zipcode objectAtIndex:indexPath.row]];
+        [editClients setTelefone:[telefone objectAtIndex:indexPath.row]];
+        [editClients setMobile:[mobile objectAtIndex:indexPath.row]];
+        [editClients setFax:[fax objectAtIndex:indexPath.row]];
+        [editClients setWebsite:[website objectAtIndex:indexPath.row]];
+        [editClients setEmail:[email objectAtIndex:indexPath.row]];
 
     }
     [self presentViewController:editClients animated:YES completion:nil];

@@ -13,20 +13,20 @@
 {
     AppDelegate *delegate;
 }
-@property (nonatomic, retain) NSString * addressOne;
-@property (nonatomic, retain) NSString * addressTwo;
-@property (nonatomic, retain) NSString * businessDescription;
-@property (nonatomic, retain) NSString * businessName;
-@property (nonatomic, retain) NSString * city;
-@property (nonatomic, retain) NSString * contactName;
-@property (nonatomic, retain) NSNumber * custIDValue;
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * fax;
-@property (nonatomic, retain) NSString * mobile;
-@property (nonatomic, retain) NSString * state;
-@property (nonatomic, retain) NSString * telefone;
-@property (nonatomic, retain) NSString * website;
-@property (nonatomic, retain) NSString * zipcode;
+@property (strong, nonatomic) NSString * addressOne;
+@property (strong, nonatomic) NSString * addressTwo;
+@property (strong, nonatomic) NSString * businessDescription;
+@property (strong, nonatomic) NSString * businessName;
+@property (strong, nonatomic) NSString * city;
+@property (strong, nonatomic) NSString * contactName;
+@property (strong, nonatomic) NSNumber * custIDValue;
+@property (strong, nonatomic) NSString * email;
+@property (strong, nonatomic) NSString * fax;
+@property (strong, nonatomic) NSString * mobile;
+@property (strong, nonatomic) NSString * state;
+@property (strong, nonatomic) NSString * telefone;
+@property (strong, nonatomic) NSString * website;
+@property (strong, nonatomic) NSString * zipcode;
 
 @property (strong, nonatomic) IBOutlet UITextField *ContactNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *BusinessNameTextField;
