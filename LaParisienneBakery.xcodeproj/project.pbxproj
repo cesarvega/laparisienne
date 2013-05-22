@@ -25,6 +25,7 @@
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
 		1340056A174C502600AF206C /* AControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13400569174C502600AF206C /* AControllerViewController.m */; };
+		829285BD174C5E9200ED67FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829285BC174C5E9200ED67FC /* QuartzCore.framework */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
 		829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */; };
@@ -71,6 +72,7 @@
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
 		13400568174C502600AF206C /* AControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AControllerViewController.h; sourceTree = "<group>"; };
 		13400569174C502600AF206C /* AControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AControllerViewController.m; sourceTree = "<group>"; };
+		829285BC174C5E9200ED67FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
 		829A4684174B053600B3B136 /* ManageProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageProductsViewController.h; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829285BD174C5E9200ED67FC /* QuartzCore.framework in Frameworks */,
 				13283BB61735B0CE00E2C286 /* UIKit.framework in Frameworks */,
 				13283BB81735B0CE00E2C286 /* Foundation.framework in Frameworks */,
 				13283BBA1735B0CE00E2C286 /* CoreGraphics.framework in Frameworks */,
@@ -134,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				13283BB51735B0CE00E2C286 /* UIKit.framework */,
+				829285BC174C5E9200ED67FC /* QuartzCore.framework */,
 				13283BB71735B0CE00E2C286 /* Foundation.framework */,
 				13283BB91735B0CE00E2C286 /* CoreGraphics.framework */,
 				13283BBB1735B0CE00E2C286 /* CoreData.framework */,
