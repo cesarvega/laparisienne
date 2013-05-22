@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ManageProductsViewController : UIViewController
+#import "AppDelegate.h"
+@interface ManageProductsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    AppDelegate *delegate;
+}
+@property (nonatomic, retain) NSMutableArray * productsArray;
 
 @end
