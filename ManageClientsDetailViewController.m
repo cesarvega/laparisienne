@@ -161,13 +161,8 @@
         if ([objects count] > 0) {
             
             
-            
             custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
-              
-            
-                      
-            
-           // NSLog(custID);
+        
         }
        
         
@@ -222,8 +217,6 @@
 }
 
 -(void)SetTextLabelsText{
-
-
     [ContactNameTextField setText:contactName];
     [BusinessNameTextField setText:businessName];
     [BusinessDescriptionTextField setText:businessDescription];

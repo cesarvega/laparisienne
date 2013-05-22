@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageClientsDetailViewController.m"
-         timestampString = "390876870.432232"
+         timestampString = "390878050.032623"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "171"
-         endingLineNumber = "171"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-SaveClient:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageClientsDetailViewController.m"
-         timestampString = "390877510.70057"
+         timestampString = "390878050.032623"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "227"
-         endingLineNumber = "227"
+         startingLineNumber = "220"
+         endingLineNumber = "220"
          landmarkName = "-SetTextLabelsText"
          landmarkType = "5">
       </FileBreakpoint>
