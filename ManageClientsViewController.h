@@ -11,7 +11,6 @@
 @interface ManageClientsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate   >
 {
     AppDelegate *delegate;
-    
 }
 @property (nonatomic, retain) NSMutableArray * addressOne;
 @property (nonatomic, retain) NSMutableArray * addressTwo;
