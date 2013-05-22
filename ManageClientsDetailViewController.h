@@ -13,7 +13,6 @@
 {
     AppDelegate *delegate;
 }
-
 @property (strong, nonatomic) NSString * addressOne;
 @property (strong, nonatomic) NSString * addressTwo;
 @property (strong, nonatomic) NSString * businessDescription;
