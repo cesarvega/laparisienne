@@ -69,7 +69,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storybord" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ManageClientsDetailViewController * editClients = (ManageClientsDetailViewController*)
     [storyboard instantiateViewControllerWithIdentifier:@"editClients"];
     
@@ -127,7 +127,16 @@
     
     //** this array  "innerStringdictionary" is the fetch data from the data base just get an array of data
     // this will handle the rest of the logic to populate the cells
-    NSArray * innerStringdictionary;
+    
+     NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Customer" inManagedObjectContext:context];
+    NSError *error;
+    [fetchRequest setEntity:entity];
+   NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
+
+    
     
     for (NSArray *item in innerStringdictionary) {
 
@@ -138,7 +147,7 @@
     NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
     NSString *citys = [NSString stringWithFormat:@"%@",[item valueForKey:@"city"]];
     NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
-    NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custIDValue"]];
+    NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
     NSString *emails = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
     NSString *faxs = [NSString stringWithFormat:@"%@",[item valueForKey:@"fax"]];
     NSString *mobiles = [NSString stringWithFormat:@"%@",[item valueForKey:@"mobile"]];
