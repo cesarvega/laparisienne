@@ -32,8 +32,7 @@
     [super viewDidLoad];
       delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
-    [self SetTextLabelsText];
-    	
+       	
  	// Do any additional setup after loading the view.
 }
 
@@ -227,6 +226,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [self SetTextLabelsText];
     [super viewDidAppear:animated];
 }
 

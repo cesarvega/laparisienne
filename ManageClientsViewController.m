@@ -78,6 +78,7 @@
     //Make sure the view is ready to recieve information
     if ([editClients view]) {
       
+        [editClients setCustIDValue:[custIDValue objectAtIndex:indexPath.row]];
         [editClients setContactName:[contactName objectAtIndex:indexPath.row]];
         [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
         [editClients setBusinessDescription:[businessDescription objectAtIndex:indexPath.row]];
