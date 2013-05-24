@@ -150,25 +150,16 @@
     NSArray *objects = [context executeFetchRequest:request error:&error];
     NSString *custID = @"";
     if (objects == nil) {
-        
-        // Handle the error.
-        
+     
     }
-    
     else {
         
         if ([objects count] > 0) {
-            
-            
             custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
-        
         }
-       
-        
-    }
+}
     
     NSInteger *maxID = [custID integerValue];
-    
     maxID = maxID+1;
     NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
     

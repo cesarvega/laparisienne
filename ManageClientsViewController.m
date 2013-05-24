@@ -17,8 +17,6 @@
 @end
 
 @implementation ManageClientsViewController
-
-@synthesize clientsTableView, clientsArray;
 @synthesize addressOne, addressTwo, businessDescription, businessName;
 @synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
 
