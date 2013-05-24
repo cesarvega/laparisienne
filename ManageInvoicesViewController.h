@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManageInvoicesViewController : UIViewController
+@interface ManageInvoicesViewController : UIViewController{
+    UIButton *printButton;
+    UIPrintInteractionController *printController;
+}
 
 @end
