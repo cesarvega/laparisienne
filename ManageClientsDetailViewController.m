@@ -159,7 +159,7 @@
         }
 }
     
-    NSInteger *maxID = [custID integerValue];
+   int maxID = [custID integerValue];
     maxID = maxID+1;
     NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
     
@@ -178,7 +178,7 @@
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Client successfully saved."
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
@@ -188,12 +188,12 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	if([title isEqualToString:@"OK"])
+	NSString *titles= [alertView buttonTitleAtIndex:buttonIndex];
+	if([titles isEqualToString:@"OK"])
 	{
-		
-        NSLog(@"Button OK was selected.");
-        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageClients"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
 	}
     
 }

@@ -79,21 +79,20 @@
     [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
-    NSString *custID = @"";
+    NSString *prodID = @"";
     if (objects == nil) {
         
     }
     else {
         
         if ([objects count] > 0) {
-            custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
+            prodID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
         }
     }
     
-    NSInteger *maxID = [custID integerValue];
+    int maxID = [prodID integerValue];
     maxID = maxID+1;
     NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
-    
     
     
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -107,7 +106,7 @@
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"product successfully saved."
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
@@ -117,12 +116,14 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	if([title isEqualToString:@"OK"])
+	NSString *titles = [alertView buttonTitleAtIndex:buttonIndex];
+	if([titles isEqualToString:@"OK"])
 	{
 		
-        NSLog(@"Button OK was selected.");
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageProdcutsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageProducts"];
         
+        [self presentViewController:manageProdcutsViewController animated:YES completion:nil];
 	}
     
 }
@@ -134,5 +135,62 @@
     [UnitPriceTextField setText:[unitPrice stringValue]];
    }
 
+#pragma-mark UITextField Delegade Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
+    [aTextField resignFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [self animateTextField: textField up: YES];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.leftBarButtonItem.enabled=NO;
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //    textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+    return YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up{
+    if (textField.tag==1) {
+        
+    }else if(textField.tag==2){
+        //  WARNING : develop a switch for diferen heighs of the textfields
+        const int movementDistance = 90; // tweak as needed
+        const float movementDuration = 0.5f; // tweak as needed
+        
+        int movement = (up ? -movementDistance : movementDistance);
+        
+        [UIView beginAnimations: @"anim" context: nil];
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: movementDuration];
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        [UIView commitAnimations];
+    }else{
+        
+        //  WARNING : develop a switch for diferen heighs of the textfields
+//        const int movementDistance = 140; // tweak as needed
+//        const float movementDuration = 0.5f; // tweak as needed
+//        
+//        int movement = (up ? -movementDistance : movementDistance);
+//        
+//        [UIView beginAnimations: @"anim" context: nil];
+//        [UIView setAnimationBeginsFromCurrentState: YES];
+//        [UIView setAnimationDuration: movementDuration];
+//        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+//        [UIView commitAnimations];
+    }
+}
 
 @end

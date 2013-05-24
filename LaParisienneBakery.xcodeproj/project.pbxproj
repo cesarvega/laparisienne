@@ -31,6 +31,9 @@
 		829A468C174B098400B3B136 /* ManageInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A468B174B098400B3B136 /* ManageInvoicesViewController.m */; };
 		829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A468E174B099800B3B136 /* ManageInvoicesDetailViewController.m */; };
 		82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */; };
+		82AF05AB174FECE9004AE101 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AF05AA174FECE9004AE101 /* MobileCoreServices.framework */; };
+		82AF05AE174FFAEF004AE101 /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AF05AD174FFAEF004AE101 /* PDFRenderer.m */; };
+		82AF05B0174FFB7D004AE101 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AF05AF174FFB7D004AE101 /* CoreText.framework */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
@@ -82,6 +85,10 @@
 		829A468E174B099800B3B136 /* ManageInvoicesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageInvoicesDetailViewController.m; sourceTree = "<group>"; };
 		82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsDetailViewController.h; sourceTree = "<group>"; };
 		82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsDetailViewController.m; sourceTree = "<group>"; };
+		82AF05AA174FECE9004AE101 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		82AF05AC174FFAEE004AE101 /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFRenderer.h; sourceTree = "<group>"; };
+		82AF05AD174FFAEF004AE101 /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFRenderer.m; sourceTree = "<group>"; };
+		82AF05AF174FFB7D004AE101 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -96,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AF05B0174FFB7D004AE101 /* CoreText.framework in Frameworks */,
+				82AF05AB174FECE9004AE101 /* MobileCoreServices.framework in Frameworks */,
 				829285BD174C5E9200ED67FC /* QuartzCore.framework in Frameworks */,
 				13283BB61735B0CE00E2C286 /* UIKit.framework in Frameworks */,
 				13283BB81735B0CE00E2C286 /* Foundation.framework in Frameworks */,
@@ -131,6 +140,8 @@
 		13283BB41735B0CE00E2C286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82AF05AF174FFB7D004AE101 /* CoreText.framework */,
+				82AF05AA174FECE9004AE101 /* MobileCoreServices.framework */,
 				13283BB51735B0CE00E2C286 /* UIKit.framework */,
 				829285BC174C5E9200ED67FC /* QuartzCore.framework */,
 				13283BB71735B0CE00E2C286 /* Foundation.framework */,
@@ -219,6 +230,8 @@
 				829A4685174B053600B3B136 /* ManageProductsViewController.m */,
 				829A4687174B06AA00B3B136 /* ManageProductsDetailViewController.h */,
 				829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */,
+				82AF05AC174FFAEE004AE101 /* PDFRenderer.h */,
+				82AF05AD174FFAEF004AE101 /* PDFRenderer.m */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,8 +262,8 @@
 			children = (
 				82A6CF991749412E00BDB8E8 /* Customer */,
 				829A4680174AFEAF00B3B136 /* Products */,
-				829A467E174AFE9600B3B136 /* User */,
 				829A467F174AFE9F00B3B136 /* Invoice */,
+				829A467E174AFE9600B3B136 /* User */,
 				82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */,
 				82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */,
 				82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */,
@@ -344,6 +357,7 @@
 				829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */,
 				829A468C174B098400B3B136 /* ManageInvoicesViewController.m in Sources */,
 				829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */,
+				82AF05AE174FFAEF004AE101 /* PDFRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

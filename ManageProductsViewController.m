@@ -27,6 +27,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        [self FindProdcuts];
 	// Do any additional setup after loading the view.
 }
 
@@ -51,6 +52,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text =[productDescription objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -58,7 +60,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ManageProductsDetailViewController * manageProductsDetailView = (ManageProductsDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"editClients"];
+    [storyboard instantiateViewControllerWithIdentifier:@"ManageProductsDetail"];
     
     manageProductsDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     if ([manageProductsDetailView view]) {
@@ -71,7 +73,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
--(void)FindClients{
+-(void)FindProdcuts{
     
     [self  InitArraysToHoldData];
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -84,9 +86,9 @@
     
     for (NSArray *item in innerStringdictionary) {
         
-        NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"Productname"]];
+        NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
-        NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessDescription"]];
+        NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
         NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
         [Productname addObject:Productnames];
         [productDescription addObject:productDescriptions];
