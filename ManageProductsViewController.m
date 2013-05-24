@@ -74,9 +74,6 @@
 -(void)FindClients{
     
     [self  InitArraysToHoldData];
-    //** this array  "innerStringdictionary" is the fetch data from the data base just get an array of data
-    // this will handle the rest of the logic to populate the cells
-    
     NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
