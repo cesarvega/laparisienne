@@ -13,6 +13,7 @@
 @end
 
 @implementation ManageProductsDetailViewController
+
 @synthesize name,productDescription,productID,unitPrice, ProductNameTextField, UnitPriceTextField, PorductDescriptionTextField;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -13,6 +13,7 @@
 @end
 
 @implementation ManageInvoicesViewController
+@synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,5 +35,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
