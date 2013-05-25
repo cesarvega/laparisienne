@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Product.h"
 @interface ManageProductsDetailViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>{
-
+    
     AppDelegate *delegate;
+    NSManagedObjectContext *context;
+    Product *product;
 }
 
 @property (nonatomic, retain) NSString * name;
@@ -20,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *ProductNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *PorductDescriptionTextField;
 @property (strong, nonatomic) IBOutlet UITextField *UnitPriceTextField;
-
 
 - (IBAction)SaveProduct:(id)sender;
 @end
