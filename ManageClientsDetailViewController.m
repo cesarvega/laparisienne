@@ -19,9 +19,8 @@
 @synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
 @synthesize ContactNameTextField, BusinessNameTextField , BusinessDescriptionTextField, AddressOneTextField;
 @synthesize AdressTwoTextField, CityTextField, ZipcodeTextField, StateTextField, TelefoneTextField, FaxTextField;
-@synthesize MobileTextField, WebSiteTextField, EmailTextField;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+@synthesize MobileTextField, WebSiteTextField, EmailTextField,title;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -29,28 +28,15 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
       delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [ContactNameTextField setText:contactName];
-    [BusinessNameTextField setText:businessName];
-    [BusinessDescriptionTextField setText:businessDescription];
-    [AddressOneTextField setText:addressOne];
-    [AdressTwoTextField setText:addressTwo];
-    [CityTextField setText:city];
-    [ZipcodeTextField setText:zipcode];
-    [StateTextField setText:state];
-    [TelefoneTextField setText:telefone];
-    [FaxTextField setText:fax];
-    [MobileTextField setText:mobile];
-    [WebSiteTextField setText:website];
-    [EmailTextField setText:email];
-	// Do any additional setup after loading the view.
+    
+       	
+ 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -164,30 +150,16 @@
     NSArray *objects = [context executeFetchRequest:request error:&error];
     NSString *custID = @"";
     if (objects == nil) {
-        
-        // Handle the error.
-        
+     
     }
-    
     else {
         
         if ([objects count] > 0) {
-            
-            
-            
             custID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
-              
-            
-                      
-            
-           // NSLog(custID);
         }
-       
-        
-    }
+}
     
-    NSInteger *maxID = [custID integerValue];
-    
+   int maxID = [custID integerValue];
     maxID = maxID+1;
     NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
     
@@ -201,36 +173,52 @@
     user.custID = [f numberFromString:finalString];
     NSLog(@"My string %@" ,user.custID);
     
-    
-    
-
-  
-    if (![context save:&error]) {
+        if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Client successfully saved."
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
         
     }
     
-     
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	if([title isEqualToString:@"OK"])
+	NSString *titles= [alertView buttonTitleAtIndex:buttonIndex];
+	if([titles isEqualToString:@"OK"])
 	{
-		
-        NSLog(@"Button OK was selected.");
-        
-        
-        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageClients"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
 	}
     
 }
+
+-(void)SetTextLabelsText{
+    
+    [ContactNameTextField setText:contactName];
+    [BusinessNameTextField setText:businessName];
+    [BusinessDescriptionTextField setText:businessDescription];
+    [AddressOneTextField setText:addressOne];
+    [AdressTwoTextField setText:addressTwo];
+    [CityTextField setText:city];
+    [ZipcodeTextField setText:zipcode];
+    [StateTextField setText:state];
+    [TelefoneTextField setText:telefone];
+    [FaxTextField setText:fax];
+    [MobileTextField setText:mobile];
+    [WebSiteTextField setText:website];
+    [EmailTextField setText:email];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self SetTextLabelsText];
+    [super viewDidAppear:animated];
+}
+
 @end

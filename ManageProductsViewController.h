@@ -12,6 +12,9 @@
 {
     AppDelegate *delegate;
 }
-@property (nonatomic, retain) NSMutableArray * productsArray;
 
+@property (nonatomic, retain) NSMutableArray * Productname;
+@property (nonatomic, retain) NSMutableArray * productDescription;
+@property (nonatomic, retain) NSMutableArray * productID;
+@property (nonatomic, retain) NSMutableArray * unitPrice;
 @end

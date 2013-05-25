@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
 @interface MainMenuViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
     
     NSMutableArray *firstSection;
@@ -15,7 +15,7 @@
     NSMutableArray *thirdSection;
     NSMutableArray *titleOfSections;
     NSDictionary * menuDataSource;
-
+    AppDelegate *delegate;
 }
 @property (strong, nonatomic) IBOutlet UITableView *mapTableViewDisplay;
 @property (strong,nonatomic) NSDictionary * menuDataSource;

@@ -11,7 +11,6 @@
 @interface ManageClientsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate   >
 {
     AppDelegate *delegate;
-    
 }
 @property (nonatomic, retain) NSMutableArray * addressOne;
 @property (nonatomic, retain) NSMutableArray * addressTwo;
@@ -27,6 +26,5 @@
 @property (nonatomic, retain) NSMutableArray * telefone;
 @property (nonatomic, retain) NSMutableArray * website;
 @property (nonatomic, retain) NSMutableArray * zipcode;
-@property (weak, nonatomic) IBOutlet UITableView *clientsTableView;
-@property (weak, nonatomic) NSMutableArray *clientsArray;
+
 @end

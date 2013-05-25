@@ -188,28 +188,12 @@
             
             break;
 
-            
-        
     }
     
-    ManageClientsViewController *manageClientsViewController = (ManageClientsViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];
+    UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];
     
     [self presentViewController:manageClientsViewController animated:YES completion:nil];
     
-    
-   /** if ([newController isEqual: @"profileView"]) {
-               
-    }else if ([newController isEqual: @"Friends"]) {
-    
-    
-    }else if ([newController isEqual:@"Map"]) {
-        
-       
-        
-    }**/
-
-
-
-    
+      
 }
 @end

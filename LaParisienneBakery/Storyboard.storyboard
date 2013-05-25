@@ -141,7 +141,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Manage Clients" id="iCU-gG-U4d">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="u8h-7a-jtr">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="u8h-7a-jtr">
                                             <connections>
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="CAq-32-pSj"/>
                                             </connections>
@@ -193,9 +193,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="clientsTableView" destination="9E3-zn-SmV" id="aa1-st-aKO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ono-gv-CQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -214,7 +211,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Edit Clients" id="GXB-7J-FAp">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="qKP-ds-LPk">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="qKP-ds-LPk">
                                             <connections>
                                                 <segue destination="Fd2-tU-OhK" kind="modal" id="buN-Mc-n1u"/>
                                             </connections>
@@ -466,7 +463,7 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6px-aW-BSq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="6px-aW-BSq">
                                 <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -497,13 +494,17 @@
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YDX-ty-IAK" id="IEe-Gi-Y4m"/>
+                                    <outlet property="delegate" destination="YDX-ty-IAK" id="2Ds-Sc-dnx"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" id="h2y-q2-yRd">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Manage Users" id="ohV-Jl-qqp">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="tbJ-VV-HHX">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="tbJ-VV-HHX">
                                             <connections>
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="kt7-IF-yko"/>
                                             </connections>
@@ -532,31 +533,31 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tA4-zk-hjL">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                            <navigationBar contentMode="scaleToFill" id="ctx-UE-qDt">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Manage Products" id="UqH-ki-MBj">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="zFx-o8-Fyl">
+                                            <connections>
+                                                <segue destination="m99-Wj-D4p" kind="modal" id="5Dx-1A-J2N"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AvJ-5L-kGc">
+                                            <connections>
+                                                <segue destination="wyF-VV-nS3" kind="modal" id="o0q-Yu-iZX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="tA4-zk-hjL">
+                                <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="ctx-UE-qDt">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <items>
-                                        <navigationItem title="Manage Products" id="UqH-ki-MBj">
-                                            <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="zFx-o8-Fyl">
-                                                <connections>
-                                                    <segue destination="m99-Wj-D4p" kind="modal" id="5Dx-1A-J2N"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="AvJ-5L-kGc">
-                                                <connections>
-                                                    <segue destination="wyF-VV-nS3" kind="modal" id="o0q-Yu-iZX"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </navigationItem>
-                                    </items>
-                                </navigationBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationLevel="2" indentationWidth="10" textLabel="nRG-1d-rlw" detailTextLabel="UYv-wd-5KM" rowHeight="126" style="IBUITableViewCellStyleValue1" id="INi-Xs-Gon">
-                                        <rect key="frame" x="0.0" y="66" width="768" height="126"/>
+                                        <rect key="frame" x="0.0" y="22" width="768" height="126"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="735" height="125"/>
@@ -581,6 +582,10 @@
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Lq-3O-aUP" id="zLk-Ni-4IF"/>
+                                    <outlet property="delegate" destination="4Lq-3O-aUP" id="VGh-71-Mvg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -598,7 +603,7 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="y3m-j8-NhL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="y3m-j8-NhL">
                                 <rect key="frame" x="0.0" y="44" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -635,7 +640,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Manage Invoices" id="hAz-gD-Zyp">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1bQ-4t-6tm">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="1bQ-4t-6tm">
                                             <connections>
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="b0B-fy-Vp1"/>
                                             </connections>
@@ -654,7 +659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahu-Fc-Md5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="2576"/>
+            <point key="canvasLocation" x="1067" y="2563"/>
         </scene>
         <!--Manage Invoices Detail View Controller-->
         <scene sceneID="p2N-aj-Yfe">
@@ -669,7 +674,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Invoice Creator" id="rvK-Z3-u2j">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vNc-r5-tIR">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="vNc-r5-tIR">
                                             <connections>
                                                 <segue destination="fC2-B1-XFI" kind="modal" id="mxH-hx-Da0"/>
                                             </connections>
@@ -712,10 +717,10 @@
             </objects>
             <point key="canvasLocation" x="1893" y="2576"/>
         </scene>
-        <!--View Controller-->
+        <!--Manage Products Detail View Controller-->
         <scene sceneID="7zJ-OF-c8D">
             <objects>
-                <viewController restorationIdentifier="ManageProductsDetail" storyboardIdentifier="ManageProductsDetail" id="wyF-VV-nS3" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ManageProductsDetail" storyboardIdentifier="ManageProductsDetail" id="wyF-VV-nS3" customClass="ManageProductsDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxV-my-MEE">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -725,12 +730,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Edit Product" id="a5o-VL-KSi">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fr6-AH-Sdv">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Fr6-AH-Sdv">
                                             <connections>
                                                 <segue destination="4Lq-3O-aUP" kind="modal" id="xRH-Od-6aG"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="FKF-Lh-G7w"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="FKF-Lh-G7w">
+                                            <connections>
+                                                <action selector="SaveProduct:" destination="wyF-VV-nS3" id="mMs-SM-iwn"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -746,6 +755,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wyF-VV-nS3" id="was-o4-JaA"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Product Price Unit :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gd7-jC-w4F">
                                 <rect key="frame" x="20" y="388" width="231" height="50"/>
@@ -759,6 +771,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wyF-VV-nS3" id="U4Y-VP-6RW"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Product Name :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qRM-aH-efD">
                                 <rect key="frame" x="20" y="251" width="231" height="50"/>
@@ -773,12 +788,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
-                                    <outlet property="delegate" destination="ZO8-AW-ivK" id="mKS-su-NEB"/>
+                                    <outlet property="delegate" destination="wyF-VV-nS3" id="Pdt-YS-6xR"/>
                                 </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="PorductDescriptionTextField" destination="s2y-ri-lJw" id="EAB-lg-Gp2"/>
+                        <outlet property="ProductNameTextField" destination="HNI-M8-g00" id="pBU-nL-iWZ"/>
+                        <outlet property="UnitPriceTextField" destination="8EL-dr-BH5" id="n57-JI-IW8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYw-Zj-xvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -823,7 +843,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Edit Clients" id="vZh-GV-5xS">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="fq7-kK-2BM">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="fq7-kK-2BM">
                                             <connections>
                                                 <segue destination="YDX-ty-IAK" kind="modal" id="v1o-PL-HuV"/>
                                             </connections>
@@ -907,6 +927,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5Dx-1A-J2N"/>
+        <segue reference="CAq-32-pSj"/>
     </inferredMetricsTieBreakers>
 </document>

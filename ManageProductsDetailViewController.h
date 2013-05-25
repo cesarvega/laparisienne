@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+@interface ManageProductsDetailViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>{
 
-@interface ManageProductsDetailViewController : UIViewController
+    AppDelegate *delegate;
+}
 
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * productDescription;
+@property (nonatomic, retain) NSNumber * productID;
+@property (nonatomic, retain) NSDecimalNumber * unitPrice;
+@property (strong, nonatomic) IBOutlet UITextField *ProductNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *PorductDescriptionTextField;
+@property (strong, nonatomic) IBOutlet UITextField *UnitPriceTextField;
+
+- (IBAction)SaveProduct:(id)sender;
 @end
