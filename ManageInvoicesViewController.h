@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManageInvoicesViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>{
+@interface ManageInvoicesViewController : UIViewController{
     UIButton *printButton;
     UIPrintInteractionController *printController;
 }
