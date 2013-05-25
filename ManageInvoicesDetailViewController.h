@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ManageInvoicesDetailViewController : UIViewController
+- (IBAction)ChooseAClient:(id)sender;
 
 @end

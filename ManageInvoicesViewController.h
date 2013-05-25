@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManageInvoicesViewController : UIViewController{
+@interface ManageInvoicesViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>{
     UIButton *printButton;
     UIPrintInteractionController *printController;
 }
-
+@property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
+@property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
 @end
