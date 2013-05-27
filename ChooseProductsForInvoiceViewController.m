@@ -7,7 +7,9 @@
 //
 
 #import "ChooseProductsForInvoiceViewController.h"
-
+@implementation ProductsDetailCell
+@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
+@end
 @interface ChooseProductsForInvoiceViewController ()
 
 @end
@@ -45,14 +47,15 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ProducDetailsCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProductsDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[ProductsDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.ProductNameLabel.text =  [Productname objectAtIndex:indexPath.row];
+    cell.ProductDescriptionLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.ProductPriceLabel.text =[productDescription objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -91,5 +94,64 @@
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
 }
+
+#pragma-mark UITextField Delegade Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
+    [aTextField resignFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [self animateTextField: textField up: YES];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.leftBarButtonItem.enabled=NO;
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //    textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+    return YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up{
+    if (textField.tag==1) {
+        
+    }else if(textField.tag==2){
+        //  WARNING : develop a switch for diferen heighs of the textfields
+        const int movementDistance = 90; // tweak as needed
+        const float movementDuration = 0.5f; // tweak as needed
+        
+        int movement = (up ? -movementDistance : movementDistance);
+        
+        [UIView beginAnimations: @"anim" context: nil];
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: movementDuration];
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        [UIView commitAnimations];
+    }else{
+        
+        //  WARNING : develop a switch for diferen heighs of the textfields
+        //        const int movementDistance = 140; // tweak as needed
+        //        const float movementDuration = 0.5f; // tweak as needed
+        //
+        //        int movement = (up ? -movementDistance : movementDistance);
+        //
+        //        [UIView beginAnimations: @"anim" context: nil];
+        //        [UIView setAnimationBeginsFromCurrentState: YES];
+        //        [UIView setAnimationDuration: movementDuration];
+        //        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        //        [UIView commitAnimations];
+    }
+}
+
 
 @end

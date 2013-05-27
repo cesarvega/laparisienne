@@ -65,7 +65,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ChooseProductsForInvoiceViewController * editClients = (ChooseProductsForInvoiceViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"SelectProductsForInvoice"];
+    [storyboard instantiateViewControllerWithIdentifier:@"ManageInvoices"];
     
     editClients.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
