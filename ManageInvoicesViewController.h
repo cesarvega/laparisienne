@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ManageInvoicesViewController : UIViewController{
+@interface ManageInvoicesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
     UIButton *printButton;
     UIPrintInteractionController *printController;
+    
+    AppDelegate *delegate;
+    
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
+
+@property (nonatomic, retain) NSMutableArray * businessName;
+@property (nonatomic, retain) NSMutableArray * contactsNames;
 @end
