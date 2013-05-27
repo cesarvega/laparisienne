@@ -1028,6 +1028,9 @@
         </class>
         <class className="ManageClientsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageClientsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clientsTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ManageInvoicesDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesDetailViewController.h"/>
@@ -1049,6 +1052,9 @@
         </class>
         <class className="ManageProductsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProductsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="productsTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ProductsDetailCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductsDetailCell.h"/>
