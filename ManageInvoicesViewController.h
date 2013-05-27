@@ -14,5 +14,10 @@
 @interface ManageInvoicesViewController : UIViewController{
 
 }
+@property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
+@property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
 
+@property (nonatomic, retain) NSMutableArray * businessNames;
+@property (nonatomic, retain) NSMutableArray * contactNames;
+@property (nonatomic, retain) NSMutableArray * custIDValues;
 @end

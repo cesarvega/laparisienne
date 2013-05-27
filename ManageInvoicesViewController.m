@@ -13,8 +13,8 @@
 @end
 
 @implementation ManageInvoicesViewController
-
-
+@synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
+@synthesize contactNames, businessNames, custIDValues;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
