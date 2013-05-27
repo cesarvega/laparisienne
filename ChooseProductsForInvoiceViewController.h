@@ -17,4 +17,13 @@
 @property (nonatomic, retain) NSMutableArray * productID;
 @property (nonatomic, retain) NSMutableArray * unitPrice;
 
+
+
+@end
+@interface ProductsDetailCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *ProductNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProductPriceLabel;
+@property (strong, nonatomic) IBOutlet UITextField *ProductQuantity;
+
 @end

@@ -11,12 +11,8 @@
 #import "Invoice_Lines.h"
 #import "Invoice.h"
 
-@interface ManageInvoicesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
-    UIButton *printButton;
-    UIPrintInteractionController *printController;
-    
+@interface ManageInvoicesViewController : UIViewController{
     AppDelegate *delegate;
-    
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;

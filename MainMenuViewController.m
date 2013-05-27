@@ -171,7 +171,7 @@
             break;
             
         case 1:
-            newController=@"ManageInvoices";
+            newController=@"ChooseCLientsFOrInvoice";
                
             break;
         case 2:
