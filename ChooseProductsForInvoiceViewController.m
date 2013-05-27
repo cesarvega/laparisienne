@@ -9,6 +9,7 @@
 #import "ChooseProductsForInvoiceViewController.h"
 #import "Invoice_Lines.h"
 #import "Product.h"
+#import "Invoice.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
 @end
@@ -231,12 +232,20 @@
     
     NSNumber *newInvoiceLineID = [self getNextNumericValueOfField:@"invoiceOrderID" fromEntity:@"Invoice_Lines"];
     
-    NSString *newInvoiceDocNum = [self getNextNumericValueOfField: @"parentInvoiceDocNum" fromEntity:@"Invoice"];
+    NSNumber *newInvoiceDocNum = [self getNextNumericValueOfField: @"parentInvoiceDocNum" fromEntity:@"Invoice_Lines"];
+    Invoice_Lines *currentLine;
     
     for(int i = 0; i < [invoiceLines count]; i++)
     {
         //query for product using invoice line product ID
-        Invoice_Lines *currentLine = [invoiceLines objectAtIndex:i];
+        currentLine = [invoiceLines objectAtIndex:i];
+        
+        //set invoiceOrderID
+       // currentLine.invoiceOrderID = newInvoiceLineID;
+        
+        //set parentinvoice document number
+       // currentLine.parentInvoiceDocNum = newInvoiceDocNum;
+        
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
@@ -252,20 +261,98 @@
         if([items count] == 1)
         {
             Product *lineProduct = (Product*)[items objectAtIndex:0];
-            //currentLine.lineTotal = currentLine.quantity*lineProduct.unitPrice;
+           
+            NSString *unitPrice = [lineProduct.unitPrice stringValue];
+            NSString *quantity = [currentLine.quantity stringValue];
+            NSDecimalNumber *decimalQuantity = [NSDecimalNumber decimalNumberWithString:quantity];
+            
+            decimalQuantity = [decimalQuantity decimalNumberByMultiplyingBy:lineProduct.unitPrice];
+            currentLine.lineTotal = decimalQuantity;
+            
             
             
         }
         
-        //NSDecimalNumber *linetotal = [(Invoice_Lines*)[invoiceLines objectAtIndex:i] quantity] * ;
+        //
+        
+           
     }
     
     
+    //at this point, all lines are set in the table. i now have to create the invoice header document that these lines pertain to.
+    /**
+    Invoice *invoiceHeader = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"Invoice"
+                        inManagedObjectContext:delegate.managedObjectContext];
+    invoiceHeader.name = ProductNameTextField.text;
+    invoiceHeader.productDescription = PorductDescriptionTextField.text;
+    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
+    invoiceHeader.unitPrice = decimal;
+    // int unitPriceConvert = [UnitPriceTextField.text ];
+    //  product.unitPrice =[NSDecimalNumber nu:unitPriceConvert];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:delegate.managedObjectContext];
+    
+    [request setEntity:entity];
+    
+    // Specify that the request should return dictionaries.
+    
+    [request setResultType:NSDictionaryResultType];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"productID"];
+    
+    NSExpression *maxCustIDExpression = [NSExpression expressionForFunction:@"max:"
+                                                                  arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    
+    [expressionDescription setName:@"maxCustID"];
+    
+    [expressionDescription setExpression:maxCustIDExpression];
+    
+    [expressionDescription setExpressionResultType:NSDecimalAttributeType];
+    
+    [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    NSString *prodID = @"";
+    if (objects == nil) {
+        
+    }
+    else {
+        
+        if ([objects count] > 0) {
+            prodID = [[objects objectAtIndex:0] valueForKey:@"maxCustID"];
+        }
+    }
+    
+    int maxID = [prodID integerValue];
+    maxID = maxID+1;
+    NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
     
     
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    product.productID = [f numberFromString:finalString];
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Product successfully saved."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
+
+    **/
     
 }
-//this will return 
+//this will return
 -(NSNumber*)getNextNumericValueOfField: (NSString*)fieldName fromEntity: (NSString*) entityName{
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
