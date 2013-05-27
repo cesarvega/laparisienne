@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Invoice.h"
+#import "Invoice_Lines.h"
 @interface ManageInvoicesDetailViewController : UIViewController
+
+{
+
+    Invoice_Lines *invoicesLines;
+
+}
+@property (nonatomic, retain) NSNumber * custID;
+
 - (IBAction)ChooseAClient:(id)sender;
 
 @end

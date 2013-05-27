@@ -7,14 +7,14 @@
 //
 
 #import "ManageInvoicesViewController.h"
-
+#import "ManageInvoicesDetailViewController.h"
 @interface ManageInvoicesViewController ()
 
 @end
 
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
-@synthesize contactsNames, businessName;
+@synthesize contactNames, businessNames, custIDValues;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,6 +29,8 @@
     [super viewDidLoad];
     
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    [self initArrays];
+    [self getClients];
 	// Do any additional setup after loading the view.
 }
 
@@ -42,7 +44,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [businessName count];
+    return [businessNames count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -52,27 +54,27 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.textLabel.text =  [businessNames objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text =[contactNames objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    ManageProductsDetailViewController * manageProductsDetailView = (ManageProductsDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"ManageProductsDetail"];
+    ManageInvoicesDetailViewController * manageInvoicesDetailView = (ManageInvoicesDetailViewController*)
+    [storyboard instantiateViewControllerWithIdentifier:@"ManageInvoices"];
     
-    manageProductsDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    if ([manageProductsDetailView view]) {
-        [manageProductsDetailView setName:[Productname objectAtIndex:indexPath.row]];
-        [manageProductsDetailView setProductID:[productID objectAtIndex:indexPath.row]];
-        [manageProductsDetailView setProductDescription:[productDescription objectAtIndex:indexPath.row]];
+    manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    if ([manageInvoicesDetailView view]) {
+        [manageInvoicesDetailView setCustID:[custIDValues objectAtIndex:indexPath.row]];
+    
     }
-    [self presentViewController:manageProductsDetailView animated:YES completion:nil];
+    [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 -(void)getClients{
 
@@ -89,38 +91,32 @@ NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest erro
 for (NSArray *item in innerStringdictionary) {
     
     
-    NSString *addressOnes = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressOne"]];
-    NSString *addressTwos = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressTwo"]];
-    NSString *businessDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessDescription"]];
-    NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-    NSString *citys = [NSString stringWithFormat:@"%@",[item valueForKey:@"city"]];
-    NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
-    NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
-    NSString *emails = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
-    NSString *faxs = [NSString stringWithFormat:@"%@",[item valueForKey:@"fax"]];
-    NSString *mobiles = [NSString stringWithFormat:@"%@",[item valueForKey:@"mobile"]];
-    NSString *states = [NSString stringWithFormat:@"%@",[item valueForKey:@"state"]];
-    NSString *telefones = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
-    NSString *websites = [NSString stringWithFormat:@"%@",[item valueForKey:@"website"]];
-    NSString *zipcodes = [NSString stringWithFormat:@"%@",[item valueForKey:@"zipcode"]];
+ 
+    NSString *businessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
+
+    NSString *contactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
+    NSString *custIDValue = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
+   
+
+ 
     
-    [addressOne addObject:addressOnes];
-    [addressTwo addObject:addressTwos];
-    [businessDescription addObject:businessDescriptions];
-    [businessName addObject: businessNames];
-    [city addObject: citys];
-    [contactName addObject:contactNames];
-    [custIDValue addObject:custIDValues];
-    [email addObject:emails];
-    [fax addObject: faxs];
-    [mobile addObject:mobiles];
-    [state addObject:states];
-    [telefone addObject:telefones];
-    [website addObject:websites];
-    [zipcode addObject:zipcodes];
+
+
+    [businessNames addObject: businessName];
+   
+    [contactNames addObject:contactName];
+    [custIDValues addObject:custIDValue];
+
     
 }
+    
 
+
+}
+-(void)initArrays{
+    businessNames = [[NSMutableArray alloc]init];
+    contactNames = [[NSMutableArray alloc]init];
+    custIDValues = [[NSMutableArray alloc]init];
 }
 
 

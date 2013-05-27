@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Invoice_Lines.h"
+#import "Invoice.h"
 
 @interface ManageInvoicesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
     UIButton *printButton;
@@ -19,6 +21,7 @@
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
 
-@property (nonatomic, retain) NSMutableArray * businessName;
-@property (nonatomic, retain) NSMutableArray * contactsNames;
+@property (nonatomic, retain) NSMutableArray * businessNames;
+@property (nonatomic, retain) NSMutableArray * contactNames;
+@property (nonatomic, retain) NSMutableArray * custIDValues;
 @end
