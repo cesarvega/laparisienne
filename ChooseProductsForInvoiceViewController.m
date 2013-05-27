@@ -8,6 +8,7 @@
 
 #import "ChooseProductsForInvoiceViewController.h"
 #import "Invoice_Lines.h"
+#import "Product.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
 @end
@@ -224,6 +225,110 @@
         //        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
         //        [UIView commitAnimations];
     }
+}
+
+-(void)createInvoiceDocumentWithLines: (NSMutableArray*)invoiceLines andCustomerID: (NSNumber*) customerID{
+    
+    NSNumber *newInvoiceLineID = [self getNextNumericValueOfField:@"invoiceOrderID" fromEntity:@"Invoice_Lines"];
+    
+    NSString *newInvoiceDocNum = [self getNextNumericValueOfField: @"parentInvoiceDocNum" fromEntity:@"Invoice"];
+    
+    for(int i = 0; i < [invoiceLines count]; i++)
+    {
+        //query for product using invoice line product ID
+        Invoice_Lines *currentLine = [invoiceLines objectAtIndex:i];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSString *val = [currentLine productID];
+        
+        NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", val];
+        [fetchRequest setPredicate:p];
+        
+        NSError *error;
+        NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        
+        if([items count] == 1)
+        {
+            Product *lineProduct = (Product*)[items objectAtIndex:0];
+            currentLine.lineTotal = currentLine.quantity*lineProduct.unitPrice;
+            
+            
+        }
+        
+        NSDecimalNumber *linetotal = [(Invoice_Lines*)[invoiceLines objectAtIndex:i] quantity] * ;
+    }
+    
+    
+    
+    
+    
+}
+//this will return 
+-(NSNumber*)getNextNumericValueOfField: (NSString*)fieldName fromEntity: (NSString*) entityName{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:delegate.managedObjectContext];
+    
+    [request setEntity:entity];
+    
+    // Specify that the request should return dictionaries.
+    
+    [request setResultType:NSDictionaryResultType];
+    
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:fieldName];
+    
+    NSExpression *maxCustIDExpression = [NSExpression expressionForFunction:@"max:"
+                                                                  arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    
+    [expressionDescription setName:@"maxID"];
+    
+    [expressionDescription setExpression:maxCustIDExpression];
+    
+    [expressionDescription setExpressionResultType:NSDecimalAttributeType];
+    
+    [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    NSError *error;
+    NSArray *objects = [delegate.managedObjectContext executeFetchRequest:request error:&error];
+    NSString *mID = @"";
+    if (objects == nil) {
+        
+        if([fieldName isEqualToString:@"parentInvoiceDocNum"])
+        {
+            NSNumber *firstDocNum = 00000000;
+            return firstDocNum;
+        }
+        else if([fieldName isEqualToString:@"invoiceOrderID"])
+        {
+            NSNumber *firstInvoiceLineID = 0;
+            return firstInvoiceLineID;
+        }
+        
+    }
+    else {
+        
+        if ([objects count] > 0) {
+            mID = [[objects objectAtIndex:0] valueForKey:@"maxID"];
+        }
+    }
+    
+    int maxID = [mID integerValue];
+    maxID = maxID+1;
+    NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
+    
+    
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    //custID is a string
+    
+    NSLog(@"My string %@"  ,[f numberFromString:finalString]);
+    return [f numberFromString:finalString];
+     
+
 }
 
 @end
