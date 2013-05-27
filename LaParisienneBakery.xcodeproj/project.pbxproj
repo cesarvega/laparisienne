@@ -24,6 +24,7 @@
 		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
+		8214190C1752E0260001CEF0 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190B1752E0260001CEF0 /* AViewController.m */; };
 		824C1BD417504B43006E82D9 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 824C1BD317504B43006E82D9 /* LogoInv.png */; };
 		829285BD174C5E9200ED67FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829285BC174C5E9200ED67FC /* QuartzCore.framework */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
@@ -73,6 +74,8 @@
 		133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentViewController.m; sourceTree = "<group>"; };
 		133B4CC31745F7BD00671615 /* ManageClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsViewController.h; sourceTree = "<group>"; };
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
+		8214190A1752E0260001CEF0 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		8214190B1752E0260001CEF0 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		824C1BD317504B43006E82D9 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
 		829285BC174C5E9200ED67FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				8214190A1752E0260001CEF0 /* AViewController.h */,
+				8214190B1752E0260001CEF0 /* AViewController.m */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
@@ -362,6 +367,7 @@
 				829A468C174B098400B3B136 /* ManageInvoicesViewController.m in Sources */,
 				829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */,
 				82AF05AE174FFAEF004AE101 /* PDFRenderer.m in Sources */,
+				8214190C1752E0260001CEF0 /* AViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
