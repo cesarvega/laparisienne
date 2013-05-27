@@ -239,7 +239,7 @@
     //Set up to get the thing you want to update
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Customer" inManagedObjectContext:context]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custIDValue.stringValue]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custIDValue]];
     
     //Ask for it
     aCustomer= [[context executeFetchRequest:request error:&error] lastObject];

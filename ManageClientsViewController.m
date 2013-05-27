@@ -119,6 +119,7 @@
     telefone = [[NSMutableArray alloc] init];
     website =  [[NSMutableArray alloc] init];
     zipcode =  [[NSMutableArray alloc] init];
+    custIDValue = [[NSMutableArray alloc]init];
     
 }
 
