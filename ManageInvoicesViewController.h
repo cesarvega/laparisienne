@@ -12,7 +12,7 @@
 #import "Invoice.h"
 
 @interface ManageInvoicesViewController : UIViewController{
-
+    AppDelegate *delegate;
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;

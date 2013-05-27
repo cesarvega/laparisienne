@@ -90,20 +90,10 @@ NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest erro
 
 for (NSArray *item in innerStringdictionary) {
     
-    
- 
     NSString *businessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-
     NSString *contactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
     NSString *custIDValue = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
-   
-
- 
-    
-
-
     [businessNames addObject: businessName];
-   
     [contactNames addObject:contactName];
     [custIDValues addObject:custIDValue];
 
