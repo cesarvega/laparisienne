@@ -81,10 +81,7 @@
         NSNumber * numberVal = [f numberFromString:val];
    
         [manageInvoices setCustIDValue:numberVal];
-//        [editClients setContactName:[contactName objectAtIndex:indexPath.row]];
-//        [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
-    
-    [self presentViewController:manageInvoices animated:YES completion:nil];
+        [self presentViewController:manageInvoices animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

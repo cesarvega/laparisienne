@@ -8,6 +8,7 @@
 
 #import "ManageInvoicesViewController.h"
 #import "ManageInvoicesDetailViewController.h"
+#import "ChooseProductsForInvoiceViewController.h"
 @interface ManageInvoicesViewController ()
 
 @end
@@ -123,6 +124,19 @@
 
 
 }
+
+- (IBAction)CreateANewInvoiceButton:(id)sender {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    ChooseProductsForInvoiceViewController * ChooseProducts = (ChooseProductsForInvoiceViewController*)
+    [storyboard instantiateViewControllerWithIdentifier:@"SelectProductsForInvoice"];
+    ChooseProducts.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [ChooseProducts setClientID:custIDValue];
+    [self presentViewController:ChooseProducts animated:YES completion:nil];
+    
+}
+
+
 
 
 

@@ -19,7 +19,7 @@
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
 @property (strong, nonatomic)NSMutableArray* invoicesDocNums;
 @property (strong, nonatomic)NSMutableArray* invoiceDocDates;
+@property (strong, nonatomic) NSNumber * custIDValue;
+- (IBAction)CreateANewInvoiceButton:(id)sender;
 
-
-@property (nonatomic, retain) NSNumber * custIDValue;
 @end

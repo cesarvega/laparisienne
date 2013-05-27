@@ -9,7 +9,7 @@
 #import "ChooseProductsForInvoiceViewController.h"
 #import "Invoice_Lines.h"
 @implementation ProductsDetailCell
-@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
+@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity,ProductID;
 @end
 @interface ChooseProductsForInvoiceViewController ()
 
@@ -17,7 +17,7 @@
 
 @implementation ChooseProductsForInvoiceViewController
  ProductsDetailCell *cell;
-@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIdArray;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,9 +30,11 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [self FindProdcuts];
+    
+     contextForInvoiceLines = [delegate managedObjectContext];
+    [self FindProducts];
 	// Do any additional setup after loading the view.
-    SelectedProductsIdArray = [[NSMutableArray alloc] init];
+    SelectedProductsIndexPaths = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -57,7 +59,8 @@
     }
     cell.ProductNameLabel.text =  [Productname objectAtIndex:indexPath.row];
     cell.ProductDescriptionLabel.text =[productDescription objectAtIndex:indexPath.row];
-    cell.ProductPriceLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.ProductPriceLabel.text =[unitPrice objectAtIndex:indexPath.row];
+    cell.ProductID.text=[productID objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -65,60 +68,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    Invoice_Lines * CurrentInvoice_Lines;
-    CurrentInvoice_Lines.productID =[productID objectAtIndex:indexPath.row];
-     ProductsDetailCell *cell = (ProductsDetailCell *) [tableView cellForRowAtIndexPath:indexPath];
-    cell.ProductQuantity.text =@"200";
+     [SelectedProductsIndexPaths addObject:indexPath];
+    cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many Products would you like"
-                                                      message:nil
-                                                     delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Continue", nil];
-    [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [message show];
-   
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if([title isEqualToString:@"Continue"])
-    {
-        UITextField *mystring = [alertView textFieldAtIndex:0];
-        NSLog(@"quanyityt : %@",mystring.text);
-    }
-}
-
-
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
-{
-    NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    if( [inputText length] >= 1 )
-    {
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-  
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     cell.accessoryType = UITableViewCellAccessoryNone;
-
-    NSNumber *CurrentproductID = [productID objectAtIndex:indexPath.row];
-    [SelectedProductsIdArray removeObject:CurrentproductID];
+    cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
+    [SelectedProductsIndexPaths removeObject:indexPath];
     
 }
 
-- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return(YES);
-}
-
--(void)FindProdcuts{
+-(void)FindProducts{
     
     [self  InitArraysToHoldData];
     NSManagedObjectContext *context = [delegate managedObjectContext];
@@ -151,12 +114,43 @@
 
 - (IBAction)StoreInvocie:(id)sender {
     
-    if ([SelectedProductsIdArray count]>0){
+    NSMutableArray* InvoiceLinesArray = [[NSMutableArray alloc] init];
+
+    if ([SelectedProductsIndexPaths count]>0){
     
-    
-    
-    
-    }else{
+        for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
+            
+       
+            
+            cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * Quantity = [f numberFromString:cell.ProductQuantity.text];
+            Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription
+                                                   insertNewObjectForEntityForName:@"Invoice_Lines"
+                                                   inManagedObjectContext:contextForInvoiceLines];
+            CurrentInvoice_Lines.productID = cell.ProductID.text;
+            CurrentInvoice_Lines.quantity =Quantity ;
+            
+            if (Quantity==nil) {
+                NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"
+                                                                message:errorMSG
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles: nil];
+                [alert show];
+                break;
+            }
+            
+            [InvoiceLinesArray addObject:CurrentInvoice_Lines];
+            
+          }
+      
+        // after done call Cynthias Mehtod the client id is in the varable "ClientID"
+        // like [self CynthiasMetodName:InvoiceLinesArray];
+        
+  }else{
                     NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected"
                                                                     message:successMsg
@@ -225,5 +219,6 @@
         //        [UIView commitAnimations];
     }
 }
+
 
 @end

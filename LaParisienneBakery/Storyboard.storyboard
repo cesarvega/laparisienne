@@ -539,7 +539,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Create Invoice +" id="clz-2q-dqb">
                                             <connections>
-                                                <segue destination="Str-26-YQd" kind="modal" id="tvk-dq-GRM"/>
+                                                <action selector="CreateANewInvoiceButton:" destination="fC2-B1-XFI" id="MbN-ah-4Y5"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -939,18 +939,28 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FUG-vG-PNO">
-                                                    <rect key="frame" x="452" y="43" width="42" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FUG-vG-PNO">
+                                                    <rect key="frame" x="452" y="35" width="53" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6db-Dc-CX7">
-                                                    <rect key="frame" x="672" y="29" width="62" height="42"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="center" minimumFontSize="17" id="Lsh-E7-HpD">
+                                                    <rect key="frame" x="635" y="35" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                                    <color key="textColor" red="0.12151612802408478" green="0.54211325282417688" blue="0.86128826530612246" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.87155213647959184" green="0.87155213647959184" blue="0.87155213647959184" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Str-26-YQd" id="jC8-jm-TqC"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2OD-QJ-VOw">
+                                                    <rect key="frame" x="540" y="43" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -958,9 +968,10 @@
                                         </view>
                                         <connections>
                                             <outlet property="ProductDescriptionLabel" destination="HmH-ec-q16" id="Asi-pi-xGi"/>
+                                            <outlet property="ProductID" destination="2OD-QJ-VOw" id="XgH-HD-OhO"/>
                                             <outlet property="ProductNameLabel" destination="qB8-4J-c9e" id="hNP-f4-Bee"/>
                                             <outlet property="ProductPriceLabel" destination="FUG-vG-PNO" id="Khe-6V-pGq"/>
-                                            <outlet property="ProductQuantity" destination="6db-Dc-CX7" id="6oJ-Ds-77b"/>
+                                            <outlet property="ProductQuantity" destination="Lsh-E7-HpD" id="Dix-GZ-a28"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -972,6 +983,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="ProductsTableView" destination="3PI-2K-8qD" id="I8d-hL-YgC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpw-LG-qQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -991,6 +1005,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseProductsForInvoiceViewController.h"/>
             <relationships>
                 <relationship kind="action" name="StoreInvocie:"/>
+                <relationship kind="outlet" name="ProductsTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="LogInViewController" superclassName="UIViewController">
@@ -1028,6 +1043,9 @@
         </class>
         <class className="ManageClientsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageClientsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clientsTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ManageInvoicesDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesDetailViewController.h"/>
@@ -1037,6 +1055,9 @@
         </class>
         <class className="ManageInvoicesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CreateANewInvoiceButton:"/>
+            </relationships>
         </class>
         <class className="ManageProductsDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProductsDetailViewController.h"/>
@@ -1049,14 +1070,18 @@
         </class>
         <class className="ManageProductsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProductsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="productsTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ProductsDetailCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductsDetailCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="ProductDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ProductID" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ProductNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ProductPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ProductQuantity" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ProductQuantity" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="UserManagmentDetailViewController" superclassName="UIViewController">
@@ -1072,7 +1097,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Vao-2g-q4t"/>
         <segue reference="OJe-Ri-g9o"/>
-        <segue reference="EBX-BC-bge"/>
     </inferredMetricsTieBreakers>
 </document>
