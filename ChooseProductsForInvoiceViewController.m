@@ -252,12 +252,12 @@
         if([items count] == 1)
         {
             Product *lineProduct = (Product*)[items objectAtIndex:0];
-            currentLine.lineTotal = currentLine.quantity*lineProduct.unitPrice;
+            //currentLine.lineTotal = currentLine.quantity*lineProduct.unitPrice;
             
             
         }
         
-        NSDecimalNumber *linetotal = [(Invoice_Lines*)[invoiceLines objectAtIndex:i] quantity] * ;
+        //NSDecimalNumber *linetotal = [(Invoice_Lines*)[invoiceLines objectAtIndex:i] quantity] * ;
     }
     
     
