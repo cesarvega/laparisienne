@@ -27,6 +27,7 @@
 		8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */; };
 		82141911175398610001CEF0 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 82141910175398610001CEF0 /* LogoInv.png */; };
 		8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */; };
+		821419171753FAFD0001CEF0 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821419161753FAFD0001CEF0 /* AViewController.m */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
 		829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */; };
@@ -76,6 +77,8 @@
 		82141910175398610001CEF0 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
 		8214191217539C510001CEF0 /* ChooseProductsForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProductsForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProductsForInvoiceViewController.m; sourceTree = "<group>"; };
+		821419151753FAFD0001CEF0 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		821419161753FAFD0001CEF0 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
 		829A4684174B053600B3B136 /* ManageProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageProductsViewController.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				821419151753FAFD0001CEF0 /* AViewController.h */,
+				821419161753FAFD0001CEF0 /* AViewController.m */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
@@ -356,6 +361,7 @@
 				829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */,
 				8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */,
 				8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */,
+				821419171753FAFD0001CEF0 /* AViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
