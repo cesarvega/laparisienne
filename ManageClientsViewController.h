@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface ManageClientsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate   >
+@interface ManageClientsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate   >
 {
     AppDelegate *delegate;
+    NSIndexPath *indexPathForDeletion;
 }
 @property (nonatomic, retain) NSMutableArray * addressOne;
 @property (nonatomic, retain) NSMutableArray * addressTwo;
@@ -26,5 +27,7 @@
 @property (nonatomic, retain) NSMutableArray * telefone;
 @property (nonatomic, retain) NSMutableArray * website;
 @property (nonatomic, retain) NSMutableArray * zipcode;
+@property (weak, nonatomic) IBOutlet UITableView *clientsTableView;
+
 
 @end
