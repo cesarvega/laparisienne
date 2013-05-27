@@ -61,11 +61,14 @@
     return cell;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
     Invoice_Lines * CurrentInvoice_Lines;
     CurrentInvoice_Lines.productID =[productID objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+     ProductsDetailCell *cell = (ProductsDetailCell *) [tableView cellForRowAtIndexPath:indexPath];
+    cell.ProductQuantity.text =@"200";
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many Products would you like"
                                                       message:nil
