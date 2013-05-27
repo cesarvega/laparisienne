@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+//added a comment
 @interface ManageProductsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     AppDelegate *delegate;
