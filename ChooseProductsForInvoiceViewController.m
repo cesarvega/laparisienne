@@ -16,7 +16,7 @@
 @end
 
 @implementation ChooseProductsForInvoiceViewController
-
+ ProductsDetailCell *cell;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIdArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -51,7 +51,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"ProducDetailsCell";
     
-    ProductsDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[ProductsDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
@@ -65,24 +65,33 @@
    
     Invoice_Lines * CurrentInvoice_Lines;
     CurrentInvoice_Lines.productID =[productID objectAtIndex:indexPath.row];
-    
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many items"
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many Products would you like"
                                                       message:nil
                                                      delegate:self
                                             cancelButtonTitle:@"Cancel"
                                             otherButtonTitles:@"Continue", nil];
     [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [message show];
-    
-    
-    [SelectedProductsIdArray addObject:CurrentInvoice_Lines];
-
+   
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Continue"])
+    {
+        UITextField *mystring = [alertView textFieldAtIndex:0];
+        NSLog(@"quanyityt : %@",mystring.text);
+    }
+}
+
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
     NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    if( [inputText length] >= 10 )
+    if( [inputText length] >= 1 )
     {
         return YES;
     }
@@ -94,6 +103,9 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
   
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+
     NSNumber *CurrentproductID = [productID objectAtIndex:indexPath.row];
     [SelectedProductsIdArray removeObject:CurrentproductID];
     

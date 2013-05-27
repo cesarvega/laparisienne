@@ -11,6 +11,7 @@
 @interface ChooseProductsForInvoiceViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     AppDelegate *delegate;
+
 }
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
