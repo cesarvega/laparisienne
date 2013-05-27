@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-  delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [self FindClients];
     
@@ -56,7 +56,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-
+    
     cell.textLabel.text =  [businessName objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [businessDescription objectAtIndex:indexPath.row];
     
@@ -75,7 +75,7 @@
     
     //Make sure the view is ready to recieve information
     if ([editClients view]) {
-      
+        
         [editClients setCustIDValue:[custIDValue objectAtIndex:indexPath.row]];
         [editClients setContactName:[contactName objectAtIndex:indexPath.row]];
         [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
@@ -90,7 +90,7 @@
         [editClients setFax:[fax objectAtIndex:indexPath.row]];
         [editClients setWebsite:[website objectAtIndex:indexPath.row]];
         [editClients setEmail:[email objectAtIndex:indexPath.row]];
-
+        
     }
     [self presentViewController:editClients animated:YES completion:nil];
     
@@ -105,7 +105,7 @@
 -(void)InitArraysToHoldData{
     
     //a comment
- 
+    
     addressOne = [[NSMutableArray alloc] init];
     addressTwo = [[NSMutableArray alloc] init];
     businessDescription = [[NSMutableArray alloc] init];
@@ -119,7 +119,7 @@
     telefone = [[NSMutableArray alloc] init];
     website =  [[NSMutableArray alloc] init];
     zipcode =  [[NSMutableArray alloc] init];
-
+    
 }
 
 -(void)FindClients{
@@ -128,48 +128,48 @@
     //** this array  "innerStringdictionary" is the fetch data from the data base just get an array of data
     // this will handle the rest of the logic to populate the cells
     
-     NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Customer" inManagedObjectContext:context];
     NSError *error;
     [fetchRequest setEntity:entity];
-   NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
-
+    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
+    
     
     for (NSArray *item in innerStringdictionary) {
-
-    
-    NSString *addressOnes = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressOne"]];
-    NSString *addressTwos = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressTwo"]];
-    NSString *businessDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessDescription"]];
-    NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-    NSString *citys = [NSString stringWithFormat:@"%@",[item valueForKey:@"city"]];
-    NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
-    NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
-    NSString *emails = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
-    NSString *faxs = [NSString stringWithFormat:@"%@",[item valueForKey:@"fax"]];
-    NSString *mobiles = [NSString stringWithFormat:@"%@",[item valueForKey:@"mobile"]];
-    NSString *states = [NSString stringWithFormat:@"%@",[item valueForKey:@"state"]];
-    NSString *telefones = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
-    NSString *websites = [NSString stringWithFormat:@"%@",[item valueForKey:@"website"]];
-    NSString *zipcodes = [NSString stringWithFormat:@"%@",[item valueForKey:@"zipcode"]];
-
-    [addressOne addObject:addressOnes];
-    [addressTwo addObject:addressTwos];
-    [businessDescription addObject:businessDescriptions];
-    [businessName addObject: businessNames];
-    [city addObject: citys];
-    [contactName addObject:contactNames];
-    [custIDValue addObject:custIDValues];
-    [email addObject:emails];
-    [fax addObject: faxs];
-    [mobile addObject:mobiles];
-    [state addObject:states];
-    [telefone addObject:telefones];
-    [website addObject:websites];
-    [zipcode addObject:zipcodes];
-
+        
+        
+        NSString *addressOnes = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressOne"]];
+        NSString *addressTwos = [NSString stringWithFormat:@"%@",[item valueForKey:@"addressTwo"]];
+        NSString *businessDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessDescription"]];
+        NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
+        NSString *citys = [NSString stringWithFormat:@"%@",[item valueForKey:@"city"]];
+        NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
+        NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
+        NSString *emails = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
+        NSString *faxs = [NSString stringWithFormat:@"%@",[item valueForKey:@"fax"]];
+        NSString *mobiles = [NSString stringWithFormat:@"%@",[item valueForKey:@"mobile"]];
+        NSString *states = [NSString stringWithFormat:@"%@",[item valueForKey:@"state"]];
+        NSString *telefones = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
+        NSString *websites = [NSString stringWithFormat:@"%@",[item valueForKey:@"website"]];
+        NSString *zipcodes = [NSString stringWithFormat:@"%@",[item valueForKey:@"zipcode"]];
+        
+        [addressOne addObject:addressOnes];
+        [addressTwo addObject:addressTwos];
+        [businessDescription addObject:businessDescriptions];
+        [businessName addObject: businessNames];
+        [city addObject: citys];
+        [contactName addObject:contactNames];
+        [custIDValue addObject:custIDValues];
+        [email addObject:emails];
+        [fax addObject: faxs];
+        [mobile addObject:mobiles];
+        [state addObject:states];
+        [telefone addObject:telefones];
+        [website addObject:websites];
+        [zipcode addObject:zipcodes];
+        
     }
 }
 

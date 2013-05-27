@@ -12,6 +12,8 @@
 @interface ManageClientsDetailViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 {
     AppDelegate *delegate;
+    NSManagedObjectContext *context;
+    
 }
 @property (strong, nonatomic) NSString * contactName;
 @property (strong, nonatomic) NSString * addressOne;
