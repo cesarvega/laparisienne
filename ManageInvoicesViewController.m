@@ -14,7 +14,7 @@
 
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
-@synthesize contactNames, businessNames, custIDValues;
+@synthesize custIDValue, invoiceDocDates, invoicesDocNums;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,8 +29,9 @@
     [super viewDidLoad];
     
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+     context = [delegate managedObjectContext];
     [self initArrays];
-    [self getClients];
+    [self getinvoices];
 	// Do any additional setup after loading the view.
 }
 
@@ -44,7 +45,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [businessNames count];
+    return [invoicesDocNums count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,20 +55,22 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text =  [businessNames objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text =[contactNames objectAtIndex:indexPath.row];
+    cell.textLabel.text =  [invoicesDocNums objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text =[invoiceDocDates objectAtIndex:indexPath.row];
     return cell;
 }
 
+
+//modify this to open a specific invoice depending on which row selected 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ManageInvoicesDetailViewController * manageInvoicesDetailView = (ManageInvoicesDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"ManageInvoices"];
+    [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
     
     manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     if ([manageInvoicesDetailView view]) {
-        [manageInvoicesDetailView setCustID:[custIDValues objectAtIndex:indexPath.row]];
+        [manageInvoicesDetailView setCustID:custIDValue];
     
     }
     [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
@@ -75,39 +78,52 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+//this will query for all invoices with the view cust ID passed from 'choose client for invoice controller'
 
--(void)getClients{
-
-
-NSManagedObjectContext *context = [delegate managedObjectContext];
-NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-NSEntityDescription *entity = [NSEntityDescription
-                               entityForName:@"Customer" inManagedObjectContext:context];
-NSError *error;
-        [fetchRequest setEntity:entity];
-NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
-
-
-for (NSArray *item in innerStringdictionary) {
-    
-    NSString *businessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-    NSString *contactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
-    NSString *custIDValue = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
-    [businessNames addObject: businessName];
-    [contactNames addObject:contactName];
-    [custIDValues addObject:custIDValue];
-
-    
+-(void)initArrays
+{
+    invoiceDocDates = [[NSMutableArray alloc]init];
+    invoicesDocNums = [[NSMutableArray alloc]init];
 }
+
+
+//get all invoices whose custID = this class custID
+-(void)getinvoices{
+
+
+    NSError *error = nil;
+    
+    //This is your NSManagedObject subclass
+  
+    
+    //Set up to get the thing you want to update
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:context]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custIDValue]];
+    
+    //Ask for it
+    NSArray *invoices= [context executeFetchRequest:request error:&error];
+    
+    
+    
+    for (NSArray *item in invoices) {
+        
+        
+        NSString *date = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
+        NSString *docNum = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
+        
+        
+        [invoicesDocNums addObject:docNum];
+        [invoiceDocDates addObject:date];
+       
+
+    }
+ 
     
 
 
 }
--(void)initArrays{
-    businessNames = [[NSMutableArray alloc]init];
-    contactNames = [[NSMutableArray alloc]init];
-    custIDValues = [[NSMutableArray alloc]init];
-}
+
 
 
 

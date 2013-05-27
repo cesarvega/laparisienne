@@ -556,7 +556,7 @@
         <!--Manage Invoices Detail View Controller-->
         <scene sceneID="p2N-aj-Yfe">
             <objects>
-                <viewController id="2e1-jZ-IW3" customClass="ManageInvoicesDetailViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="invoicesDetails" storyboardIdentifier="invoicesDetails" id="2e1-jZ-IW3" customClass="ManageInvoicesDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xRM-ak-pDm">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1072,7 +1072,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vao-2g-q4t"/>
         <segue reference="OJe-Ri-g9o"/>
+        <segue reference="EBX-BC-bge"/>
     </inferredMetricsTieBreakers>
 </document>

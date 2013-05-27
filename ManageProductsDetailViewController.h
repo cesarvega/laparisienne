@@ -13,7 +13,7 @@
     
     AppDelegate *delegate;
     NSManagedObjectContext *context;
-    Product *product;
+
 }
 
 @property (nonatomic, retain) NSString * name;

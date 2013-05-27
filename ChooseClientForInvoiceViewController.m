@@ -8,7 +8,7 @@
 
 #import "ChooseClientForInvoiceViewController.h"
 #import "Customer.h"
-#import "ChooseProductsForInvoiceViewController.h"
+#import "ManageInvoicesViewController.h"
 @interface ChooseClientForInvoiceViewController ()
 
 @end
@@ -64,19 +64,27 @@
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    ChooseProductsForInvoiceViewController * editClients = (ChooseProductsForInvoiceViewController*)
+    ManageInvoicesViewController * manageInvoices = (ManageInvoicesViewController*)
     [storyboard instantiateViewControllerWithIdentifier:@"ManageInvoices"];
     
-    editClients.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    manageInvoices.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     //Make sure the view is ready to recieve information
-    if ([editClients view]) {
+  
         
-//        [editClients setCustIDValue:[custIDValue objectAtIndex:indexPath.row]];
+        //this sets the cust id value for the next view
+        
+        NSString *val = [custIDValue objectAtIndex:indexPath.row];
+        
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * numberVal = [f numberFromString:val];
+   
+        [manageInvoices setCustIDValue:numberVal];
 //        [editClients setContactName:[contactName objectAtIndex:indexPath.row]];
 //        [editClients setBusinessName:[businessName objectAtIndex:indexPath.row]];
-    }
-    [self presentViewController:editClients animated:YES completion:nil];
+    
+    [self presentViewController:manageInvoices animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

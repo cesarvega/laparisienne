@@ -28,6 +28,7 @@
     [super viewDidLoad];
      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         [self FindProdcuts];
+   //[self deleteAllObjects:@"blah"];
 	// Do any additional setup after loading the view.
 }
 
@@ -67,6 +68,9 @@
         [manageProductsDetailView setName:[Productname objectAtIndex:indexPath.row]];
         [manageProductsDetailView setProductID:[productID objectAtIndex:indexPath.row]];
         [manageProductsDetailView setProductDescription:[productDescription objectAtIndex:indexPath.row]];
+       
+        [manageProductsDetailView setUnitPrice:[unitPrice objectAtIndex:indexPath.row]];
+        
     }
     [self presentViewController:manageProductsDetailView animated:YES completion:nil];
     
@@ -93,7 +97,7 @@
         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
         NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
-        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+        NSDecimalNumber *unitPrices = [item valueForKey:@"unitPrice"];
         [Productname addObject:Productnames];
         [productDescription addObject:productDescriptions];
         [productID addObject:productIDs];
@@ -107,4 +111,23 @@
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
     }
+- (void) deleteAllObjects: (NSString *) entityDescription  {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    
+    for (Product *product in items) {
+    	[delegate.managedObjectContext deleteObject:product];
+    	NSLog(@"%@ object deleted",entityDescription);
+    }
+    if (![delegate.managedObjectContext save:&error]) {
+    	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
+    }
+    
+}
 @end
