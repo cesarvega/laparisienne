@@ -16,7 +16,7 @@
 
 @implementation ChooseProductsForInvoiceViewController
 
-@synthesize Productname, productID, productDescription,unitPrice;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIdArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,6 +31,7 @@
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     [self FindProdcuts];
 	// Do any additional setup after loading the view.
+    SelectedProductsIdArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -59,6 +60,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    [SelectedProductsIdArray addObject:indexPath];
+
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [SelectedProductsIdArray removeObjectAtIndex:indexPath.row];
+    
+}
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return(YES);
