@@ -206,7 +206,7 @@
 -(void)updateExistingProduct{
     
     
-    /**
+    /*
      [product setName:ProductNameTextField.text];
      [product setProductDescription: PorductDescriptionTextField.text];
      
@@ -214,14 +214,14 @@
      NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
      [product setUnitPrice:decimal];
      
-     /** NSFetchRequest *request = [[NSFetchRequest alloc] init];
+     NSFetchRequest *request = [[NSFetchRequest alloc] init];
      [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext: context]];
      
      NSError *error = nil;
      NSArray *results = [context executeFetchRequest:request error:&error];
      
      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"productID == %@", productID.stringValue];
-     [request setPredicate:predicate];**/
+     [request setPredicate:predicate];*/
     
     //  product = [Product productWithProductID: productID];
     

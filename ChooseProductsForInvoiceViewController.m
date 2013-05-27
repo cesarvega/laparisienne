@@ -1,19 +1,19 @@
 //
-//  ManageProductsViewController.m
+//  ChooseProductsForInvoiceViewController.m
 //  LaParisienneBakery
 //
-//  Created by Cesar Vega on 5/20/13.
+//  Created by Cesar Vega on 5/27/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
 
-#import "ManageProductsViewController.h"
-#import "ManageProductsDetailViewController.h"
+#import "ChooseProductsForInvoiceViewController.h"
 
-@interface ManageProductsViewController ()
+@interface ChooseProductsForInvoiceViewController ()
 
 @end
 
-@implementation ManageProductsViewController
+@implementation ChooseProductsForInvoiceViewController
+
 @synthesize Productname, productID, productDescription,unitPrice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -26,8 +26,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-        [self FindProdcuts];
+    delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    [self FindProdcuts];
 	// Do any additional setup after loading the view.
 }
 
@@ -56,22 +56,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    ManageProductsDetailViewController * manageProductsDetailView = (ManageProductsDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"ManageProductsDetail"];
-    
-    manageProductsDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    if ([manageProductsDetailView view]) {
-        [manageProductsDetailView setName:[Productname objectAtIndex:indexPath.row]];
-        [manageProductsDetailView setProductID:[productID objectAtIndex:indexPath.row]];
-        [manageProductsDetailView setProductDescription:[productDescription objectAtIndex:indexPath.row]];
-    }
-    [self presentViewController:manageProductsDetailView animated:YES completion:nil];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return(YES);
@@ -106,5 +90,6 @@
     productDescription = [[NSMutableArray alloc] init];
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
-    }
+}
+
 @end

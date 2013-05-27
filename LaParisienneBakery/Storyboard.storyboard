@@ -146,7 +146,7 @@
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="CAq-32-pSj"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="co0-hf-iv5">
+                                        <barButtonItem key="rightBarButtonItem" title="Create Cient +" id="co0-hf-iv5">
                                             <connections>
                                                 <segue destination="ZO8-AW-ivK" kind="modal" id="159-mH-8d1"/>
                                             </connections>
@@ -158,33 +158,6 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="detailClient" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationLevel="2" indentationWidth="10" textLabel="1BQ-GY-2vm" detailTextLabel="6Yl-tF-8Jz" rowHeight="126" style="IBUITableViewCellStyleValue1" id="V3v-6b-5ei">
-                                        <rect key="frame" x="0.0" y="22" width="768" height="126"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1BQ-GY-2vm">
-                                                    <rect key="frame" x="30" y="52" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Yl-tF-8Jz">
-                                                    <rect key="frame" x="681" y="52" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Fd2-tU-OhK" id="qno-1T-FXi"/>
                                     <outlet property="delegate" destination="Fd2-tU-OhK" id="WjQ-wb-lPV"/>
@@ -467,33 +440,6 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationLevel="2" indentationWidth="10" textLabel="uAn-XO-OKA" detailTextLabel="dhc-ml-kvB" rowHeight="126" style="IBUITableViewCellStyleValue1" id="ZOp-ny-c9D">
-                                        <rect key="frame" x="0.0" y="22" width="768" height="126"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uAn-XO-OKA">
-                                                    <rect key="frame" x="30" y="52" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dhc-ml-kvB">
-                                                    <rect key="frame" x="681" y="52" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="YDX-ty-IAK" id="IEe-Gi-Y4m"/>
                                     <outlet property="delegate" destination="YDX-ty-IAK" id="2Ds-Sc-dnx"/>
@@ -509,7 +455,7 @@
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="kt7-IF-yko"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zOS-CI-MX0">
+                                        <barButtonItem key="rightBarButtonItem" title="Create User +" id="zOS-CI-MX0">
                                             <connections>
                                                 <segue destination="rKV-xt-K3R" kind="modal" id="tBD-vO-58O"/>
                                             </connections>
@@ -543,7 +489,7 @@
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="5Dx-1A-J2N"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AvJ-5L-kGc">
+                                        <barButtonItem key="rightBarButtonItem" title="Create Product +" id="AvJ-5L-kGc">
                                             <connections>
                                                 <segue destination="wyF-VV-nS3" kind="modal" id="o0q-Yu-iZX"/>
                                             </connections>
@@ -555,33 +501,6 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationLevel="2" indentationWidth="10" textLabel="nRG-1d-rlw" detailTextLabel="UYv-wd-5KM" rowHeight="126" style="IBUITableViewCellStyleValue1" id="INi-Xs-Gon">
-                                        <rect key="frame" x="0.0" y="22" width="768" height="126"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nRG-1d-rlw">
-                                                    <rect key="frame" x="30" y="52" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UYv-wd-5KM">
-                                                    <rect key="frame" x="681" y="52" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="4Lq-3O-aUP" id="zLk-Ni-4IF"/>
                                     <outlet property="delegate" destination="4Lq-3O-aUP" id="VGh-71-Mvg"/>
@@ -607,33 +526,6 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" indentationLevel="2" indentationWidth="10" textLabel="16E-Be-eDJ" detailTextLabel="8dr-nU-Aby" rowHeight="126" style="IBUITableViewCellStyleValue1" id="mIN-Ur-Mb5">
-                                        <rect key="frame" x="0.0" y="22" width="768" height="126"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="16E-Be-eDJ">
-                                                    <rect key="frame" x="30" y="52" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8dr-nU-Aby">
-                                                    <rect key="frame" x="681" y="52" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" id="6sc-PS-vMf">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
@@ -645,9 +537,9 @@
                                                 <segue destination="m99-Wj-D4p" kind="modal" id="b0B-fy-Vp1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="clz-2q-dqb">
+                                        <barButtonItem key="rightBarButtonItem" title="Create Invoice +" id="clz-2q-dqb">
                                             <connections>
-                                                <segue destination="2e1-jZ-IW3" kind="modal" id="7wG-eW-4hy"/>
+                                                <segue destination="OAM-qQ-qcd" kind="modal" id="mv7-iD-qQY"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -676,7 +568,7 @@
                                     <navigationItem title="Invoice Creator" id="rvK-Z3-u2j">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="vNc-r5-tIR">
                                             <connections>
-                                                <segue destination="fC2-B1-XFI" kind="modal" id="mxH-hx-Da0"/>
+                                                <segue destination="fC2-B1-XFI" kind="modal" id="h1o-YY-0kN"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ofl-kZ-OIa"/>
@@ -697,23 +589,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jAK-x5-KZI">
-                                <rect key="frame" x="20" y="58" width="203" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Choose a Client">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="ChooseAClient:" destination="2e1-jZ-IW3" eventType="touchUpInside" id="fsm-UI-ZFP"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="LogoInv.png" id="3p4-bL-ox7">
-                                <rect key="frame" x="402" y="58" width="319" height="199"/>
+                                <rect key="frame" x="10" y="52" width="319" height="199"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="##########" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LUy-2X-K9o">
@@ -724,28 +601,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1909 NE154th Street" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xJn-MH-SgA">
-                                <rect key="frame" x="27" y="140" width="159" height="21"/>
+                                <rect key="frame" x="451" y="166" width="159" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nortl1Miami Beach,Florida 33162" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c3g-9o-yNY">
-                                <rect key="frame" x="27" y="163" width="253" height="21"/>
+                                <rect key="frame" x="451" y="189" width="253" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tel:305.948.9979 . Fax: 305.948.9970" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c1J-LO-X50">
-                                <rect key="frame" x="27" y="184" width="289" height="21"/>
+                                <rect key="frame" x="451" y="210" width="289" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="www.laparisiennebakery.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J96-Mi-52H">
-                                <rect key="frame" x="27" y="204" width="222" height="21"/>
+                                <rect key="frame" x="451" y="230" width="222" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -814,28 +691,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rsc-xg-zVa">
-                                <rect key="frame" x="240" y="58" width="203" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add Products">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="ChooseAClient:" destination="2e1-jZ-IW3" eventType="touchUpInside" id="2P7-Qk-DtF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfX-bZ-hpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1893" y="2576"/>
+            <point key="canvasLocation" x="1949" y="2563"/>
         </scene>
         <!--Manage Products Detail View Controller-->
         <scene sceneID="7zJ-OF-c8D">
@@ -980,6 +842,94 @@
             </objects>
             <point key="canvasLocation" x="1891" y="317"/>
         </scene>
+        <!--Choose Client For Invoice View Controller-->
+        <scene sceneID="PRz-3R-Tqt">
+            <objects>
+                <viewController restorationIdentifier="ChooseCLientsFOrInvoice" storyboardIdentifier="ChooseCLientsFOrInvoice" id="OAM-qQ-qcd" customClass="ChooseClientForInvoiceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X6n-8p-FfN">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="SMp-zH-mJb">
+                                <rect key="frame" x="0.0" y="44" width="768" height="960"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OAM-qQ-qcd" id="Dyu-tM-XOX"/>
+                                    <outlet property="delegate" destination="OAM-qQ-qcd" id="4bZ-DS-AfL"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" id="5gF-dm-r1g">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Choose Client for Invoice" id="exV-LF-04z">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="cSZ-kb-1m1">
+                                            <connections>
+                                                <segue destination="fC2-B1-XFI" kind="modal" id="xVk-7z-Atp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nE-jj-vfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="3737"/>
+        </scene>
+        <!--Choose Products For Invoice View Controller-->
+        <scene sceneID="kZU-ft-UcD">
+            <objects>
+                <viewController restorationIdentifier="SelectProductsForInvoice" storyboardIdentifier="SelectProductsForInvoice" id="Str-26-YQd" customClass="ChooseProductsForInvoiceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fRO-42-JYq">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="o6d-8b-YQY">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Select all Products for the invoice" id="PDr-co-Rei">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ozn-WS-GM2">
+                                            <connections>
+                                                <segue destination="OAM-qQ-qcd" kind="modal" id="Vao-2g-q4t"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Md8-fL-Yls">
+                                            <connections>
+                                                <segue destination="2e1-jZ-IW3" kind="modal" id="wYo-4b-3g3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="3PI-2K-8qD">
+                                <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="ProducDetailsCell" selectionStyle="blue" indentationWidth="10" rowHeight="100" id="NNi-CN-GVX">
+                                        <rect key="frame" x="0.0" y="22" width="768" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpw-LG-qQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949" y="3725"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BG.png" width="1536" height="2297"/>
@@ -987,6 +937,12 @@
         <image name="LogoInv.png" width="968" height="605"/>
     </resources>
     <classes>
+        <class className="ChooseClientForInvoiceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseClientForInvoiceViewController.h"/>
+        </class>
+        <class className="ChooseProductsForInvoiceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooseProductsForInvoiceViewController.h"/>
+        </class>
         <class className="LogInViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
             <relationships>
@@ -1022,15 +978,24 @@
         </class>
         <class className="ManageClientsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageClientsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="clientsTableView" candidateClass="UITableView"/>
-            </relationships>
         </class>
         <class className="ManageInvoicesDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ChooseAClient:"/>
+            </relationships>
         </class>
         <class className="ManageInvoicesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesViewController.h"/>
+        </class>
+        <class className="ManageProductsDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProductsDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="SaveProduct:"/>
+                <relationship kind="outlet" name="PorductDescriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ProductNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="UnitPriceTextField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="ManageProductsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageProductsViewController.h"/>
@@ -1048,6 +1013,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="CAq-32-pSj"/>
+        <segue reference="xVk-7z-Atp"/>
+        <segue reference="Vao-2g-q4t"/>
+        <segue reference="b0B-fy-Vp1"/>
     </inferredMetricsTieBreakers>
 </document>

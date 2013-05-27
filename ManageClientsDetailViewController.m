@@ -106,11 +106,7 @@
 - (IBAction)SaveClient:(id)sender {
     
     if(custIDValue == nil){
-        
-        
-        
-       
-        Customer *user = [NSEntityDescription
+                Customer *user = [NSEntityDescription
                             insertNewObjectForEntityForName:@"Customer"
                             inManagedObjectContext:context];
         
