@@ -17,7 +17,6 @@
 		13283BCE1735B0CE00E2C286 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13283BCD1735B0CE00E2C286 /* Default-568h@2x.png */; };
 		13283BD11735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13283BCF1735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld */; };
 		13283BD81735B76800E2C286 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13283BD71735B76800E2C286 /* Storyboard.storyboard */; };
-		132C877C1752E19500DED9AA /* file.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C877B1752E19500DED9AA /* file.m */; };
 		1332BC8D173F59D80082D8A8 /* Invoice_Lines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC84173F59D70082D8A8 /* Invoice_Lines.m */; };
 		1332BC8E173F59D80082D8A8 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC86173F59D80082D8A8 /* Customer.m */; };
 		1332BC8F173F59D80082D8A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC88173F59D80082D8A8 /* User.m */; };
@@ -55,8 +54,6 @@
 		13283BCD1735B0CE00E2C286 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		13283BD01735B0CE00E2C286 /* LaParisienneBakery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LaParisienneBakery.xcdatamodel; sourceTree = "<group>"; };
 		13283BD71735B76800E2C286 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = LaParisienneBakery/Storyboard.storyboard; sourceTree = "<group>"; };
-		132C877A1752E19500DED9AA /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
-		132C877B1752E19500DED9AA /* file.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = file.m; sourceTree = "<group>"; };
 		1332BC83173F59D70082D8A8 /* Invoice_Lines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Invoice_Lines.h; path = LaParisienneBakery/Invoice_Lines.h; sourceTree = "<group>"; };
 		1332BC84173F59D70082D8A8 /* Invoice_Lines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Invoice_Lines.m; path = LaParisienneBakery/Invoice_Lines.m; sourceTree = "<group>"; };
 		1332BC85173F59D80082D8A8 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Customer.h; path = LaParisienneBakery/Customer.h; sourceTree = "<group>"; };
@@ -110,8 +107,6 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
-				132C877A1752E19500DED9AA /* file.h */,
-				132C877B1752E19500DED9AA /* file.m */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
@@ -345,7 +340,6 @@
 				829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */,
 				829A468C174B098400B3B136 /* ManageInvoicesViewController.m in Sources */,
 				829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */,
-				132C877C1752E19500DED9AA /* file.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
