@@ -7,6 +7,7 @@
 //
 
 #import "ChooseProductsForInvoiceViewController.h"
+#import "Invoice_Lines.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
 @end
@@ -15,8 +16,8 @@
 @end
 
 @implementation ChooseProductsForInvoiceViewController
-
-@synthesize Productname, productID, productDescription,unitPrice;
+ ProductsDetailCell *cell;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIdArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,6 +32,7 @@
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     [self FindProdcuts];
 	// Do any additional setup after loading the view.
+    SelectedProductsIdArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -49,7 +51,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"ProducDetailsCell";
     
-    ProductsDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[ProductsDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
@@ -59,6 +61,55 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    Invoice_Lines * CurrentInvoice_Lines;
+    CurrentInvoice_Lines.productID =[productID objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many Products would you like"
+                                                      message:nil
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Continue", nil];
+    [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [message show];
+   
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Continue"])
+    {
+        UITextField *mystring = [alertView textFieldAtIndex:0];
+        NSLog(@"quanyityt : %@",mystring.text);
+    }
+}
+
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    if( [inputText length] >= 1 )
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+
+    NSNumber *CurrentproductID = [productID objectAtIndex:indexPath.row];
+    [SelectedProductsIdArray removeObject:CurrentproductID];
+    
+}
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return(YES);
@@ -93,6 +144,25 @@
     productDescription = [[NSMutableArray alloc] init];
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
+}
+
+- (IBAction)StoreInvocie:(id)sender {
+    
+    if ([SelectedProductsIdArray count]>0){
+    
+    
+    
+    
+    }else{
+                    NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected"
+                                                                    message:successMsg
+                                                                   delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                        otherButtonTitles: nil];
+                                    [alert show];
+
+        }
 }
 
 #pragma-mark UITextField Delegade Methods
@@ -152,6 +222,5 @@
         //        [UIView commitAnimations];
     }
 }
-
 
 @end
