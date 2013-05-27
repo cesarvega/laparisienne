@@ -18,7 +18,7 @@
 
 @implementation ManageClientsViewController
 @synthesize addressOne, addressTwo, businessDescription, businessName;
-@synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state;
+@synthesize city, contactName, custIDValue, email, fax, mobile, telefone, website, zipcode, state, clientsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -102,16 +102,38 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        indexPathForDeletion = indexPath;
+        
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this client?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+   
+        [message show];
+     
+    
+    
+}
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
         //remove the deleted object from your data source.
         //If your data source is an NSMutableArray, do this
-       // [self.dataArray removeObjectAtIndex:indexPath.row];
-       
+        // [self.dataArray removeObjectAtIndex:indexPath.row];
+        
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customer" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
-        NSString *val = [custIDValue  objectAtIndex:indexPath.row];
+        NSString *val = [custIDValue  objectAtIndex:indexPathForDeletion.row];
         NSPredicate *p =[NSPredicate predicateWithFormat:@"custID = %@", val];
         [fetchRequest setPredicate:p];
         
@@ -128,27 +150,32 @@
             NSLog(@"Error deleting - error:%@",error);
         }
         
-        [businessName removeObjectAtIndex:indexPath.row];
-        [businessDescription removeObjectAtIndex:indexPath.row];
-        [addressOne removeObjectAtIndex:indexPath.row];
-        [addressTwo removeObjectAtIndex:indexPath.row];
+        [businessName removeObjectAtIndex:indexPathForDeletion.row];
+        [businessDescription removeObjectAtIndex:indexPathForDeletion.row];
+        [addressOne removeObjectAtIndex:indexPathForDeletion.row];
+        [addressTwo removeObjectAtIndex:indexPathForDeletion.row];
         // [businessDescription removeObjectAtIndex:indexPath.row];
         // [businessName removeObjectAtIndex:indexPath.row];
-        [city removeObjectAtIndex:indexPath.row];
-        [contactName removeObjectAtIndex:indexPath.row];
-        [custIDValue removeObjectAtIndex:indexPath.row];
-        [email removeObjectAtIndex:indexPath.row];
-        [fax removeObjectAtIndex:indexPath.row];
-        [mobile removeObjectAtIndex:indexPath.row];
-        [state removeObjectAtIndex:indexPath.row];
-        [telefone removeObjectAtIndex:indexPath.row];
-        [website removeObjectAtIndex:indexPath.row];
-        [zipcode removeObjectAtIndex:indexPath.row];
+        [city removeObjectAtIndex:indexPathForDeletion.row];
+        [contactName removeObjectAtIndex:indexPathForDeletion.row];
+        [custIDValue removeObjectAtIndex:indexPathForDeletion.row];
+        [email removeObjectAtIndex:indexPathForDeletion.row];
+        [fax removeObjectAtIndex:indexPathForDeletion.row];
+        [mobile removeObjectAtIndex:indexPathForDeletion.row];
+        [state removeObjectAtIndex:indexPathForDeletion.row];
+        [telefone removeObjectAtIndex:indexPathForDeletion.row];
+        [website removeObjectAtIndex:indexPathForDeletion.row];
+        [zipcode removeObjectAtIndex:indexPathForDeletion.row];
         //add logic to get custID and delete from table
         
         
     }
+    [clientsTableView reloadData];
+        
     
+    
+    
+
     
 }
 

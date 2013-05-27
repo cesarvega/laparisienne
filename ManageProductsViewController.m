@@ -14,7 +14,7 @@
 @end
 
 @implementation ManageProductsViewController
-@synthesize Productname, productID, productDescription,unitPrice;
+@synthesize Productname, productID, productDescription,unitPrice, productsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -85,13 +85,31 @@
         //remove the deleted object from your data source.
         //If your data source is an NSMutableArray, do this
         // [self.dataArray removeObjectAtIndex:indexPath.row];
+        indexPathForDeletion = indexPath;
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this product?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
         
+        [message show];
+        
+    }
+    
+    
+    
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
-        NSString *val = [productID  objectAtIndex:indexPath.row];
+        NSString *val = [productID  objectAtIndex:indexPathForDeletion.row];
         NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", val];
         [fetchRequest setPredicate:p];
         
@@ -108,16 +126,17 @@
             NSLog(@"Error deleting - error:%@",error);
         }
         
-        [Productname removeObjectAtIndex:indexPath.row];
-        [productDescription removeObjectAtIndex:indexPath.row];
+        [Productname removeObjectAtIndex:indexPathForDeletion.row];
+        [productDescription removeObjectAtIndex:indexPathForDeletion.row];
         
         //add logic to get custID and delete from table
         
         
     }
-    
-    
-}
+    [productsTableView   reloadData];
+        
+    }
+
 
 -(void)FindProdcuts{
     

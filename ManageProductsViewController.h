@@ -12,10 +12,13 @@
 @interface ManageProductsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     AppDelegate *delegate;
+    NSIndexPath *indexPathForDeletion;
 }
 
+@property (weak, nonatomic) IBOutlet UITableView *productsTableView;
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
 @property (nonatomic, retain) NSMutableArray * productID;
 @property (nonatomic, retain) NSMutableArray * unitPrice;
+
 @end

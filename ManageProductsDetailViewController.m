@@ -109,7 +109,7 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"product successfully saved."
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Product successfully saved."
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -201,7 +201,7 @@
         NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"product successfully updated."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Product successfully updated."
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
