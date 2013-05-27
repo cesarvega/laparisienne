@@ -27,9 +27,7 @@
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     context = [delegate managedObjectContext];
     
-    product = [NSEntityDescription
-               insertNewObjectForEntityForName:@"Product"
-               inManagedObjectContext:context];
+  
 	// Do any additional setup after loading the view.
 }
 
@@ -51,6 +49,9 @@
     
     if(productID == nil)
     {
+        Product *product = [NSEntityDescription
+                            insertNewObjectForEntityForName:@"Product"
+                            inManagedObjectContext:context];
         product.name = ProductNameTextField.text;
         product.productDescription = PorductDescriptionTextField.text;
         NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];

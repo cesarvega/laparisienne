@@ -271,11 +271,12 @@
     
     
     //Save it
-    error = nil;
+  /**  error = nil;
     if (![context save:&error]) {
         //Handle any error with the saving of the context
     }
-    
+    **/
+    error = nil;
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
     }
