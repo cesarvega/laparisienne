@@ -58,6 +58,8 @@
         
         product.name = ProductNameTextField.text;
         product.productDescription = PorductDescriptionTextField.text;
+        NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
+        product.unitPrice = decimal;
         // int unitPriceConvert = [UnitPriceTextField.text ];
         //  product.unitPrice =[NSDecimalNumber nu:unitPriceConvert];
         
@@ -257,9 +259,7 @@
     
     //Save it
     error = nil;
-    if (![context save:&error]) {
-        //Handle any error with the saving of the context
-    }
+   
     
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);

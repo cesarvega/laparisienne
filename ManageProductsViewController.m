@@ -67,6 +67,9 @@
         [manageProductsDetailView setName:[Productname objectAtIndex:indexPath.row]];
         [manageProductsDetailView setProductID:[productID objectAtIndex:indexPath.row]];
         [manageProductsDetailView setProductDescription:[productDescription objectAtIndex:indexPath.row]];
+       
+        [manageProductsDetailView setUnitPrice:[unitPrice objectAtIndex:indexPath.row]];
+        
     }
     [self presentViewController:manageProductsDetailView animated:YES completion:nil];
     
@@ -93,7 +96,7 @@
         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
         NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
-        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+        NSDecimalNumber *unitPrices = [item valueForKey:@"unitPrice"];
         [Productname addObject:Productnames];
         [productDescription addObject:productDescriptions];
         [productID addObject:productIDs];

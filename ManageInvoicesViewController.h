@@ -13,11 +13,13 @@
 
 @interface ManageInvoicesViewController : UIViewController{
     AppDelegate *delegate;
+    NSManagedObjectContext *context;
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
+@property (strong, nonatomic)NSMutableArray* invoicesDocNums;
+@property (strong, nonatomic)NSMutableArray* invoiceDocDates;
 
-@property (nonatomic, retain) NSMutableArray * businessNames;
-@property (nonatomic, retain) NSMutableArray * contactNames;
-@property (nonatomic, retain) NSMutableArray * custIDValues;
+
+@property (nonatomic, retain) NSNumber * custIDValue;
 @end
