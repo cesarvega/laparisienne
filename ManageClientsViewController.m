@@ -98,7 +98,58 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return(YES);
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+       // [self.dataArray removeObjectAtIndex:indexPath.row];
+       
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customer" inManagedObjectContext:delegate.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSString *val = [custIDValue  objectAtIndex:indexPath.row];
+        NSPredicate *p =[NSPredicate predicateWithFormat:@"custID = %@", val];
+        [fetchRequest setPredicate:p];
+        
+        NSError *error;
+        NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        
+        
+        
+        for (Customer *customer in items) {
+            [delegate.managedObjectContext deleteObject:customer];
+            NSLog(@"object deleted");
+        }
+        if (![delegate.managedObjectContext save:&error]) {
+            NSLog(@"Error deleting - error:%@",error);
+        }
+        
+        [businessName removeObjectAtIndex:indexPath.row];
+        [businessDescription removeObjectAtIndex:indexPath.row];
+        [addressOne removeObjectAtIndex:indexPath.row];
+        [addressTwo removeObjectAtIndex:indexPath.row];
+        // [businessDescription removeObjectAtIndex:indexPath.row];
+        // [businessName removeObjectAtIndex:indexPath.row];
+        [city removeObjectAtIndex:indexPath.row];
+        [contactName removeObjectAtIndex:indexPath.row];
+        [custIDValue removeObjectAtIndex:indexPath.row];
+        [email removeObjectAtIndex:indexPath.row];
+        [fax removeObjectAtIndex:indexPath.row];
+        [mobile removeObjectAtIndex:indexPath.row];
+        [state removeObjectAtIndex:indexPath.row];
+        [telefone removeObjectAtIndex:indexPath.row];
+        [website removeObjectAtIndex:indexPath.row];
+        [zipcode removeObjectAtIndex:indexPath.row];
+        //add logic to get custID and delete from table
+        
+        
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning{

@@ -29,7 +29,7 @@
      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         [self FindProdcuts];
    //[self deleteAllObjects:@"blah"];
-	// Do any additional setup after loading the view.
+	
 }
 
 - (void)didReceiveMemoryWarning{
@@ -53,7 +53,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [productDescription objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -78,7 +78,45 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return(YES);
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        // [self.dataArray removeObjectAtIndex:indexPath.row];
+        
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSString *val = [productID  objectAtIndex:indexPath.row];
+        NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", val];
+        [fetchRequest setPredicate:p];
+        
+        NSError *error;
+        NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        
+        
+        
+        for (Product *product in items) {
+            [delegate.managedObjectContext deleteObject:product];
+            NSLog(@"object deleted");
+        }
+        if (![delegate.managedObjectContext save:&error]) {
+            NSLog(@"Error deleting - error:%@",error);
+        }
+        
+        [Productname removeObjectAtIndex:indexPath.row];
+        [productDescription removeObjectAtIndex:indexPath.row];
+        
+        //add logic to get custID and delete from table
+        
+        
+    }
+    
+    
 }
 
 -(void)FindProdcuts{
@@ -111,6 +149,8 @@
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
     }
+
+//function to delete all records
 - (void) deleteAllObjects: (NSString *) entityDescription  {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
