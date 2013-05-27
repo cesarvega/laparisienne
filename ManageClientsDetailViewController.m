@@ -226,6 +226,7 @@
     [self SetTextLabelsText];
     [super viewDidAppear:animated];
 }
+
 -(void)updateExistingClient{
     NSError *error = nil;
     

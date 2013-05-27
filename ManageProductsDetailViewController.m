@@ -51,11 +51,6 @@
     
     if(productID == nil)
     {
-        
-        
-        
-        
-        
         product.name = ProductNameTextField.text;
         product.productDescription = PorductDescriptionTextField.text;
         NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
@@ -107,9 +102,7 @@
         
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        //productID is a string
         
-        NSLog(@"My string %@"  ,finalString);
         product.productID = [f numberFromString:finalString];
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -134,9 +127,9 @@
 	NSString *titles = [alertView buttonTitleAtIndex:buttonIndex];
 	if([titles isEqualToString:@"OK"])
 	{
-		
-        [self dismissViewControllerAnimated:YES completion:nil];
-	}
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageProducts"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];	}
     
 }
 
@@ -145,64 +138,6 @@
     [ProductNameTextField setText:name];
     [PorductDescriptionTextField setText:productDescription];
     [UnitPriceTextField setText:[unitPrice stringValue]];
-}
-
-#pragma-mark UITextField Delegade Methods
-
-- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
-    [aTextField resignFirstResponder];
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-    [self animateTextField: textField up: YES];
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    self.navigationItem.leftBarButtonItem.enabled=NO;
-    
-}
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    //    textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
-    return YES;
-    
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    [self animateTextField: textField up: NO];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up{
-    if (textField.tag==1) {
-        
-    }else if(textField.tag==2){
-        //  WARNING : develop a switch for diferen heighs of the textfields
-        const int movementDistance = 90; // tweak as needed
-        const float movementDuration = 0.5f; // tweak as needed
-        
-        int movement = (up ? -movementDistance : movementDistance);
-        
-        [UIView beginAnimations: @"anim" context: nil];
-        [UIView setAnimationBeginsFromCurrentState: YES];
-        [UIView setAnimationDuration: movementDuration];
-        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-        [UIView commitAnimations];
-    }else{
-        
-        //  WARNING : develop a switch for diferen heighs of the textfields
-        //        const int movementDistance = 140; // tweak as needed
-        //        const float movementDuration = 0.5f; // tweak as needed
-        //
-        //        int movement = (up ? -movementDistance : movementDistance);
-        //
-        //        [UIView beginAnimations: @"anim" context: nil];
-        //        [UIView setAnimationBeginsFromCurrentState: YES];
-        //        [UIView setAnimationDuration: movementDuration];
-        //        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-        //        [UIView commitAnimations];
-    }
 }
 
 -(void)updateExistingProduct{
@@ -274,6 +209,64 @@
     }
     
     
+}
+
+#pragma-mark UITextField Delegade Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField{
+    [aTextField resignFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [self animateTextField: textField up: YES];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.leftBarButtonItem.enabled=NO;
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //    textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+    return YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up{
+    if (textField.tag==1) {
+        
+    }else if(textField.tag==2){
+        //  WARNING : develop a switch for diferen heighs of the textfields
+        const int movementDistance = 90; // tweak as needed
+        const float movementDuration = 0.5f; // tweak as needed
+        
+        int movement = (up ? -movementDistance : movementDistance);
+        
+        [UIView beginAnimations: @"anim" context: nil];
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: movementDuration];
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        [UIView commitAnimations];
+    }else{
+        
+        //  WARNING : develop a switch for diferen heighs of the textfields
+        //        const int movementDistance = 140; // tweak as needed
+        //        const float movementDuration = 0.5f; // tweak as needed
+        //
+        //        int movement = (up ? -movementDistance : movementDistance);
+        //
+        //        [UIView beginAnimations: @"anim" context: nil];
+        //        [UIView setAnimationBeginsFromCurrentState: YES];
+        //        [UIView setAnimationDuration: movementDuration];
+        //        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+        //        [UIView commitAnimations];
+    }
 }
 
 @end
