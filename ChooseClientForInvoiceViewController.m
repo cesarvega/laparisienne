@@ -68,13 +68,7 @@
     [storyboard instantiateViewControllerWithIdentifier:@"ManageInvoices"];
     
     manageInvoices.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    //Make sure the view is ready to recieve information
-  
-        
-        //this sets the cust id value for the next view
-        
-        NSString *val = [custIDValue objectAtIndex:indexPath.row];
+    NSString *val = [custIDValue objectAtIndex:indexPath.row];
         
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -96,13 +90,9 @@
 }
 
 -(void)InitArraysToHoldData{
-    
-    //a comment
-    
     businessName = [[NSMutableArray alloc] init];
     contactName = [[NSMutableArray alloc] init];
     custIDValue = [[NSMutableArray alloc]init];
-    
 }
 
 -(void)FindClients{
@@ -122,14 +112,14 @@
     
     for (NSArray *item in innerStringdictionary) {
         
-        
         NSString *businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         NSString *contactNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"contactName"]];
         NSString *custIDValues = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
         [businessName addObject: businessNames];
         [contactName addObject:contactNames];
         [custIDValue addObject:custIDValues];
-          }
+        
+    }
 }
 
 

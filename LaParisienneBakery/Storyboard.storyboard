@@ -694,6 +694,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="BusinessNameTextLabel" destination="YEa-6p-Mcw" id="Llh-jU-8MN"/>
+                        <outlet property="ClientAddressTextLabel" destination="bgu-V4-CSZ" id="AFC-Hd-lU7"/>
+                        <outlet property="ClientNameTextLabel" destination="AOo-Za-u82" id="20s-AQ-R9Z"/>
+                        <outlet property="InvoiceDateTextLabel" destination="DG7-cc-3F2" id="rYP-7k-cOO"/>
+                        <outlet property="InvoiceDepartmentTextLabel" destination="Ovm-gw-ujl" id="AV6-L8-1cM"/>
+                        <outlet property="InvoiceNumberTextLabel" destination="LUy-2X-K9o" id="pxd-I4-HJ7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfX-bZ-hpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1050,7 +1058,12 @@
         <class className="ManageInvoicesDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="ChooseAClient:"/>
+                <relationship kind="outlet" name="BusinessNameTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ClientAddressTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ClientNameTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="InvoiceDateTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="InvoiceDepartmentTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="InvoiceNumberTextLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ManageInvoicesViewController" superclassName="UIViewController">
