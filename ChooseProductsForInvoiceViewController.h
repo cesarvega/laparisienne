@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSMutableArray * productID;
 @property (nonatomic, retain) NSMutableArray * unitPrice;
 @property (nonatomic, retain) NSMutableArray *SelectedProductsIdArray;
+- (IBAction)StoreInvocie:(id)sender;
 
 
 
@@ -25,6 +26,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *ProductNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ProductPriceLabel;
-@property (strong, nonatomic) IBOutlet UITextField *ProductQuantity;
+@property (strong, nonatomic) IBOutlet UILabel *ProductQuantity;
 
 @end

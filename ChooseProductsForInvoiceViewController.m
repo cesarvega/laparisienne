@@ -7,6 +7,7 @@
 //
 
 #import "ChooseProductsForInvoiceViewController.h"
+#import "Invoice_Lines.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
 @end
@@ -62,13 +63,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    [SelectedProductsIdArray addObject:indexPath];
+    Invoice_Lines * CurrentInvoice_Lines;
+    CurrentInvoice_Lines.productID =[productID objectAtIndex:indexPath.row];
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"How many items"
+                                                      message:nil
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Continue", nil];
+    [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [message show];
+    
+    
+    [SelectedProductsIdArray addObject:CurrentInvoice_Lines];
 
 }
 
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    if( [inputText length] >= 10 )
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [SelectedProductsIdArray removeObjectAtIndex:indexPath.row];
+  
+    NSNumber *CurrentproductID = [productID objectAtIndex:indexPath.row];
+    [SelectedProductsIdArray removeObject:CurrentproductID];
     
 }
 
@@ -105,6 +132,25 @@
     productDescription = [[NSMutableArray alloc] init];
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
+}
+
+- (IBAction)StoreInvocie:(id)sender {
+    
+    if ([SelectedProductsIdArray count]>0){
+    
+    
+    
+    
+    }else{
+                    NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected"
+                                                                    message:successMsg
+                                                                   delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                        otherButtonTitles: nil];
+                                    [alert show];
+
+        }
 }
 
 #pragma-mark UITextField Delegade Methods
@@ -164,6 +210,5 @@
         //        [UIView commitAnimations];
     }
 }
-
 
 @end
