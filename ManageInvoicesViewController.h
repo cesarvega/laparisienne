@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Invoice_Lines.h"
+#import "Invoice.h"
 
 @interface ManageInvoicesViewController : UIViewController{
 
