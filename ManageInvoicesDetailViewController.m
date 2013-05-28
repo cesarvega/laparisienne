@@ -185,15 +185,15 @@
         [BusinessNameTextLabel setText:BusinessName];
         [InvoiceDepartmentTextLabel setText:Department];
         [ClientAddressTextLabel setText:BusinessAddress];
-        [InvoiceDateTextLabel setText:Date];
+        [InvoiceDateTextLabel setText:Date]; 
         [ClientNameTextLabel setText:BusinessContactName];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
         
-        UILabel *headingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 30)];
+        UILabel *headingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 436, 400, 130)];// x y with heigh
         
         [self.view addSubview:headingLabel];
        
-        headingLabel.text = @"WELCOME";
+        headingLabel.text = @"Quantity : 10  Product Name: Bread   Total: 100";
   
     }
 
