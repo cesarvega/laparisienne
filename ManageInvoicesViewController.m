@@ -8,6 +8,7 @@
 
 #import "ManageInvoicesViewController.h"
 #import "ManageInvoicesDetailViewController.h"
+#import "ChooseProductsForInvoiceViewController.h"
 @interface ManageInvoicesViewController ()
 
 @end
@@ -89,13 +90,8 @@
 
 //get all invoices whose custID = this class custID
 -(void)getinvoices{
-
-
     NSError *error = nil;
-    
     //This is your NSManagedObject subclass
-  
-    
     //Set up to get the thing you want to update
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:context]];
@@ -103,26 +99,27 @@
     
     //Ask for it
     NSArray *invoices= [context executeFetchRequest:request error:&error];
-    
-    
-    
     for (NSArray *item in invoices) {
-        
-        
         NSString *date = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
         NSString *docNum = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
-        
-        
         [invoicesDocNums addObject:docNum];
         [invoiceDocDates addObject:date];
        
-
     }
- 
+ }
+
+- (IBAction)CreateANewInvoiceButton:(id)sender {
     
-
-
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    ChooseProductsForInvoiceViewController * ChooseProducts = (ChooseProductsForInvoiceViewController*)
+    [storyboard instantiateViewControllerWithIdentifier:@"SelectProductsForInvoice"];
+    ChooseProducts.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [ChooseProducts setClientID:custIDValue];
+    [self presentViewController:ChooseProducts animated:YES completion:nil];
+    
 }
+
+
 
 
 

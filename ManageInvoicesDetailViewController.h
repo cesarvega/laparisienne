@@ -12,12 +12,15 @@
 @interface ManageInvoicesDetailViewController : UIViewController
 
 {
-
     Invoice_Lines *invoicesLines;
-
 }
 @property (nonatomic, retain) NSNumber * custID;
-
-- (IBAction)ChooseAClient:(id)sender;
+@property (nonatomic, retain) NSNumber * InvoiceID;
+@property (strong, nonatomic) IBOutlet UILabel *InvoiceNumberTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *InvoiceDepartmentTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *BusinessNameTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *InvoiceDateTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ClientAddressTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ClientNameTextLabel;
 
 @end
