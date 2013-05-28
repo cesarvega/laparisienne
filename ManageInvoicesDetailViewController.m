@@ -34,7 +34,7 @@
 }
 
 - (IBAction)SaveInvoice:(id)sender {
-    //CYNTHIA STUFF
+    //CYNTHIA STUFF your code goes here to store the invoice
     // the array with the invoice_line objects is "InvoiceLines" and the customer is is custID
     
 }
@@ -49,6 +49,8 @@
     
     // NSLog(@"%@",InvoiceLines);
 }
+
+
 
 
 @end

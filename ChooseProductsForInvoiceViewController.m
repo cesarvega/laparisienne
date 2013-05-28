@@ -65,8 +65,6 @@
     return cell;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
      [SelectedProductsIndexPaths addObject:indexPath];
@@ -120,9 +118,6 @@
     if ([SelectedProductsIndexPaths count]>0){
     
         for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
-            
-       
-            
             cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -155,9 +150,6 @@
             [self presentViewController:InvoiceDetailView animated:YES completion:nil];
           }
       
-      
-        
-        
   }else{
                     NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected"
