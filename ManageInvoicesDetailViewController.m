@@ -76,18 +76,11 @@
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         
         if([items count] == 1)
-        {
-            
-            
-            NSArray *result = [items objectAtIndex:0];
+        {            NSArray *result = [items objectAtIndex:0];
             NSDecimalNumber *unitPrice =[result valueForKey:@"unitPrice"];
             currentLine.lineTotal = unitPrice;
             currentLine.lineTotal = [currentLine.lineTotal decimalNumberByMultiplyingBy:currentLine.quantity];
             NSLog(@"Linetotal: %@", currentLine.lineTotal);
-            
-        
-            
-            
             
         }
         else{
@@ -95,14 +88,7 @@
         }
         
         
-        
-
-        
-        
-        
     }
-    
-    
     
 }
 
@@ -154,19 +140,11 @@
     int maxID = [ID integerValue];
     maxID = maxID+1;
     NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
-    
-    
-    
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     //ID is a string
-    
     return [f numberFromString:finalString];
-    
-    
-    
-    
-    
+       
 }
 
 - (IBAction)ReEditProductsSelected:(id)sender {
