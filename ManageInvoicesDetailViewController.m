@@ -14,7 +14,7 @@
 
 @implementation ManageInvoicesDetailViewController
 @synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID;
-@synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel;
+@synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -33,11 +33,22 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setTextLabels{
-
-
+- (IBAction)SaveInvoice:(id)sender {
+    //CYNTHIA STUFF
+    // the array with the invoice_line objects is "InvoiceLines" and the customer is is custID
     
-
-
 }
+
+- (IBAction)ReEditProductsSelected:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    
+    // NSLog(@"%@",InvoiceLines);
+}
+
+
 @end
