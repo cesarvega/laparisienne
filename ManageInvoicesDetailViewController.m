@@ -82,9 +82,22 @@
         [InvoiceDateTextLabel setText:Date];
         [ClientNameTextLabel setText:BusinessContactName];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
+        
+        UILabel *headingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 30)];
+        
+        [self.view addSubview:headingLabel];
+       
+        headingLabel.text = @"WELCOME";
   
     }
 
+}
+
+- (IBAction)PrintPdf:(id)sender {
+    
+    
+    
+    
 }
 
 

@@ -27,4 +27,5 @@
 - (IBAction)SaveInvoice:(id)sender;
 - (IBAction)ReEditProductsSelected:(id)sender;
 
+- (IBAction)PrintPdf:(id)sender;
 @end
