@@ -8,6 +8,7 @@
 
 #import "ChooseProductsForInvoiceViewController.h"
 #import "Invoice_Lines.h"
+#import "ManageInvoicesDetailViewController.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity,ProductID;
 @end
@@ -141,14 +142,21 @@
                                                       otherButtonTitles: nil];
                 [alert show];
                 break;
-            }
+            }else{
             
             [InvoiceLinesArray addObject:CurrentInvoice_Lines];
-            
+            }
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+            ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
+            [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
+            [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
+            [InvoiceDetailView setCustID:ClientID];
+            InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:InvoiceDetailView animated:YES completion:nil];
           }
       
-        // after done call Cynthias Mehtod the client id is in the varable "ClientID"
-        // like [self CynthiasMetodName:InvoiceLinesArray];
+      
+        
         
   }else{
                     NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];

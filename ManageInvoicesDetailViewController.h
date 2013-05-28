@@ -14,6 +14,7 @@
 {
     Invoice_Lines *invoicesLines;
 }
+@property (nonatomic, retain) NSMutableArray * InvoiceLines;
 @property (nonatomic, retain) NSNumber * custID;
 @property (nonatomic, retain) NSNumber * InvoiceID;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceNumberTextLabel;
@@ -22,5 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDateTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientAddressTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientNameTextLabel;
+- (IBAction)SaveInvoice:(id)sender;
+- (IBAction)ReEditProductsSelected:(id)sender;
 
 @end

@@ -568,10 +568,14 @@
                                     <navigationItem title="Invoice Creator" id="rvK-Z3-u2j">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vNc-r5-tIR">
                                             <connections>
-                                                <segue destination="fC2-B1-XFI" kind="modal" id="h1o-YY-0kN"/>
+                                                <action selector="ReEditProductsSelected:" destination="2e1-jZ-IW3" id="aPZ-az-RAt"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ofl-kZ-OIa"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ofl-kZ-OIa">
+                                            <connections>
+                                                <action selector="SaveInvoice:" destination="2e1-jZ-IW3" id="Vzl-0E-2jn"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1058,6 +1062,8 @@
         <class className="ManageInvoicesDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManageInvoicesDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="ReEditProductsSelected:"/>
+                <relationship kind="action" name="SaveInvoice:"/>
                 <relationship kind="outlet" name="BusinessNameTextLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ClientAddressTextLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ClientNameTextLabel" candidateClass="UILabel"/>
