@@ -16,8 +16,7 @@
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
 @synthesize custIDValue, invoiceDocDates, invoicesDocNums;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -25,8 +24,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -36,11 +34,11 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -61,7 +59,6 @@
     return cell;
 }
 
-
 //modify this to open a specific invoice depending on which row selected 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -81,12 +78,10 @@
 
 //this will query for all invoices with the view cust ID passed from 'choose client for invoice controller'
 
--(void)initArrays
-{
+-(void)initArrays{
     invoiceDocDates = [[NSMutableArray alloc]init];
     invoicesDocNums = [[NSMutableArray alloc]init];
 }
-
 
 //get all invoices whose custID = this class custID
 -(void)getinvoices{

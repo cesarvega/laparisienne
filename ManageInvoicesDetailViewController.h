@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Invoice.h"
 #import "Invoice_Lines.h"
-@interface ManageInvoicesDetailViewController : UIViewController
-
-{
+#import "AppDelegate.h"
+@interface ManageInvoicesDetailViewController : UIViewController{
+    AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
+    NSManagedObjectContext *contextForHeader;
 }
 @property (nonatomic, retain) NSMutableArray * InvoiceLines;
 @property (nonatomic, retain) NSNumber * custID;
