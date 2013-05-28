@@ -33,13 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
-
-    
-   // NSLog(@"%@",InvoiceLines);
-}
 - (IBAction)SaveInvoice:(id)sender {
-    
+    //CYNTHIA STUFF
     // the array with the invoice_line objects is "InvoiceLines" and the customer is is custID
     
 }
@@ -48,4 +43,12 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    
+    // NSLog(@"%@",InvoiceLines);
+}
+
+
 @end
