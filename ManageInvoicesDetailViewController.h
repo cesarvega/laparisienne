@@ -10,6 +10,7 @@
 #import "Invoice.h"
 #import "Invoice_Lines.h"
 #import "AppDelegate.h"
+
 @interface ManageInvoicesDetailViewController : UIViewController{
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
