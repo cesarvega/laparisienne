@@ -246,6 +246,7 @@
 
 - (void)finishPDF {
     UIGraphicsEndPDFContext();
+   // [self didClickOpenPDF];
 }
 
 - (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize {
@@ -300,4 +301,27 @@
     return imageFrame;
 }
 
+//NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
+//- (void)didClickOpenPDF {
+//    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:@"NewPDF.pdf"];
+//    
+//    if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
+//        
+//        ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
+//        
+//        if (document != nil)
+//        {
+//            ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+//            readerViewController.delegate = self;
+//            
+//            readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+//            
+//            [self presentViewController:readerViewController animated:YES completion:nil];
+//        }
+//    }
+//}
 @end
