@@ -80,6 +80,7 @@
             NSDecimalNumber *unitPrice =[result valueForKey:@"unitPrice"];
             currentLine.lineTotal = unitPrice;
             currentLine.lineTotal = [currentLine.lineTotal decimalNumberByMultiplyingBy:currentLine.quantity];
+            docTotal = [docTotal decimalNumberByAdding:currentLine.lineTotal];
             NSLog(@"Linetotal: %@", currentLine.lineTotal);
             
         }
@@ -88,7 +89,30 @@
         }
         
         
+        
+        
     }
+    
+   Invoice *invoice = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Invoice"
+                      inManagedObjectContext:delegate.managedObjectContext];
+    invoice.docTotal = docTotal;
+    invoice.docNum  = [nextParentInvDocNum stringValue];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // this is imporant - we set our input date format to match our input string
+    // if format doesn't match you'll get nil from your string, so be careful
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    NSDate *dateFromString = [[NSDate alloc] init];
+    // voila!
+    dateFromString = [dateFormatter dateFromString:InvoiceDateTextLabel.text];
+    invoice.docDate = dateFromString;
+    invoice.invoiceID = [self getGetNextNumericValueForFieldName:@"invoiceID" withEntityName:@"Invoice"];
+    invoice.custID   = custID;
+    
+    
+    
+    
     
     [self createPDF];
     
