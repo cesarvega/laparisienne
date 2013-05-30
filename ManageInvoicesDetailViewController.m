@@ -58,6 +58,7 @@
         
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
+          NSLog(@"parent inv docnum: %@", currentLine.parentInvoiceDocNum);
         
 
         
@@ -74,18 +75,35 @@
         
         NSError *error;
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        docTotal = [NSDecimalNumber zero];
         
         if([items count] == 1)
-        {            NSArray *result = [items objectAtIndex:0];
+        {
+            NSArray *result = [items objectAtIndex:0];
             NSDecimalNumber *unitPrice =[result valueForKey:@"unitPrice"];
-            currentLine.lineTotal = unitPrice;
-            currentLine.lineTotal = [currentLine.lineTotal decimalNumberByMultiplyingBy:currentLine.quantity];
-            docTotal = [docTotal decimalNumberByAdding:currentLine.lineTotal];
-            NSLog(@"Linetotal: %@", currentLine.lineTotal);
+            NSLog(@"unit price: %@", unitPrice);
+            currentLine.lineTotal = [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
+            
+            NSLog(@"quantity: %@", currentLine.quantity);
+             NSLog(@"Linetotal: %@", currentLine.lineTotal);
+           
+            NSDecimalNumber *newDocTotal = [self addNumber:currentLine.lineTotal withNumber:docTotal];
+           
+            
+            docTotal = newDocTotal;
+           
             
         }
         else{
             NSLog(@"Error: There are more than two products in the database with the same ID.");
+        }
+        
+        if (![delegate.managedObjectContext save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+        else{
+            NSLog(@"Invoice line saved. LineID %@", currentLine.invoiceOrderID);
+            
         }
         
         
@@ -97,7 +115,13 @@
                       insertNewObjectForEntityForName:@"Invoice"
                       inManagedObjectContext:delegate.managedObjectContext];
     invoice.docTotal = docTotal;
+    NSLog(@"Doctotal: %@", docTotal);
+          
     invoice.docNum  = [nextParentInvDocNum stringValue];
+    
+    NSLog(@"DocNum: %@", invoice.docNum);
+    invoice.department = InvoiceDepartmentTextLabel.text;
+    NSLog(@"Department: %@", invoice.department);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     // this is imporant - we set our input date format to match our input string
@@ -108,7 +132,11 @@
     dateFromString = [dateFormatter dateFromString:InvoiceDateTextLabel.text];
     invoice.docDate = dateFromString;
     invoice.invoiceID = [self getGetNextNumericValueForFieldName:@"invoiceID" withEntityName:@"Invoice"];
-    invoice.custID   = custID;
+    
+      NSLog(@"InvoiceID: %@", invoice.invoiceID);
+    invoice.custID = custID;
+    
+      NSLog(@"custID: %@", invoice.custID);
     NSError *error;
     
     
@@ -129,6 +157,28 @@
     
     [self createPDF];
     
+}
+- (NSDecimalNumber*)addNumber: (NSDecimalNumber*)firstNumber withNumber: (NSDecimalNumber*) secondNumber {
+    NSDecimalNumber *number = [NSDecimalNumber zero];
+    number = [number decimalNumberByAdding:firstNumber];
+    number = [number decimalNumberByAdding:secondNumber];
+    
+    
+    return number;
+}
+-(NSDecimalNumber*) multiplyNumber: (NSDecimalNumber*)firstNumber byNumber: (NSDecimalNumber*) secondNumber{
+    
+    NSLog(@"firstnum: %@", firstNumber);
+    NSLog(@"secondNum: %@",secondNumber);
+          
+    NSDecimalNumber *number = [NSDecimalNumber one];
+   NSDecimalNumber *n = [number decimalNumberByMultiplyingBy:firstNumber];
+    
+    NSDecimalNumber *newVar = [n decimalNumberByMultiplyingBy:secondNumber];
+   
+    
+    
+    return newVar;
 }
 
 -(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName{
