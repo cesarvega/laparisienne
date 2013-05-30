@@ -10,8 +10,9 @@
 #import "Invoice.h"
 #import "Invoice_Lines.h"
 #import "AppDelegate.h"
+#import "ReaderViewController.h"
 
-@interface ManageInvoicesDetailViewController : UIViewController{
+@interface ManageInvoicesDetailViewController : UIViewController<ReaderViewControllerDelegate>{
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
     NSManagedObjectContext *contextForHeader;
