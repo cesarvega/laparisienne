@@ -207,49 +207,44 @@
     
     [self beginPDFPage];
     
-    CGRect textRect = [self addText:@"This is some nice text here, don't you agree?"
-                          withFrame:CGRectMake(kPadding, kPadding, 400, 200) fontSize:48.0f];
+    [self addText:@"1909 NE154th Street\nNortl1Miami Beach,Florida 33162\nTel:305.948.9979 . Fax: 305.948.9970\nwww.laparisiennebakery.com"
+                          withFrame:CGRectMake(400, 120, 450, 250) fontSize:18.0f];
     
-    CGRect blueLineRect = [self addLineWithFrame:CGRectMake(kPadding, textRect.origin.y + textRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
-                                       withColor:[UIColor blueColor]];
+    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@",@"Invoice Number :", @"#####     ",@"Department :", @"#####\n",@"Name :", @"#####     ",@"Date :", @"#####\n",@"Address :", @"#####     ",@"Contact :", @"#####"]
+        withFrame:CGRectMake(20, 248, 150, 150) fontSize:18.0f];
     
-    UIImage *anImage = [UIImage imageNamed:@"tree.jpg"];
+    UIImage *anImage = [UIImage imageNamed:@"LogoInv.png"];
     CGRect imageRect = [self addImage:anImage
-                              atPoint:CGPointMake((_pageSize.width/2)-(anImage.size.width/2), blueLineRect.origin.y + blueLineRect.size.height + kPadding)];
+                              atPoint:CGPointMake(20, 60)];
     
-    [self addLineWithFrame:CGRectMake(kPadding, imageRect.origin.y + imageRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
-                 withColor:[UIColor redColor]];
+        [self addLineWithFrame:CGRectMake(kPadding, imageRect.origin.y + imageRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
+                 withColor:[UIColor blackColor] Orientation:@""];
+    
+    //drawing table grid
+    int Rows = 340;
+    for (int i = 1; i <= 12; i++)
+    {
+            [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@""];
+            Rows = Rows+60;
+    
+    }
+
+    
+    int Colums = 20;
+    for (int i = 1; i <= 7; i++)
+    {
+        [self addLineWithFrame:CGRectMake(Colums,340 , 680, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
+        Colums = Colums+160;
+        
+    }
     
     [self finishPDF];
     
-
-    
-    
 }
 
-- (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
-    _pageSize = CGSizeMake(width, height);
-    
-    NSString *newPDFName = [NSString stringWithFormat:@"%@.pdf", name];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
-    
-    UIGraphicsBeginPDFContextToFile(pdfPath, CGRectZero, nil);
-}
-
-- (void)beginPDFPage {
-    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, _pageSize.width, _pageSize.height), nil);
-}
-
-- (void)finishPDF {
-    UIGraphicsEndPDFContext();
-    [self didClickOpenPDF];
-}
-
-- (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize {
+- (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
     UIFont *font = [UIFont systemFontOfSize:fontSize];
     
 	CGSize stringSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(_pageSize.width - 2*20-2*20, _pageSize.height - 2*20 - 2*20) lineBreakMode:NSLineBreakByWordWrapping];
@@ -273,16 +268,20 @@
     return frame;
 }
 
-- (CGRect)addLineWithFrame:(CGRect)frame withColor:(UIColor*)color {
+- (CGRect)addLineWithFrame:(CGRect)frame withColor:(UIColor*)color Orientation:(NSString*)orientation{
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
     CGContextSetStrokeColorWithColor(currentContext, color.CGColor);
     
     // this is the thickness of the line
-    CGContextSetLineWidth(currentContext, frame.size.height);
+    CGContextSetLineWidth(currentContext, frame.size.height/3);
     
     CGPoint startPoint = frame.origin;
-    CGPoint endPoint = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
+    CGPoint endPoint;
+    if ([orientation isEqualToString: @"Vertical"]) {
+        endPoint = CGPointMake(frame.origin.x,frame.origin.y + frame.size.width);
+    }else{endPoint = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);}
+    
     
     CGContextBeginPath(currentContext);
     CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
@@ -295,10 +294,32 @@
 }
 
 - (CGRect)addImage:(UIImage*)image atPoint:(CGPoint)point {
-    CGRect imageFrame = CGRectMake(point.x, point.y, image.size.width, image.size.height);
+    CGRect imageFrame = CGRectMake(point.x, point.y, image.size.width/4, image.size.height/4);
     [image drawInRect:imageFrame];
     
     return imageFrame;
+}
+
+- (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
+    _pageSize = CGSizeMake(width, height);
+    
+    NSString *newPDFName = [NSString stringWithFormat:@"%@.pdf", name];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
+    
+    UIGraphicsBeginPDFContextToFile(pdfPath, CGRectZero, nil);
+}
+
+- (void)beginPDFPage {
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, _pageSize.width, _pageSize.height), nil);
+}
+
+- (void)finishPDF {
+    UIGraphicsEndPDFContext();
+    [self didClickOpenPDF];
 }
 
 //NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
@@ -324,4 +345,6 @@
         }
     }
 }
+
+
 @end
