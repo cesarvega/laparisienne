@@ -24,6 +24,7 @@
 		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
+		13ADBA1D1756E67700A70679 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 13ADBA1C1756E67700A70679 /* tree.jpg */; };
 		8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */; };
 		82141911175398610001CEF0 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 82141910175398610001CEF0 /* LogoInv.png */; };
 		8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */; };
@@ -53,7 +54,6 @@
 		82A9FF3E17559A6800A41AF8 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A9FEFB17559A6800A41AF8 /* Reader-Thumbs.png */; };
 		82A9FF3F17559A6800A41AF8 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A9FEFC17559A6800A41AF8 /* Reader-Thumbs@2x.png */; };
 		82A9FF5717559A6800A41AF8 /* typo_tips.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 82A9FF2B17559A6800A41AF8 /* typo_tips.pdf */; };
-		82A9FF5917559D4B00A41AF8 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82A9FF5817559D4B00A41AF8 /* tree.jpg */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
 		82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1DA173F1DF200E27BB3 /* Logo.png */; };
@@ -92,6 +92,7 @@
 		133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentViewController.m; sourceTree = "<group>"; };
 		133B4CC31745F7BD00671615 /* ManageClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsViewController.h; sourceTree = "<group>"; };
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
+		13ADBA1C1756E67700A70679 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		8214190D175396E20001CEF0 /* ChooseClientForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClientForInvoiceViewController.m; sourceTree = "<group>"; };
 		82141910175398610001CEF0 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		82A9FEFB17559A6800A41AF8 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		82A9FEFC17559A6800A41AF8 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
 		82A9FF2B17559A6800A41AF8 /* typo_tips.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = typo_tips.pdf; sourceTree = "<group>"; };
-		82A9FF5817559D4B00A41AF8 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tree.jpg; path = ../Downloads/attachments/PDFMaker/PDFViewer/tree.jpg; sourceTree = "<group>"; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 		82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				82A9FF5817559D4B00A41AF8 /* tree.jpg */,
+				13ADBA1C1756E67700A70679 /* tree.jpg */,
 				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
 				82EDE1DA173F1DF200E27BB3 /* Logo.png */,
 				82141910175398610001CEF0 /* LogoInv.png */,
@@ -509,7 +509,7 @@
 				82A9FF3E17559A6800A41AF8 /* Reader-Thumbs.png in Resources */,
 				82A9FF3F17559A6800A41AF8 /* Reader-Thumbs@2x.png in Resources */,
 				82A9FF5717559A6800A41AF8 /* typo_tips.pdf in Resources */,
-				82A9FF5917559D4B00A41AF8 /* tree.jpg in Resources */,
+				13ADBA1D1756E67700A70679 /* tree.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

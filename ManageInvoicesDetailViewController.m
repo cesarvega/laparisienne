@@ -109,7 +109,20 @@
     invoice.docDate = dateFromString;
     invoice.invoiceID = [self getGetNextNumericValueForFieldName:@"invoiceID" withEntityName:@"Invoice"];
     invoice.custID   = custID;
+    NSError *error;
     
+    
+    if (![delegate.managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Invoice successfully saved."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
     
     
     
