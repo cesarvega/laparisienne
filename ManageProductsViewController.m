@@ -53,6 +53,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
+    NSLog(@"product id: %@", [productID objectAtIndex:indexPath.row]);
+    
     cell.detailTextLabel.text = [productDescription objectAtIndex:indexPath.row];
     return cell;
 }

@@ -126,7 +126,7 @@
                                                    inManagedObjectContext:contextForInvoiceLines];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * myNumber = [f numberFromString:cell.ProductQuantity.text];
+            NSNumber * myNumber = [f numberFromString:cell.ProductID.text];
             
             CurrentInvoice_Lines.productID = myNumber;//cell.ProductID.text;
             
