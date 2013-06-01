@@ -47,6 +47,9 @@
     NSNumber *nextLineID;
     NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
  
+   
+    NSString *unitPr;
+    
     NSString *docTotal = @"0";
     
     //invoice lines array has productID and quantity
