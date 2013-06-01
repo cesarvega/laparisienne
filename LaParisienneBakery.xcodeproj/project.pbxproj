@@ -24,6 +24,7 @@
 		1332BC91173F59D80082D8A8 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1332BC8C173F59D80082D8A8 /* Product.m */; };
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
+		13ADBA20175A7BB300A70679 /* ASDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 13ADBA1F175A7BB200A70679 /* ASDF.m */; };
 		8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */; };
 		82141911175398610001CEF0 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 82141910175398610001CEF0 /* LogoInv.png */; };
 		8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */; };
@@ -112,6 +113,8 @@
 		133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentViewController.m; sourceTree = "<group>"; };
 		133B4CC31745F7BD00671615 /* ManageClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsViewController.h; sourceTree = "<group>"; };
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
+		13ADBA1E175A7BB200A70679 /* ASDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDF.h; sourceTree = "<group>"; };
+		13ADBA1F175A7BB200A70679 /* ASDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDF.m; sourceTree = "<group>"; };
 		8214190D175396E20001CEF0 /* ChooseClientForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClientForInvoiceViewController.m; sourceTree = "<group>"; };
 		82141910175398610001CEF0 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				13ADBA1E175A7BB200A70679 /* ASDF.h */,
+				13ADBA1F175A7BB200A70679 /* ASDF.m */,
 				8252BDAA1756EB350061F803 /* PDF */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
@@ -582,6 +587,7 @@
 				8252BE041756ED660061F803 /* ThumbsMainToolbar.m in Sources */,
 				8252BE051756ED660061F803 /* ThumbsViewController.m in Sources */,
 				8252BE061756ED660061F803 /* UIXToolbarView.m in Sources */,
+				13ADBA20175A7BB300A70679 /* ASDF.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
