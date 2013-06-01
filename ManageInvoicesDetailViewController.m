@@ -84,7 +84,7 @@
             NSArray *result = [items objectAtIndex:0];
             NSString*unitPrice =  [result valueForKey:@"unitPrice"];
             NSLog(@"unit price: %@", unitPrice);
-            currentLine.lineTotal = [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
+            currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
             
             NSLog(@"quantity: %@", currentLine.quantity);
              NSLog(@"Linetotal: %@", currentLine.lineTotal);
