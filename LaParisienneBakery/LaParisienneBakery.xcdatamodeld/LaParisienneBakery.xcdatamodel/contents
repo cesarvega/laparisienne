@@ -21,21 +21,21 @@
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="docDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="docNum" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="docTotal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="docTotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="invoiceID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Invoice_Lines" syncable="YES">
         <attribute name="invoiceOrderID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lineTotal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lineTotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parentInvoiceDocNum" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="productID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Product" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="unitPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="unitPrice" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
