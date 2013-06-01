@@ -854,7 +854,7 @@
 	thumbsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	thumbsViewController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-	[self presentModalViewController:thumbsViewController animated:NO];
+	[self presentViewController:thumbsViewController animated:NO completion:nil];
 
 	 // Release ThumbsViewController
 }
@@ -948,7 +948,7 @@
 
 			mailComposer.mailComposeDelegate = self; // Set the delegate
 
-			[self presentModalViewController:mailComposer animated:YES];
+			[self presentViewController:mailComposer animated:YES completion:nil];
 
 			 // Cleanup
 		}
@@ -986,14 +986,14 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
 #ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
+	//NSLog(@"%s", __FUNCTION__);
 #endif
 
 	#ifdef DEBUG
 		if ((result == MFMailComposeResultFailed) && (error != NULL)) NSLog(@"%@", error);
 	#endif
 
-	[self dismissModalViewControllerAnimated:YES]; // Dismiss
+	[self dismissViewControllerAnimated:YES completion:nil]; // Dismiss
 }
 
 #pragma mark ThumbsViewControllerDelegate methods
@@ -1006,7 +1006,7 @@
 
 	[self updateToolbarBookmarkIcon]; // Update bookmark icon
 
-	[self dismissModalViewControllerAnimated:NO]; // Dismiss
+	[self dismissViewControllerAnimated:YES completion:nil]; // Dismiss
 }
 
 - (void)thumbsViewController:(ThumbsViewController *)viewController gotoPage:(NSInteger)page
