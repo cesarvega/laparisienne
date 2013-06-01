@@ -219,7 +219,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
-				8252BDAA1756EB350061F803 /* PDF */,
+				829AFFA5175A4BDE0010CE7E /* SignInvoiceEngine */,
+				8252BDAA1756EB350061F803 /* PDFEngine */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
 				13283BBD1735B0CE00E2C286 /* LaParisienneBakery */,
@@ -302,13 +303,13 @@
 			name = DataModels;
 			sourceTree = "<group>";
 		};
-		8252BDAA1756EB350061F803 /* PDF */ = {
+		8252BDAA1756EB350061F803 /* PDFEngine */ = {
 			isa = PBXGroup;
 			children = (
 				8252BE0D175704600061F803 /* Graphics */,
 				8252BDCD1756ED660061F803 /* Sources */,
 			);
-			name = PDF;
+			name = PDFEngine;
 			sourceTree = "<group>";
 		};
 		8252BDCD1756ED660061F803 /* Sources */ = {
@@ -416,6 +417,13 @@
 				829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		829AFFA5175A4BDE0010CE7E /* SignInvoiceEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SignInvoiceEngine;
 			sourceTree = "<group>";
 		};
 		82A6CF991749412E00BDB8E8 /* Customer */ = {
