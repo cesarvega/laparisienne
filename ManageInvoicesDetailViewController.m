@@ -364,11 +364,12 @@
         Colums = Colums+100;
         
     }
-
+    
+    int textPosititon = 360;
     for (int i = 1; i <= 5; i++){
-    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"Quantity                  ", @"Product                      ",@"Total          ", @"Quantity                ", @"Product                   ",@"Total        \n"]
-        withFrame:CGRectMake(30, 360, 150, 150) fontSize:18.0f];
-
+    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"Quantity                  ", @"Product                      ",@"Total          ", @"Quantity                ", @"Product                   ",@"Total        "]
+        withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:18.0f];
+        textPosititon =textPosititon+60;
     }
     [self finishPDF];
     
