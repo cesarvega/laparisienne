@@ -50,7 +50,7 @@
    
     NSString *unitPr;
     
-    NSString *docTotal = @"0";
+    NSString *docTotal = @"0"; 
     
     //invoice lines array has productID and quantity
     for(int i = 0; i < [InvoiceLines count] ; i++)
@@ -71,7 +71,7 @@
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
-     
+        NSLog(@"Curent lines product ID: %@",currentLine.productID);
         NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", currentLine.productID];
         [fetchRequest setPredicate:p];
         
@@ -97,8 +97,11 @@
            
             
         }
+        else if([items count] >1){
+            NSLog(@"Error: There are more than 1 product in the database with the same ID.");
+        }
         else{
-            NSLog(@"Error: There are more than two products in the database with the same ID.");
+            NSLog(@"Error: Fetch returned no results.");
         }
         
         if (![delegate.managedObjectContext save:&error]) {
