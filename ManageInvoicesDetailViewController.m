@@ -278,7 +278,7 @@
     NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
     for (NSArray *item in invoices) {
         NSString *BusinessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-        NSString *Department =@"Kitchen 1";
+        //NSString *Department =@"Kitchen 1";
         NSString *BusinessAddress = [NSString stringWithFormat:@"%@ %@ %@ %@ %@",
                                      [item valueForKey:@"addressOne"], [item valueForKey:@"addressTwo"],
                                      [item valueForKey:@"city"],[item valueForKey:@"state"],[item valueForKey:@"zipcode"]];
@@ -290,7 +290,7 @@
         NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         NSString *InvoiceNumber =@"12345678";
         [BusinessNameTextLabel setText:BusinessName];
-        [InvoiceDepartmentTextLabel setText:Department];
+        //[InvoiceDepartmentTextLabel setText:Department];
         [ClientAddressTextLabel setText:BusinessAddress];
         [InvoiceDateTextLabel setText:Date]; 
         [ClientNameTextLabel setText:BusinessContactName];
