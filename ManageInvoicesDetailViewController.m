@@ -229,17 +229,47 @@
             Rows = Rows+60;
     
     }
-
-    
     int Colums = 20;
-    for (int i = 1; i <= 7; i++)
+    for (int i = 1; i <= 2; i++)
     {
-        [self addLineWithFrame:CGRectMake(Colums,340 , 680, 4)
+        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
                      withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
-        Colums = Colums+160;
+        Colums = Colums+810;
+      
+    }
+    
+    Colums = 120;
+    for (int i = 1; i <= 2; i++)
+    {
+        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
+        Colums = Colums+610;
         
     }
     
+    Colums = 435;
+    for (int i = 1; i <= 2; i++)
+    {
+        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
+        Colums = Colums-100;
+        
+    }
+    
+    Colums = 435;
+    for (int i = 1; i <= 2; i++)
+    {
+        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
+        Colums = Colums+100;
+        
+    }
+
+    for (int i = 1; i <= 5; i++){
+    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"Quantity                  ", @"Product                      ",@"Total          ", @"Quantity                ", @"Product                   ",@"Total        \n"]
+        withFrame:CGRectMake(30, 360, 150, 150) fontSize:18.0f];
+
+    }
     [self finishPDF];
     
 }
