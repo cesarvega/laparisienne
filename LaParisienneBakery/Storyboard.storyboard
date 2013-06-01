@@ -526,6 +526,10 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fC2-B1-XFI" id="wGA-P0-GD8"/>
+                                    <outlet property="delegate" destination="fC2-B1-XFI" id="Isn-mJ-e5f"/>
+                                </connections>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" id="6sc-PS-vMf">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
@@ -1124,7 +1128,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vao-2g-q4t"/>
-        <segue reference="OJe-Ri-g9o"/>
+        <segue reference="EBX-BC-bge"/>
+        <segue reference="5Dx-1A-J2N"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString * invoiceOrderID;
 @property (nonatomic, retain) NSString * lineTotal;
 @property (nonatomic, retain) NSString * parentInvoiceDocNum;
-@property (nonatomic, retain) NSString * productID;
+@property (nonatomic, retain) NSNumber * productID;
 @property (nonatomic, retain) NSString * quantity;
 
 @end

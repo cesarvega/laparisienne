@@ -46,9 +46,11 @@
     //name of customer id variable is custID
     NSNumber *nextLineID;
     NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
+ 
+   
     NSString *unitPr;
     
-    NSString *docTotal;
+    NSString *docTotal = @"0";
     
     //invoice lines array has productID and quantity
     for(int i = 0; i < [InvoiceLines count] ; i++)
@@ -75,7 +77,7 @@
         
         NSError *error;
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        NSString*docTotal = @"0";
+        //NSString*docTotal = @"0";
         
         if([items count] == 1)
         {

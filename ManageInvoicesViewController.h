@@ -11,7 +11,7 @@
 #import "Invoice_Lines.h"
 #import "Invoice.h"
 
-@interface ManageInvoicesViewController : UIViewController{
+@interface ManageInvoicesViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
     AppDelegate *delegate;
     NSManagedObjectContext *context;
 }

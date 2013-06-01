@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageInvoicesDetailViewController.m"
-         timestampString = "391576933.008664"
+         timestampString = "391749288.85538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
          landmarkName = "-SaveInvoice:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,64 +73,64 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageInvoicesDetailViewController.m"
-         timestampString = "391576933.008664"
+         timestampString = "391749288.85538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-SaveInvoice:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageInvoicesDetailViewController.m"
-         timestampString = "391742098.928105"
+         timestampString = "391749288.85538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
-         landmarkName = "-SaveInvoice:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ManageInvoicesDetailViewController.m"
-         timestampString = "391742154.554566"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "162"
-         endingLineNumber = "162"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
          landmarkName = "-addNumber:withNumber:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ManageInvoicesDetailViewController.m"
-         timestampString = "391742155.939566"
+         timestampString = "391749288.85538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
          landmarkName = "-multiplyNumber:byNumber:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ManageInvoicesDetailViewController.m"
+         timestampString = "391749288.85538"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
+         landmarkName = "-SaveInvoice:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ChooseProductsForInvoiceViewController.m"
-         timestampString = "391742313.798924"
+         filePath = "ManageInvoicesDetailViewController.m"
+         timestampString = "391749363.184828"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
-         landmarkName = "-StoreInvocie:"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
+         landmarkName = "-SaveInvoice:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
