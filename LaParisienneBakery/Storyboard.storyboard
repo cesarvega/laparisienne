@@ -1012,9 +1012,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BG.png" width="16" height="16"/>
-        <image name="Logo.png" width="16" height="16"/>
-        <image name="LogoInv.png" width="16" height="16"/>
+        <image name="BG.png" width="1536" height="2297"/>
+        <image name="Logo.png" width="968" height="605"/>
+        <image name="LogoInv.png" width="968" height="605"/>
     </resources>
     <classes>
         <class className="ChooseClientForInvoiceViewController" superclassName="UIViewController">
