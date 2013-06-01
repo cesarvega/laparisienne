@@ -45,7 +45,7 @@
     <elements>
         <element name="Customer" positionX="-2" positionY="-189" width="128" height="253"/>
         <element name="Invoice" positionX="189" positionY="-81" width="128" height="133"/>
-        <element name="Invoice_Lines" positionX="196" positionY="89" width="128" height="120"/>
+        <element name="Invoice_Lines" positionX="196" positionY="89" width="128" height="118"/>
         <element name="Product" positionX="18" positionY="90" width="128" height="103"/>
         <element name="User" positionX="198" positionY="-189" width="128" height="88"/>
     </elements>
