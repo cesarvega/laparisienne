@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * productDescription;
 @property (nonatomic, retain) NSNumber * productID;
-@property (nonatomic, retain) NSDecimalNumber * unitPrice;
+@property (nonatomic, retain) NSString * unitPrice;
 @property (strong, nonatomic) IBOutlet UITextField *ProductNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *PorductDescriptionTextField;
 @property (strong, nonatomic) IBOutlet UITextField *UnitPriceTextField;

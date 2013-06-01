@@ -38,7 +38,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    [UnitPriceTextField setText:[unitPrice stringValue]];
+    [UnitPriceTextField setText:unitPrice];
     [ProductNameTextField setText:name];
     [PorductDescriptionTextField setText:productDescription];
     
@@ -105,6 +105,8 @@
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         
         product.productID = [f numberFromString:finalString];
+        
+        NSLog(@"product id: %@", product.productID);
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
@@ -138,7 +140,7 @@
     
     [ProductNameTextField setText:name];
     [PorductDescriptionTextField setText:productDescription];
-    [UnitPriceTextField setText:[unitPrice stringValue]];
+    [UnitPriceTextField setText:unitPrice];
 }
 
 -(void)updateExistingProduct{
