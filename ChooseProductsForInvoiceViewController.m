@@ -119,14 +119,15 @@
     
         for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
             cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
-            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * Quantity = [f numberFromString:cell.ProductQuantity.text];
+           
+            NSString * Quantity = cell.ProductQuantity.text;
             Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription
                                                    insertNewObjectForEntityForName:@"Invoice_Lines"
                                                    inManagedObjectContext:contextForInvoiceLines];
             CurrentInvoice_Lines.productID = cell.ProductID.text;
-            CurrentInvoice_Lines.quantity =Quantity ;
+            
+            
+            CurrentInvoice_Lines.quantity =cell.ProductQuantity.text;
             
             if (Quantity==nil) {
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];

@@ -14,9 +14,9 @@
 @interface Invoice_Lines : NSManagedObject
 
 @property (nonatomic, retain) NSString * invoiceOrderID;
-@property (nonatomic, retain) NSDecimalNumber * lineTotal;
+@property (nonatomic, retain) NSString * lineTotal;
 @property (nonatomic, retain) NSString * parentInvoiceDocNum;
 @property (nonatomic, retain) NSString * productID;
-@property (nonatomic, retain) NSDecimalNumber * quantity;
+@property (nonatomic, retain) NSString * quantity;
 
 @end

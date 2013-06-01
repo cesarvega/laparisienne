@@ -46,9 +46,9 @@
     //name of customer id variable is custID
     NSNumber *nextLineID;
     NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
-    NSDecimalNumber *unitPr;
+    NSString *unitPr;
     
-    NSDecimalNumber *docTotal;
+    NSString *docTotal;
     
     //invoice lines array has productID and quantity
     for(int i = 0; i < [InvoiceLines count] ; i++)
@@ -75,22 +75,23 @@
         
         NSError *error;
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        docTotal = [NSDecimalNumber zero];
+        NSString*docTotal = @"0";
         
         if([items count] == 1)
         {
             NSArray *result = [items objectAtIndex:0];
-            NSDecimalNumber *unitPrice =[result valueForKey:@"unitPrice"];
+            NSString*unitPrice =  [result valueForKey:@"unitPrice"];
             NSLog(@"unit price: %@", unitPrice);
             currentLine.lineTotal = [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
             
             NSLog(@"quantity: %@", currentLine.quantity);
              NSLog(@"Linetotal: %@", currentLine.lineTotal);
            
-            NSDecimalNumber *newDocTotal = [self addNumber:currentLine.lineTotal withNumber:docTotal];
+            NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
            
             
             docTotal = newDocTotal;
+            
            
             
         }
@@ -158,27 +159,39 @@
     [self createPDF];
     
 }
-- (NSDecimalNumber*)addNumber: (NSDecimalNumber*)firstNumber withNumber: (NSDecimalNumber*) secondNumber {
+- (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
     NSDecimalNumber *number = [NSDecimalNumber zero];
-    number = [number decimalNumberByAdding:firstNumber];
-    number = [number decimalNumberByAdding:secondNumber];
     
     
-    return number;
+    NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
+    NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
+    
+    number = [number decimalNumberByAdding:fNum];
+    number = [number decimalNumberByAdding:sNum];
+    NSLog(@"firstnum: %@", fNum);
+    NSLog(@"secondNum: %@",sNum);
+    NSLog(@"number: %@", number);
+    
+    NSString*result = [number stringValue];
+    return result;
 }
--(NSDecimalNumber*) multiplyNumber: (NSDecimalNumber*)firstNumber byNumber: (NSDecimalNumber*) secondNumber{
+-(NSString*) multiplyNumber: (NSString*)firstNumber byNumber: (NSString*) secondNumber{
     
-    NSLog(@"firstnum: %@", firstNumber);
-    NSLog(@"secondNum: %@",secondNumber);
+
           
     NSDecimalNumber *number = [NSDecimalNumber one];
-   NSDecimalNumber *n = [number decimalNumberByMultiplyingBy:firstNumber];
+    NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
+    NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
     
-    NSDecimalNumber *newVar = [n decimalNumberByMultiplyingBy:secondNumber];
-   
+    number = [number decimalNumberByMultiplyingBy:fNum];
+    number = [number decimalNumberByMultiplyingBy:sNum];
     
+    NSLog(@"firstnum: %@", fNum);
+    NSLog(@"secondNum: %@",sNum);
+    NSLog(@"number: %@", number);
+   NSString *result= [number stringValue  ];
     
-    return newVar;
+    return result;
 }
 
 -(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName{

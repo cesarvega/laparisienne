@@ -54,7 +54,7 @@
                             inManagedObjectContext:context];
         product.name = ProductNameTextField.text;
         product.productDescription = PorductDescriptionTextField.text;
-        NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
+        NSString *decimal = UnitPriceTextField.text;
         product.unitPrice = decimal;
         // int unitPriceConvert = [UnitPriceTextField.text ];
         //  product.unitPrice =[NSDecimalNumber nu:unitPriceConvert];
@@ -190,7 +190,7 @@
     aProduct.productDescription = PorductDescriptionTextField.text;
     
     
-    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
+    NSString *decimal = UnitPriceTextField.text;
     aProduct.unitPrice = decimal;
     
     //Save it
