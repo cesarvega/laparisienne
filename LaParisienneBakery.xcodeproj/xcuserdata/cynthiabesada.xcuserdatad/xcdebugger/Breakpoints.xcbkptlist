@@ -65,8 +65,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "167"
          endingLineNumber = "167"
-         landmarkName = "-addNumber:withNumber:"
-         landmarkType = "5">
+         landmarkName = "@implementation ManageInvoicesDetailViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -78,7 +78,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "183"
          endingLineNumber = "183"
-         landmarkName = "-multiplyNumber:byNumber:"
+         landmarkName = "-addNumber:withNumber:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
