@@ -12,27 +12,40 @@
 #import "AppDelegate.h"
 #import "ReaderViewController.h"
 
-@interface ManageInvoicesDetailViewController : UIViewController<ReaderViewControllerDelegate>{
+@interface ManageInvoicesDetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
     NSManagedObjectContext *contextForHeader;
-  
-   
-    
 }
-@property (nonatomic, retain) NSMutableArray * InvoiceLines;
-@property (nonatomic, retain) NSNumber * custID;
-@property (nonatomic, retain) NSNumber * InvoiceID;
+@property (strong, nonatomic) NSMutableArray * InvoiceLines;
+@property (strong, nonatomic) NSNumber * custID;
+@property (strong, nonatomic) NSNumber * InvoiceID;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceNumberTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDepartmentTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *BusinessNameTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDateTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientAddressTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientNameTextLabel;
-@property (strong, nonatomic) NSNumber *BrandnewInvoiceNumber;
-@property bool isNewInvoice;
+//table vars
+@property (nonatomic, retain) NSMutableArray * Productname;
+@property (nonatomic, retain) NSMutableArray * productDescription;
+@property (nonatomic, retain) NSMutableArray * productID;
+@property (nonatomic, retain) NSMutableArray * unitPrice;
+@property (nonatomic, retain) NSMutableArray * quantity;
+@property (nonatomic, retain) NSMutableArray * lineTotal;
+@property (nonatomic, retain) NSMutableArray *SelectedProductsIndexPaths;
+@property (strong, nonatomic) IBOutlet UITableView *ProductsTableView;
+@property (nonatomic, retain) NSNumber * ClientID;
+
+
 - (IBAction)SaveInvoice:(id)sender;
 - (IBAction)ReEditProductsSelected:(id)sender;
-
 - (IBAction)PrintPdf:(id)sender;
+@end
+
+@interface ProductsReviewDetailCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *ProductNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProductPriceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProductQuantity;
 @end

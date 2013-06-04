@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
 @property (nonatomic, retain) NSMutableArray * productID;
+@property (nonatomic, retain) NSNumber * InvoiceID;
 @property (nonatomic, retain) NSMutableArray * unitPrice;
 @property (nonatomic, retain) NSMutableArray *SelectedProductsIndexPaths;
 @property (strong, nonatomic) IBOutlet UITableView *ProductsTableView;
