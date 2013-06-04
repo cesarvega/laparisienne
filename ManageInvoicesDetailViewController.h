@@ -16,6 +16,9 @@
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
     NSManagedObjectContext *contextForHeader;
+  
+   
+    
 }
 @property (nonatomic, retain) NSMutableArray * InvoiceLines;
 @property (nonatomic, retain) NSNumber * custID;
@@ -26,6 +29,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDateTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientAddressTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientNameTextLabel;
+@property (strong, nonatomic) NSNumber *BrandnewInvoiceNumber;
+@property bool isNewInvoice;
 - (IBAction)SaveInvoice:(id)sender;
 - (IBAction)ReEditProductsSelected:(id)sender;
 

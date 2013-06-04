@@ -151,6 +151,7 @@
             [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
             [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
             [InvoiceDetailView setCustID:ClientID];
+            [InvoiceDetailView setIsNewInvoice:true];
             InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
             [self presentViewController:InvoiceDetailView animated:YES completion:nil];
           }
