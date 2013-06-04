@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface UserManagmentViewController : UIViewController
+@interface UserManagmentViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
-    NSMutableArray *contentArray;
+    NSMutableArray *usersArray;
+     NSIndexPath *indexPathForDeletion;
+    AppDelegate *delegate;
 }
+@property (nonatomic, retain) NSMutableArray * userNames;
+@property (nonatomic, retain) NSMutableArray *passwords;
+@property (weak, nonatomic) IBOutlet UITableView *usersTableView;
+- (IBAction)createUser:(id)sender;
+
 @end
