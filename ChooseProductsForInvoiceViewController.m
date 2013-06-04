@@ -18,7 +18,7 @@
 
 @implementation ChooseProductsForInvoiceViewController
  ProductsDetailCell *cell;
-@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,InvoiceID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -151,6 +151,7 @@
             [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
             [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
             [InvoiceDetailView setCustID:ClientID];
+            [InvoiceDetailView setInvoiceID:InvoiceID];
             InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
             [self presentViewController:InvoiceDetailView animated:YES completion:nil];
           }
@@ -224,7 +225,6 @@
         //        [UIView commitAnimations];
     }
 }
-
 
 -(void)populateInvoiceLineFields{
     

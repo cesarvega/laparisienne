@@ -15,7 +15,7 @@
 
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
-@synthesize custIDValue, invoiceDocDates, invoicesDocNums;
+@synthesize custIDValue, invoiceDocDates, invoicesDocNums,InvoiceID;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -69,6 +69,8 @@
     manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     if ([manageInvoicesDetailView view]) {
         [manageInvoicesDetailView setCustID:custIDValue];
+        NSLog(@"My id %@", [InvoiceID objectAtIndex:indexPath.row]);
+        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];
     
     }
     [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
@@ -81,6 +83,7 @@
 -(void)initArrays{
     invoiceDocDates = [[NSMutableArray alloc]init];
     invoicesDocNums = [[NSMutableArray alloc]init];
+    InvoiceID =[[NSMutableArray alloc]init];
 }
 
 //get all invoices whose custID = this class custID
@@ -96,10 +99,11 @@
     NSArray *invoices= [context executeFetchRequest:request error:&error];
     for (NSArray *item in invoices) {
         NSString *date = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
+        NSNumber *InvoiceIDs = [item valueForKey:@"InvoiceID"];
         NSString *docNum = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
         [invoicesDocNums addObject:docNum];
         [invoiceDocDates addObject:date];
-       
+        [InvoiceID addObject:InvoiceIDs];
     }
  }
 

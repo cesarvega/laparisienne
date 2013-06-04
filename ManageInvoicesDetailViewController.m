@@ -11,13 +11,18 @@
 #import "Invoice.h"
 #import "Invoice_Lines.h"
 #define kPadding 20
+@implementation ProductsReviewDetailCell
+@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity;
+@end
 @interface ManageInvoicesDetailViewController ()
 {CGSize _pageSize;}
 @end
 
 @implementation ManageInvoicesDetailViewController
+ ProductsReviewDetailCell *cell;
 @synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID;
 @synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,quantity,lineTotal;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -47,10 +52,7 @@
     NSNumber *nextLineID;
     NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
  
-   
-    NSString *unitPr;
-    
-    NSString *docTotal = @"0"; 
+    NSString *docTotal = @"0";
     
     //invoice lines array has productID and quantity
     for(int i = 0; i < [InvoiceLines count] ; i++)
@@ -61,8 +63,6 @@
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
           NSLog(@"parent inv docnum: %@", currentLine.parentInvoiceDocNum);
-        
-
         
         //use product ID to get product info
         //fetch product using ID
@@ -77,7 +77,7 @@
         
         NSError *error;
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        //NSString*docTotal = @"0";
+        NSString*docTotal = @"0";
         
         if([items count] == 1)
         {
@@ -164,6 +164,7 @@
     [self createPDF];
     
 }
+
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
     NSDecimalNumber *number = [NSDecimalNumber zero];
     
@@ -180,6 +181,7 @@
     NSString*result = [number stringValue];
     return result;
 }
+
 -(NSString*) multiplyNumber: (NSString*)firstNumber byNumber: (NSString*) secondNumber{
     
 
@@ -262,11 +264,10 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [self GetClientDataForHeader];
-    // NSLog(@"%@",InvoiceLines);
 }
 
 -(void)GetClientDataForHeader{
-
+    [self InitArraysToHoldData];
     NSError *error = nil;
     //This is your NSManagedObject subclass
     //Set up to get the thing you want to update
@@ -289,19 +290,68 @@
         NSString *Date =dateString;
         NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         NSString *InvoiceNumber =@"12345678";
+        if (InvoiceID!=nil) {
+            request = [[NSFetchRequest alloc] init];
+            [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
+            [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
+            
+   
+            NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
+            
+            for (NSArray *item in invoices) {
+                NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
+                request = [[NSFetchRequest alloc] init];
+                [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
+                [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceOrderID = %@",InvoiceLinesID]];
+                NSArray *invoices_lines= [contextForHeader executeFetchRequest:request error:&error];
+          
+                for(NSArray *item in invoices_lines){
+                  
+                 
+                    NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
+                    NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
+                  
+                    NSString *quantitys = [NSString stringWithFormat:@"%@",[item valueForKey:@"quantity"]];
+                   
+                    [lineTotal addObject:lineTotals];
+                    [productID addObject:productIDs];                  
+                    [quantity addObject:quantitys];
+                    
+                    request = [[NSFetchRequest alloc] init];
+                    [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext:contextForHeader]];
+                    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",[productID objectAtIndex:0]]];
+                    NSArray *products= [contextForHeader executeFetchRequest:request error:&error];
+                    
+                    for(NSArray *item in products){
+                      
+                        NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+                        NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
+                        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+                        
+                        [unitPrice addObject:unitPrices];
+                        [Productname addObject:Productnames];
+                        [productDescription addObject:productDescriptions];
+
+                    }
+                }
+            }
+        }
+
+         [ProductsTableView reloadData];
         [BusinessNameTextLabel setText:BusinessName];
         //[InvoiceDepartmentTextLabel setText:Department];
+        
         [ClientAddressTextLabel setText:BusinessAddress];
         [InvoiceDateTextLabel setText:Date]; 
         [ClientNameTextLabel setText:BusinessContactName];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
         
-        UILabel *headingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 436, 400, 130)];// x y with heigh
+               
         
-        [self.view addSubview:headingLabel];
-       
-        headingLabel.text = @"Quantity : 10  Product Name: Bread   Total: 100";
-  
+        //This is your NSManagedObject subclass
+        //Set up to get the thing you want to update
+        
+                
     }
 
 }
@@ -371,7 +421,7 @@
     }
     
     int textPosititon = 360;
-    for (int i = 1; i <= 5; i++){
+    for (int i = 1; i <= 1; i++){
     [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"Quantity                  ", @"Product                      ",@"Total          ", @"Quantity                ", @"Product                   ",@"Total        "]
         withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:18.0f];
         textPosititon =textPosititon+60;
@@ -482,5 +532,43 @@
     }
 }
 
+-(void)OpenInvoice{
+
+
+
+}
+
+#pragma mark custom tableview delgate methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [Productname count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"ProducReviewDetailsCell";
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[ProductsReviewDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    cell.ProductNameLabel.text =  [Productname objectAtIndex:indexPath.row];
+    cell.ProductDescriptionLabel.text =[productDescription objectAtIndex:indexPath.row];
+    cell.ProductPriceLabel.text =[unitPrice objectAtIndex:indexPath.row];
+    cell.ProductQuantity.text=[quantity objectAtIndex:indexPath.row];
+    return cell;
+
+}
+
+-(void)InitArraysToHoldData{
+    Productname = [[NSMutableArray alloc] init];
+    productDescription = [[NSMutableArray alloc] init];
+    productID = [[NSMutableArray alloc] init];
+    unitPrice = [[NSMutableArray alloc] init];
+    quantity= [[NSMutableArray alloc] init];
+    lineTotal =[[NSMutableArray alloc] init];
+}
 
 @end
