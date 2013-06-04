@@ -299,28 +299,29 @@
             NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
             
             for (NSArray *item in invoices) {
+                
                 NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
                 request = [[NSFetchRequest alloc] init];
                 [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
-                [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceOrderID = %@",InvoiceLinesID]];
+                [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLinesID]];
                 NSArray *invoices_lines= [contextForHeader executeFetchRequest:request error:&error];
-          
+                int index =0;
                 for(NSArray *item in invoices_lines){
                   
-                 
+                    
                     NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
                     NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
-                  
                     NSString *quantitys = [NSString stringWithFormat:@"%@",[item valueForKey:@"quantity"]];
                    
                     [lineTotal addObject:lineTotals];
                     [productID addObject:productIDs];                  
                     [quantity addObject:quantitys];
-                    
                     request = [[NSFetchRequest alloc] init];
                     [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext:contextForHeader]];
-                    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",[productID objectAtIndex:0]]];
+                    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",[productID objectAtIndex:index]]];
                     NSArray *products= [contextForHeader executeFetchRequest:request error:&error];
+
+                    index++;
                     
                     for(NSArray *item in products){
                       
