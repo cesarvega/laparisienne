@@ -15,7 +15,7 @@
 
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
-@synthesize custIDValue, invoiceDocDates, invoicesDocNums,InvoiceID;
+@synthesize custIDValue, invoiceDocDates, invoicesDocNums,InvoiceID, InvoicesTableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -119,7 +119,85 @@
 }
 
 
-
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        // [self.dataArray removeObjectAtIndex:indexPath.row];
+        indexPathForDeletion = indexPath;
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+        
+        [message show];
+        
+    }
+    
+    
+    
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSString *val = [InvoiceID objectAtIndex:indexPathForDeletion.row];
+        NSPredicate *p =[NSPredicate predicateWithFormat:@"invoiceID = %@", val];
+        [fetchRequest setPredicate:p];
+        
+        NSError *error;
+        NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        
+        
+        
+        for (Invoice *invoice in items) {
+            [delegate.managedObjectContext deleteObject:invoice];
+            NSLog(@"object deleted");
+            
+            
+            NSMutableArray *invoiceLinesToBeDeleted = [[NSMutableArray alloc]initWithArray:
+            [self GetInvoiceLines:invoice.docNum]];
+            
+            for(int i = 0; i < [invoiceLinesToBeDeleted count]; i++)
+            {
+                [delegate.managedObjectContext deleteObject:[invoiceLinesToBeDeleted objectAtIndex:i]];
+            }
+            
+        }
+        if (![delegate.managedObjectContext save:&error]) {
+            NSLog(@"Error deleting - error:%@",error);
+        }
+        
+        [InvoiceID removeObjectAtIndex:indexPathForDeletion.row];
+        [invoiceDocDates removeObjectAtIndex:indexPathForDeletion.row];
+        [invoicesDocNums removeAllObjects];
+        
+        
+        //add logic to get custID and delete from table
+        
+        
+    }
+    [InvoicesTableView   reloadData];
+    
+}
+-(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:delegate.managedObjectContext]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
+    NSArray *Invoice_Lines= [delegate.managedObjectContext executeFetchRequest:request error:&error];
+    return Invoice_Lines;
+}
 
 
 

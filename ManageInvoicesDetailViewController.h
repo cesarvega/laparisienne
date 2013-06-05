@@ -16,6 +16,7 @@
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
     NSManagedObjectContext *contextForHeader;
+    NSIndexPath *indexPathForDeletion;
 }
 @property (strong, nonatomic) NSMutableArray * InvoiceLines;
 @property (strong, nonatomic) NSNumber * custID;

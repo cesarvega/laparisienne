@@ -572,4 +572,22 @@
     lineTotal =[[NSMutableArray alloc] init];
 }
 
+-(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
+    NSArray *Invoice_Lines= [contextForHeader executeFetchRequest:request error:&error];
+    return Invoice_Lines;
+}
+-(NSArray*)GetInvoicesByInvoiceID{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
+    NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
+    return invoices;
+}
+
+
 @end
