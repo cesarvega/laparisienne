@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 	// Do any additional setup after loading the view.
 }
 
@@ -97,7 +98,7 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Product successfully saved."
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"User successfully saved."
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];

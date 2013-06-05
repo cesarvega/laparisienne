@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface MainMenuViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
+@interface MainMenuViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource, UIAlertViewDelegate>{
     
     NSMutableArray *firstSection;
     NSMutableArray *secondSection;
