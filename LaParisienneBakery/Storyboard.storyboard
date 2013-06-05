@@ -552,6 +552,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="InvoicesTableView" destination="y3m-j8-NhL" id="ReN-0U-HXX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahu-Fc-Md5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -931,13 +934,21 @@
                                                 <segue destination="YDX-ty-IAK" kind="modal" id="v1o-PL-HuV"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nhk-4z-7NV"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nhk-4z-7NV">
+                                            <connections>
+                                                <action selector="SaveButton:" destination="rKV-xt-K3R" id="SKg-AE-hm8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTestField" destination="CKl-0J-J3d" id="78N-Hb-dxL"/>
+                        <outlet property="userNameTextField" destination="2nc-Ps-vE5" id="voO-Wj-ntl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHQ-t7-zmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1104,7 +1115,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vao-2g-q4t"/>
-        <segue reference="5Dx-1A-J2N"/>
+        <segue reference="EBX-BC-bge"/>
+        <segue reference="kt7-IF-yko"/>
     </inferredMetricsTieBreakers>
 </document>

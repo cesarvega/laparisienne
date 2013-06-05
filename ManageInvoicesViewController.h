@@ -14,11 +14,13 @@
 @interface ManageInvoicesViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
     AppDelegate *delegate;
     NSManagedObjectContext *context;
+    NSIndexPath *indexPathForDeletion;
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
 @property (strong, nonatomic)NSMutableArray* invoicesDocNums;
 @property (strong, nonatomic)NSMutableArray* invoiceDocDates;
+@property (weak, nonatomic) IBOutlet UITableView *InvoicesTableView;
 @property (strong, nonatomic)NSMutableArray* InvoiceID;
 @property (strong, nonatomic) NSNumber * custIDValue;
 - (IBAction)CreateANewInvoiceButton:(id)sender;
