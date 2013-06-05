@@ -26,7 +26,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDateTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientAddressTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ClientNameTextLabel;
-//table vars
+
+#pragma Mark Prototype variables
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
 @property (nonatomic, retain) NSMutableArray * productID;
@@ -43,6 +44,7 @@
 - (IBAction)PrintPdf:(id)sender;
 @end
 
+#pragma Mark Prototype cell labels & class
 @interface ProductsReviewDetailCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *ProductNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
