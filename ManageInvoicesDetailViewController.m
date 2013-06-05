@@ -402,13 +402,13 @@
     
     [self DrawTheInviceLayout];
     
-    [self  DrawTheInviceProductsContent];
+    [self  DrawTheInvoiceProductsContent];
     
     [self finishPDF];
     
 }
 
--(void)DrawTheInviceProductsContent{
+-(void)DrawTheInvoiceProductsContent{
 
     int textPosititon = 400;
     for (int i = 1; i <= 12; i++){
