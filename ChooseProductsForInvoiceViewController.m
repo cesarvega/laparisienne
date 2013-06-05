@@ -118,28 +118,21 @@
     if ([SelectedProductsIndexPaths count]>0){
     
         for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
+            
             cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
-           
             NSString * Quantity = cell.ProductQuantity.text;
-            Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription
-                                                   insertNewObjectForEntityForName:@"Invoice_Lines"
+            Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription  insertNewObjectForEntityForName:@"Invoice_Lines"
                                                    inManagedObjectContext:contextForInvoiceLines];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * myNumber = [f numberFromString:cell.ProductID.text];
-            
-            CurrentInvoice_Lines.productID = myNumber;//cell.ProductID.text;
-            
-            
+            NSNumber * myProductID = [f numberFromString:cell.ProductID.text];
+            CurrentInvoice_Lines.productID = myProductID;//cell.ProductID.text;
             CurrentInvoice_Lines.quantity = cell.ProductQuantity.text;
             
             if (Quantity==nil) {
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"
-                                                                message:errorMSG
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"message:errorMSG delegate:nil
+                                                      cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
                 break;
             }else{
@@ -158,13 +151,9 @@
       
   }else{
                     NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected"
-                                                                    message:successMsg
-                                                                   delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                        otherButtonTitles: nil];
-                                    [alert show];
-
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected" message:successMsg
+                                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
         }
 }
 

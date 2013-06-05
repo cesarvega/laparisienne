@@ -54,7 +54,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text =  [invoicesDocNums objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Invoice # :%@",[invoicesDocNums objectAtIndex:indexPath.row]];
     cell.detailTextLabel.text =[invoiceDocDates objectAtIndex:indexPath.row];
     return cell;
 }
@@ -69,9 +69,7 @@
     manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     if ([manageInvoicesDetailView view]) {
         [manageInvoicesDetailView setCustID:custIDValue];
-        NSLog(@"My id %@", [InvoiceID objectAtIndex:indexPath.row]);
-        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];
-    
+        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];    
     }
     [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
     

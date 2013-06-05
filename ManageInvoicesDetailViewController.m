@@ -44,11 +44,7 @@
 }
 
 - (IBAction)SaveInvoice:(id)sender {
-    //CYNTHIA STUFF your code goes here to store the invoice
-    // the array with the invoice_line objects is "InvoiceLines" and the customer is is custID
     
-    //name of invoice lines array is InvoiceLines
-    //name of customer id variable is custID
     NSNumber *nextLineID;
     NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
  
@@ -266,18 +262,18 @@
     [self GetClientDataForHeader];
 }
 
+#pragma Mark Invoice Preview
+
 -(void)GetClientDataForHeader{
+    
     [self InitArraysToHoldData];
-    NSError *error = nil;
-    //This is your NSManagedObject subclass
-    //Set up to get the thing you want to update
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Customer" inManagedObjectContext:contextForHeader]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custID]];
     
-    //Ask for it
-    NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
-    for (NSArray *item in invoices) {
+    NSArray *Customer= [self GetCustomerByCustID];
+    
+    for (NSArray *item in Customer) {
         NSString *BusinessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         //NSString *Department =@"Kitchen 1";
         NSString *BusinessAddress = [NSString stringWithFormat:@"%@ %@ %@ %@ %@",
@@ -290,25 +286,17 @@
         NSString *Date =dateString;
         NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         NSString *InvoiceNumber =@"12345678";
+     
         if (InvoiceID!=nil) {
-            request = [[NSFetchRequest alloc] init];
-            [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
-            [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
-            
-   
-            NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
+         
+            NSArray *invoices= [self GetInvoicesByInvoiceID];
             
             for (NSArray *item in invoices) {
                 
                 NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
-                request = [[NSFetchRequest alloc] init];
-                [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
-                [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLinesID]];
-                NSArray *invoices_lines= [contextForHeader executeFetchRequest:request error:&error];
-                int index =0;
+                NSArray *invoices_lines= [self GetInvoiceLines:InvoiceLinesID];
+               
                 for(NSArray *item in invoices_lines){
-                  
-                    
                     NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
                     NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
                     NSString *quantitys = [NSString stringWithFormat:@"%@",[item valueForKey:@"quantity"]];
@@ -316,12 +304,8 @@
                     [lineTotal addObject:lineTotals];
                     [productID addObject:productIDs];                  
                     [quantity addObject:quantitys];
-                    request = [[NSFetchRequest alloc] init];
-                    [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext:contextForHeader]];
-                    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",[productID objectAtIndex:index]]];
-                    NSArray *products= [contextForHeader executeFetchRequest:request error:&error];
-
-                    index++;
+                    
+                    NSArray *products= [self Getproducts:[productID objectAtIndex:0]];
                     
                     for(NSArray *item in products){
                       
@@ -336,26 +320,79 @@
                     }
                 }
             }
+        }else{
+        
+           for (Invoice_Lines *invoices_lines in InvoiceLines){
+               
+               NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
+                    
+                    for(NSArray *item in products){
+                        
+                        NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+                        NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
+                        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+                        
+                        [unitPrice addObject:unitPrices];
+                        [Productname addObject:Productnames];
+                        [productDescription addObject:productDescriptions];
+                        [quantity addObject:invoices_lines.quantity];
+                    
+               }
+           }
         }
 
-         [ProductsTableView reloadData];
+        [ProductsTableView reloadData];
         [BusinessNameTextLabel setText:BusinessName];
         //[InvoiceDepartmentTextLabel setText:Department];
-        
+        [InvoiceDepartmentTextLabel setText:@"Kitchen 1"];
         [ClientAddressTextLabel setText:BusinessAddress];
         [InvoiceDateTextLabel setText:Date]; 
         [ClientNameTextLabel setText:BusinessContactName];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
         
-               
-        
-        //This is your NSManagedObject subclass
-        //Set up to get the thing you want to update
-        
-                
     }
 
 }
+
+-(NSArray*)GetCustomerByCustID{
+    
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Customer" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custID]];
+    NSArray *Customers= [contextForHeader executeFetchRequest:request error:&error];
+    return Customers;
+}
+
+-(NSArray*)GetInvoicesByInvoiceID{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
+    NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
+    return invoices;
+}
+
+-(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
+    NSArray *Invoice_Lines= [contextForHeader executeFetchRequest:request error:&error];
+    return Invoice_Lines;
+}
+
+-(NSArray*)Getproducts: (NSString*)product_ID{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",product_ID]];
+    NSArray *products= [contextForHeader executeFetchRequest:request error:&error];
+    return products;
+}
+
+#pragma Mark PDF Methods
 
 - (void)createPDF{
     
@@ -363,27 +400,56 @@
     
     [self beginPDFPage];
     
-    [self addText:@"1909 NE154th Street\nNortl1Miami Beach,Florida 33162\nTel:305.948.9979 . Fax: 305.948.9970\nwww.laparisiennebakery.com"
-                          withFrame:CGRectMake(400, 120, 450, 250) fontSize:18.0f];
+    [self DrawTheInviceLayout];
     
-    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@",@"Invoice Number :", @"#####     ",@"Department :", @"#####\n",@"Name :", @"#####     ",@"Date :", @"#####\n",@"Address :", @"#####     ",@"Contact :", @"#####"]
-        withFrame:CGRectMake(20, 248, 150, 150) fontSize:18.0f];
+    [self  DrawTheInviceProductsContent];
+    
+    [self finishPDF];
+    
+}
+
+-(void)DrawTheInviceProductsContent{
+
+    int textPosititon = 400;
+    for (int i = 1; i <= 12; i++){
+        [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"  Quantity                                ", @"Product                                    ",@"Total               ", @"Quantity                              ", @"Product                          ",@"Total        "]
+            withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:13.0f];
+        textPosititon =textPosititon+30;
+    }
+
+}
+
+-(void)DrawTheInviceLayout{
+  
+    [self addText:@"1909 NE154th Street\nNortl1Miami Beach,Florida 33162\nTel:305.948.9979 . Fax: 305.948.9970\nwww.laparisiennebakery.com"
+        withFrame:CGRectMake(400, 120, 450, 250) fontSize:15.0f];
+    
+    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@",@"Invoice Number :", InvoiceNumberTextLabel.text,@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
+        withFrame:CGRectMake(20, 248, 150, 150) fontSize:15.0f];
     
     UIImage *anImage = [UIImage imageNamed:@"LogoInv.png"];
     CGRect imageRect = [self addImage:anImage
                               atPoint:CGPointMake(20, 60)];
     
-        [self addLineWithFrame:CGRectMake(kPadding, imageRect.origin.y + imageRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
+    [self addLineWithFrame:CGRectMake(kPadding, imageRect.origin.y + imageRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
                  withColor:[UIColor blackColor] Orientation:@""];
+
     
-    //drawing table grid
     int Rows = 340;
-    for (int i = 1; i <= 12; i++)
+    for (int i = 1; i <= 2; i++)
     {
-            [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
+        [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
                      withColor:[UIColor darkGrayColor] Orientation:@""];
-            Rows = Rows+60;
-    
+        Rows = 1000;
+        
+    }
+    Rows = 380;
+    for (int i = 1; i <= 2; i++)
+    {
+        [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
+                     withColor:[UIColor darkGrayColor] Orientation:@""];
+        Rows =Rows+590;
+        
     }
     int Colums = 20;
     for (int i = 1; i <= 2; i++)
@@ -391,7 +457,7 @@
         [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
                      withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
         Colums = Colums+810;
-      
+        
     }
     
     Colums = 120;
@@ -421,14 +487,12 @@
         
     }
     
-    int textPosititon = 360;
+    int textPosititon = 350;
     for (int i = 1; i <= 1; i++){
-    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"Quantity                  ", @"Product                      ",@"Total          ", @"Quantity                ", @"Product                   ",@"Total        "]
-        withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:18.0f];
+        [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"  Quantity                                ", @"Product                                    ",@"Total               ", @"Quantity                              ", @"Product                          ",@"Total        "]
+            withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:13.0f];
         textPosititon =textPosititon+60;
     }
-    [self finishPDF];
-    
 }
 
 - (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
@@ -459,10 +523,10 @@
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
     CGContextSetStrokeColorWithColor(currentContext, color.CGColor);
-    
+    CGFloat dashes[] = {1,5};
+    CGContextSetLineDash(currentContext, 0.0, dashes, 2);
     // this is the thickness of the line
     CGContextSetLineWidth(currentContext, frame.size.height/3);
-    
     CGPoint startPoint = frame.origin;
     CGPoint endPoint;
     if ([orientation isEqualToString: @"Vertical"]) {
@@ -473,7 +537,7 @@
     CGContextBeginPath(currentContext);
     CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
     CGContextAddLineToPoint(currentContext, endPoint.x, endPoint.y);
-    
+    CGContextStrokePath(currentContext);
     CGContextClosePath(currentContext);
     CGContextDrawPath(currentContext, kCGPathFillStroke);
     
@@ -539,7 +603,7 @@
 
 }
 
-#pragma mark custom tableview delgate methods
+#pragma mark custom Prototype delgate methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -571,23 +635,5 @@
     quantity= [[NSMutableArray alloc] init];
     lineTotal =[[NSMutableArray alloc] init];
 }
-
--(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
-    NSError *error = nil;
-    NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
-    NSArray *Invoice_Lines= [contextForHeader executeFetchRequest:request error:&error];
-    return Invoice_Lines;
-}
--(NSArray*)GetInvoicesByInvoiceID{
-    NSError *error = nil;
-    NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
-    NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
-    return invoices;
-}
-
 
 @end
