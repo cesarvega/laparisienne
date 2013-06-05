@@ -156,8 +156,9 @@
     
     
     
-    
+    //InvoiceID=  invoice.invoiceID;
     [self createPDF];
+
     
 }
 
@@ -397,10 +398,10 @@
 - (void)createPDF{
     
     [self setupPDFDocumentNamed:@"NewPDF" Width:850 Height:1100];
-    
+    //[self setupPDFDocumentNamed:@"InvoiceNUmber[InvoiceID stringValue] Width:850 Height:1100];
     [self beginPDFPage];
     
-    [self DrawTheInviceLayout];
+    [self DrawTheInvoiceLayout];
     
     [self  DrawTheInvoiceProductsContent];
     
@@ -410,16 +411,36 @@
 
 -(void)DrawTheInvoiceProductsContent{
 
-    int textPosititon = 400;
-    for (int i = 1; i <= 12; i++){
-        [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"  Quantity                                ", @"Product                                    ",@"Total               ", @"Quantity                              ", @"Product                          ",@"Total        "]
-            withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:13.0f];
-        textPosititon =textPosititon+30;
-    }
+ 
+    int totalOfTheWholeInvoice =0;
+    for (Invoice_Lines *invoices_lines in InvoiceLines){
+        
+        NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
+        int textPosititon = 400;
+        for(NSArray *item in products){
+            
+            NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+            NSString *quantitys =invoices_lines.quantity;
+            NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+            int totalPerProduct =[quantitys intValue]*[unitPrices intValue];
+            
+            totalOfTheWholeInvoice =totalOfTheWholeInvoice+totalPerProduct;
+              
+  [self addText:[NSString stringWithFormat:@"        %@                                       %@                                      %@                        %@                                     %@                        %@ ",quantitys, Productnames,[NSString stringWithFormat:@"%d",totalPerProduct],quantitys, Productnames,[NSString stringWithFormat:@"%d",totalPerProduct]]
+                    withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:13.0f];
+            
+                textPosititon =textPosititon+30;
+            }
+          
+            
+        }
+   
+    
+   
 
 }
 
--(void)DrawTheInviceLayout{
+-(void)DrawTheInvoiceLayout{
   
     [self addText:@"1909 NE154th Street\nNortl1Miami Beach,Florida 33162\nTel:305.948.9979 . Fax: 305.948.9970\nwww.laparisiennebakery.com"
         withFrame:CGRectMake(400, 120, 450, 250) fontSize:15.0f];
