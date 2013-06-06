@@ -611,7 +611,6 @@
     UIGraphicsEndPDFContext();
     [self didClickOpenPDF];
 }
-
 //NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
 - (void)didClickOpenPDF {
     
@@ -635,7 +634,6 @@
         }
     }
 }
-
 
 #pragma mark custom Prototype delgate methods
  
