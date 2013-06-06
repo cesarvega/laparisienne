@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     delegate =(AppDelegate *) [[UIApplication sharedApplication] delegate];
-    //[self populateProductsTable];
+    [self populateProductsTable];
     //Initialize the array.
     firstSection = [[NSMutableArray alloc] init];
     secondSection = [[NSMutableArray alloc] init];
@@ -62,14 +62,11 @@
 }
 
 - (void)viewDidUnload{
-    
     firstSection =  nil;
     secondSection = nil;
     thirdSection = nil;
     titleOfSections = nil;
     menuDataSource = nil;
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -198,41 +195,43 @@
     
       
 }
-/**
+
+
 -(void)populateProductsTable{
    
+    if (![@"NO" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"myUserDefaultsKey"]]){
+    
     NSArray *productNames = [[NSArray alloc]initWithObjects:@"Ciabatta Loaf",@"Sourdough Loaf", @"Paves", @"Country loaf 1250",@"Country loaf 2500",@"Country loaf 500",@"Miche Au levain",@"Walnut / raisins loaf",@"Olive loaf",@"Multi-grain loaf",@"Rye loaf",@"Brioche Pullman 2000",@"Brioche Pullman 1400",@"Brioche Pullman 1100",@"Brioche mousseline",@"Brioche cylindrical",@"Multi-grain Pullman 2500",@"Multi-grain Pullman 2000",@"Multi-grain Pullman 1500",@"Whole wheat Pullman 2000",@"Whole wheat Pullman 1500",@"Rye Pullman 2000",@"Pumpernickel Pullman 1100",@"Pumpernickel Pullman 1400",@"Sourdough Pullman 2000",@"Sourdough Pullman 1500",@"Pain de mie Pullman 2000",@"Pain de mie Pullman 1500",@"Rustic baguette",@"Classic baguette",@"Walnut / raisin baguette",@"Whole wheat baguette",@"Multi-grains baguette",@"Pumpernickel baguette",@"Epis baguette",@"Epis baguette flax",@"Ficelle",@"Whole wheat ficelle",@"Pumpernickel ficelle",@"Walnut raisin ficelle",@"Rustic ficelle",@"Multi-grain ficelle",@"Olive ficelle",@"Fennel seeds ficelle",@"Ciabatta  sandwich",@"Ciabatta sandwich square",@"Saucisson hoagies",@"Mini saucisson hoagies",@"Plain hoagies",@"Multi-grain sandwich",@"Whole wheat sandwich",@"Walnut / raisins sandwich",@"Sandwich Provençal",@"Steak sandwich",@"Baguette sandwich",@"Saucisson sandwich sesame",@"Brioche bun 90g sesame",@"Brioche bun 90g poppy",@"Brioche bun 90g plain",@"Mini brioche sesame",@"Mini brioche bun plain",@"Mini mini brioche bun",@"Classic burger bun",@"Classic mini burger bun",@"Multi-grain bun",@"Onion bun",@"White paves roll"@"Whole wheat paves roll",@"Mini square ciabatta",@"Foccacia stick",@"Multi-grain roll",@"Multi-grain paves roll",@"Onion roll",@"Olive roll",@"Olive paves roll",@"Walnut / raisin roll",@"Walnut / raisin paves roll",@"Pumpernickel stick",@"Beaujolais",@"Cypress roll",@"Baguette roll",@"Mini baguette",@"Foccacia sheet",@"Whole wheat multi-grain",@"Onion country loaf",@"Display bread" , nil];
     
     
-    for(int i = 0; i < [productNames count]; i++)
-    {
+    for(int i = 0; i < [productNames count]; i++) {
         
             Product *product = [NSEntityDescription
                                 insertNewObjectForEntityForName:@"Product"
                                 inManagedObjectContext:delegate.managedObjectContext];
         
         product.name = [productNames objectAtIndex:i];
-        product.productDescription = @"a description";
-        product.unitPrice = @"0.0";
+        product.productDescription =[NSString stringWithFormat:@"%@%@",[productNames objectAtIndex:i], @" description"];
+        product.unitPrice = @"1.0";
         
         NSNumber *ID = [NSNumber numberWithInt:i];
         product.productID = ID;
         NSError *error;
         
-        if(![delegate.managedObjectContext save:&error])
-        {
+        if(![delegate.managedObjectContext save:&error]) {
             
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
+            }
         
-        
-        
+       
     }
          
-        
+        NSUserDefaults*  defaultValues = [NSUserDefaults standardUserDefaults];
+        [defaultValues setObject:@"NO"  forKey:@"myUserDefaultsKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     
-    
+    }
 
 }
- **/
+ 
 @end
