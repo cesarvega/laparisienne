@@ -16,5 +16,7 @@
 @dynamic parentInvoiceDocNum;
 @dynamic productID;
 @dynamic quantity;
+@dynamic product;
+@dynamic unitPrice;
 
 @end

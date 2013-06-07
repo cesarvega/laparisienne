@@ -25,6 +25,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -106,6 +107,8 @@
             
         }
     }
+    
+     
     
 
 }

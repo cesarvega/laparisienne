@@ -18,5 +18,7 @@
 @property (nonatomic, retain) NSString * parentInvoiceDocNum;
 @property (nonatomic, retain) NSNumber * productID;
 @property (nonatomic, retain) NSString * quantity;
+@property (nonatomic, retain) NSString * unitPrice;
+@property (nonatomic, retain) NSString * product;
 
 @end
