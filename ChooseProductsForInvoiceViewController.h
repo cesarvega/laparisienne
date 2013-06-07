@@ -30,7 +30,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *ProductID;
 @property (strong, nonatomic) IBOutlet UILabel *ProductNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
-@property (strong, nonatomic) IBOutlet UILabel *ProductPriceLabel;
+@property (strong, nonatomic) IBOutlet UITextField *ProductPriceLabel;
 @property (strong, nonatomic) IBOutlet UITextField *ProductQuantity;
 
 @end
