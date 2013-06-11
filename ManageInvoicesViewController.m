@@ -146,7 +146,7 @@
     {
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
         NSString *val = [InvoiceID objectAtIndex:indexPathForDeletion.row];
