@@ -592,9 +592,9 @@
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
     _pageSize = CGSizeMake(width, height);
     
-    NSString *newPDFName = [NSString stringWithFormat:@"%@.pdf", name];
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
@@ -613,9 +613,9 @@
 //NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
 - (void)didClickOpenPDF {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[InvoiceID stringValue],@"pdf"]];
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",[InvoiceID stringValue],@"pdf"]];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
         
@@ -625,10 +625,8 @@
         {
             ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
             readerViewController.delegate = self;
-            
             readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-            
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;   
             [self presentViewController:readerViewController animated:YES completion:nil];
         }
     }
