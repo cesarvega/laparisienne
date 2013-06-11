@@ -70,6 +70,7 @@
 		828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB5176699B500C666C6 /* OpenGLES.framework */; };
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
 		828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBC1766A70700C666C6 /* NICSignatureView.m */; };
+		828E6DC01766D41100C666C6 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBF1766D41000C666C6 /* AViewController.m */; };
 		82992E551756E64900105CE7 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82992E541756E64900105CE7 /* tree.jpg */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
@@ -185,6 +186,8 @@
 		828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFInvoicesViewController.m; sourceTree = "<group>"; };
 		828E6DBB1766A70700C666C6 /* NICSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSignatureView.h; sourceTree = "<group>"; };
 		828E6DBC1766A70700C666C6 /* NICSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSignatureView.m; sourceTree = "<group>"; };
+		828E6DBE1766D41000C666C6 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		828E6DBF1766D41000C666C6 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		82992E541756E64900105CE7 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				828E6DBE1766D41000C666C6 /* AViewController.h */,
+				828E6DBF1766D41000C666C6 /* AViewController.m */,
 				8252BDAA1756EB350061F803 /* PDFEngine */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
@@ -610,6 +615,7 @@
 				8252BE061756ED660061F803 /* UIXToolbarView.m in Sources */,
 				828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */,
 				828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */,
+				828E6DC01766D41100C666C6 /* AViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
