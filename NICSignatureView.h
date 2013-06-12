@@ -14,5 +14,7 @@
 @property (strong, nonatomic) UIImage *signatureImage;
 
 - (void)erase;
-
+- (IBAction)StoreSignedInvoice:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *RecieversName;
+- (IBAction)EraseSignature:(id)sender;
 @end

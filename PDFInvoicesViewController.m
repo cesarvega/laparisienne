@@ -75,26 +75,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPath.row]]];
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
-        
-        ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
-        
-        if (document != nil)
-        {
-            ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
-            readerViewController.delegate = self;
-            readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-            [self presentViewController:readerViewController animated:YES completion:nil];
-        }
-    }
-}
+ 
+    indexPathForDeletion =indexPath;
 
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Would you like to Preview or  Sign the Invoice"
+                                                      message:nil
+                                                     delegate:self
+                                            cancelButtonTitle:@"Preview Doc"
+                                            otherButtonTitles:@"Sign Doc", nil];
+        [message show];
+    
+ }
+
+//delete the invoice pdf file
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
             
@@ -105,12 +98,15 @@
                                                 cancelButtonTitle:@"No"
                                                 otherButtonTitles:@"Yes", nil];
         
+        
         [message show];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+   
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
     if([title isEqualToString:@"Yes"])
     {
          NSError *error = nil;
@@ -120,6 +116,38 @@
         [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PDFInvoices"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
+    }
+
+    if([title isEqualToString:@"Preview Doc"])
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPathForDeletion.row]]];
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
+            
+            ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
+            
+            if (document != nil)
+            {
+                ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+                readerViewController.delegate = self;
+                readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+                [self presentViewController:readerViewController animated:YES completion:nil];
+            }
+        }
+        
+        
+    }
+    
+    if([title isEqualToString:@"Sign Doc"])
+    {
+
+         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GLKView"];
+        
         [self presentViewController:manageClientsViewController animated:YES completion:nil];
     }
       

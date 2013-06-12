@@ -15,5 +15,5 @@
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *InvoicesTableView;
-
+@property (nonatomic, strong) UIPopoverController *popController;
 @end

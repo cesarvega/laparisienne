@@ -418,4 +418,18 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     effect = nil;
 }
 
+
+- (IBAction)StoreSignedInvoice:(id)sender {
+    
+    //Save the invoice and preview the save invoices
+    
+   
+}
+
+- (IBAction)EraseSignature:(id)sender {
+    
+    [self erase];
+    
+}
+
 @end
