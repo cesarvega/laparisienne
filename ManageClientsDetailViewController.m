@@ -171,12 +171,10 @@
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         //custID is a string
         
-        NSLog(@"My string %@"  ,finalString);
         user.custID = [f numberFromString:finalString];
-        NSLog(@"My string %@" ,user.custID);
-        
+                
         if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+           
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Client successfully saved."
@@ -278,8 +276,7 @@
     **/
     error = nil;
     if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
-    }
+        }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Customer successfully updated."
                                                        delegate:self

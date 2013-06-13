@@ -160,7 +160,6 @@
         
         for (Invoice *invoice in items) {
             [delegate.managedObjectContext deleteObject:invoice];
-            NSLog(@"object deleted");
             
             
             NSMutableArray *invoiceLinesToBeDeleted = [[NSMutableArray alloc]initWithArray:

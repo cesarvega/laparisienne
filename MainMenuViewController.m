@@ -47,7 +47,7 @@
     [firstSection addObject:@"Manage Invoices"];;
     [firstSection addObject:@"Manage Products"];
     [firstSection addObject:@"Manage Users"];
-    [firstSection addObject:@"Invoices"];
+    [firstSection addObject:@"PDF Invoices"];
     
     NSDictionary *temporaryDictionary = [[NSDictionary alloc]initWithObjectsAndKeys:firstSection,@"0",secondSection,@"1",thirdSection,@"2",nil];
     self.menuDataSource = temporaryDictionary;
@@ -219,7 +219,6 @@
         
         if(![delegate.managedObjectContext save:&error]) {
             
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             }
         
        

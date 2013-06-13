@@ -144,10 +144,9 @@
         
         for (Customer *customer in items) {
             [delegate.managedObjectContext deleteObject:customer];
-            NSLog(@"object deleted");
-        }
+            }
         if (![delegate.managedObjectContext save:&error]) {
-            NSLog(@"Error deleting - error:%@",error);
+           
         }
         
         [businessName removeObjectAtIndex:indexPathForDeletion.row];

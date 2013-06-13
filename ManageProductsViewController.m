@@ -53,7 +53,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
-    NSLog(@"product id: %@", [productID objectAtIndex:indexPath.row]);
     
     cell.detailTextLabel.text = [productDescription objectAtIndex:indexPath.row];
     return cell;
@@ -122,7 +121,7 @@
         
         for (Product *product in items) {
             [delegate.managedObjectContext deleteObject:product];
-            NSLog(@"object deleted");
+           
         }
         if (![delegate.managedObjectContext save:&error]) {
             NSLog(@"Error deleting - error:%@",error);
@@ -184,7 +183,7 @@
     
     for (Product *product in items) {
     	[delegate.managedObjectContext deleteObject:product];
-    	NSLog(@"%@ object deleted",entityDescription);
+    	
     }
     if (![delegate.managedObjectContext save:&error]) {
     	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);

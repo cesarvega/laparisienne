@@ -8,6 +8,7 @@
 
 #import "NICSignatureView.h"
 
+#define kPadding 20
 #define             STROKE_WIDTH_MIN 0.002 // Stroke width determined by touch velocity
 #define             STROKE_WIDTH_MAX 0.010
 #define       STROKE_WIDTH_SMOOTHING 0.5   // Low pass filter alpha
@@ -95,7 +96,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     GLuint dotsArray;
     GLuint dotsBuffer;
     
-    
+    CGSize _pageSize;
     // Array of verteces, with current length
     NICSignaturePoint SignatureVertexData[maxLength];
     NSUInteger length;
@@ -418,12 +419,9 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     effect = nil;
 }
 
-
 - (IBAction)StoreSignedInvoice:(id)sender {
     
-    //Save the invoice and preview the save invoices
-    
-   
+     [self createPDF];
 }
 
 - (IBAction)EraseSignature:(id)sender {
@@ -431,5 +429,163 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     [self erase];
     
 }
+
+
+#pragma Mark PDF Methods
+
+- (void)createPDF{
+    
+    [self setupPDFDocumentNamed:[InvoiceID stringValue] Width:850 Height:1100];
+    //[self setupPDFDocumentNamed:@"InvoiceNUmber[InvoiceID stringValue] Width:850 Height:1100];
+    [self beginPDFPage];
+    
+    [self DrawTheInvoiceLayout];
+    
+    [self  DrawTheInvoiceProductsContent];
+    
+    [self finishPDF];
+}
+
+-(void)DrawTheInvoiceProductsContent{
+    
+    int totalOfTheWholeInvoice =0;
+    int textPosititonAX=50;
+    int textPosititonBX=150;
+    int textPosititonCX=380;
+    int textPosititonY = 400;
+    int productCounter =0;
+    for (Invoice_Lines *invoices_lines in InvoiceLines){
+        
+        
+                   
+            if (productCounter % 2){
+                textPosititonAX=50+430;
+                textPosititonBX=150+410;
+                textPosititonCX=380+390;
+            }else{
+                textPosititonAX=50;
+                textPosititonBX=150;
+                textPosititonCX=380;
+                textPosititonY =textPosititonY+30;
+            }
+        }
+    
+        
+    
+    
+    [self addText: [NSString stringWithFormat:@"Total : %d",totalOfTheWholeInvoice] withFrame:CGRectMake(735, 975, 150, 150) fontSize:13.0f];
+    [self addText: [NSString stringWithFormat:@"%@",@"Signature : "] withFrame:CGRectMake(40, 975, 150, 150) fontSize:13.0f];
+    
+}
+
+-(void)DrawTheInvoiceLayout{
+    
+    UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
+    [self addImage:anImage  atPoint:CGPointMake(100, 20)];
+    
+      UIImage * signature = [self signatureImage];
+    [self addImage:signature  atPoint:CGPointMake(100, 20)];
+    
+}
+
+- (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
+    UIFont *font = [UIFont systemFontOfSize:fontSize];
+    
+	CGSize stringSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(_pageSize.width - 2*20-2*20, _pageSize.height - 2*20 - 2*20) lineBreakMode:NSLineBreakByWordWrapping];
+    
+	float textWidth = frame.size.width;
+    
+    if (textWidth < stringSize.width)
+        textWidth = stringSize.width;
+    if (textWidth > _pageSize.width)
+        textWidth = _pageSize.width - frame.origin.x;
+    
+    CGRect renderingRect = CGRectMake(frame.origin.x, frame.origin.y, textWidth, stringSize.height);
+    
+    [text drawInRect:renderingRect
+            withFont:font
+       lineBreakMode:NSLineBreakByWordWrapping
+           alignment:NSTextAlignmentLeft];
+    
+    frame = CGRectMake(frame.origin.x, frame.origin.y, textWidth, stringSize.height);
+    
+    return frame;
+}
+
+- (CGRect)addLineWithFrame:(CGRect)frame withColor:(UIColor*)color Orientation:(NSString*)orientation{
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    
+    CGContextSetStrokeColorWithColor(currentContext, color.CGColor);
+    CGFloat dashes[] = {1,5};
+    CGContextSetLineDash(currentContext, 0.0, dashes, 2);
+    // this is the thickness of the line
+    CGContextSetLineWidth(currentContext, frame.size.height/3);
+    CGPoint startPoint = frame.origin;
+    CGPoint endPoint;
+    if ([orientation isEqualToString: @"Vertical"]) {
+        endPoint = CGPointMake(frame.origin.x,frame.origin.y + frame.size.width);
+    }else{endPoint = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);}
+    
+    
+    CGContextBeginPath(currentContext);
+    CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
+    CGContextAddLineToPoint(currentContext, endPoint.x, endPoint.y);
+    CGContextStrokePath(currentContext);
+    CGContextClosePath(currentContext);
+    CGContextDrawPath(currentContext, kCGPathFillStroke);
+    
+    return frame;
+}
+
+- (CGRect)addImage:(UIImage*)image atPoint:(CGPoint)point {
+    CGRect imageFrame = CGRectMake(point.x, point.y, image.size.width/4, image.size.height/4);
+    [image drawInRect:imageFrame];
+    
+    return imageFrame;
+}
+
+- (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
+    _pageSize = CGSizeMake(width, height);
+    
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
+    
+    UIGraphicsBeginPDFContextToFile(pdfPath, CGRectZero, nil);
+}
+
+- (void)beginPDFPage {
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, _pageSize.width, _pageSize.height), nil);
+}
+
+- (void)finishPDF {
+    UIGraphicsEndPDFContext();
+   // [self didClickOpenPDF];
+}
+//NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
+/*- (void)didClickOpenPDF {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",[InvoiceID stringValue],@"pdf"]];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
+        
+        ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
+        
+        if (document != nil)
+        {
+            ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+            //readerViewController.delegate = self;
+            readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;   
+            //[self presentViewController:readerViewController animated:YES completion:nil];
+        }
+    }
+}*/
+
 
 @end

@@ -70,6 +70,7 @@
 		828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB5176699B500C666C6 /* OpenGLES.framework */; };
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
 		828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBC1766A70700C666C6 /* NICSignatureView.m */; };
+		82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82921498176942D300AA44F9 /* InvoiceTemplate.png */; };
 		82992E551756E64900105CE7 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82992E541756E64900105CE7 /* tree.jpg */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
@@ -186,6 +187,7 @@
 		828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFInvoicesViewController.m; sourceTree = "<group>"; };
 		828E6DBB1766A70700C666C6 /* NICSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSignatureView.h; sourceTree = "<group>"; };
 		828E6DBC1766A70700C666C6 /* NICSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSignatureView.m; sourceTree = "<group>"; };
+		82921498176942D300AA44F9 /* InvoiceTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = InvoiceTemplate.png; path = LaParisienneBakery/InvoiceTemplate.png; sourceTree = "<group>"; };
 		82992E541756E64900105CE7 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,
 				82992E541756E64900105CE7 /* tree.jpg */,
 				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
@@ -563,6 +566,7 @@
 				8252BE30175704600061F803 /* Reader-Thumbs.png in Resources */,
 				8252BE31175704600061F803 /* Reader-Thumbs@2x.png in Resources */,
 				829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */,
+				82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

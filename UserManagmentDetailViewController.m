@@ -94,7 +94,6 @@
         
         user.userID = [f numberFromString:finalString];
         
-        NSLog(@"product id: %@", user.userID);
         if (![delegate.managedObjectContext save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }

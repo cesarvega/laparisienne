@@ -7,8 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
-
-@interface NICSignatureView : GLKView
+#import "AppDelegate.h"
+#import "ReaderViewController.h"
+#import "Product.h"
+#import "Invoice.h"
+#import "Invoice_Lines.h"
+@interface NICSignatureView : GLKView{
+    
+    NSNumber* InvoiceID;
+    Invoice_Lines * Invoice_Lines;
+    NSMutableArray * InvoiceLines;
+}
 
 @property (assign, nonatomic) BOOL hasSignature;
 @property (strong, nonatomic) UIImage *signatureImage;
