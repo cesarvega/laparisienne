@@ -436,7 +436,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 - (void)createPDF{
     
     [self setupPDFDocumentNamed:[InvoiceID stringValue] Width:850 Height:1100];
-    //[self setupPDFDocumentNamed:@"InvoiceNUmber[InvoiceID stringValue] Width:850 Height:1100];
+
     [self beginPDFPage];
     
     [self DrawTheInvoiceLayout];
@@ -483,8 +483,10 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 20)];
     
-      UIImage * signature = [self signatureImage];
-    [self addImage:signature  atPoint:CGPointMake(100, 20)];
+    UIImage * signature = [self signatureImage];
+    CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
+	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
+    [self addImage:cropedImg  atPoint:CGPointMake(550, 280)];
     
 }
 

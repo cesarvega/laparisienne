@@ -25,7 +25,6 @@
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
 		8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */; };
-		82141911175398610001CEF0 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 82141910175398610001CEF0 /* LogoInv.png */; };
 		8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */; };
 		8252BDCA1756ECD50061F803 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8252BDC91756ECD50061F803 /* MessageUI.framework */; };
 		8252BDCC1756ECDE0061F803 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8252BDCB1756ECDE0061F803 /* ImageIO.framework */; };
@@ -71,7 +70,6 @@
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
 		828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBC1766A70700C666C6 /* NICSignatureView.m */; };
 		82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82921498176942D300AA44F9 /* InvoiceTemplate.png */; };
-		82992E551756E64900105CE7 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82992E541756E64900105CE7 /* tree.jpg */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
 		829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */; };
@@ -120,7 +118,6 @@
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
 		8214190D175396E20001CEF0 /* ChooseClientForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClientForInvoiceViewController.m; sourceTree = "<group>"; };
-		82141910175398610001CEF0 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
 		8214191217539C510001CEF0 /* ChooseProductsForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProductsForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProductsForInvoiceViewController.m; sourceTree = "<group>"; };
 		8252BDC91756ECD50061F803 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -188,7 +185,6 @@
 		828E6DBB1766A70700C666C6 /* NICSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSignatureView.h; sourceTree = "<group>"; };
 		828E6DBC1766A70700C666C6 /* NICSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSignatureView.m; sourceTree = "<group>"; };
 		82921498176942D300AA44F9 /* InvoiceTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = InvoiceTemplate.png; path = LaParisienneBakery/InvoiceTemplate.png; sourceTree = "<group>"; };
-		82992E541756E64900105CE7 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
 		829A4684174B053600B3B136 /* ManageProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageProductsViewController.h; sourceTree = "<group>"; };
@@ -463,10 +459,8 @@
 			children = (
 				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,
-				82992E541756E64900105CE7 /* tree.jpg */,
 				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
 				82EDE1DA173F1DF200E27BB3 /* Logo.png */,
-				82141910175398610001CEF0 /* LogoInv.png */,
 				82EDE1D4173F19DD00E27BB3 /* BG.png */,
 			);
 			name = Images;
@@ -545,8 +539,6 @@
 				82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */,
 				82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */,
 				82EDE1EA173F2ABA00E27BB3 /* displayMenuBtn.png in Resources */,
-				82141911175398610001CEF0 /* LogoInv.png in Resources */,
-				82992E551756E64900105CE7 /* tree.jpg in Resources */,
 				8252BE20175704600061F803 /* AppIcon-057.png in Resources */,
 				8252BE21175704600061F803 /* AppIcon-072.png in Resources */,
 				8252BE22175704600061F803 /* AppIcon-114.png in Resources */,
