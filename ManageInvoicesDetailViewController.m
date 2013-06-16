@@ -412,7 +412,7 @@
                      NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
             int totalPerProduct =[quantitys intValue]*[unitPrices intValue];
             totalOfTheWholeInvoice =totalOfTheWholeInvoice+totalPerProduct;
-            [self addText: [NSString stringWithFormat:@"%d",totalPerProduct] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
+            [self addText: [NSString stringWithFormat:@"%@",unitPrices] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
                
                  [self addText: [NSString stringWithFormat:@"%d",totalPerProduct] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
           
