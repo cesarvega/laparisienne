@@ -77,18 +77,14 @@
         
         if([items count] == 1)
         {
+                    currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
         
-          
-            currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
-            
                      
             NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
            
             
             docTotal = newDocTotal;
-            
            
-            
         }
         else if([items count] >1){
            
