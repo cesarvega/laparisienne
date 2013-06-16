@@ -65,6 +65,9 @@
 		8252BE2F175704600061F803 /* Reader-Print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1D175704600061F803 /* Reader-Print@2x.png */; };
 		8252BE30175704600061F803 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1E175704600061F803 /* Reader-Thumbs.png */; };
 		8252BE31175704600061F803 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1F175704600061F803 /* Reader-Thumbs@2x.png */; };
+		8261239D1769674600AC3E5B /* LogoDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8261239C1769674600AC3E5B /* LogoDark.png */; };
+		827E47F7176E06620034BC9A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F6176E06620034BC9A /* 72.png */; };
+		827E47F9176E06670034BC9A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F8176E06670034BC9A /* 144.png */; };
 		828E6DB4176699AC00C666C6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB3176699AC00C666C6 /* GLKit.framework */; };
 		828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB5176699B500C666C6 /* OpenGLES.framework */; };
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
@@ -178,6 +181,9 @@
 		8252BE1D175704600061F803 /* Reader-Print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print@2x.png"; sourceTree = "<group>"; };
 		8252BE1E175704600061F803 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		8252BE1F175704600061F803 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
+		8261239C1769674600AC3E5B /* LogoDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoDark.png; sourceTree = "<group>"; };
+		827E47F6176E06620034BC9A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
+		827E47F8176E06670034BC9A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
 		828E6DB3176699AC00C666C6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		828E6DB5176699B500C666C6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		828E6DB817669CF000C666C6 /* PDFInvoicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFInvoicesViewController.h; sourceTree = "<group>"; };
@@ -231,6 +237,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
+				827E47F8176E06670034BC9A /* 144.png */,
+				827E47F6176E06620034BC9A /* 72.png */,
 				8252BDAA1756EB350061F803 /* PDFEngine */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
@@ -443,7 +451,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82A6CF991749412E00BDB8E8 /* Customer */ = {
+		82A6CF991749412E00BDB8E8 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
 				133B4CC31745F7BD00671615 /* ManageClientsViewController.h */,
@@ -451,12 +459,13 @@
 				82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */,
 				82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */,
 			);
-			name = Customer;
+			name = Clients;
 			sourceTree = "<group>";
 		};
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8261239C1769674600AC3E5B /* LogoDark.png */,
 				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,
 				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
@@ -470,7 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				828E6DB717669CD000C666C6 /* PDFInvoices */,
-				82A6CF991749412E00BDB8E8 /* Customer */,
+				82A6CF991749412E00BDB8E8 /* Clients */,
 				829A4680174AFEAF00B3B136 /* Products */,
 				829A467E174AFE9600B3B136 /* User */,
 				829A467F174AFE9F00B3B136 /* Invoice */,
@@ -559,6 +568,9 @@
 				8252BE31175704600061F803 /* Reader-Thumbs@2x.png in Resources */,
 				829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */,
 				82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */,
+				8261239D1769674600AC3E5B /* LogoDark.png in Resources */,
+				827E47F7176E06620034BC9A /* 72.png in Resources */,
+				827E47F9176E06670034BC9A /* 144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

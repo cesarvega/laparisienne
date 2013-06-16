@@ -81,6 +81,7 @@
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //remove the deleted object from your data source.
@@ -100,8 +101,8 @@
     
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
@@ -134,8 +135,10 @@
         
         
     }
-    [productsTableView   reloadData];
-        
+   
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageUsers"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
     }
 
 

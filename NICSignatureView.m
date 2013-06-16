@@ -449,10 +449,10 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 -(void)DrawTheInvoiceProductsContent{
     
     int totalOfTheWholeInvoice =0;
-    int textPosititonAX=50;
-    int textPosititonBX=150;
+    int textPosititonAX=159;
+    int textPosititonBX=328;
     int textPosititonCX=380;
-    int textPosititonY = 400;
+    int textPosititonY = 469;
     int productCounter =0;
     for (Invoice_Lines *invoices_lines in InvoiceLines){
         
@@ -473,20 +473,19 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         
     
     
-    [self addText: [NSString stringWithFormat:@"Total : %d",totalOfTheWholeInvoice] withFrame:CGRectMake(735, 975, 150, 150) fontSize:13.0f];
-    [self addText: [NSString stringWithFormat:@"%@",@"Signature : "] withFrame:CGRectMake(40, 975, 150, 150) fontSize:13.0f];
+    [self addText: [NSString stringWithFormat:@"%d",totalOfTheWholeInvoice] withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
     
 }
 
 -(void)DrawTheInvoiceLayout{
     
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
-    [self addImage:anImage  atPoint:CGPointMake(100, 20)];
+    [self addImage:anImage  atPoint:CGPointMake(100, 60)];
     
     UIImage * signature = [self signatureImage];
     CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
-    [self addImage:cropedImg  atPoint:CGPointMake(550, 280)];
+    [self addImage:cropedImg  atPoint:CGPointMake(460, 850)];
     
 }
 
