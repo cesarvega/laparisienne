@@ -55,7 +55,7 @@
     {
         Invoice_Lines *currentLine = (Invoice_Lines*)[InvoiceLines objectAtIndex:i];
        nextLineID = [self getGetNextNumericValueForFieldName: @"invoiceOrderID" withEntityName:@"Invoice_Lines"];
-        
+
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
         
@@ -409,7 +409,7 @@
             NSString *quantitys =invoices_lines.quantity;
             [self addText: quantitys  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
                        
-                     NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+                     NSString *unitPrices =invoices_lines.unitPrice;
             int totalPerProduct =[quantitys intValue]*[unitPrices intValue];
             totalOfTheWholeInvoice =totalOfTheWholeInvoice+totalPerProduct;
             [self addText: [NSString stringWithFormat:@"%@",unitPrices] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
