@@ -25,7 +25,6 @@
 		133B4CC2173F5B7B00671615 /* UserManagmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC1173F5B7B00671615 /* UserManagmentViewController.m */; };
 		133B4CC51745F7BE00671615 /* ManageClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4CC41745F7BE00671615 /* ManageClientsViewController.m */; };
 		8214190F175396E20001CEF0 /* ChooseClientForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */; };
-		82141911175398610001CEF0 /* LogoInv.png in Resources */ = {isa = PBXBuildFile; fileRef = 82141910175398610001CEF0 /* LogoInv.png */; };
 		8214191417539C510001CEF0 /* ChooseProductsForInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */; };
 		8252BDCA1756ECD50061F803 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8252BDC91756ECD50061F803 /* MessageUI.framework */; };
 		8252BDCC1756ECDE0061F803 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8252BDCB1756ECDE0061F803 /* ImageIO.framework */; };
@@ -66,12 +65,20 @@
 		8252BE2F175704600061F803 /* Reader-Print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1D175704600061F803 /* Reader-Print@2x.png */; };
 		8252BE30175704600061F803 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1E175704600061F803 /* Reader-Thumbs.png */; };
 		8252BE31175704600061F803 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8252BE1F175704600061F803 /* Reader-Thumbs@2x.png */; };
-		82992E551756E64900105CE7 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82992E541756E64900105CE7 /* tree.jpg */; };
+		8261239D1769674600AC3E5B /* LogoDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8261239C1769674600AC3E5B /* LogoDark.png */; };
+		827E47F7176E06620034BC9A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F6176E06620034BC9A /* 72.png */; };
+		827E47F9176E06670034BC9A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F8176E06670034BC9A /* 144.png */; };
+		828E6DB4176699AC00C666C6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB3176699AC00C666C6 /* GLKit.framework */; };
+		828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB5176699B500C666C6 /* OpenGLES.framework */; };
+		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
+		828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBC1766A70700C666C6 /* NICSignatureView.m */; };
+		82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82921498176942D300AA44F9 /* InvoiceTemplate.png */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
 		829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */; };
 		829A468C174B098400B3B136 /* ManageInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A468B174B098400B3B136 /* ManageInvoicesViewController.m */; };
 		829A468F174B099800B3B136 /* ManageInvoicesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A468E174B099800B3B136 /* ManageInvoicesDetailViewController.m */; };
+		829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C19EC17681C2F00F2CDE8 /* Signature.png */; };
 		82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */; };
 		82A9FEE3175599CC00A41AF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
@@ -114,7 +121,6 @@
 		133B4CC41745F7BE00671615 /* ManageClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsViewController.m; sourceTree = "<group>"; };
 		8214190D175396E20001CEF0 /* ChooseClientForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214190E175396E20001CEF0 /* ChooseClientForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClientForInvoiceViewController.m; sourceTree = "<group>"; };
-		82141910175398610001CEF0 /* LogoInv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoInv.png; sourceTree = "<group>"; };
 		8214191217539C510001CEF0 /* ChooseProductsForInvoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProductsForInvoiceViewController.h; sourceTree = "<group>"; };
 		8214191317539C510001CEF0 /* ChooseProductsForInvoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProductsForInvoiceViewController.m; sourceTree = "<group>"; };
 		8252BDC91756ECD50061F803 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -175,7 +181,16 @@
 		8252BE1D175704600061F803 /* Reader-Print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print@2x.png"; sourceTree = "<group>"; };
 		8252BE1E175704600061F803 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		8252BE1F175704600061F803 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
-		82992E541756E64900105CE7 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
+		8261239C1769674600AC3E5B /* LogoDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoDark.png; sourceTree = "<group>"; };
+		827E47F6176E06620034BC9A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
+		827E47F8176E06670034BC9A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
+		828E6DB3176699AC00C666C6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		828E6DB5176699B500C666C6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		828E6DB817669CF000C666C6 /* PDFInvoicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFInvoicesViewController.h; sourceTree = "<group>"; };
+		828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFInvoicesViewController.m; sourceTree = "<group>"; };
+		828E6DBB1766A70700C666C6 /* NICSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSignatureView.h; sourceTree = "<group>"; };
+		828E6DBC1766A70700C666C6 /* NICSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSignatureView.m; sourceTree = "<group>"; };
+		82921498176942D300AA44F9 /* InvoiceTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = InvoiceTemplate.png; path = LaParisienneBakery/InvoiceTemplate.png; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
 		829A4684174B053600B3B136 /* ManageProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageProductsViewController.h; sourceTree = "<group>"; };
@@ -186,6 +201,7 @@
 		829A468B174B098400B3B136 /* ManageInvoicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageInvoicesViewController.m; sourceTree = "<group>"; };
 		829A468D174B099800B3B136 /* ManageInvoicesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageInvoicesDetailViewController.h; sourceTree = "<group>"; };
 		829A468E174B099800B3B136 /* ManageInvoicesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageInvoicesDetailViewController.m; sourceTree = "<group>"; };
+		829C19EC17681C2F00F2CDE8 /* Signature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Signature.png; sourceTree = "<group>"; };
 		82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsDetailViewController.h; sourceTree = "<group>"; };
 		82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsDetailViewController.m; sourceTree = "<group>"; };
 		82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -203,10 +219,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13283BB61735B0CE00E2C286 /* UIKit.framework in Frameworks */,
+				828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */,
+				828E6DB4176699AC00C666C6 /* GLKit.framework in Frameworks */,
 				8252BDCC1756ECDE0061F803 /* ImageIO.framework in Frameworks */,
 				8252BDCA1756ECD50061F803 /* MessageUI.framework in Frameworks */,
 				82A9FEE3175599CC00A41AF8 /* QuartzCore.framework in Frameworks */,
-				13283BB61735B0CE00E2C286 /* UIKit.framework in Frameworks */,
 				13283BB81735B0CE00E2C286 /* Foundation.framework in Frameworks */,
 				13283BBA1735B0CE00E2C286 /* CoreGraphics.framework in Frameworks */,
 				13283BBC1735B0CE00E2C286 /* CoreData.framework in Frameworks */,
@@ -219,7 +237,8 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
-				829AFFA5175A4BDE0010CE7E /* SignInvoiceEngine */,
+				827E47F8176E06670034BC9A /* 144.png */,
+				827E47F6176E06620034BC9A /* 72.png */,
 				8252BDAA1756EB350061F803 /* PDFEngine */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
@@ -242,6 +261,8 @@
 		13283BB41735B0CE00E2C286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				828E6DB5176699B500C666C6 /* OpenGLES.framework */,
+				828E6DB3176699AC00C666C6 /* GLKit.framework */,
 				8252BDCB1756ECDE0061F803 /* ImageIO.framework */,
 				8252BDC91756ECD50061F803 /* MessageUI.framework */,
 				82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */,
@@ -382,6 +403,17 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
+		828E6DB717669CD000C666C6 /* PDFInvoices */ = {
+			isa = PBXGroup;
+			children = (
+				828E6DBB1766A70700C666C6 /* NICSignatureView.h */,
+				828E6DBC1766A70700C666C6 /* NICSignatureView.m */,
+				828E6DB817669CF000C666C6 /* PDFInvoicesViewController.h */,
+				828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */,
+			);
+			name = PDFInvoices;
+			sourceTree = "<group>";
+		};
 		829A467E174AFE9600B3B136 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,14 +451,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		829AFFA5175A4BDE0010CE7E /* SignInvoiceEngine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SignInvoiceEngine;
-			sourceTree = "<group>";
-		};
-		82A6CF991749412E00BDB8E8 /* Customer */ = {
+		82A6CF991749412E00BDB8E8 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
 				133B4CC31745F7BD00671615 /* ManageClientsViewController.h */,
@@ -434,16 +459,17 @@
 				82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */,
 				82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */,
 			);
-			name = Customer;
+			name = Clients;
 			sourceTree = "<group>";
 		};
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				82992E541756E64900105CE7 /* tree.jpg */,
+				8261239C1769674600AC3E5B /* LogoDark.png */,
+				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
+				829C19EC17681C2F00F2CDE8 /* Signature.png */,
 				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
 				82EDE1DA173F1DF200E27BB3 /* Logo.png */,
-				82141910175398610001CEF0 /* LogoInv.png */,
 				82EDE1D4173F19DD00E27BB3 /* BG.png */,
 			);
 			name = Images;
@@ -452,7 +478,8 @@
 		82EDE1D6173F19ED00E27BB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				82A6CF991749412E00BDB8E8 /* Customer */,
+				828E6DB717669CD000C666C6 /* PDFInvoices */,
+				82A6CF991749412E00BDB8E8 /* Clients */,
 				829A4680174AFEAF00B3B136 /* Products */,
 				829A467E174AFE9600B3B136 /* User */,
 				829A467F174AFE9F00B3B136 /* Invoice */,
@@ -521,8 +548,6 @@
 				82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */,
 				82EDE1DB173F1DF200E27BB3 /* Logo.png in Resources */,
 				82EDE1EA173F2ABA00E27BB3 /* displayMenuBtn.png in Resources */,
-				82141911175398610001CEF0 /* LogoInv.png in Resources */,
-				82992E551756E64900105CE7 /* tree.jpg in Resources */,
 				8252BE20175704600061F803 /* AppIcon-057.png in Resources */,
 				8252BE21175704600061F803 /* AppIcon-072.png in Resources */,
 				8252BE22175704600061F803 /* AppIcon-114.png in Resources */,
@@ -541,6 +566,11 @@
 				8252BE2F175704600061F803 /* Reader-Print@2x.png in Resources */,
 				8252BE30175704600061F803 /* Reader-Thumbs.png in Resources */,
 				8252BE31175704600061F803 /* Reader-Thumbs@2x.png in Resources */,
+				829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */,
+				82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */,
+				8261239D1769674600AC3E5B /* LogoDark.png in Resources */,
+				827E47F7176E06620034BC9A /* 72.png in Resources */,
+				827E47F9176E06670034BC9A /* 144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +620,8 @@
 				8252BE041756ED660061F803 /* ThumbsMainToolbar.m in Sources */,
 				8252BE051756ED660061F803 /* ThumbsViewController.m in Sources */,
 				8252BE061756ED660061F803 /* UIXToolbarView.m in Sources */,
+				828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */,
+				828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

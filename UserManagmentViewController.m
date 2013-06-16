@@ -54,8 +54,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [userNames objectAtIndex:indexPath.row];
-    NSLog(@"user id: %@", [userNames objectAtIndex:indexPath.row]);
-    
 
     return cell;
 }
@@ -123,7 +121,7 @@
         
         for (User *product in items) {
             [delegate.managedObjectContext deleteObject:product];
-            NSLog(@"object deleted");
+            
         }
         if (![delegate.managedObjectContext save:&error]) {
             NSLog(@"Error deleting - error:%@",error);

@@ -55,10 +55,10 @@
     {
         Invoice_Lines *currentLine = (Invoice_Lines*)[InvoiceLines objectAtIndex:i];
        nextLineID = [self getGetNextNumericValueForFieldName: @"invoiceOrderID" withEntityName:@"Invoice_Lines"];
-        
+
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
-          NSLog(@"parent inv docnum: %@", currentLine.parentInvoiceDocNum);
+        
         
         //use product ID to get product info
         //fetch product using ID
@@ -67,7 +67,7 @@
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
-        NSLog(@"Curent lines product ID: %@",currentLine.productID);
+       
         NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", currentLine.productID];
         [fetchRequest setPredicate:p];
         
@@ -77,34 +77,27 @@
         
         if([items count] == 1)
         {
-            NSArray *result = [items objectAtIndex:0];
-            NSString*unitPrice =  [result valueForKey:@"unitPrice"];
-            NSLog(@"unit price: %@", unitPrice);
-            currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
-            
-            NSLog(@"quantity: %@", currentLine.quantity);
-             NSLog(@"Linetotal: %@", currentLine.lineTotal);
-           
+                    currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
+        
+                     
             NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
            
             
             docTotal = newDocTotal;
-            
            
-            
         }
         else if([items count] >1){
-            NSLog(@"Error: There are more than 1 product in the database with the same ID.");
+           
         }
         else{
-            NSLog(@"Error: Fetch returned no results.");
+           
         }
         
         if (![delegate.managedObjectContext save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            
         }
         else{
-            NSLog(@"Invoice line saved. LineID %@", currentLine.invoiceOrderID);
+          
             
         }
         
@@ -117,13 +110,12 @@
                       insertNewObjectForEntityForName:@"Invoice"
                       inManagedObjectContext:delegate.managedObjectContext];
     invoice.docTotal = docTotal;
-    NSLog(@"Doctotal: %@", docTotal);
+    
           
     invoice.docNum  = [nextParentInvDocNum stringValue];
     
-    NSLog(@"DocNum: %@", invoice.docNum);
     invoice.department = InvoiceDepartmentTextLabel.text;
-    NSLog(@"Department: %@", invoice.department);
+    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     // this is imporant - we set our input date format to match our input string
@@ -134,15 +126,11 @@
     dateFromString = [dateFormatter dateFromString:InvoiceDateTextLabel.text];
     invoice.docDate = dateFromString;
     invoice.invoiceID = [self getGetNextNumericValueForFieldName:@"invoiceID" withEntityName:@"Invoice"];
-    
-      NSLog(@"InvoiceID: %@", invoice.invoiceID);
-    invoice.custID = custID;
-    
-      NSLog(@"custID: %@", invoice.custID);
+   
+    invoice.custID = custID;  
     NSError *error;
-    
-    
-    if (![delegate.managedObjectContext save:&error]) {
+
+   if (![delegate.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     else{
@@ -168,13 +156,8 @@
     
     NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
     NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
-    
     number = [number decimalNumberByAdding:fNum];
     number = [number decimalNumberByAdding:sNum];
-    NSLog(@"firstnum: %@", fNum);
-    NSLog(@"secondNum: %@",sNum);
-    NSLog(@"number: %@", number);
-    
     NSString*result = [number stringValue];
     return result;
 }
@@ -189,11 +172,7 @@
     
     number = [number decimalNumberByMultiplyingBy:fNum];
     number = [number decimalNumberByMultiplyingBy:sNum];
-    
-    NSLog(@"firstnum: %@", fNum);
-    NSLog(@"secondNum: %@",sNum);
-    NSLog(@"number: %@", number);
-   NSString *result= [number stringValue  ];
+    NSString *result= [number stringValue  ];
     
     return result;
 }
@@ -398,7 +377,7 @@
 - (void)createPDF{
     
     [self setupPDFDocumentNamed:[InvoiceID stringValue] Width:850 Height:1100];
-    //[self setupPDFDocumentNamed:@"InvoiceNUmber[InvoiceID stringValue] Width:850 Height:1100];
+   
     [self beginPDFPage];
     
     [self DrawTheInvoiceLayout];
@@ -411,10 +390,11 @@
 -(void)DrawTheInvoiceProductsContent{
 
     int totalOfTheWholeInvoice =0;
-    int textPosititonAX=50;
-    int textPosititonBX=150;
-    int textPosititonCX=380;
-    int textPosititonY = 400;
+    int textPosititonAX=180;
+    int textPosititonBX=360;
+    int textPosititonCX=463;
+     int textPosititonDX=607;
+    int textPosititonY = 456;
     int productCounter =0;
     for (Invoice_Lines *invoices_lines in InvoiceLines){
       
@@ -423,114 +403,40 @@
         
            for(NSArray *item in products){
             
+               NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+               [self addText: Productnames  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];
+
             NSString *quantitys =invoices_lines.quantity;
-            [self addText: quantitys  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];
+            [self addText: quantitys  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
                        
-            NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
-            [self addText: Productnames  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
-            
-            NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+                     NSString *unitPrices =invoices_lines.unitPrice;
             int totalPerProduct =[quantitys intValue]*[unitPrices intValue];
             totalOfTheWholeInvoice =totalOfTheWholeInvoice+totalPerProduct;
-            [self addText: [NSString stringWithFormat:@"%d",totalPerProduct] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
-          
-
-               productCounter=productCounter+1;
+            [self addText: [NSString stringWithFormat:@"%@",unitPrices] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
                
-               if (productCounter % 2){
-                   textPosititonAX=50+430;
-                   textPosititonBX=150+410;
-                   textPosititonCX=380+390;
-            }else{
-                    textPosititonAX=50;
-                    textPosititonBX=150;
-                    textPosititonCX=380;
-                    textPosititonY =textPosititonY+30;
-                    }
-            }
+                 [self addText: [NSString stringWithFormat:@"%d",totalPerProduct] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
+          
+                textPosititonY =textPosititonY+22;
+               productCounter=productCounter+1;
+            
+           }
             
 
         }
    
-    [self addText: [NSString stringWithFormat:@"Total : %d",totalOfTheWholeInvoice] withFrame:CGRectMake(735, 975, 150, 150) fontSize:13.0f];
-    [self addText: [NSString stringWithFormat:@"%@",@"Signature : "] withFrame:CGRectMake(40, 975, 150, 150) fontSize:13.0f];
+    [self addText: [NSString stringWithFormat:@"%d",totalOfTheWholeInvoice] withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
     
 }
 
 -(void)DrawTheInvoiceLayout{
   
-    [self addText:@"1909 NE154th Street\nNortl1Miami Beach,Florida 33162\nTel:305.948.9979 . Fax: 305.948.9970\nwww.laparisiennebakery.com"
-        withFrame:CGRectMake(400, 120, 450, 250) fontSize:15.0f];
-    
-    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@",@"Invoice Number :", InvoiceNumberTextLabel.text,@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
-        withFrame:CGRectMake(20, 248, 150, 150) fontSize:15.0f];
-    
-    UIImage *anImage = [UIImage imageNamed:@"LogoInv.png"];
-    CGRect imageRect = [self addImage:anImage
-                              atPoint:CGPointMake(20, 60)];
-    
-    [self addLineWithFrame:CGRectMake(kPadding, imageRect.origin.y + imageRect.size.height + kPadding, _pageSize.width - kPadding*2, 4)
-                 withColor:[UIColor blackColor] Orientation:@""];
+    UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
+    [self addImage:anImage  atPoint:CGPointMake(100, 60)];
 
+    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
+      withFrame:CGRectMake(150, 348, 150, 150) fontSize:15.0f];
     
-    int Rows = 340;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@""];
-        Rows = 1000;
-        
-    }
-    Rows = 380;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(kPadding, Rows, _pageSize.width - kPadding*2, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@""];
-        Rows =Rows+590;
-        
-    }
-    int Colums = 20;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
-        Colums = Colums+810;
-        
-    }
-    
-    Colums = 120;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
-        Colums = Colums+610;
-        
-    }
-    
-    Colums = 435;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
-        Colums = Colums-100;
-        
-    }
-    
-    Colums = 435;
-    for (int i = 1; i <= 2; i++)
-    {
-        [self addLineWithFrame:CGRectMake(Colums,340 , 660, 4)
-                     withColor:[UIColor darkGrayColor] Orientation:@"Vertical"];
-        Colums = Colums+100;
-        
-    }
-    
-    int textPosititon = 350;
-    for (int i = 1; i <= 1; i++){
-        [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@",@"  Quantity                                ", @"Product                                    ",@"Total               ", @"Quantity                              ", @"Product                             ",@"Total        "]
-            withFrame:CGRectMake(30, textPosititon, 150, 150) fontSize:13.0f];
-        textPosititon =textPosititon+60;
-    }
+
 }
 
 - (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
@@ -592,9 +498,9 @@
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
     _pageSize = CGSizeMake(width, height);
     
-    NSString *newPDFName = [NSString stringWithFormat:@"%@.pdf", name];
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
@@ -613,9 +519,9 @@
 //NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
 - (void)didClickOpenPDF {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[InvoiceID stringValue],@"pdf"]];
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",[InvoiceID stringValue],@"pdf"]];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
         
@@ -625,10 +531,8 @@
         {
             ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
             readerViewController.delegate = self;
-            
             readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-            
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;   
             [self presentViewController:readerViewController animated:YES completion:nil];
         }
     }

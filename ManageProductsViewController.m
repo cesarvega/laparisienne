@@ -53,7 +53,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
-    NSLog(@"product id: %@", [productID objectAtIndex:indexPath.row]);
     
     cell.detailTextLabel.text = [productDescription objectAtIndex:indexPath.row];
     return cell;
@@ -82,6 +81,7 @@
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //remove the deleted object from your data source.
@@ -101,8 +101,8 @@
     
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
@@ -122,7 +122,7 @@
         
         for (Product *product in items) {
             [delegate.managedObjectContext deleteObject:product];
-            NSLog(@"object deleted");
+           
         }
         if (![delegate.managedObjectContext save:&error]) {
             NSLog(@"Error deleting - error:%@",error);
@@ -135,8 +135,10 @@
         
         
     }
-    [productsTableView   reloadData];
-        
+   
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageUsers"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
     }
 
 
@@ -184,7 +186,7 @@
     
     for (Product *product in items) {
     	[delegate.managedObjectContext deleteObject:product];
-    	NSLog(@"%@ object deleted",entityDescription);
+    	
     }
     if (![delegate.managedObjectContext save:&error]) {
     	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);

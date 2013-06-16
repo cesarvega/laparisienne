@@ -100,7 +100,8 @@
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         indexPathForDeletion = indexPath;
         
@@ -119,16 +120,10 @@
     
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        //remove the deleted object from your data source.
-        //If your data source is an NSMutableArray, do this
-        // [self.dataArray removeObjectAtIndex:indexPath.row];
-        
-        
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Customer" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
@@ -140,22 +135,17 @@
         NSError *error;
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         
-        
-        
         for (Customer *customer in items) {
             [delegate.managedObjectContext deleteObject:customer];
-            NSLog(@"object deleted");
-        }
+            }
         if (![delegate.managedObjectContext save:&error]) {
-            NSLog(@"Error deleting - error:%@",error);
+           
         }
         
         [businessName removeObjectAtIndex:indexPathForDeletion.row];
         [businessDescription removeObjectAtIndex:indexPathForDeletion.row];
         [addressOne removeObjectAtIndex:indexPathForDeletion.row];
         [addressTwo removeObjectAtIndex:indexPathForDeletion.row];
-        // [businessDescription removeObjectAtIndex:indexPath.row];
-        // [businessName removeObjectAtIndex:indexPath.row];
         [city removeObjectAtIndex:indexPathForDeletion.row];
         [contactName removeObjectAtIndex:indexPathForDeletion.row];
         [custIDValue removeObjectAtIndex:indexPathForDeletion.row];
@@ -166,17 +156,12 @@
         [telefone removeObjectAtIndex:indexPathForDeletion.row];
         [website removeObjectAtIndex:indexPathForDeletion.row];
         [zipcode removeObjectAtIndex:indexPathForDeletion.row];
-        //add logic to get custID and delete from table
-        
-        
+                
     }
-    [clientsTableView reloadData];
-        
-    
-    
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UIViewController *reloadTable = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageClients"];
 
-    
+    [self presentViewController:reloadTable animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning{

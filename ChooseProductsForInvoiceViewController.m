@@ -128,7 +128,7 @@
             NSNumber * myProductID = [f numberFromString:cell.ProductID.text];
             CurrentInvoice_Lines.productID = myProductID;//cell.ProductID.text;
             CurrentInvoice_Lines.quantity = cell.ProductQuantity.text;
-            
+            CurrentInvoice_Lines.unitPrice =  cell.ProductPriceLabel.text;
             if (Quantity==nil) {
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"message:errorMSG delegate:nil

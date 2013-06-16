@@ -47,9 +47,7 @@
     [firstSection addObject:@"Manage Invoices"];;
     [firstSection addObject:@"Manage Products"];
     [firstSection addObject:@"Manage Users"];
-    [firstSection addObject:@"Signed Invoices"];
-    [firstSection addObject:@"Not Signed Invoices"];
-
+    [firstSection addObject:@"PDF Invoices"];
     
     NSDictionary *temporaryDictionary = [[NSDictionary alloc]initWithObjectsAndKeys:firstSection,@"0",secondSection,@"1",thirdSection,@"2",nil];
     self.menuDataSource = temporaryDictionary;
@@ -103,13 +101,11 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [titleOfSections count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [[self.menuDataSource objectForKey:[NSString stringWithFormat:@"%d",section]] count];
     
     
@@ -120,8 +116,7 @@
     
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
     
     [headerView setBackgroundColor:[UIColor grayColor]];
@@ -184,10 +179,13 @@
             break;
             
         case 4:
+            newController=@"PDFInvoices";
+            
+            break;
+        case 5:
             newController=@"ManageSignedInvoices";
             
             break;
-
     }
     
     UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];
@@ -221,7 +219,6 @@
         
         if(![delegate.managedObjectContext save:&error]) {
             
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             }
         
        
