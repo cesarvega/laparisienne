@@ -26,7 +26,10 @@
 
 
 - (void)viewDidLoad{
+      [self  InitArraysToHoldData];
     [super viewDidLoad];
+  
+
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     [self FindUsers];
 
@@ -43,7 +46,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [usersArray count];
+    return [userNames count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -141,8 +144,7 @@
 
 -(void)FindUsers{
     
-    [self  InitArraysToHoldData];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
+        NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"User" inManagedObjectContext:context];
@@ -154,7 +156,7 @@
         
         NSString *usernames = [NSString stringWithFormat:@"%@",[item valueForKey:@"userName"]];
         NSString *password = [NSString stringWithFormat:@"%@",[item valueForKey:@"password"]];
-      
+        NSLog(@"User: %@", usernames);
         [userNames addObject:usernames];
         [passwords addObject:password];
        

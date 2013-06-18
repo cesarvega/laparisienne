@@ -11,7 +11,7 @@
 
 @interface UserManagmentViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
-    NSMutableArray *usersArray;
+   // NSMutableArray *usersArray;
      NSIndexPath *indexPathForDeletion;
     AppDelegate *delegate;
 }
