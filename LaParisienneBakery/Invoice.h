@@ -18,5 +18,6 @@
 @property (nonatomic, retain) NSString * docNum;
 @property (nonatomic, retain) NSString * docTotal;
 @property (nonatomic, retain) NSNumber * invoiceID;
+@property (nonatomic, retain) NSString * custPONum;
 
 @end

@@ -764,6 +764,20 @@
                                 <rect key="frame" x="20" y="57" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Customer PO: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfy-9X-a9d">
+                                <rect key="frame" x="402" y="140" width="242" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="##########" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fRX-Fi-B7o">
+                                <rect key="frame" x="575" y="140" width="187" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -774,7 +788,9 @@
                         <outlet property="InvoiceDateTextLabel" destination="DG7-cc-3F2" id="rYP-7k-cOO"/>
                         <outlet property="InvoiceDepartmentTextLabel" destination="Ovm-gw-ujl" id="AV6-L8-1cM"/>
                         <outlet property="InvoiceNumberTextLabel" destination="LUy-2X-K9o" id="pxd-I4-HJ7"/>
+                        <outlet property="PONumberTextField" destination="fRX-Fi-B7o" id="gK4-VV-pIp"/>
                         <outlet property="ProductsTableView" destination="XeT-pd-RxV" id="Zj8-Ns-p7o"/>
+                        <outlet property="customerPOLabel" destination="qfy-9X-a9d" id="TEV-cH-mt4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfX-bZ-hpb" userLabel="First Responder" sceneMemberID="firstResponder"/>

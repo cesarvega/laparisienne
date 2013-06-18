@@ -70,6 +70,8 @@
      [SelectedProductsIndexPaths addObject:indexPath];
     cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    //[unitPrice replaceObjectAtIndex:indexPath.item withObject:cell.ProductPriceLabel.text];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -129,6 +131,7 @@
             CurrentInvoice_Lines.productID = myProductID;//cell.ProductID.text;
             CurrentInvoice_Lines.quantity = cell.ProductQuantity.text;
             CurrentInvoice_Lines.unitPrice =  cell.ProductPriceLabel.text;
+            NSLog(@"unit price: %@",CurrentInvoice_Lines.unitPrice);
             if (Quantity==nil) {
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"message:errorMSG delegate:nil

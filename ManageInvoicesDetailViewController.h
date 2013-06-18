@@ -19,7 +19,9 @@
     NSIndexPath *indexPathForDeletion;
 }
 @property (strong, nonatomic) NSMutableArray * InvoiceLines;
+@property (weak, nonatomic) IBOutlet UILabel *PONumberTextField;
 @property (strong, nonatomic) NSNumber * custID;
+@property (weak, nonatomic) IBOutlet UILabel *customerPOLabel;
 @property (strong, nonatomic) NSNumber * InvoiceID;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceNumberTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *InvoiceDepartmentTextLabel;

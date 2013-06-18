@@ -17,5 +17,6 @@
 @dynamic docNum;
 @dynamic docTotal;
 @dynamic invoiceID;
+@dynamic custPONum;
 
 @end
