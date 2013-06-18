@@ -116,7 +116,7 @@
     
     invoice.department = InvoiceDepartmentTextLabel.text;
     
-    
+    invoice.custPONum = @"12345";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     // this is imporant - we set our input date format to match our input string
     // if format doesn't match you'll get nil from your string, so be careful
