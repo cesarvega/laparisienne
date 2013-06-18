@@ -7,12 +7,14 @@
 //
 
 #import "PDFInvoicesViewController.h"
+#import "NICSignatureView.h"
+
 @interface PDFInvoicesViewController ()
 
 @end
 
 @implementation PDFInvoicesViewController
-@synthesize InvoicesTableView;
+@synthesize InvoicesTableView,InvoiceID;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -77,7 +79,7 @@
 {
  
     indexPathForDeletion =indexPath;
-
+    InvoiceID = [directoryContents objectAtIndex:indexPath.row];
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Would you like to Preview or  Sign the Invoice"
                                                       message:nil
                                                      delegate:self
@@ -146,9 +148,8 @@
     {
 
          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GLKView"];
-        
-        [self presentViewController:manageClientsViewController animated:YES completion:nil];
+        GLKViewController * createsignatureInvoice = (GLKViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GLKView"];
+        [self presentViewController:createsignatureInvoice animated:YES completion:nil];
     }
       
 }

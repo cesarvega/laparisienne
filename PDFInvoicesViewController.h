@@ -13,7 +13,7 @@
     NSArray * directoryContents;
     NSIndexPath *indexPathForDeletion;
 }
-
+@property (strong, nonatomic)    NSNumber* InvoiceID;
 @property (strong, nonatomic) IBOutlet UITableView *InvoicesTableView;
 @property (nonatomic, strong) UIPopoverController *popController;
 @end

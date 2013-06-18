@@ -121,7 +121,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 
 @implementation NICSignatureView
-
+@synthesize InvoiceID;
 - (void)commonInit {
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     
