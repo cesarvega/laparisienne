@@ -826,9 +826,11 @@
 	[[ReaderThumbCache sharedInstance] removeAllObjects]; // Empty the thumb cache
 
 	if (printInteraction != nil) [printInteraction dismissAnimated:NO]; // Dismiss
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+   [self presentViewController:manageClientsViewController animated:YES completion:nil];
+   
 #endif // end of READER_STANDALONE Option
 }
 

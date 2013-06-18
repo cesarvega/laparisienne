@@ -142,15 +142,7 @@
             
             [InvoiceLinesArray addObject:CurrentInvoice_Lines];
             }
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-            ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
-            [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
-            [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
-            [InvoiceDetailView setCustID:ClientID];
-            [InvoiceDetailView setInvoiceID:InvoiceID];
-            InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-            [self presentViewController:InvoiceDetailView animated:YES completion:nil];
-          }
+        }
       
   }else{
                     NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
@@ -158,6 +150,16 @@
                                                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [alert show];
         }
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
+    [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
+    [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
+    [InvoiceDetailView setCustID:ClientID];
+    [InvoiceDetailView setInvoiceID:InvoiceID];
+    InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:InvoiceDetailView animated:YES completion:nil];
+
 }
 
 #pragma-mark UITextField Delegade Methods

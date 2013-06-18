@@ -237,8 +237,6 @@
 		13283BA91735B0CE00E2C286 = {
 			isa = PBXGroup;
 			children = (
-				827E47F8176E06670034BC9A /* 144.png */,
-				827E47F6176E06620034BC9A /* 72.png */,
 				8252BDAA1756EB350061F803 /* PDFEngine */,
 				1332BC92173F59DF0082D8A8 /* DataModels */,
 				82EDE1D6173F19ED00E27BB3 /* ViewControllers */,
@@ -465,6 +463,8 @@
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				827E47F8176E06670034BC9A /* 144.png */,
+				827E47F6176E06620034BC9A /* 72.png */,
 				8261239C1769674600AC3E5B /* LogoDark.png */,
 				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,

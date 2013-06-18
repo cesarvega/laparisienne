@@ -21,7 +21,7 @@
 @implementation ManageInvoicesDetailViewController
  ProductsReviewDetailCell *cell;
 @synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID;
-@synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID;
+@synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID,customerPOLabel;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,quantity,lineTotal;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -59,10 +59,6 @@
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
         
-        
-        //use product ID to get product info
-        //fetch product using ID
-        
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
@@ -77,7 +73,7 @@
         
         if([items count] == 1)
         {
-                    currentLine.lineTotal =@"100";// [self multiplyNumber:currentLine.quantity byNumber:unitPrice];
+                    currentLine.lineTotal =[self multiplyNumber:currentLine.quantity byNumber:currentLine.unitPrice];
         
                      
             NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
@@ -116,7 +112,7 @@
     
     invoice.department = InvoiceDepartmentTextLabel.text;
     
-    invoice.custPONum = @"12345";
+    //invoice.custPONum = @"12345";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     // this is imporant - we set our input date format to match our input string
     // if format doesn't match you'll get nil from your string, so be careful
@@ -142,12 +138,8 @@
         
     }
     
-    
-    
-    //InvoiceID=  invoice.invoiceID;
     [self createPDF];
 
-    
 }
 
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
@@ -256,7 +248,7 @@
     for (NSArray *item in Customer) {
         NSString *BusinessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         //NSString *Department =@"Kitchen 1";
-        NSString *BusinessAddress = [NSString stringWithFormat:@"%@ %@ %@ %@ %@",
+        NSString *BusinessAddress = [NSString stringWithFormat:@"%@\n %@ %@ %@ %@",
                                      [item valueForKey:@"addressOne"], [item valueForKey:@"addressTwo"],
                                      [item valueForKey:@"city"],[item valueForKey:@"state"],[item valueForKey:@"zipcode"]];
         NSDate *date = [NSDate date];
@@ -264,7 +256,8 @@
          [dateFormat setDateFormat:@"MM -dd - YYYY"];
         NSString *dateString = [dateFormat stringFromDate:date];
         NSString *Date =dateString;
-        NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
+       // NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
+        NSString *telefono = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
         NSString *InvoiceNumber =@"12345678";
      
         if (InvoiceID!=nil) {
@@ -310,7 +303,7 @@
                         
                         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
                         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
-                        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
+                        NSString *unitPrices = invoices_lines.unitPrice;
                         
                         [unitPrice addObject:unitPrices];
                         [Productname addObject:Productnames];
@@ -323,11 +316,10 @@
 
         [ProductsTableView reloadData];
         [BusinessNameTextLabel setText:BusinessName];
-        //[InvoiceDepartmentTextLabel setText:Department];
         [InvoiceDepartmentTextLabel setText:@"Kitchen 1"];
         [ClientAddressTextLabel setText:BusinessAddress];
         [InvoiceDateTextLabel setText:Date]; 
-        [ClientNameTextLabel setText:BusinessContactName];
+        [ClientNameTextLabel setText:telefono];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
         
     }
@@ -432,11 +424,16 @@
   
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
-
-    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
-      withFrame:CGRectMake(150, 348, 150, 150) fontSize:15.0f];
     
+//    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
+//        withFrame:CGRectMake(110, 348, 150, 150) fontSize:15.0f];
+    
+    [self addText:[NSString stringWithFormat:@"%@\n%@\n%@", BusinessNameTextLabel.text, ClientAddressTextLabel.text,ClientNameTextLabel.text]
+        withFrame:CGRectMake(130, 328, 150, 150) fontSize:15.0f];
 
+    [self addText:[NSString stringWithFormat:@"%@",customerPOLabel.text]
+      withFrame:CGRectMake(630, 270, 150, 150) fontSize:15.0f];
+    
 }
 
 - (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
@@ -496,11 +493,13 @@
 }
 
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
+  
     _pageSize = CGSizeMake(width, height);
     
     NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];

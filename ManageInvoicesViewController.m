@@ -116,10 +116,10 @@
     
 }
 
-
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //remove the deleted object from your data source.
@@ -139,8 +139,8 @@
     
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
@@ -184,9 +184,12 @@
         
         
     }
+    
     [InvoicesTableView   reloadData];
+     [self getinvoices];
     
 }
+
 -(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
     NSError *error = nil;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -195,7 +198,5 @@
     NSArray *Invoice_Lines= [delegate.managedObjectContext executeFetchRequest:request error:&error];
     return Invoice_Lines;
 }
-
-
 
 @end

@@ -28,3 +28,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *RecieversName;
 - (IBAction)EraseSignature:(id)sender;
 @end
+
+@interface Control : UIViewController
+
+@property(strong, nonatomic)UIViewController * DismissView;
+
+@end
