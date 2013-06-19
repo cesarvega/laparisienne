@@ -119,8 +119,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="m99-Wj-D4p" id="37H-O2-3ou"/>
-                            <outlet property="delegate" destination="m99-Wj-D4p" id="FX3-So-3m8"/>
+                            <outlet property="dataSource" destination="m99-Wj-D4p" id="2gI-1k-mn5"/>
+                            <outlet property="delegate" destination="m99-Wj-D4p" id="9qQ-lo-E0L"/>
                         </connections>
                     </tableView>
                 </tableViewController>
@@ -442,6 +442,17 @@
                                 <rect key="frame" x="0.0" y="44" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" id="Eoc-Zh-ZK2">
+                                        <rect key="frame" x="0.0" y="22" width="768" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="YDX-ty-IAK" id="IEe-Gi-Y4m"/>
                                     <outlet property="delegate" destination="YDX-ty-IAK" id="2Ds-Sc-dnx"/>
@@ -460,6 +471,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Create User +" id="zOS-CI-MX0">
                                             <connections>
+                                                <action selector="createUser:" destination="YDX-ty-IAK" id="Kre-aS-lqi"/>
                                                 <segue destination="rKV-xt-K3R" kind="modal" id="tBD-vO-58O"/>
                                             </connections>
                                         </barButtonItem>
@@ -469,6 +481,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="usersTableView" destination="6px-aW-BSq" id="9u5-GQ-kMR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7h-Ne-ada" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
