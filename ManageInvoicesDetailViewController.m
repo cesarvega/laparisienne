@@ -1,3 +1,4 @@
+
 //
 //  ManageInvoicesDetailViewController.m
 //  LaParisienneBakery
@@ -35,7 +36,6 @@
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     contextForHeader = [delegate managedObjectContext];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning{
@@ -46,7 +46,10 @@
 - (IBAction)SaveInvoice:(id)sender {
     
     NSNumber *nextLineID;
-    NSNumber *nextParentInvDocNum = [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"];
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber = [f numberFromString:InvoiceNumberTextLabel.text];
+    NSNumber *nextParentInvDocNum =myNumber;
     InvoiceID = nextParentInvDocNum;
     NSString *docTotal = @"0";
     
@@ -93,12 +96,7 @@
             
         }
         else{
-          
-            
         }
-        
-        
-        
         
     }
     
@@ -106,22 +104,18 @@
                       insertNewObjectForEntityForName:@"Invoice"
                       inManagedObjectContext:delegate.managedObjectContext];
     invoice.docTotal = docTotal;
+  
+    invoice.docDate = InvoiceDateTextLabel.text ;
     
-          
     invoice.docNum  = [nextParentInvDocNum stringValue];
     
     invoice.department = InvoiceDepartmentTextLabel.text;
     
-    //invoice.custPONum = @"12345";
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    // this is imporant - we set our input date format to match our input string
-    // if format doesn't match you'll get nil from your string, so be careful
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-    NSDate *dateFromString = [[NSDate alloc] init];
-    // voila!
-    dateFromString = [dateFormatter dateFromString:InvoiceDateTextLabel.text];
-    invoice.docDate = dateFromString;
-    invoice.invoiceID = [self getGetNextNumericValueForFieldName:@"invoiceID" withEntityName:@"Invoice"];
+    invoice.custPONum = customerPOLabel.text;
+
+    invoice.docDate = InvoiceDateTextLabel.text;
+    
+    invoice.invoiceID =nextParentInvDocNum ;
    
     invoice.custID = custID;  
     NSError *error;
@@ -169,59 +163,16 @@
     return result;
 }
 
--(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName{
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+-(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName {
+
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"MMddhhmmss"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+     int dateDocNum = [dateString intValue];
+    NSNumber * DocumentNUmber = [NSNumber numberWithInt:dateDocNum];
+    return DocumentNUmber;
     
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:delegate.managedObjectContext];
-    
-    [request setEntity:entity];
-    
-    // Specify that the request should return dictionaries.
-    
-    [request setResultType:NSDictionaryResultType];
-    
-    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:fieldName];
-    
-    NSExpression *maxExpression = [NSExpression expressionForFunction:@"max:"
-                                                                  arguments:[NSArray arrayWithObject:keyPathExpression]];
-    
-    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
-    
-    [expressionDescription setName:@"maxID"];
-    
-    [expressionDescription setExpression:maxExpression];
-    
-    [expressionDescription setExpressionResultType:NSDecimalAttributeType];
-    
-    [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
-    NSError *error;
-    NSArray *objects = [delegate.managedObjectContext executeFetchRequest:request error:&error];
-    NSString *ID = @"";
-    if (objects == nil || [objects count] == 0) {
-        if([fieldName isEqualToString:@"docNum"])
-        {
-            return 00000000;
-        }
-        else if([fieldName isEqualToString:@"invoiceOrderID"])
-        {
-            return 0;
-        }
-    }
-    else {
-        
-        if ([objects count] > 0) {
-            ID = [[objects objectAtIndex:0] valueForKey:@"maxID"];
-        }
-    }
-    
-    int maxID = [ID integerValue];
-    maxID = maxID+1;
-    NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    //ID is a string
-    return [f numberFromString:finalString];
-       
 }
 
 - (IBAction)ReEditProductsSelected:(id)sender {
@@ -247,25 +198,23 @@
     
     for (NSArray *item in Customer) {
         NSString *BusinessName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-        //NSString *Department =@"Kitchen 1";
-        NSString *BusinessAddress = [NSString stringWithFormat:@"%@\n %@ %@ %@ %@",
-                                     [item valueForKey:@"addressOne"], [item valueForKey:@"addressTwo"],
+        NSString *BusinessAddress = [NSString stringWithFormat:@"%@\n%@ %@ %@",[item valueForKey:@"addressOne"],
                                      [item valueForKey:@"city"],[item valueForKey:@"state"],[item valueForKey:@"zipcode"]];
         NSDate *date = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
          [dateFormat setDateFormat:@"MM -dd - YYYY"];
         NSString *dateString = [dateFormat stringFromDate:date];
         NSString *Date =dateString;
-       // NSString *BusinessContactName = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
         NSString *telefono = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
-        NSString *InvoiceNumber =@"12345678";
+        NSString *InvoiceNumber = [NSString stringWithFormat:@"%@", [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"]];
      
         if (InvoiceID!=nil) {
          
+            
             NSArray *invoices= [self GetInvoicesByInvoiceID];
             
             for (NSArray *item in invoices) {
-                
+                [InvoiceNumberTextLabel setText:[NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]]];
                 NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
                 NSArray *invoices_lines= [self GetInvoiceLines:InvoiceLinesID];
                
@@ -273,29 +222,28 @@
                     NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
                     NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
                     NSString *quantitys = [NSString stringWithFormat:@"%@",[item valueForKey:@"quantity"]];
+                    NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
                    
                     [lineTotal addObject:lineTotals];
                     [productID addObject:productIDs];
                     [quantity addObject:quantitys];
-                    
-                    NSArray *products= [self Getproducts:[productID objectAtIndex:0]];
+                    [unitPrice addObject:unitPrices];
+                    NSArray *products= [self Getproducts:productIDs ];
                     
                     for(NSArray *item in products){
                       
                         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
                         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
-                        NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
-                        
-                        [unitPrice addObject:unitPrices];
                         [Productname addObject:Productnames];
                         [productDescription addObject:productDescriptions];
 
                     }
                 }
             }
-        }else{
-        
-           for (Invoice_Lines *invoices_lines in InvoiceLines){
+        }
+        else{
+           
+            for (Invoice_Lines *invoices_lines in InvoiceLines){
                
                NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
                     
@@ -316,7 +264,7 @@
 
         [ProductsTableView reloadData];
         [BusinessNameTextLabel setText:BusinessName];
-        [InvoiceDepartmentTextLabel setText:@"Kitchen 1"];
+        [InvoiceDepartmentTextLabel setText:@""];
         [ClientAddressTextLabel setText:BusinessAddress];
         [InvoiceDateTextLabel setText:Date]; 
         [ClientNameTextLabel setText:telefono];
@@ -424,15 +372,12 @@
   
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
-    
-//    [self addText:[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",@"     Department :", InvoiceDepartmentTextLabel.text,@"     Name :", BusinessNameTextLabel.text,@"     Date :", InvoiceDateTextLabel.text,@"     Contact :", ClientNameTextLabel.text,@"     Address :", ClientAddressTextLabel.text]
-//        withFrame:CGRectMake(110, 348, 150, 150) fontSize:15.0f];
-    
+
     [self addText:[NSString stringWithFormat:@"%@\n%@\n%@", BusinessNameTextLabel.text, ClientAddressTextLabel.text,ClientNameTextLabel.text]
         withFrame:CGRectMake(130, 328, 150, 150) fontSize:15.0f];
 
-    [self addText:[NSString stringWithFormat:@"%@",customerPOLabel.text]
-      withFrame:CGRectMake(630, 270, 150, 150) fontSize:15.0f];
+    [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDateTextLabel.text, InvoiceNumberTextLabel.text, customerPOLabel.text]
+      withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
     
 }
 
@@ -515,7 +460,7 @@
     UIGraphicsEndPDFContext();
     [self didClickOpenPDF];
 }
-//NOTE to look the pdf created go to finder and choose go to folder the type /Library/Application Support/iPhone Simulator/
+
 - (void)didClickOpenPDF {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);

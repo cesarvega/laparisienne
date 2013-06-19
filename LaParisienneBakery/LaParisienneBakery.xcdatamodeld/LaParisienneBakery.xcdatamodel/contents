@@ -20,7 +20,7 @@
         <attribute name="custID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="custPONum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="docDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="docDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="docNum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="docTotal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="invoiceID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

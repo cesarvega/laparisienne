@@ -21,7 +21,7 @@
 
 @property (assign, nonatomic) BOOL hasSignature;
 @property (strong, nonatomic) UIImage *signatureImage;
-@property (strong, nonatomic)    NSNumber* InvoiceID;
+@property (strong, nonatomic) NSNumber* InvoiceID;
 
 - (void)erase;
 - (IBAction)StoreSignedInvoice:(id)sender;

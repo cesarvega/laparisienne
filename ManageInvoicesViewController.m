@@ -26,6 +26,14 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSArray * results = [[NSArray alloc] init];
+    results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
+    NSString *match = @"Invoice*pdf";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
+    directoryContents = [results filteredArrayUsingPredicate:predicate];
     
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
      context = [delegate managedObjectContext];
@@ -59,7 +67,6 @@
     return cell;
 }
 
-//modify this to open a specific invoice depending on which row selected 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
@@ -76,15 +83,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//this will query for all invoices with the view cust ID passed from 'choose client for invoice controller'
-
 -(void)initArrays{
     invoiceDocDates = [[NSMutableArray alloc]init];
     invoicesDocNums = [[NSMutableArray alloc]init];
     InvoiceID =[[NSMutableArray alloc]init];
 }
 
-//get all invoices whose custID = this class custID
 -(void)getinvoices{
     NSError *error = nil;
     //This is your NSManagedObject subclass
@@ -179,14 +183,18 @@
         [invoiceDocDates removeObjectAtIndex:indexPathForDeletion.row];
         [invoicesDocNums removeAllObjects];
         
-        
-        //add logic to get custID and delete from table
-        
-        
     }
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[directoryContents objectAtIndex:indexPathForDeletion.row] ];
+    [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
+
     
-    [InvoicesTableView   reloadData];
-     [self getinvoices];
+       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ChooseCLientsFOrInvoice"];
+        [self presentViewController:manageClientsViewController animated:YES completion:nil];
+    
     
 }
 

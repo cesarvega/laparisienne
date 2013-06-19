@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSNumber * custID;
 @property (nonatomic, retain) NSString * department;
-@property (nonatomic, retain) NSDate * docDate;
+@property (nonatomic, retain) NSString * docDate;
 @property (nonatomic, retain) NSString * docNum;
 @property (nonatomic, retain) NSString * docTotal;
 @property (nonatomic, retain) NSNumber * invoiceID;

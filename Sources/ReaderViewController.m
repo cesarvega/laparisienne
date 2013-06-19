@@ -828,7 +828,6 @@
 	if (printInteraction != nil) [printInteraction dismissAnimated:NO]; // Dismiss
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-
    [self presentViewController:manageClientsViewController animated:YES completion:nil];
    
 #endif // end of READER_STANDALONE Option

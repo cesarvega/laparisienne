@@ -15,6 +15,7 @@
     AppDelegate *delegate;
     NSManagedObjectContext *context;
     NSIndexPath *indexPathForDeletion;
+    NSArray * directoryContents;
 }
 @property (strong, nonatomic)NSArray* CustomersPickerDataSrc ;
 @property (strong, nonatomic)NSArray* ProductsPickerDataSrc ;
