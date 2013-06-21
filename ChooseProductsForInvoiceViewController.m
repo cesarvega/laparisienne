@@ -10,7 +10,7 @@
 #import "Invoice_Lines.h"
 #import "ManageInvoicesDetailViewController.h"
 @implementation ProductsDetailCell
-@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity,ProductID;
+@synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity,ProductID,addImage;
 
 @end
 @interface ChooseProductsForInvoiceViewController ()
@@ -20,7 +20,7 @@
 @implementation ChooseProductsForInvoiceViewController
 ProductsDetailCell *cell;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,InvoiceID,quantity;
-
+@synthesize TextColor,ImageName;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -60,13 +60,23 @@ ProductsDetailCell *cell;
         cell = [[ProductsDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    
+    cell.ProductID.text=[productID objectAtIndex:indexPath.row];
     cell.ProductNameLabel.text =  [Productname objectAtIndex:indexPath.row];
     cell.ProductDescriptionLabel.text =[productDescription objectAtIndex:indexPath.row];
     cell.ProductPriceLabel.text =[unitPrice objectAtIndex:indexPath.row];
-    cell.ProductID.text=[productID objectAtIndex:indexPath.row];
     cell.ProductQuantity.text = [quantity objectAtIndex:indexPath.row];
-    return cell;
+    cell.ProductQuantity.textColor =[TextColor objectAtIndex:indexPath.row];
+    cell.ProductPriceLabel.textColor =[TextColor objectAtIndex:indexPath.row];
+    [cell.addImage setImage:[UIImage imageNamed:[ImageName objectAtIndex:indexPath.row]]];
+    if ([[ImageName objectAtIndex:indexPath.row] isEqual:@"add.png"]) {
+        [cell.ProductQuantity setEnabled:YES];
+        [cell.ProductPriceLabel setEnabled:YES];
+
+    }else{
+        [cell.ProductQuantity setEnabled:NO];
+        [cell.ProductPriceLabel setEnabled:NO];
+    }
+       return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -74,22 +84,30 @@ ProductsDetailCell *cell;
     [SelectedProductsIndexPaths addObject:indexPath];
     IndexTracing=indexPath;
     cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
-    cell.ProductPriceLabel.alpha =0;
-    cell.ProductQuantity.alpha=0;
     [unitPrice replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductPriceLabel.text];
     [quantity replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductQuantity.text];
     [productID replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductID.text];
-    NSLog(@"unitPrice: %@",[unitPrice objectAtIndex :indexPath.row ]);
-    NSLog(@"quantity: %@",[quantity objectAtIndex :indexPath.row ]);
-}
-
+    UIColor * whiteColor = [UIColor greenColor];
+    [cell.ProductQuantity setTextColor: whiteColor];
+    [cell.ProductPriceLabel setTextColor:whiteColor];
+    [TextColor replaceObjectAtIndex:IndexTracing.row withObject:whiteColor];
+    [ImageName replaceObjectAtIndex:IndexTracing.row withObject:@"added.png"];
+    [cell.ProductQuantity setEnabled:NO];
+    [cell.ProductPriceLabel setEnabled:NO];
+  }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
     [SelectedProductsIndexPaths removeObject:indexPath];
-    cell.ProductPriceLabel.alpha =1;
-    cell.ProductQuantity.alpha=1;
-    
+     UIColor * cyanColor = [UIColor cyanColor];
+    [cell.ProductQuantity setTextColor: cyanColor];
+    [cell.ProductPriceLabel setTextColor:cyanColor];
+    [cell.ProductQuantity setEnabled:YES];
+    [cell.ProductPriceLabel setEnabled:YES];
+    [cell.ProductPriceLabel setTextColor:cyanColor];
+    [TextColor replaceObjectAtIndex:IndexTracing.row withObject:cyanColor];
+    [ImageName replaceObjectAtIndex:IndexTracing.row withObject:@"add.png"];
+   
 }
 
 -(void)FindProducts{
@@ -114,6 +132,10 @@ ProductsDetailCell *cell;
         [productID addObject:productIDs];
         [unitPrice addObject:unitPrices];
         [quantity addObject:@""];
+        UIColor * cyanColor = [UIColor cyanColor];
+        [TextColor addObject:cyanColor];
+        [ImageName addObject:@"add.png"];
+
     }
 }
 
@@ -123,6 +145,8 @@ ProductsDetailCell *cell;
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
     quantity = [[NSMutableArray alloc] init];
+    TextColor = [[NSMutableArray alloc] init];
+    ImageName = [[NSMutableArray alloc] init];
     
 }
 
@@ -135,7 +159,6 @@ ProductsDetailCell *cell;
         for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
             
             cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
-            //  NSString * Quantity = cell.ProductQuantity.text;
             Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription  insertNewObjectForEntityForName:@"Invoice_Lines"
                                                                                  inManagedObjectContext:contextForInvoiceLines];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -146,8 +169,7 @@ ProductsDetailCell *cell;
             CurrentInvoice_Lines.productID = myProductID;
             CurrentInvoice_Lines.quantity = [quantity objectAtIndex:index.row];
             CurrentInvoice_Lines.unitPrice =  [unitPrice objectAtIndex:index.row];
-            NSLog(@"unit price: %@",CurrentInvoice_Lines.unitPrice);
-            if (CurrentInvoice_Lines.quantity==nil||CurrentInvoice_Lines.unitPrice==nil) {
+            if ([CurrentInvoice_Lines.quantity isEqual:@""]||[CurrentInvoice_Lines.unitPrice isEqual:@""]) {
                 invoiceincomplete =NO;
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"message:errorMSG delegate:nil
@@ -188,12 +210,8 @@ ProductsDetailCell *cell;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    // NSLog(@"%@",[quantity objectAtIndex :IndexTracing.item ]);
-    
-    
     
     [self animateTextField: textField up: YES];
-    
     self.navigationItem.rightBarButtonItem.enabled = NO;
     self.navigationItem.leftBarButtonItem.enabled=NO;
     

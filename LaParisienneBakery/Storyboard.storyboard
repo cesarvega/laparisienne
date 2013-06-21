@@ -1034,10 +1034,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H7e-Zj-xQK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="681" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="703" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" image="BG.png">
+                                                    <state key="normal" image="cellBg.png">
                                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1060,14 +1060,14 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price/Unit : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lqk-jX-RqU">
-                                                    <rect key="frame" x="328" y="39" width="88" height="21"/>
+                                                    <rect key="frame" x="356" y="39" width="88" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" id="Lsh-E7-HpD">
-                                                    <rect key="frame" x="605" y="35" width="62" height="30"/>
+                                                    <rect key="frame" x="612" y="35" width="62" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1077,21 +1077,21 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2OD-QJ-VOw">
-                                                    <rect key="frame" x="504" y="43" width="42" height="21"/>
+                                                    <rect key="frame" x="511" y="43" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Quantity :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t2v-19-ZYn">
-                                                    <rect key="frame" x="523" y="39" width="73" height="21"/>
+                                                    <rect key="frame" x="530" y="39" width="73" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" id="thV-FE-Nnj">
-                                                    <rect key="frame" x="424" y="35" width="61" height="30"/>
+                                                    <rect key="frame" x="452" y="35" width="61" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1100,8 +1100,8 @@
                                                         <outlet property="delegate" destination="Str-26-YQd" id="Edo-qj-n4J"/>
                                                     </connections>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="72.png" highlightedImage="LogoDark.png" id="rDo-8e-lCQ">
-                                                    <rect key="frame" x="694" y="25" width="61" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="add.png" highlightedImage="added.png" id="rDo-8e-lCQ">
+                                                    <rect key="frame" x="703" y="25" width="61" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1113,6 +1113,7 @@
                                             <outlet property="ProductNameLabel" destination="qB8-4J-c9e" id="hNP-f4-Bee"/>
                                             <outlet property="ProductPriceLabel" destination="thV-FE-Nnj" id="0he-4E-ttE"/>
                                             <outlet property="ProductQuantity" destination="Lsh-E7-HpD" id="Dix-GZ-a28"/>
+                                            <outlet property="addImage" destination="rDo-8e-lCQ" id="tsG-ve-vTu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1317,12 +1318,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="72.png" width="72" height="72"/>
         <image name="BG.png" width="1536" height="2297"/>
         <image name="InvoiceTemplate.png" width="16" height="16"/>
         <image name="Logo.png" width="968" height="605"/>
         <image name="LogoDark.png" width="1009" height="581"/>
         <image name="Signature.png" width="733" height="106"/>
+        <image name="add.png" width="196" height="200"/>
+        <image name="added.png" width="197" height="198"/>
+        <image name="cellBg.png" width="1522" height="268"/>
     </resources>
     <classes>
         <class className="ChooseClientForInvoiceViewController" superclassName="UIViewController">
@@ -1435,6 +1438,7 @@
                 <relationship kind="outlet" name="ProductNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ProductPriceLabel" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="ProductQuantity" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="ProductsReviewDetailCell" superclassName="UITableViewCell">

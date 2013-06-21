@@ -113,8 +113,8 @@
     }
 
     if([title isEqualToString:@"Preview Doc"])
-    {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+
+    {        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPathForDeletion.row]]];
         

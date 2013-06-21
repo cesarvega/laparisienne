@@ -73,6 +73,10 @@
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
 		828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DBC1766A70700C666C6 /* NICSignatureView.m */; };
 		82921499176942D300AA44F9 /* InvoiceTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82921498176942D300AA44F9 /* InvoiceTemplate.png */; };
+		8294A63A1773F7AB005084CA /* added.png in Resources */ = {isa = PBXBuildFile; fileRef = 8294A6381773F7AB005084CA /* added.png */; };
+		8294A63B1773F7AB005084CA /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 8294A6391773F7AB005084CA /* add.png */; };
+		8294A63D1774032B005084CA /* cellBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8294A63C1774032B005084CA /* cellBg.png */; };
+		8294A63F1774084C005084CA /* noadd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8294A63E1774084C005084CA /* noadd.png */; };
 		829A4683174AFFE900B3B136 /* UserManagmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */; };
 		829A4686174B053600B3B136 /* ManageProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4685174B053600B3B136 /* ManageProductsViewController.m */; };
 		829A4689174B06AA00B3B136 /* ManageProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829A4688174B06AA00B3B136 /* ManageProductsDetailViewController.m */; };
@@ -191,6 +195,10 @@
 		828E6DBB1766A70700C666C6 /* NICSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICSignatureView.h; sourceTree = "<group>"; };
 		828E6DBC1766A70700C666C6 /* NICSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NICSignatureView.m; sourceTree = "<group>"; };
 		82921498176942D300AA44F9 /* InvoiceTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = InvoiceTemplate.png; path = LaParisienneBakery/InvoiceTemplate.png; sourceTree = "<group>"; };
+		8294A6381773F7AB005084CA /* added.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = added.png; sourceTree = "<group>"; };
+		8294A6391773F7AB005084CA /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		8294A63C1774032B005084CA /* cellBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBg.png; sourceTree = "<group>"; };
+		8294A63E1774084C005084CA /* noadd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noadd.png; sourceTree = "<group>"; };
 		829A4681174AFFE900B3B136 /* UserManagmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManagmentDetailViewController.h; sourceTree = "<group>"; };
 		829A4682174AFFE900B3B136 /* UserManagmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagmentDetailViewController.m; sourceTree = "<group>"; };
 		829A4684174B053600B3B136 /* ManageProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageProductsViewController.h; sourceTree = "<group>"; };
@@ -463,8 +471,12 @@
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8294A6381773F7AB005084CA /* added.png */,
+				8294A63E1774084C005084CA /* noadd.png */,
+				8294A6391773F7AB005084CA /* add.png */,
 				827E47F8176E06670034BC9A /* 144.png */,
 				827E47F6176E06620034BC9A /* 72.png */,
+				8294A63C1774032B005084CA /* cellBg.png */,
 				8261239C1769674600AC3E5B /* LogoDark.png */,
 				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,
@@ -571,6 +583,10 @@
 				8261239D1769674600AC3E5B /* LogoDark.png in Resources */,
 				827E47F7176E06620034BC9A /* 72.png in Resources */,
 				827E47F9176E06670034BC9A /* 144.png in Resources */,
+				8294A63A1773F7AB005084CA /* added.png in Resources */,
+				8294A63B1773F7AB005084CA /* add.png in Resources */,
+				8294A63D1774032B005084CA /* cellBg.png in Resources */,
+				8294A63F1774084C005084CA /* noadd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

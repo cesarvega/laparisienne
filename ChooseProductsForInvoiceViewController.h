@@ -15,6 +15,8 @@
     NSManagedObjectContext *contextForInvoiceLines;
       NSMutableArray* selectedIndexes;
 }
+@property (nonatomic, retain) NSMutableArray * TextColor;
+@property (nonatomic, retain) NSMutableArray * ImageName;
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
 @property (nonatomic, retain) NSMutableArray * productID;
@@ -35,6 +37,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UITextField *ProductPriceLabel;
 @property (strong, nonatomic) IBOutlet UITextField *ProductQuantity;
-
+@property (strong, nonatomic) IBOutlet UIImageView *addImage;
 
 @end
