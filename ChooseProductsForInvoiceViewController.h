@@ -10,14 +10,17 @@
 #import "AppDelegate.h"
 @interface ChooseProductsForInvoiceViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
+    NSIndexPath * IndexTracing;
     AppDelegate *delegate;
     NSManagedObjectContext *contextForInvoiceLines;
+      NSMutableArray* selectedIndexes;
 }
 @property (nonatomic, retain) NSMutableArray * Productname;
 @property (nonatomic, retain) NSMutableArray * productDescription;
 @property (nonatomic, retain) NSMutableArray * productID;
 @property (nonatomic, retain) NSNumber * InvoiceID;
 @property (nonatomic, retain) NSMutableArray * unitPrice;
+@property (nonatomic, retain) NSMutableArray * quantity;
 @property (nonatomic, retain) NSMutableArray *SelectedProductsIndexPaths;
 @property (strong, nonatomic) IBOutlet UITableView *ProductsTableView;
 @property (nonatomic, retain) NSNumber * ClientID;
@@ -32,5 +35,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *ProductDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UITextField *ProductPriceLabel;
 @property (strong, nonatomic) IBOutlet UITextField *ProductQuantity;
+
 
 @end

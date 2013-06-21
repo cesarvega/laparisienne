@@ -11,14 +11,15 @@
 #import "ManageInvoicesDetailViewController.h"
 @implementation ProductsDetailCell
 @synthesize ProductPriceLabel,ProductDescriptionLabel,ProductNameLabel,ProductQuantity,ProductID;
+
 @end
 @interface ChooseProductsForInvoiceViewController ()
 
 @end
 
 @implementation ChooseProductsForInvoiceViewController
- ProductsDetailCell *cell;
-@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,InvoiceID;
+ProductsDetailCell *cell;
+@synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,InvoiceID,quantity;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
-     contextForInvoiceLines = [delegate managedObjectContext];
+    contextForInvoiceLines = [delegate managedObjectContext];
     [self FindProducts];
 	// Do any additional setup after loading the view.
     SelectedProductsIndexPaths = [[NSMutableArray alloc] init];
@@ -54,31 +55,40 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"ProducDetailsCell";
     
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier ];
     if (cell == nil) {
         cell = [[ProductsDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
+    
     cell.ProductNameLabel.text =  [Productname objectAtIndex:indexPath.row];
     cell.ProductDescriptionLabel.text =[productDescription objectAtIndex:indexPath.row];
     cell.ProductPriceLabel.text =[unitPrice objectAtIndex:indexPath.row];
     cell.ProductID.text=[productID objectAtIndex:indexPath.row];
+    cell.ProductQuantity.text = [quantity objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-     [SelectedProductsIndexPaths addObject:indexPath];
-    cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    //[unitPrice replaceObjectAtIndex:indexPath.item withObject:cell.ProductPriceLabel.text];
     
+    [SelectedProductsIndexPaths addObject:indexPath];
+    IndexTracing=indexPath;
+    cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
+    cell.ProductPriceLabel.alpha =0;
+    cell.ProductQuantity.alpha=0;
+    [unitPrice replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductPriceLabel.text];
+    [quantity replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductQuantity.text];
+    [productID replaceObjectAtIndex:IndexTracing.row withObject:cell.ProductID.text];
+    NSLog(@"unitPrice: %@",[unitPrice objectAtIndex :indexPath.row ]);
+    NSLog(@"quantity: %@",[quantity objectAtIndex :indexPath.row ]);
 }
 
+
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
     cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:indexPath];
     [SelectedProductsIndexPaths removeObject:indexPath];
+    cell.ProductPriceLabel.alpha =1;
+    cell.ProductQuantity.alpha=1;
     
 }
 
@@ -103,6 +113,7 @@
         [productDescription addObject:productDescriptions];
         [productID addObject:productIDs];
         [unitPrice addObject:unitPrices];
+        [quantity addObject:@""];
     }
 }
 
@@ -111,55 +122,61 @@
     productDescription = [[NSMutableArray alloc] init];
     productID = [[NSMutableArray alloc] init];
     unitPrice = [[NSMutableArray alloc] init];
+    quantity = [[NSMutableArray alloc] init];
+    
 }
 
 - (IBAction)StoreInvocie:(id)sender {
     
     NSMutableArray* InvoiceLinesArray = [[NSMutableArray alloc] init];
-
+    bool invoiceincomplete = YES;
     if ([SelectedProductsIndexPaths count]>0){
-    
+        
         for (int i=0; i<[SelectedProductsIndexPaths count];i++) {
             
             cell = (ProductsDetailCell *) [ProductsTableView cellForRowAtIndexPath:[ SelectedProductsIndexPaths objectAtIndex:i] ];
-            NSString * Quantity = cell.ProductQuantity.text;
+            //  NSString * Quantity = cell.ProductQuantity.text;
             Invoice_Lines * CurrentInvoice_Lines =[NSEntityDescription  insertNewObjectForEntityForName:@"Invoice_Lines"
-                                                   inManagedObjectContext:contextForInvoiceLines];
+                                                                                 inManagedObjectContext:contextForInvoiceLines];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * myProductID = [f numberFromString:cell.ProductID.text];
-            CurrentInvoice_Lines.productID = myProductID;//cell.ProductID.text;
-            CurrentInvoice_Lines.quantity = cell.ProductQuantity.text;
-            CurrentInvoice_Lines.unitPrice =  cell.ProductPriceLabel.text;
+            
+            NSIndexPath* index = [ SelectedProductsIndexPaths objectAtIndex:i];
+            NSNumber * myProductID = [f numberFromString:[productID objectAtIndex:index.row]];
+            CurrentInvoice_Lines.productID = myProductID;
+            CurrentInvoice_Lines.quantity = [quantity objectAtIndex:index.row];
+            CurrentInvoice_Lines.unitPrice =  [unitPrice objectAtIndex:index.row];
             NSLog(@"unit price: %@",CurrentInvoice_Lines.unitPrice);
-            if (Quantity==nil) {
+            if (CurrentInvoice_Lines.quantity==nil||CurrentInvoice_Lines.unitPrice==nil) {
+                invoiceincomplete =NO;
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Type a Quantity"message:errorMSG delegate:nil
                                                       cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
                 break;
             }else{
-            
-            [InvoiceLinesArray addObject:CurrentInvoice_Lines];
+                
+                [InvoiceLinesArray addObject:CurrentInvoice_Lines];
             }
         }
-      
-  }else{
-                    NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected" message:successMsg
-                                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [alert show];
-        }
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
-    [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
-    [InvoiceDetailView setCustID:ClientID];
-    [InvoiceDetailView setInvoiceID:InvoiceID];
-    InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:InvoiceDetailView animated:YES completion:nil];
-
+        
+    }else{
+        invoiceincomplete =NO;
+        NSString *successMsg = [NSString stringWithFormat:@"%@",@"Please select products for the invoice."];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Products Selected" message:successMsg
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
+    if (invoiceincomplete){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
+        [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
+        [InvoiceDetailView setInvoiceLines:InvoiceLinesArray];
+        [InvoiceDetailView setCustID:ClientID];
+        [InvoiceDetailView setInvoiceID:InvoiceID];
+        InvoiceDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:InvoiceDetailView animated:YES completion:nil];
+    }
 }
 
 #pragma-mark UITextField Delegade Methods
@@ -171,6 +188,9 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    // NSLog(@"%@",[quantity objectAtIndex :IndexTracing.item ]);
+    
+    
     
     [self animateTextField: textField up: YES];
     
@@ -186,6 +206,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+    
     [self animateTextField: textField up: NO];
 }
 
@@ -220,8 +241,5 @@
     }
 }
 
--(void)populateInvoiceLineFields{
-    
-}
 
 @end

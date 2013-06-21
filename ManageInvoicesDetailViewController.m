@@ -149,9 +149,6 @@
 }
 
 -(NSString*) multiplyNumber: (NSString*)firstNumber byNumber: (NSString*) secondNumber{
-    
-
-          
     NSDecimalNumber *number = [NSDecimalNumber one];
     NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
     NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
@@ -329,7 +326,7 @@
 
 -(void)DrawTheInvoiceProductsContent{
 
-    int totalOfTheWholeInvoice =0;
+    NSString* totalOfTheWholeInvoice=@"0";
     int textPosititonAX=180;
     int textPosititonBX=360;
     int textPosititonCX=463;
@@ -349,12 +346,15 @@
             NSString *quantitys =invoices_lines.quantity;
             [self addText: quantitys  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
                        
-                     NSString *unitPrices =invoices_lines.unitPrice;
-            int totalPerProduct =[quantitys intValue]*[unitPrices intValue];
-            totalOfTheWholeInvoice =totalOfTheWholeInvoice+totalPerProduct;
-            [self addText: [NSString stringWithFormat:@"%@",unitPrices] withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
+             NSString *unitPrices =invoices_lines.unitPrice;
+           
+             NSString * totalPerProduct = [self multiplyNumber:quantitys  byNumber:unitPrices ];
+           
+          totalOfTheWholeInvoice =[self addNumber:totalOfTheWholeInvoice withNumber:totalPerProduct];
                
-                 [self addText: [NSString stringWithFormat:@"%d",totalPerProduct] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
+        [self addText: unitPrices withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
+               
+        [self addText: [NSString stringWithFormat:@"%@",totalPerProduct ] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
           
                 textPosititonY =textPosititonY+22;
                productCounter=productCounter+1;
@@ -364,7 +364,7 @@
 
         }
    
-    [self addText: [NSString stringWithFormat:@"%d",totalOfTheWholeInvoice] withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
+    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
     
 }
 
