@@ -87,6 +87,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 
 @interface Control()
+
 @end
 @interface NICSignatureView () {
     // OpenGL state
@@ -129,7 +130,10 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 - (void)commonInit {
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    
+      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+      contextForHeader = [delegate managedObjectContext];
+      
+
     if (context) {
         time(NULL);
         
@@ -443,54 +447,135 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
     [self beginPDFPage];
     
-    [self DrawTheInvoiceLayout];
-    
     [self  DrawTheInvoiceProductsContent];
     
     [self finishPDF];
 }
 
 -(void)DrawTheInvoiceProductsContent{
-    
-    int totalOfTheWholeInvoice =0;
-    int textPosititonAX=159;
-    int textPosititonBX=328;
-    int textPosititonCX=380;
-    int textPosititonY = 469;
-    int productCounter =0;
-    for (Invoice_Lines *invoices_lines in InvoiceLines){
+    NSString *str = delegate.InvoiceIDGlobal;
+    NSNumber * CustomerID;
+    str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
+    str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber = [f numberFromString:str];
+    InvoiceID = myNumber;
+    NSArray *invoices= [self GetInvoicesByInvoiceID];
+    NSArray *invoices_lines2;
+    for (NSArray *item in invoices) {
         
-        
-                   
-            if (productCounter % 2){
-                textPosititonAX=50+430;
-                textPosititonBX=150+410;
-                textPosititonCX=380+390;
-            }else{
-                textPosititonAX=50;
-                textPosititonBX=150;
-                textPosititonCX=380;
-                textPosititonY =textPosititonY+30;
-            }
-        }
-    
-        
-    
-    
-    [self addText: [NSString stringWithFormat:@"%d",totalOfTheWholeInvoice] withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
-    
-}
-
--(void)DrawTheInvoiceLayout{
+        NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
+        invoices_lines2= [self GetInvoiceLines:InvoiceLinesID];
+        CustomerID = [item valueForKey:@"custID"];
+        InvoiceDate = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
+        InvoicePO = [NSString stringWithFormat:@"%@",[item valueForKey:@"custPONum"]];
+    }
     
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
+    totalOfTheWholeInvoice=@"0";
+    int textPosititonAX=180;
+    int textPosititonBX=360;
+    int textPosititonCX=463;
+    int textPosititonDX=607;
+    int textPosititonY = 456;
+    int productCounter =0;
+    for (NSArray *invoices_lines in invoices_lines2){
+        
+        NSString *productIDs = [NSString stringWithFormat:@"%@",[invoices_lines valueForKey:@"productID"]];
+        
+        NSArray *products= [self Getproducts:productIDs];
+        
+        for(NSArray *item in products){
+            
+            NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+            [self addText: Productnames  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];}
+        
+        NSString *quantitys = [NSString stringWithFormat:@"%@",[invoices_lines valueForKey:@"quantity"]];
+        [self addText: quantitys  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
+        
+        NSString *unitPrices = [NSString stringWithFormat:@"%@",[invoices_lines valueForKey:@"unitPrice"]];
+        NSString * totalPerProduct = [self multiplyNumber:quantitys  byNumber:unitPrices ];
+        
+        totalOfTheWholeInvoice =[self addNumber:totalOfTheWholeInvoice withNumber:totalPerProduct];
+        
+        [self addText: unitPrices withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
+        
+        [self addText: [NSString stringWithFormat:@"%@",totalPerProduct ] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
+        
+        textPosititonY =textPosititonY+22;
+        productCounter=productCounter+1;
+        
+    }
     
+    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
     UIImage * signature = [self signatureImage];
     CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
     [self addImage:cropedImg  atPoint:CGPointMake(460, 850)];
     
+    
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Customer" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",CustomerID]];
+    NSArray *Customers= [contextForHeader executeFetchRequest:request error:&error];
+
+    for (NSArray *Cos in Customers) {
+    
+        NSString * businessName= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"businessName"]];
+        NSString * addressOne= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"addressOne"]];
+        NSString * city= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"city"]];
+        NSString * state= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"state"]];
+        NSString * telefone= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"telefone"]];
+        NSString * zipcode= [NSString stringWithFormat:@"%@",[Cos valueForKey:@"zipcode"]];
+        NSString * fullAddress= [NSString stringWithFormat:@"%@ %@ %@",city , state,zipcode];
+
+    [self addText:[NSString stringWithFormat:@"%@\n%@\n%@\n%@", businessName,addressOne, fullAddress,telefone]
+        withFrame:CGRectMake(130, 328, 150, 150) fontSize:15.0f];
+    
+    [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDate, myNumber, InvoicePO]
+        withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
+    }
+}
+
+-(NSArray*)GetCustomerByCustID{
+    
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Customer" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",1]];
+    NSArray *Customers= [contextForHeader executeFetchRequest:request error:&error];
+    return Customers;
+}
+
+-(NSArray*)GetInvoicesByInvoiceID{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
+    NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
+    return invoices;
+}
+
+-(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
+    NSArray *Invoice_Lines1= [contextForHeader executeFetchRequest:request error:&error];
+    return Invoice_Lines1;
+}
+
+-(NSArray*)Getproducts: (NSString*)product_ID{
+    NSError *error = nil;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext:contextForHeader]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"productID = %@",product_ID]];
+    NSArray *products= [contextForHeader executeFetchRequest:request error:&error];
+    return products;
 }
 
 - (CGRect)addText:(NSString*)text withFrame:(CGRect)frame fontSize:(float)fontSize  {
@@ -549,6 +634,43 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     return imageFrame;
 }
 
+
+- (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
+    NSDecimalNumber *number = [NSDecimalNumber zero];
+    
+    
+    NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
+    NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
+    number = [number decimalNumberByAdding:fNum];
+    number = [number decimalNumberByAdding:sNum];
+    NSString*result = [number stringValue];
+    return result;
+}
+
+-(NSString*) multiplyNumber: (NSString*)firstNumber byNumber: (NSString*) secondNumber{
+    NSDecimalNumber *number = [NSDecimalNumber one];
+    NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
+    NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
+    
+    number = [number decimalNumberByMultiplyingBy:fNum];
+    number = [number decimalNumberByMultiplyingBy:sNum];
+    NSString *result= [number stringValue  ];
+    
+    return result;
+}
+
+-(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName {
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"MMddhhmmss"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    int dateDocNum = [dateString intValue];
+    NSNumber * DocumentNUmber = [NSNumber numberWithInt:dateDocNum];
+    return DocumentNUmber;
+    
+}
+
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
   
     _pageSize = CGSizeMake(width, height);
@@ -572,8 +694,29 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 - (void)finishPDF {
     UIGraphicsEndPDFContext();
-
+   // [self MyGetPDFDocumentRef:@"" ];
+    
 }
 
-
+CGPDFDocumentRef MyGetPDFDocumentRef (const char *filename)
+{
+    CFStringRef path;
+    CFURLRef url;
+    CGPDFDocumentRef document;
+    size_t count;
+    
+    path = CFStringCreateWithCString (NULL, filename,
+                                      kCFStringEncodingUTF8);
+    url = CFURLCreateWithFileSystemPath (NULL, path, // 1
+                                         kCFURLPOSIXPathStyle, 0);
+    CFRelease (path);
+    document = CGPDFDocumentCreateWithURL (url);// 2
+    CFRelease(url);
+    count = CGPDFDocumentGetNumberOfPages (document);// 3
+    if (count == 0) {
+        printf("`%s' needs at least one page!", filename);
+        return NULL;
+    }
+    return document;
+}
 @end

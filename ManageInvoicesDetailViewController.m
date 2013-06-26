@@ -286,6 +286,7 @@
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"invoiceID = %@",InvoiceID]];
+    NSLog(@"%@",InvoiceID);
     NSArray *invoices= [contextForHeader executeFetchRequest:request error:&error];
     return invoices;
 }

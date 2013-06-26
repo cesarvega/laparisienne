@@ -34,7 +34,7 @@
     NSString *match = @"Invoice*pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
-    
+    delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -117,7 +117,6 @@
     {        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPathForDeletion.row]]];
-        
         if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
             
             ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
@@ -140,6 +139,7 @@
 
          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         GLKViewController * createsignatureInvoice = (GLKViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GLKView"];
+         delegate.InvoiceIDGlobal =[NSString stringWithFormat:@"%@", InvoiceID];
         [self presentViewController:createsignatureInvoice animated:YES completion:nil];
     }
       

@@ -76,7 +76,7 @@
     manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     if ([manageInvoicesDetailView view]) {
         [manageInvoicesDetailView setCustID:custIDValue];
-        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];    
+        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];
     }
     [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
     

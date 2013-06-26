@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "ReaderViewController.h"
+#import "AppDelegate.h"
 @interface PDFInvoicesViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
+    AppDelegate *delegate;
+
     NSArray * directoryContents;
     NSIndexPath *indexPathForDeletion;
 }

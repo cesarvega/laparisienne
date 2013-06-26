@@ -10,7 +10,7 @@
 
 @implementation AppDelegate{NSUserDefaults *userDefaults;}
 
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectContext = _managedObjectContext,InvoiceIDGlobal;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 

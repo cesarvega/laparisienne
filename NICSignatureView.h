@@ -12,11 +12,18 @@
 #import "Product.h"
 #import "Invoice.h"
 #import "Invoice_Lines.h"
+#import "AppDelegate.h"
 @interface NICSignatureView : GLKView{
-    
+    AppDelegate *delegate;
     NSNumber* InvoiceID;
     Invoice_Lines * Invoice_Lines;
     NSMutableArray * InvoiceLines;
+    NSManagedObjectContext *contextForHeader;
+    NSIndexPath *indexPathForDeletion;
+    NSString* totalOfTheWholeInvoice;
+    NSString* InvoiceDate;
+    NSString* InvoicePO;
+
 }
 
 @property (assign, nonatomic) BOOL hasSignature;
@@ -29,7 +36,7 @@
 - (IBAction)EraseSignature:(id)sender;
 @end
 
-@interface Control : UIViewController
+@interface Control : UIViewController{UIViewController * DismissView;}
 
 @property(strong, nonatomic)UIViewController * DismissView;
 
