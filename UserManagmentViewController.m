@@ -61,29 +61,30 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    UserManagmentDetailViewController * userManagementDetailView = (UserManagmentDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"userManagementDetailView"];
-    
-    userManagementDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    if ([userManagementDetailView view]) {
-        [userManagementDetailView setUserName:[userNames objectAtIndex:indexPath.row]];
-        [userManagementDetailView setPassword:[passwords objectAtIndex:indexPath.row]];
-      
-        
-  
-        
-    }
-    [self presentViewController:userManagementDetailView animated:YES completion:nil];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+//    UserManagmentDetailViewController * userManagementDetailView = (UserManagmentDetailViewController*)
+//    [storyboard instantiateViewControllerWithIdentifier:@"userManagementDetailView"];
+//    
+//    userManagementDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    if ([userManagementDetailView view]) {
+//        [userManagementDetailView setUserName:[userNames objectAtIndex:indexPath.row]];
+//        [userManagementDetailView setPassword:[passwords objectAtIndex:indexPath.row]];
+//      
+//        
+//  
+//        
+//    }
+//    [self presentViewController:userManagementDetailView animated:YES completion:nil];
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //remove the deleted object from your data source.
@@ -103,8 +104,8 @@
     
     
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
@@ -140,7 +141,6 @@
     [usersTableView reloadData];
     
 }
-
 
 -(void)FindUsers{
     

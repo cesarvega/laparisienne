@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MainMenuViewController.h"
-@interface LogInViewController : UIViewController<UITextFieldDelegate>
+#import "AppDelegate.h"
+@interface LogInViewController : UIViewController<UITextFieldDelegate>{
+    AppDelegate *delegate;
+}
 
 @property (strong,nonatomic)MainMenuViewController* MainMenuViewControllerData;
 @property (retain, nonatomic) UIViewController *containerController;

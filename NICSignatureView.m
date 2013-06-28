@@ -126,7 +126,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 @end
 
 @implementation NICSignatureView
-@synthesize InvoiceID;
+@synthesize InvoiceID,recieversName;
 
 - (void)commonInit {
     context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -453,6 +453,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 }
 
 -(void)DrawTheInvoiceProductsContent{
+    
     NSString *str = delegate.InvoiceIDGlobal;
     NSNumber * CustomerID;
     str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
@@ -514,7 +515,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
     [self addImage:cropedImg  atPoint:CGPointMake(460, 850)];
-    
+   
     
     NSError *error = nil;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -537,6 +538,8 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     
     [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDate, myNumber, InvoicePO]
         withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
+        
+         [self addText:[NSString stringWithFormat:@"%@" ,recieversName.text] withFrame:CGRectMake(530, 920, 150, 150) fontSize:15.0f];
     }
 }
 
@@ -634,7 +637,6 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     return imageFrame;
 }
 
-
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
     NSDecimalNumber *number = [NSDecimalNumber zero];
     
@@ -694,8 +696,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 - (void)finishPDF {
     UIGraphicsEndPDFContext();
-   // [self MyGetPDFDocumentRef:@"" ];
-    
+
 }
 
 CGPDFDocumentRef MyGetPDFDocumentRef (const char *filename)

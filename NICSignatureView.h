@@ -26,6 +26,7 @@
 
 }
 
+@property (strong, nonatomic) IBOutlet UITextField *recieversName;
 @property (assign, nonatomic) BOOL hasSignature;
 @property (strong, nonatomic) UIImage *signatureImage;
 @property (strong, nonatomic) NSNumber* InvoiceID;
