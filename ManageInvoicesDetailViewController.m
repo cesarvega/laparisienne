@@ -81,8 +81,7 @@
                      
             NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
            
-            
-            docTotal = newDocTotal;
+                      docTotal = newDocTotal;
            
         }
         else if([items count] >1){
@@ -139,12 +138,15 @@
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
     NSDecimalNumber *number = [NSDecimalNumber zero];
     
-    
     NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
     NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     number = [number decimalNumberByAdding:fNum];
     number = [number decimalNumberByAdding:sNum];
-    NSString*result = [number stringValue];
+    [nf setMinimumFractionDigits:2];
+    [nf setMaximumFractionDigits:2];
+    NSString *result  = [nf stringFromNumber:number];
+    
     return result;
 }
 
@@ -152,10 +154,12 @@
     NSDecimalNumber *number = [NSDecimalNumber one];
     NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
     NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
-    
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     number = [number decimalNumberByMultiplyingBy:fNum];
     number = [number decimalNumberByMultiplyingBy:sNum];
-    NSString *result= [number stringValue  ];
+    [nf setMinimumFractionDigits:2];
+    [nf setMaximumFractionDigits:2];
+    NSString *result  = [nf stringFromNumber:number];
     
     return result;
 }
