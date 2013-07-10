@@ -28,8 +28,7 @@
     [super viewDidLoad];
      delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         [self FindProdcuts];
-   //[self deleteAllObjects:@"blah"];
-	
+  	
 }
 
 - (void)didReceiveMemoryWarning{
@@ -84,9 +83,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //remove the deleted object from your data source.
-        //If your data source is an NSMutableArray, do this
-        // [self.dataArray removeObjectAtIndex:indexPath.row];
         indexPathForDeletion = indexPath;
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this product?"
                                                           message:nil
@@ -158,12 +154,17 @@
         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
         NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
+        if ([productIDs isEqual:@"87"]) {
+            NSString*djd;
+        }
         NSDecimalNumber *unitPrices = [item valueForKey:@"unitPrice"];
         [Productname addObject:Productnames];
         [productDescription addObject:productDescriptions];
         [productID addObject:productIDs];
         [unitPrice addObject:unitPrices];
     }
+    
+
 }
 
 -(void)InitArraysToHoldData{

@@ -35,19 +35,35 @@
     //Initialize the array.
     firstSection = [[NSMutableArray alloc] init];
     secondSection = [[NSMutableArray alloc] init];
-    thirdSection = [[NSMutableArray alloc] init];
     titleOfSections = [[NSMutableArray alloc] init];
     
     //Add items
-    [titleOfSections addObject:@"Admin"];
-    [titleOfSections addObject:@"Invoices"];
-    //[titleOfSections addObject:@""];
-     [firstSection addObject:@"PDF Invoices"];
-//   
+    if ([delegate.LoginUserName isEqual: @"Admin"] && [delegate.LoginUserPassword isEqual: @"embarek"] ) {
+        
+        [titleOfSections addObject:@"Admin"];
+        [titleOfSections addObject:@"Invoices"];
+        [firstSection addObject:@"PDF Invoices"];        
         [firstSection addObject:@"Manage Invoices"];
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
         [firstSection addObject:@"Manage Users"];
+    
+      
+    }else{
+    
+        [titleOfSections addObject:@"Admin"];
+        [titleOfSections addObject:@"Invoices"];
+        [firstSection addObject:@"PDF Invoices"];
+        [firstSection addObject:@"Manage Invoices"];
+        [firstSection addObject:@"Manage Clients"];
+        [firstSection addObject:@"Manage Products"];
+        [firstSection addObject:@"Manage Users"];
+
+      //  [titleOfSections addObject:@"Invoices"];
+       // [firstSection addObject:@"PDF Invoices"];
+       
+    }
+    
    
     
     NSDictionary *temporaryDictionary = [[NSDictionary alloc]initWithObjectsAndKeys:firstSection,@"0",secondSection,@"1",thirdSection,@"2",nil];
@@ -174,10 +190,7 @@
             newController=@"ManageUsers";
             
             break;
-        case 5:
-            newController=@"ManageSignedInvoices";
-            
-            break;
+       
     }
     
     UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:newController];

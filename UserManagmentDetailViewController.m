@@ -43,10 +43,6 @@
                             inManagedObjectContext:delegate.managedObjectContext];
         user.userName = userNameTextField.text;
         user.password = passwordTestField.text;
-  
-        // int unitPriceConvert = [UnitPriceTextField.text ];
-        //  product.unitPrice =[NSDecimalNumber nu:unitPriceConvert];
-        
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:delegate.managedObjectContext];

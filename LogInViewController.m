@@ -44,50 +44,53 @@
 #pragma-mark Buttons
 - (IBAction)LoginButton:(id)sender {
    
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"User" inManagedObjectContext:context];
-    NSError *error;
-    [fetchRequest setEntity:entity];
-    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
-    NSString *password;
-    NSString *userID;
-    NSString *userName ;
-    BOOL   isUser;
-    for (NSArray *item in innerStringdictionary) {
-              
-        password = [NSString stringWithFormat:@"%@",[item valueForKey:@"password"]];
-        userID = [NSString stringWithFormat:@"%@",[item valueForKey:@"userID"]];
-        userName = [NSString stringWithFormat:@"%@",[item valueForKey:@"userName"]];
-
-        if([UserName.text isEqual: userName ] && [Password.text isEqual:password]){
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-            
-            MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-            
-            [self presentViewController:centerController animated:YES completion:nil];
-            isUser = NO;
-        }else { isUser = YES;   }
-    }
-    
-    if (isUser == NO) {
-        NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
-                                                        message:successMsg
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-        [alert show];
-        
-
-    }
-//     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+//    NSManagedObjectContext *context = [delegate managedObjectContext];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription
+//                                   entityForName:@"User" inManagedObjectContext:context];
+//    NSError *error;
+//    [fetchRequest setEntity:entity];
+//    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
+//    NSString *password;
+//    NSString *userID;
+//    NSString *userName ;
+//    BOOL   isUser;
+//     isUser = NO;
+//    for (NSArray *item in innerStringdictionary) {
+//              
+//        password = [NSString stringWithFormat:@"%@",[item valueForKey:@"password"]];
+//        userID = [NSString stringWithFormat:@"%@",[item valueForKey:@"userID"]];
+//        userName = [NSString stringWithFormat:@"%@",[item valueForKey:@"userName"]];
 //
-//    MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+//        if([UserName.text isEqual: userName ] && [Password.text isEqual:password]){
+//            delegate.LoginUserName = UserName.text;
+//            delegate.LoginUserPassword = Password.text;
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+//            
+//            MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+//            
+//            [self presentViewController:centerController animated:YES completion:nil];
+//            isUser = NO;
+//            
+//        }else { isUser = YES;   }
+//    }
 //    
-//    [self presentViewController:centerController animated:YES completion:nil];
+//    if (isUser == YES) {
+//        NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
+//                                                        message:successMsg
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles: nil];
+//        //[alert show];
+//        
+//
+//    }
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+
+    MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+    
+    [self presentViewController:centerController animated:YES completion:nil];
     
 }
 

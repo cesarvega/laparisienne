@@ -46,16 +46,43 @@
 
 - (IBAction)SaveProduct:(id)sender {
     
+    if (!UnitPriceTextField.text) {
+        
+                NSString *successMsg = [NSString stringWithFormat:@"%@",@"Input the product price."];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                    message:successMsg
+                                                                   delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                        otherButtonTitles: nil];
+                                    [alert show];
+UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageProducts"];
+
+[self presentViewController:manageClientsViewController animated:YES completion:nil];
+     
+    }
+    
+    else{
+        [self SaveProduct];
+
+    }
+    
+}
+
+-(void)SaveProduct{
+    
     
     if(productID == nil)
     {
         Product *product = [NSEntityDescription
                             insertNewObjectForEntityForName:@"Product"
                             inManagedObjectContext:context];
+        
+        product.unitPrice = UnitPriceTextField.text;
         product.name = ProductNameTextField.text;
         product.productDescription = PorductDescriptionTextField.text;
-        NSString *decimal = UnitPriceTextField.text;
-        product.unitPrice = decimal;
+        
+        
         // int unitPriceConvert = [UnitPriceTextField.text ];
         //  product.unitPrice =[NSDecimalNumber nu:unitPriceConvert];
         
@@ -119,10 +146,11 @@
             
         }
     }
-    
     else{
         [self updateExistingProduct];
     }
+    
+
     
 }
 
@@ -145,29 +173,8 @@
 
 -(void)updateExistingProduct{
     
-    
-    /*
-     [product setName:ProductNameTextField.text];
-     [product setProductDescription: PorductDescriptionTextField.text];
-     
-     
-     NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:UnitPriceTextField.text];
-     [product setUnitPrice:decimal];
-     
-     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-     [request setEntity:[NSEntityDescription entityForName:@"Product" inManagedObjectContext: context]];
-     
-     NSError *error = nil;
-     NSArray *results = [context executeFetchRequest:request error:&error];
-     
-     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"productID == %@", productID.stringValue];
-     [request setPredicate:predicate];*/
-    
-    //  product = [Product productWithProductID: productID];
-    
     NSError *error = nil;
     
-    //This is your NSManagedObject subclass
     Product * aProduct = nil;
     
     //Set up to get the thing you want to update
@@ -180,25 +187,20 @@
     
     
     if (error) {
-        //Handle any errors
+   
     }
     
     if (!aProduct) {
-        //Nothing there to update
+ 
     }
-    
-    //Update the object
-    aProduct.name = ProductNameTextField.text;
+        aProduct.name = ProductNameTextField.text;
     aProduct.productDescription = PorductDescriptionTextField.text;
-    
     
     NSString *decimal = UnitPriceTextField.text;
     aProduct.unitPrice = decimal;
     
     //Save it
     error = nil;
-   
-    
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
     }
@@ -210,7 +212,6 @@
         [alert show];
         
     }
-    
     
 }
 
