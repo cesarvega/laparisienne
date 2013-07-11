@@ -14,7 +14,7 @@
 @end
 
 @implementation PDFInvoicesViewController
-@synthesize InvoicesTableView,InvoiceID;
+@synthesize InvoicesTableView,InvoiceID,searchBar, isFiltered,filteredTableData,allTableData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,6 +35,9 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    searchBar.delegate = (id)self;
+    isFiltered = @"FALSE";
+    
 }
 
 - (void)didReceiveMemoryWarning{
@@ -50,9 +53,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    // Return the number of rows in the section.
-    return [directoryContents count];
-}
+    if([isFiltered isEqual:@"TRUE"])
+        return [filteredTableData count];
+    else
+        return [directoryContents count];
+    }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -61,7 +66,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [directoryContents objectAtIndex:indexPath.row];
+    if([isFiltered isEqual:@"TRUE"])
+        cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
+    else
+        cell.textLabel.text = [directoryContents objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -145,4 +153,26 @@
       
 }
 
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+    {
+        isFiltered = @"FALSE";
+    }
+    else
+    {
+        
+        filteredTableData = [[NSMutableArray alloc] init];
+              for (NSString* pdf in directoryContents)
+        {
+            if ([pdf rangeOfString:text].location != NSNotFound) {
+                NSLog(@"string does not contain bla");
+                [filteredTableData addObject:pdf];
+                isFiltered = @"TRUE";
+            }else{ }
+        }
+    }
+    
+    [self.InvoicesTableView reloadData];
+}
 @end

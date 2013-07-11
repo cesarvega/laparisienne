@@ -154,9 +154,6 @@
         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
         NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
-        if ([productIDs isEqual:@"87"]) {
-            NSString*djd;
-        }
         NSDecimalNumber *unitPrices = [item valueForKey:@"unitPrice"];
         [Productname addObject:Productnames];
         [productDescription addObject:productDescriptions];

@@ -20,7 +20,7 @@
 @end
 
 @implementation ManageInvoicesDetailViewController
- ProductsReviewDetailCell *cell;
+ProductsReviewDetailCell *cell;
 @synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID;
 @synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID,customerPOLabel;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,quantity,lineTotal;
@@ -57,8 +57,8 @@
     for(int i = 0; i < [InvoiceLines count] ; i++)
     {
         Invoice_Lines *currentLine = (Invoice_Lines*)[InvoiceLines objectAtIndex:i];
-       nextLineID = [self getGetNextNumericValueForFieldName: @"invoiceOrderID" withEntityName:@"Invoice_Lines"];
-
+        nextLineID = [self getGetNextNumericValueForFieldName: @"invoiceOrderID" withEntityName:@"Invoice_Lines"];
+        
         currentLine.invoiceOrderID = [nextLineID stringValue];
         currentLine.parentInvoiceDocNum = [nextParentInvDocNum stringValue];
         
@@ -66,7 +66,7 @@
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:delegate.managedObjectContext];
         [fetchRequest setEntity:entity];
         
-       
+        
         NSPredicate *p =[NSPredicate predicateWithFormat:@"productID = %@", currentLine.productID];
         [fetchRequest setPredicate:p];
         
@@ -76,19 +76,19 @@
         
         if([items count] == 1)
         {
-                    currentLine.lineTotal =[self multiplyNumber:currentLine.quantity byNumber:currentLine.unitPrice];
-        
-                     
+            currentLine.lineTotal =[self multiplyNumber:currentLine.quantity byNumber:currentLine.unitPrice];
+            
+            
             NSString *newDocTotal =[self addNumber: currentLine.lineTotal withNumber:docTotal];
-           
-                      docTotal = newDocTotal;
-           
+            
+            docTotal = newDocTotal;
+            
         }
         else if([items count] >1){
-           
+            
         }
         else{
-           
+            
         }
         
         if (![delegate.managedObjectContext save:&error]) {
@@ -99,11 +99,11 @@
         
     }
     
-   Invoice *invoice = [NSEntityDescription
-                      insertNewObjectForEntityForName:@"Invoice"
-                      inManagedObjectContext:delegate.managedObjectContext];
+    Invoice *invoice = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"Invoice"
+                        inManagedObjectContext:delegate.managedObjectContext];
     invoice.docTotal = docTotal;
-  
+    
     invoice.docDate = InvoiceDateTextLabel.text ;
     
     invoice.docNum  = [nextParentInvDocNum stringValue];
@@ -111,15 +111,15 @@
     invoice.department = InvoiceDepartmentTextLabel.text;
     
     invoice.custPONum = customerPOLabel.text;
-
+    
     invoice.docDate = InvoiceDateTextLabel.text;
     
     invoice.invoiceID =nextParentInvDocNum ;
-   
-    invoice.custID = custID;  
+    
+    invoice.custID = custID;
     NSError *error;
-
-   if (![delegate.managedObjectContext save:&error]) {
+    
+    if (![delegate.managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
     else{
@@ -132,7 +132,7 @@
     }
     
     [self createPDF];
-
+    
 }
 
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
@@ -165,12 +165,12 @@
 }
 
 -(NSNumber*)getGetNextNumericValueForFieldName: (NSString*) fieldName withEntityName: (NSString*) entityName {
-
+    
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"MMddhhmmss"];
     NSString *dateString = [dateFormat stringFromDate:date];
-     int dateDocNum = [dateString intValue];
+    int dateDocNum = [dateString intValue];
     NSNumber * DocumentNUmber = [NSNumber numberWithInt:dateDocNum];
     return DocumentNUmber;
     
@@ -203,14 +203,14 @@
                                      [item valueForKey:@"city"],[item valueForKey:@"state"],[item valueForKey:@"zipcode"]];
         NSDate *date = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-         [dateFormat setDateFormat:@"MM -dd - YYYY"];
+        [dateFormat setDateFormat:@"MM -dd - YYYY"];
         NSString *dateString = [dateFormat stringFromDate:date];
         NSString *Date =dateString;
         NSString *telefono = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
         NSString *InvoiceNumber = [NSString stringWithFormat:@"%@", [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"]];
-     
+        
         if (InvoiceID!=nil) {
-         
+            
             
             NSArray *invoices= [self GetInvoicesByInvoiceID];
             
@@ -218,13 +218,13 @@
                 [InvoiceNumberTextLabel setText:[NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]]];
                 NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
                 NSArray *invoices_lines= [self GetInvoiceLines:InvoiceLinesID];
-               
+                
                 for(NSArray *item in invoices_lines){
                     NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
                     NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
                     NSString *quantitys = [NSString stringWithFormat:@"%@",[item valueForKey:@"quantity"]];
                     NSString *unitPrices = [NSString stringWithFormat:@"%@",[item valueForKey:@"unitPrice"]];
-                   
+                    
                     [lineTotal addObject:lineTotals];
                     [productID addObject:productIDs];
                     [quantity addObject:quantitys];
@@ -232,47 +232,47 @@
                     NSArray *products= [self Getproducts:productIDs ];
                     
                     for(NSArray *item in products){
-                      
+                        
                         NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
                         NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
                         [Productname addObject:Productnames];
                         [productDescription addObject:productDescriptions];
-
+                        
                     }
                 }
             }
         }
         else{
-           
+            
             for (Invoice_Lines *invoices_lines in InvoiceLines){
-               
-               NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
+                
+                NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
+                
+                for(NSArray *item in products){
                     
-                    for(NSArray *item in products){
-                        
-                        NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
-                        NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
-                        NSString *unitPrices = invoices_lines.unitPrice;
-                        
-                        [unitPrice addObject:unitPrices];
-                        [Productname addObject:Productnames];
-                        [productDescription addObject:productDescriptions];
-                        [quantity addObject:invoices_lines.quantity];
+                    NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+                    NSString *productDescriptions = [NSString stringWithFormat:@"%@",[item valueForKey:@"productDescription"]];
+                    NSString *unitPrices = invoices_lines.unitPrice;
                     
-               }
-           }
+                    [unitPrice addObject:unitPrices];
+                    [Productname addObject:Productnames];
+                    [productDescription addObject:productDescriptions];
+                    [quantity addObject:invoices_lines.quantity];
+                    
+                }
+            }
         }
-
+        
         [ProductsTableView reloadData];
         [BusinessNameTextLabel setText:BusinessName];
         [InvoiceDepartmentTextLabel setText:@""];
         [ClientAddressTextLabel setText:BusinessAddress];
-        [InvoiceDateTextLabel setText:Date]; 
+        [InvoiceDateTextLabel setText:Date];
         [ClientNameTextLabel setText:telefono];
         [InvoiceNumberTextLabel setText:InvoiceNumber];
         
     }
-
+    
 }
 
 -(NSArray*)GetCustomerByCustID{
@@ -319,7 +319,7 @@
 - (void)createPDF{
     
     [self setupPDFDocumentNamed:[InvoiceID stringValue] Width:850 Height:1100];
-   
+    
     [self beginPDFPage];
     
     [self DrawTheInvoiceLayout];
@@ -330,59 +330,59 @@
 }
 
 -(void)DrawTheInvoiceProductsContent{
-
+    
     NSString* totalOfTheWholeInvoice=@"0";
     int textPosititonAX=180;
     int textPosititonBX=360;
     int textPosititonCX=463;
-     int textPosititonDX=607;
+    int textPosititonDX=607;
     int textPosititonY = 456;
     int productCounter =0;
     for (Invoice_Lines *invoices_lines in InvoiceLines){
-      
+        
         
         NSArray *products= [self Getproducts:[invoices_lines.productID stringValue]];
         
-           for(NSArray *item in products){
+        for(NSArray *item in products){
             
-               NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
-               [self addText: Productnames  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];
-
+            NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
+            [self addText: Productnames  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];
+            
             NSString *quantitys =invoices_lines.quantity;
             [self addText: quantitys  withFrame:CGRectMake(textPosititonBX, textPosititonY, 150, 150) fontSize:13.0f];
-                       
-             NSString *unitPrices =invoices_lines.unitPrice;
-           
-             NSString * totalPerProduct = [self multiplyNumber:quantitys  byNumber:unitPrices ];
-           
-          totalOfTheWholeInvoice =[self addNumber:totalOfTheWholeInvoice withNumber:totalPerProduct];
-               
-        [self addText: unitPrices withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
-               
-        [self addText: [NSString stringWithFormat:@"%@",totalPerProduct ] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
-          
-                textPosititonY =textPosititonY+22;
-               productCounter=productCounter+1;
             
-           }
+            NSString *unitPrices =invoices_lines.unitPrice;
             
-
+            NSString * totalPerProduct = [self multiplyNumber:quantitys  byNumber:unitPrices ];
+            
+            totalOfTheWholeInvoice =[self addNumber:totalOfTheWholeInvoice withNumber:totalPerProduct];
+            
+            [self addText: unitPrices withFrame:CGRectMake(textPosititonCX, textPosititonY, 150, 150) fontSize:13.0f];
+            
+            [self addText: [NSString stringWithFormat:@"%@",totalPerProduct ] withFrame:CGRectMake(textPosititonDX, textPosititonY, 150, 150) fontSize:13.0f];
+            
+            textPosititonY =textPosititonY+22;
+            productCounter=productCounter+1;
+            
         }
-   
+        
+        
+    }
+    
     [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
     
 }
 
 -(void)DrawTheInvoiceLayout{
-  
+    
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
-
+    
     [self addText:[NSString stringWithFormat:@"%@\n%@\n%@", BusinessNameTextLabel.text, ClientAddressTextLabel.text,ClientNameTextLabel.text]
         withFrame:CGRectMake(130, 328, 150, 150) fontSize:15.0f];
-
+    
     [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDateTextLabel.text, InvoiceNumberTextLabel.text, customerPOLabel.text]
-      withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
+        withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
     
 }
 
@@ -443,7 +443,7 @@
 }
 
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
-  
+    
     _pageSize = CGSizeMake(width, height);
     
     NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
@@ -481,14 +481,14 @@
             ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
             readerViewController.delegate = self;
             readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;   
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:readerViewController animated:YES completion:nil];
         }
     }
 }
 
 #pragma mark custom Prototype delgate methods
- 
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -508,7 +508,7 @@
     cell.ProductPriceLabel.text =[unitPrice objectAtIndex:indexPath.row];
     cell.ProductQuantity.text=[quantity objectAtIndex:indexPath.row];
     return cell;
-
+    
 }
 
 -(void)InitArraysToHoldData{

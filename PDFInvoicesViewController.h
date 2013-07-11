@@ -15,8 +15,14 @@
 
     NSArray * directoryContents;
     NSIndexPath *indexPathForDeletion;
+    NSString* isFiltered;
 }
 @property (strong, nonatomic)    NSNumber* InvoiceID;
 @property (strong, nonatomic) IBOutlet UITableView *InvoicesTableView;
 @property (nonatomic, strong) UIPopoverController *popController;
+@property (strong, nonatomic) NSMutableArray* allTableData;
+@property (strong, nonatomic) NSMutableArray* filteredTableData;
+@property (strong, nonatomic)  NSString* isFiltered;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @end
