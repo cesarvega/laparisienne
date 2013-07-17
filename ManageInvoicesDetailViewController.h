@@ -12,11 +12,12 @@
 #import "AppDelegate.h"
 #import "ReaderViewController.h"
 
-@interface ManageInvoicesDetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
+@interface ManageInvoicesDetailViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate,UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
     AppDelegate *delegate;
     Invoice_Lines *invoicesLines;
     NSManagedObjectContext *contextForHeader;
     NSIndexPath *indexPathForDeletion;
+      bool toggleButtonPicker ;
 }
 @property (strong, nonatomic) NSMutableArray * InvoiceLines;
 @property (weak, nonatomic) IBOutlet UILabel *PONumberTextField;
@@ -40,8 +41,9 @@
 @property (nonatomic, retain) NSMutableArray *SelectedProductsIndexPaths;
 @property (strong, nonatomic) IBOutlet UITableView *ProductsTableView;
 @property (nonatomic, retain) NSNumber * ClientID;
+@property (strong, nonatomic) IBOutlet UIDatePicker *invocieDatePicker;
 
-
+- (IBAction)EditInvoiceDate:(id)sender;
 - (IBAction)SaveInvoice:(id)sender;
 - (IBAction)ReEditProductsSelected:(id)sender;
 - (IBAction)PrintPdf:(id)sender;

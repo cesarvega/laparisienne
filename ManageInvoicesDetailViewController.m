@@ -21,7 +21,7 @@
 
 @implementation ManageInvoicesDetailViewController
 ProductsReviewDetailCell *cell;
-@synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID;
+@synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID,invocieDatePicker;
 @synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID,customerPOLabel;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,quantity,lineTotal;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -36,13 +36,42 @@ ProductsReviewDetailCell *cell;
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     contextForHeader = [delegate managedObjectContext];
+    toggleButtonPicker = false;
 }
-
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma Mark picker delegate methods
+
+- (IBAction)EditInvoiceDate:(id)sender {
+    
+    if (toggleButtonPicker == false) {
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [ invocieDatePicker setCenter:CGPointMake(384, 350)];
+            toggleButtonPicker = true;
+        }];
+    }else{
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            [ invocieDatePicker setCenter:CGPointMake(384, -108)];
+            toggleButtonPicker = false;
+            
+            NSDate *selected = [invocieDatePicker date];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+            [dateFormat setDateFormat:@"MM -dd - YYYY"];
+            NSString *dateString = [dateFormat stringFromDate:selected];
+            NSString *Date =dateString;
+            
+            InvoiceDateTextLabel.text = Date;
+        }];
+    }
+}
+
+#pragma Mark Invoice creator
 - (IBAction)SaveInvoice:(id)sender {
     
     NSNumber *nextLineID;
