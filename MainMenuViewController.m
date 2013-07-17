@@ -169,7 +169,7 @@
 
     switch (indexPath.row) {
         case 0:
-            newController=@"PDFInvoices";
+            newController=@"ChooseClientPDF";
             
             break;
             
