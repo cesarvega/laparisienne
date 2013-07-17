@@ -16,7 +16,10 @@
     NSMutableArray* selectedIndexes;
 
 }
+@property (nonatomic, retain) NSMutableArray *SelectedClientsIndexPaths;
+@property (strong, nonatomic) IBOutlet UITableView *ClientPDFTableView;
 @end
+
 @interface ClientPDFDetailCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *ClientName;
 @property (strong, nonatomic) IBOutlet UILabel *InvocieDate;
