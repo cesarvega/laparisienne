@@ -14,9 +14,18 @@
     AppDelegate *delegate;
     NSManagedObjectContext *contextForInvoiceLines;
     NSMutableArray* selectedIndexes;
+    NSMutableArray* InvoiceDate;
+    NSMutableArray* InvoiceNumbers;
+    NSMutableArray* DocumentsToPrint;
+    NSArray * directoryContents;
+    NSMutableArray* filteredTableData;
+    NSString * searchDate;
+    NSMutableArray* clientsToPrint;
+    NSManagedObjectContext *contextForHeader;
 
 }
 @property (nonatomic, retain) NSMutableArray *SelectedClientsIndexPaths;
+@property (strong, nonatomic) IBOutlet UIDatePicker *InvoiceDatePicker;
 @property (strong, nonatomic) IBOutlet UITableView *ClientPDFTableView;
 @end
 

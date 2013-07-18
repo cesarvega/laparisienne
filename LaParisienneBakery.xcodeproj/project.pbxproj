@@ -412,6 +412,17 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
+		82802CCB179770A10030AF3F /* Login and Menu */ = {
+			isa = PBXGroup;
+			children = (
+				82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */,
+				82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */,
+				82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */,
+				82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */,
+			);
+			name = "Login and Menu";
+			sourceTree = "<group>";
+		};
 		828E6DB717669CD000C666C6 /* PDFInvoices */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,15 +506,12 @@
 		82EDE1D6173F19ED00E27BB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				82802CCB179770A10030AF3F /* Login and Menu */,
 				828E6DB717669CD000C666C6 /* PDFInvoices */,
 				82A6CF991749412E00BDB8E8 /* Clients */,
 				829A4680174AFEAF00B3B136 /* Products */,
 				829A467E174AFE9600B3B136 /* User */,
 				829A467F174AFE9F00B3B136 /* Invoice */,
-				82EDE1D7173F1A5E00E27BB3 /* LogInViewController.h */,
-				82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */,
-				82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */,
-				82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

@@ -474,8 +474,10 @@ ProductsReviewDetailCell *cell;
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
     
     _pageSize = CGSizeMake(width, height);
-    
-    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",name,@"pdf"];
+   int dateDocNum = [name intValue];
+   NSString* newStrting =[NSString stringWithFormat:@"%d",dateDocNum];
+
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",newStrting,@"pdf"];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     

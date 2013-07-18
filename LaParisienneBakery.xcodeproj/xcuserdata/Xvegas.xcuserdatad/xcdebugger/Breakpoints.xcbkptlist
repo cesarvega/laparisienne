@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ChooseClientPDFViewController.m"
-         timestampString = "395723967.26142"
+         filePath = "ManageInvoicesDetailViewController.m"
+         timestampString = "395805311.338537"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-SaveInvoice:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
