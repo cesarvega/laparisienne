@@ -64,23 +64,24 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"Invoice # :%@",[invoicesDocNums objectAtIndex:indexPath.row]];
     cell.detailTextLabel.text =[invoiceDocDates objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    ManageInvoicesDetailViewController * manageInvoicesDetailView = (ManageInvoicesDetailViewController*)
-    [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
-    
-    manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    if ([manageInvoicesDetailView view]) {
-        [manageInvoicesDetailView setCustID:custIDValue];
-        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];
-    }
-    [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+//    ManageInvoicesDetailViewController * manageInvoicesDetailView = (ManageInvoicesDetailViewController*)
+//    [storyboard instantiateViewControllerWithIdentifier:@"invoicesDetails"];
+//    
+//    manageInvoicesDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    if ([manageInvoicesDetailView view]) {
+//        [manageInvoicesDetailView setCustID:custIDValue];
+//        [manageInvoicesDetailView setInvoiceID: [InvoiceID objectAtIndex:indexPath.row]];
+//    }
+//    [self presentViewController:manageInvoicesDetailView animated:YES completion:nil];
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)initArrays{
@@ -182,12 +183,16 @@
         [invoicesDocNums removeAllObjects];
         
     }
-    NSError *error = nil;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[directoryContents objectAtIndex:indexPathForDeletion.row] ];
-    [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
-
+//    NSError *error = nil;
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString * invoiceToDelete =  [NSString stringWithFormat:@"Invoice # :%@",[invoicesDocNums objectAtIndex:indexPathForDeletion.row]];
+//    NSString* fullPath = [NSString stringWithFormat:@"%@/%@%@",documentsDirectory,invoiceToDelete,@".pdf" ];
+//      if (invoicesDocNums.count >0) {
+//        [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
+//
+//    }
+//   
     
        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ChooseCLientsFOrInvoice"];

@@ -237,6 +237,7 @@ ProductsReviewDetailCell *cell;
         NSString *Date =dateString;
         NSString *telefono = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];
         NSString *InvoiceNumber = [NSString stringWithFormat:@"%@", [self getGetNextNumericValueForFieldName:@"docNum" withEntityName:@"Invoice"]];
+        delegate.SignedInvoiceName = InvoiceNumber;
         
         if (InvoiceID!=nil) {
             

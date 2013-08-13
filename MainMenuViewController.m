@@ -41,8 +41,10 @@
     if ([delegate.LoginUserName isEqual: @"Admin"] && [delegate.LoginUserPassword isEqual: @"embarek"] ) {
         
         [titleOfSections addObject:@"Admin"];
-        [titleOfSections addObject:@"Invoices"];
-        [firstSection addObject:@"PDF Invoices"];        
+        //[titleOfSections addObject:@"Invoices"];
+        [firstSection addObject:@"Print PDF Invoices"];
+        [firstSection addObject:@"Sign PDF  Invoices"];
+        [firstSection addObject:@"View Signed Invoices"];
         [firstSection addObject:@"Manage Invoices"];
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
@@ -52,17 +54,16 @@
     }else{
     
         [titleOfSections addObject:@"Admin"];
-        [titleOfSections addObject:@"Invoices"];
-        [firstSection addObject:@"PDF Invoices"];
+        //[titleOfSections addObject:@"Invoices"];
+        [firstSection addObject:@"Print PDF Invoices"];
+        [firstSection addObject:@"Sign PDF  Invoices"];
+        [firstSection addObject:@"View Signed Invoices"];
         [firstSection addObject:@"Manage Invoices"];
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
         [firstSection addObject:@"Manage Users"];
 
-      //  [titleOfSections addObject:@"Invoices"];
-       // [firstSection addObject:@"PDF Invoices"];
-       
-    }
+        }
     
    
     
@@ -153,9 +154,9 @@
     NSArray *arrayForCurrentSection = [menuDataSource objectForKey:[NSString stringWithFormat:@"%d",indexPath.section]];
     
     cell.textLabel.text = [arrayForCurrentSection objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor blueColor];
+    cell.textLabel.textColor = [UIColor brownColor];
     cell.textLabel.backgroundColor= [UIColor clearColor];
-    cell.textLabel.font = [UIFont systemFontOfSize:40];
+    cell.textLabel.font = [UIFont systemFontOfSize:30];
     
     return cell;
     
@@ -172,21 +173,30 @@
             newController=@"ChooseClientPDF";
             
             break;
-            
         case 1:
-            newController=@"ChooseCLientsFOrInvoice";
+            newController=@"PDFInvoices";
+            
+            break;
+            
+        case 2:
+            newController=@"ViewSignedInvoices";
                
             break;
-        case 2:
+        case 3:
+            newController=@"ChooseCLientsFOrInvoice";
+            
+            break;
+
+        case 4:
             newController=@"ManageClients";
               
             break;
-        case 3:
+        case 5:
             newController=@"ManageProducts";
               
             break;
             
-        case 4:
+        case 6:
             newController=@"ManageUsers";
             
             break;

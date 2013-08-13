@@ -215,6 +215,54 @@ UIViewController *manageClientsViewController = (UIViewController *)[storyboard 
     
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	
+     BOOL isNumeric=FALSE;
+    if (textField==UnitPriceTextField){
+    
+   
+	if ([string length] == 0)
+	{
+		isNumeric=TRUE;
+	}
+	else
+	{
+		
+		if ( [string compare:[NSString stringWithFormat:@"%d",0]]==0 || [string compare:[NSString stringWithFormat:@"%d",1]]==0
+			|| [string compare:[NSString stringWithFormat:@"%d",2]]==0 || [string compare:[NSString stringWithFormat:@"%d",3]]==0
+			|| [string compare:[NSString stringWithFormat:@"%d",4]]==0 || [string compare:[NSString stringWithFormat:@"%d",5]]==0
+			|| [string compare:[NSString stringWithFormat:@"%d",6]]==0 || [string compare:[NSString stringWithFormat:@"%d",7]]==0
+			|| [string compare:[NSString stringWithFormat:@"%d",8]]==0 || [string compare:[NSString stringWithFormat:@"%d",9]]==0)
+		{
+			isNumeric=TRUE;
+		}
+		else
+		{
+			unichar mychar=[string characterAtIndex:0];
+			if (mychar==46)
+			{
+				int i;
+				for (i=0; i<[textField.text length]; i++)
+				{
+                    
+					unichar c = [textField.text characterAtIndex: i];
+					if(c==46)
+						return FALSE;
+				}
+				
+                isNumeric=TRUE;
+			}
+		}
+	}
+    
+	return isNumeric;
+    }else{
+        
+        isNumeric=TRUE;
+        return   isNumeric;
+        
+    }
+}
 #pragma-mark UITextField Delegade Methods
 
 - (BOOL)textFieldShouldReturn:(UITextField*)aTextField{

@@ -679,11 +679,13 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 - (void)setupPDFDocumentNamed:(NSString*)name Width:(float)width Height:(float)height {
   
     _pageSize = CGSizeMake(width, height);
-    NSDate *date = [NSDate date];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"MMddhhmmss"];
-    NSString *dateString = [dateFormat stringFromDate:date];
-    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice Signed #",dateString,@"pdf"];
+    NSString * SignedInvoiceNumber = delegate.SignedInvoiceNumber;
+    NSString * SignedInvoiceName = delegate.SignedInvoiceName;
+    NSString *str = SignedInvoiceName;
+    str = [str stringByReplacingOccurrencesOfString:@" "withString:@""];
+    str =[str stringByReplacingOccurrencesOfString:@"-"withString:@""];
+
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@ %@.%@",@"Signed #",str ,SignedInvoiceNumber ,@"pdf"];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -723,4 +725,6 @@ CGPDFDocumentRef MyGetPDFDocumentRef (const char *filename)
     }
     return document;
 }
+
+
 @end

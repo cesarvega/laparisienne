@@ -56,10 +56,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    
     cell.textLabel.text =  [businessName objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [businessDescription objectAtIndex:indexPath.row];
-    
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
     
 }

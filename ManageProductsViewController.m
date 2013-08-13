@@ -54,6 +54,7 @@
     cell.textLabel.text =  [Productname objectAtIndex:indexPath.row];
     
     cell.detailTextLabel.text = [productDescription objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
 

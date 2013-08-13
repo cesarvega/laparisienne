@@ -1,19 +1,18 @@
 //
-//  PDFInvoicesViewController.m
+//  ViewSignedInvoicesViewController.m
 //  LaParisienneBakery
 //
-//  Created by Cesar Vega on 6/10/13.
+//  Created by Cesar Vega on 7/23/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
 
-#import "PDFInvoicesViewController.h"
+#import "ViewSignedInvoicesViewController.h"
 #import "NICSignatureView.h"
-
-@interface PDFInvoicesViewController ()
+@interface ViewSignedInvoicesViewController ()
 
 @end
 
-@implementation PDFInvoicesViewController
+@implementation ViewSignedInvoicesViewController
 @synthesize InvoicesTableView,InvoiceID,searchBar, isFiltered,filteredTableData,allTableData,currentDate,InvoiceDatePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -29,9 +28,9 @@
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-   NSArray * results = [[NSArray alloc] init];
+    NSArray * results = [[NSArray alloc] init];
     results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
-    NSString *match = @"Invoice*pdf";
+    NSString *match = @"Signed #*pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -58,12 +57,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    
     if([isFiltered isEqual:@"TRUE"])
         return [filteredTableData count];
     else
-        return [clientsToPrint count];
-    }
+        return [filteredTableData count];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -72,13 +71,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    if([isFiltered isEqual:@"TRUE"]){
+    if([isFiltered isEqual:@"TRUE"])
         cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
-    }
-    else{
-        cell.textLabel.text = [clientsToPrint objectAtIndex:indexPath.row];
-        cell.detailTextLabel.text =[InvoiceDate objectAtIndex:indexPath.row];
-    }
+    else
+        cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
+//        cell.detailTextLabel.text =[InvoiceDate objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
@@ -86,21 +83,31 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+    
     indexPathForDeletion =indexPath;
     InvoiceID = [directoryContents objectAtIndex:indexPath.row];
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Would you like to Preview or  Sign the Invoice"
-                                                      message:nil
-                                                     delegate:self
-                                            cancelButtonTitle:@"Preview Doc"
-                                            otherButtonTitles:@"Sign Doc", nil];
-        [message show];
-    
- }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ filteredTableData objectAtIndex:indexPathForDeletion.row]]];
+    if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
+        
+        ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
+        
+        if (document != nil)
+        {
+            ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+            readerViewController.delegate = self;
+            readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self presentViewController:readerViewController animated:YES completion:nil];
+        }
+    }
+
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-            
+        
         indexPathForDeletion =indexPath;
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
                                                           message:nil
@@ -119,65 +126,19 @@
     
     if([title isEqualToString:@"Yes"])
     {
-        
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:delegate.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        NSString * ID = [filteredTableData objectAtIndex:indexPathForDeletion.row];
-        NSString *str = ID;
-        str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-        str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
-        NSPredicate *p =[NSPredicate predicateWithFormat:@"invoiceID = %@", str];
-        [fetchRequest setPredicate:p];
-        
-        NSError *error;
-        NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        
-        
-        
-        for (Invoice *invoice in items) {
-            [delegate.managedObjectContext deleteObject:invoice];
-            
-            
-            NSMutableArray *invoiceLinesToBeDeleted = [[NSMutableArray alloc]initWithArray:
-                                                       [self GetInvoiceLines:invoice.docNum]];
-            
-            for(int i = 0; i < [invoiceLinesToBeDeleted count]; i++)
-            {
-                [delegate.managedObjectContext deleteObject:[invoiceLinesToBeDeleted objectAtIndex:i]];
-            }
-            
-        }
-        if (![delegate.managedObjectContext save:&error]) {
-            NSLog(@"Error deleting - error:%@",error);
-        }
-        
-        error = nil;
+        NSError *error = nil;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString* fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[directoryContents objectAtIndex:indexPathForDeletion.row] ];
         [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
-        
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PDFInvoices"];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ViewSignedInvoices"];
         [self presentViewController:manageClientsViewController animated:YES completion:nil];
-        
-        paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        documentsDirectory = [paths objectAtIndex:0];
-        fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[directoryContents objectAtIndex:indexPathForDeletion.row] ];
-        [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
-        storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PDFInvoices"];
-        [self presentViewController:manageClientsViewController animated:YES completion:nil];
-        
     }
-   
-
+    
     if([title isEqualToString:@"Preview Doc"])
-    {
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+    {        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPathForDeletion.row]]];
         if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
@@ -199,56 +160,13 @@
     
     if([title isEqualToString:@"Sign Doc"])
     {
-
-         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         GLKViewController * createsignatureInvoice = (GLKViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GLKView"];
-         delegate.InvoiceIDGlobal =[NSString stringWithFormat:@"%@", InvoiceID];
-        NSString *str = [NSString stringWithFormat:@"%@", InvoiceID];;
-        str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-        str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
-
-        
-        NSArray * Number = [self GetInvoicesByInvoiceID:str];
-        for (NSArray *item in Number) {
-            
-            NSString *SignedNumber = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
-            NSString *SignedDate = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
-
-            NSString *custID = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
-            
-            NSString * BusinessName =  [self ClientName:custID];
-            delegate.SignedInvoiceName = SignedDate;
-            delegate.SignedInvoiceNumber = BusinessName;
-           
-        }
-       
-        
+        delegate.InvoiceIDGlobal =[NSString stringWithFormat:@"%@", InvoiceID];
         [self presentViewController:createsignatureInvoice animated:YES completion:nil];
     }
-      
-}
-
-
--(NSString*) ClientName :(NSString*)ClienId{
-    NSString *businessNames;
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Customer" inManagedObjectContext:context];
-    NSError *error;
-    [fetchRequest setEntity:entity];
-    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
-    NSPredicate *p =[NSPredicate predicateWithFormat:@"custID = %@", ClienId];
-    [fetchRequest setPredicate:p];
     
-    NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-
-    for (NSArray *item in items) {
-        
-        businessNames = [NSString stringWithFormat:@"%@",[item valueForKey:@"businessName"]];
-        
-    }
-    return businessNames;
 }
 
 -(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text{
@@ -260,7 +178,7 @@
     {
         
         filteredTableData = [[NSMutableArray alloc] init];
-              for (NSString* pdf in directoryContents)
+        for (NSString* pdf in directoryContents)
         {
             if ([pdf rangeOfString:text].location != NSNotFound) {
                 [filteredTableData addObject:pdf];
@@ -307,7 +225,7 @@
             
             NSString *str = existingItem;
             str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-            str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+            str =[str stringByReplacingOccurrencesOfString:@"Signed # "withString:@""];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];
@@ -341,7 +259,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSArray * results = [[NSArray alloc] init];
     results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
-    NSString *match = @"Invoice #*pdf";
+    NSString *match = @"Signed #*pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
     
@@ -355,15 +273,6 @@
     
     return filteredTableData;
     
-}
-
--(NSArray*)GetInvoiceLines: (NSString*)InvoiceLine{
-    NSError *error = nil;
-    NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Invoice_Lines" inManagedObjectContext:delegate.managedObjectContext]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"parentInvoiceDocNum= %@",InvoiceLine]];
-    NSArray *Invoice_Lines= [delegate.managedObjectContext executeFetchRequest:request error:&error];
-    return Invoice_Lines;
 }
 
 -(NSArray*)GetInvoicesByInvoiceID : (NSNumber*)InvoiceIDs{

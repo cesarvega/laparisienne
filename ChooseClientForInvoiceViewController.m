@@ -55,7 +55,7 @@
     
     cell.textLabel.text =  [businessName objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [contactName objectAtIndex:indexPath.row];
-    
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
     
 }

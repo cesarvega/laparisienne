@@ -57,7 +57,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text =  [userNames objectAtIndex:indexPath.row];
-
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
 

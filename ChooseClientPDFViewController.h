@@ -22,11 +22,13 @@
     NSString * searchDate;
     NSMutableArray* clientsToPrint;
     NSManagedObjectContext *contextForHeader;
+    UIPrintInteractionController *printInteraction;
 
 }
 @property (nonatomic, retain) NSMutableArray *SelectedClientsIndexPaths;
 @property (strong, nonatomic) IBOutlet UIDatePicker *InvoiceDatePicker;
 @property (strong, nonatomic) IBOutlet UITableView *ClientPDFTableView;
+- (IBAction)PrintInvoices:(id)sender;
 @end
 
 @interface ClientPDFDetailCell : UITableViewCell

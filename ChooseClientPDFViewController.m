@@ -36,6 +36,7 @@ ClientPDFDetailCell * cell;
     [dateFormat setDateFormat:@"MMdd"];
     NSString *dateString = [dateFormat stringFromDate:[InvoiceDatePicker date]];
      searchDate =dateString;
+    [self changeValues:nil];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -54,6 +55,7 @@ ClientPDFDetailCell * cell;
     NSMutableArray* invoicesFromDateArray = [self findInvoicesByDate:searchDate];
     [self FindClientFromPdfInvoices:invoicesFromDateArray];
     [self.ClientPDFTableView reloadData];
+    
 }
 
 -(NSMutableArray*)FindClientFromPdfInvoices :(NSMutableArray*)invoicesFromDateArray{
@@ -158,12 +160,7 @@ ClientPDFDetailCell * cell;
     cell.ClientName.text=[clientsToPrint objectAtIndex:indexPath.row];
     cell.InvocieDate.text =[InvoiceDate objectAtIndex:indexPath.row];
     cell.InvocieNumber.text =[InvoiceNumbers objectAtIndex:indexPath.row];
-//    [cell.checkedPrintItemImage setImage:[UIImage imageNamed:@"add.png"]];
-//    if ([@"" isEqual:@"add.png"]) {
-//               
-//    }else{
-//     
-//    }
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
 
@@ -189,4 +186,42 @@ ClientPDFDetailCell * cell;
     DocumentsToPrint = [[NSMutableArray alloc]init];
 }
 
+- (IBAction)PrintInvoices:(id)sender {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSMutableArray * pathss = [[NSMutableArray alloc]init];
+    for (int i =0; i<[DocumentsToPrint count]; i++) {
+        NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:    [DocumentsToPrint objectAtIndex:i]];
+        NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
+        [pathss addObject:pdfData];
+    }
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:    [DocumentsToPrint objectAtIndex:0]];
+    NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
+    
+    UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+    if  (pic && [UIPrintInteractionController canPrintData:pdfData] ) {
+        [pic.delegate self ];
+        UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+        printInfo.outputType = UIPrintInfoOutputGeneral;
+        printInfo.jobName =  [DocumentsToPrint objectAtIndex:0];
+        printInfo.duplex = UIPrintInfoDuplexNone;
+        pic.printInfo = printInfo;
+        pic.showsPageRange = YES;
+        pic.printingItems = pathss;
+        void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
+        ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+            if (!completed && error)
+                NSLog(@"FAILED! due to error in domain %@ with error code %u",
+                      error.domain, error.code);
+        };
+        //if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        //    [pic presentFromBarButtonItem:self.printButton animated:YES
+        //                completionHandler:completionHandler];
+        //  }
+        // else {
+        [pic presentAnimated:YES completionHandler:completionHandler];
+        // }
+    }
+}
 @end

@@ -1,15 +1,15 @@
 //
-//  PDFInvoicesViewController.h
+//  ViewSignedInvoicesViewController.h
 //  LaParisienneBakery
 //
-//  Created by Cesar Vega on 6/10/13.
+//  Created by Cesar Vega on 7/23/13.
 //  Copyright (c) 2013 cynthia. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "ReaderViewController.h"
-@interface PDFInvoicesViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
+@interface ViewSignedInvoicesViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
     AppDelegate *delegate;
     NSString * searchDate;
     NSArray * directoryContents;
