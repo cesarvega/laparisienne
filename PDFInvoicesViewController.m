@@ -88,7 +88,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
     indexPathForDeletion =indexPath;
-    InvoiceID = [directoryContents objectAtIndex:indexPath.row];
+    InvoiceID = [filteredTableData objectAtIndex:indexPath.row];
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Would you like to Preview or  Sign the Invoice"
                                                       message:nil
                                                      delegate:self
@@ -227,7 +227,6 @@
     }
       
 }
-
 
 -(NSString*) ClientName :(NSString*)ClienId{
     NSString *businessNames;

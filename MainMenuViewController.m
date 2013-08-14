@@ -49,7 +49,7 @@
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
         [firstSection addObject:@"Manage Users"];
-    
+        [firstSection addObject:@"Delete All Invoices Data and pdfs"];
       
     }else{
     
@@ -62,6 +62,7 @@
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
         [firstSection addObject:@"Manage Users"];
+        [firstSection addObject:@"Delete All Invoices Data and pdfs"];
 
         }
     
@@ -74,8 +75,6 @@
     mapTableViewDisplay.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     mapTableViewDisplay.rowHeight = 50;
     mapTableViewDisplay.backgroundColor = [UIColor clearColor];
-       //Set the title
-    
 }
 
 - (void)viewDidUnload{
@@ -200,6 +199,12 @@
             newController=@"ManageUsers";
             
             break;
+            
+        case 7:
+            newController=@"DeleteAllData";
+            
+            break;
+
        
     }
     

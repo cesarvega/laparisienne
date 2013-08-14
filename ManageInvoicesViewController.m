@@ -92,8 +92,6 @@
 
 -(void)getinvoices{
     NSError *error = nil;
-    //This is your NSManagedObject subclass
-    //Set up to get the thing you want to update
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:context]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"custID = %@",custIDValue]];

@@ -87,6 +87,7 @@
 		829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C19EC17681C2F00F2CDE8 /* Signature.png */; };
 		82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */; };
 		82A9FEE3175599CC00A41AF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */; };
+		82C4A56317BAF37300A80A66 /* DeleteAllDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */; };
 		82CE8BF31796321D004E2BFF /* ChooseClientPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CE8BF21796321D004E2BFF /* ChooseClientPDFViewController.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
 		82EDE1D9173F1A5E00E27BB3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE1D8173F1A5E00E27BB3 /* LogInViewController.m */; };
@@ -219,6 +220,8 @@
 		82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsDetailViewController.h; sourceTree = "<group>"; };
 		82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsDetailViewController.m; sourceTree = "<group>"; };
 		82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		82C4A56117BAF37300A80A66 /* DeleteAllDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteAllDataViewController.h; sourceTree = "<group>"; };
+		82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteAllDataViewController.m; sourceTree = "<group>"; };
 		82CE8BF11796321D004E2BFF /* ChooseClientPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientPDFViewController.h; sourceTree = "<group>"; };
 		82CE8BF21796321D004E2BFF /* ChooseClientPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseClientPDFViewController.m; sourceTree = "<group>"; };
 		82EDE1D4173F19DD00E27BB3 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
@@ -491,6 +494,15 @@
 			name = Clients;
 			sourceTree = "<group>";
 		};
+		82C4A55D17BAF21700A80A66 /* DeleteData */ = {
+			isa = PBXGroup;
+			children = (
+				82C4A56117BAF37300A80A66 /* DeleteAllDataViewController.h */,
+				82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */,
+			);
+			name = DeleteData;
+			sourceTree = "<group>";
+		};
 		82EDE1D3173F19C400E27BB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +526,7 @@
 		82EDE1D6173F19ED00E27BB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				82C4A55D17BAF21700A80A66 /* DeleteData */,
 				82802CCB179770A10030AF3F /* Login and Menu */,
 				828E6DB717669CD000C666C6 /* PDFInvoices */,
 				82A6CF991749412E00BDB8E8 /* Clients */,
@@ -662,6 +675,7 @@
 				828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */,
 				82CE8BF31796321D004E2BFF /* ChooseClientPDFViewController.m in Sources */,
 				829B3CCB179F65B900A6CD13 /* ViewSignedInvoicesViewController.m in Sources */,
+				82C4A56317BAF37300A80A66 /* DeleteAllDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
