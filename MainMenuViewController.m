@@ -42,27 +42,27 @@
         
         [titleOfSections addObject:@"Admin"];
         //[titleOfSections addObject:@"Invoices"];
-        [firstSection addObject:@"Print PDF Invoices"];
-        [firstSection addObject:@"Sign PDF  Invoices"];
+        [firstSection addObject:@"Print Pdf Invoices"];
+        [firstSection addObject:@"Sign Pdf  Invoices"];
         [firstSection addObject:@"View Signed Invoices"];
         [firstSection addObject:@"Manage Invoices"];
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
-        [firstSection addObject:@"Manage Users"];
+        //[firstSection addObject:@"Manage Users"];
         [firstSection addObject:@"Delete All Invoices Data and pdfs"];
       
     }else{
     
         [titleOfSections addObject:@"Admin"];
         //[titleOfSections addObject:@"Invoices"];
-        [firstSection addObject:@"Print PDF Invoices"];
-        [firstSection addObject:@"Sign PDF  Invoices"];
+        [firstSection addObject:@"Print Pdf Invoices"];
+        [firstSection addObject:@"Sign Pdf  Invoices"];
         [firstSection addObject:@"View Signed Invoices"];
-        [firstSection addObject:@"Manage Invoices"];
-        [firstSection addObject:@"Manage Clients"];
-        [firstSection addObject:@"Manage Products"];
-        [firstSection addObject:@"Manage Users"];
-        [firstSection addObject:@"Delete All Invoices Data and pdfs"];
+        // [firstSection addObject:@"Manage Invoices"];
+        // [firstSection addObject:@"Manage Clients"];
+        //[firstSection addObject:@"Manage Products"];
+        //[firstSection addObject:@"Manage Users"];
+       // [firstSection addObject:@"Delete All Invoices Data and pdfs"];
 
         }
     
@@ -195,12 +195,12 @@
               
             break;
             
+//        case 6:
+//            newController=@"ManageUsers";
+//            
+//            break;
+            
         case 6:
-            newController=@"ManageUsers";
-            
-            break;
-            
-        case 7:
             newController=@"DeleteAllData";
             
             break;

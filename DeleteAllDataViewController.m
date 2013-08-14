@@ -101,6 +101,16 @@
             [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
 
         }
+    
+    
+                NSString *successMsg = [NSString stringWithFormat:@"%@",@"All your data have been deleted"];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Deleted"
+                                                                    message:successMsg
+                                                                   delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                        otherButtonTitles: nil];
+                                    [alert show];
+
             
 }
 
