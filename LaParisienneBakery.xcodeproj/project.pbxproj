@@ -68,6 +68,7 @@
 		8261239D1769674600AC3E5B /* LogoDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8261239C1769674600AC3E5B /* LogoDark.png */; };
 		827E47F7176E06620034BC9A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F6176E06620034BC9A /* 72.png */; };
 		827E47F9176E06670034BC9A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = 827E47F8176E06670034BC9A /* 144.png */; };
+		828D0D0517C2E167003B1C0A /* DeleteSignedPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828D0D0417C2E167003B1C0A /* DeleteSignedPdfViewController.m */; };
 		828E6DB4176699AC00C666C6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB3176699AC00C666C6 /* GLKit.framework */; };
 		828E6DB6176699B500C666C6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828E6DB5176699B500C666C6 /* OpenGLES.framework */; };
 		828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E6DB917669CF000C666C6 /* PDFInvoicesViewController.m */; };
@@ -192,6 +193,8 @@
 		8261239C1769674600AC3E5B /* LogoDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoDark.png; sourceTree = "<group>"; };
 		827E47F6176E06620034BC9A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
 		827E47F8176E06670034BC9A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
+		828D0D0317C2E167003B1C0A /* DeleteSignedPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteSignedPdfViewController.h; sourceTree = "<group>"; };
+		828D0D0417C2E167003B1C0A /* DeleteSignedPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteSignedPdfViewController.m; sourceTree = "<group>"; };
 		828E6DB3176699AC00C666C6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		828E6DB5176699B500C666C6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		828E6DB817669CF000C666C6 /* PDFInvoicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFInvoicesViewController.h; sourceTree = "<group>"; };
@@ -499,6 +502,8 @@
 			children = (
 				82C4A56117BAF37300A80A66 /* DeleteAllDataViewController.h */,
 				82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */,
+				828D0D0317C2E167003B1C0A /* DeleteSignedPdfViewController.h */,
+				828D0D0417C2E167003B1C0A /* DeleteSignedPdfViewController.m */,
 			);
 			name = DeleteData;
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				82CE8BF31796321D004E2BFF /* ChooseClientPDFViewController.m in Sources */,
 				829B3CCB179F65B900A6CD13 /* ViewSignedInvoicesViewController.m in Sources */,
 				82C4A56317BAF37300A80A66 /* DeleteAllDataViewController.m in Sources */,
+				828D0D0517C2E167003B1C0A /* DeleteSignedPdfViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

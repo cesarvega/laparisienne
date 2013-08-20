@@ -120,26 +120,26 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
+    return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        indexPathForDeletion = indexPath;
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
-                                                          message:nil
-                                                         delegate:self
-                                                cancelButtonTitle:@"No"
-                                                otherButtonTitles:@"Yes", nil];
-        
-        [message show];
-        
-    }
-    
-    
-    
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        
+//        indexPathForDeletion = indexPath;
+//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
+//                                                          message:nil
+//                                                         delegate:self
+//                                                cancelButtonTitle:@"No"
+//                                                otherButtonTitles:@"Yes", nil];
+//        
+//        [message show];
+//        
+//    }
+//    
+//    
+//    
+//}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];

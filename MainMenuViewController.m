@@ -50,6 +50,8 @@
         [firstSection addObject:@"Manage Products"];
         //[firstSection addObject:@"Manage Users"];
         [firstSection addObject:@"Delete All Invoices Data and pdfs"];
+        [firstSection addObject:@"Delete Signed pdfs"];
+        
       
     }else{
     
@@ -57,12 +59,14 @@
         //[titleOfSections addObject:@"Invoices"];
         [firstSection addObject:@"Print Pdf Invoices"];
         [firstSection addObject:@"Sign Pdf  Invoices"];
-        [firstSection addObject:@"View Signed Invoices"];
+       // [firstSection addObject:@"View Signed Invoices"];
         // [firstSection addObject:@"Manage Invoices"];
-        // [firstSection addObject:@"Manage Clients"];
+         //[firstSection addObject:@"Manage Clients"];
         //[firstSection addObject:@"Manage Products"];
         //[firstSection addObject:@"Manage Users"];
-       // [firstSection addObject:@"Delete All Invoices Data and pdfs"];
+        //[firstSection addObject:@"Delete All Invoices Data and pdfs"];
+        //[firstSection addObject:@"Delete Signed pdfs"];
+
 
         }
     
@@ -202,6 +206,11 @@
             
         case 6:
             newController=@"DeleteAllData";
+            
+            break;
+            
+        case 7:
+            newController=@"DeleteSignedPdf";
             
             break;
 

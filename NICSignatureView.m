@@ -639,6 +639,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 - (NSString*)addNumber: (NSString*)firstNumber withNumber: (NSString*) secondNumber {
     NSDecimalNumber *number = [NSDecimalNumber zero];
+    
     NSDecimalNumber *fNum = [NSDecimalNumber decimalNumberWithString:firstNumber];
     NSDecimalNumber *sNum = [NSDecimalNumber decimalNumberWithString:secondNumber];
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
@@ -646,7 +647,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     number = [number decimalNumberByAdding:sNum];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
-    NSString*result = [number stringValue];
+    NSString *result  = [nf stringFromNumber:number];
     return result;
 }
 

@@ -13,6 +13,7 @@
 @end
 
 @implementation DeleteAllDataViewController
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -110,7 +111,11 @@
                                                       cancelButtonTitle:@"OK"
                                                         otherButtonTitles: nil];
                                     [alert show];
-
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+    
+    [self presentViewController:manageClientsViewController animated:YES completion:nil];
+    
             
 }
 
@@ -130,7 +135,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSArray * results = [[NSArray alloc] init];
     results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
-    NSString *match = @"*.pdf";
+    NSString *match = @"Invoice #*.pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
    
