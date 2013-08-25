@@ -76,8 +76,15 @@
         cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
     }
     else{
-        cell.textLabel.text = [clientsToPrint objectAtIndex:indexPath.row];
-        cell.detailTextLabel.text =[InvoiceDate objectAtIndex:indexPath.row];
+        NSString *str =  [filteredTableData objectAtIndex:indexPath.row];;
+        str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
+        str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:1];
+        [array addObject:str];
+        
+       NSMutableArray * myarrays=  [self FindClientFromPdfInvoices:array];
+        cell.textLabel.text = [myarrays objectAtIndex:0];
+       // cell.detailTextLabel.text =[InvoiceDate objectAtIndex:indexPath.row];
     }
     cell.textLabel.textColor = [UIColor brownColor];
     return cell;
@@ -155,7 +162,7 @@
         error = nil;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString* fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[directoryContents objectAtIndex:indexPathForDeletion.row] ];
+        NSString* fullPath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,[filteredTableData objectAtIndex:indexPathForDeletion.row] ];
         [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
         
         
@@ -179,7 +186,7 @@
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ directoryContents objectAtIndex:indexPathForDeletion.row]]];
+        NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[ filteredTableData objectAtIndex:indexPathForDeletion.row]]];
         if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
             
             ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
@@ -347,7 +354,7 @@
     filteredTableData = [[NSMutableArray alloc] init];
     for (NSString* pdf in directoryContents)
     {
-        if ([pdf rangeOfString:searchDate].location != NSNotFound) {
+        if ([pdf rangeOfString:dateToBeFound].location != NSNotFound) {
             [filteredTableData addObject:pdf];
         }
     }
