@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+     [_Loading startAnimating];
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -58,11 +59,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    if([isFiltered isEqual:@"TRUE"])
-        return [filteredTableData count];
-    else
-        return [clientsToPrint count];
+    
+        InvoiceFiltered =[self FindClientFromPdfInvoices:filteredTableData];
+        return [InvoiceFiltered count];
+   
     }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -71,23 +71,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
-    if([isFiltered isEqual:@"TRUE"]){
-        cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
-    }
-    else{
-        NSString *str =  [filteredTableData objectAtIndex:indexPath.row];;
-        str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-        str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
-        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:1];
-        [array addObject:str];
-        
-       NSMutableArray * myarrays=  [self FindClientFromPdfInvoices:array];
-        cell.textLabel.text = [myarrays objectAtIndex:0];
-       // cell.detailTextLabel.text =[InvoiceDate objectAtIndex:indexPath.row];
-    }
-    cell.textLabel.textColor = [UIColor brownColor];
-    return cell;
+        cell.textLabel.text = [InvoiceFiltered objectAtIndex:indexPath.row];
+        cell.textLabel.textColor = [UIColor brownColor];
+        return cell;
 }
 
 #pragma mark - Table view delegate
@@ -285,13 +271,12 @@
     NSString *dateString = [dateFormat stringFromDate:[InvoiceDatePicker date]];
     int dateDocNum = [dateString intValue];
     searchDate =[NSString stringWithFormat:@"%d",dateDocNum];
-    NSMutableArray* invoicesFromDateArray = [self findInvoicesByDate:searchDate];
-    [self FindClientFromPdfInvoices:invoicesFromDateArray];
+    [self findInvoicesByDate:searchDate];
     [self.InvoicesTableView reloadData];
-    
 }
 
 -(NSMutableArray*)FindClientFromPdfInvoices :(NSMutableArray*)invoicesFromDateArray{
+    _Loading.alpha =1;
     clientsToPrint = [[NSMutableArray alloc] init];
     InvoiceDate = [[NSMutableArray alloc] init];
     InvoiceNumbers = [[NSMutableArray alloc] init];
@@ -334,9 +319,9 @@
             }
             
         }
-        
+       
     }
-    
+       _Loading.alpha =0;
     return clientsToPrint;
 }
 

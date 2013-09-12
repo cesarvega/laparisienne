@@ -21,6 +21,7 @@
     UIPrintInteractionController *printInteraction;
     NSMutableArray* InvoiceDate;
     NSMutableArray* InvoiceNumbers;
+    NSMutableArray* InvoiceFiltered;
 }
 
 @property (strong, nonatomic)    NSNumber* InvoiceID;
@@ -32,5 +33,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSString* currentDate;
 @property (strong, nonatomic) IBOutlet UIDatePicker *InvoiceDatePicker;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *Loading;
 
 @end

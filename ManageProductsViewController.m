@@ -127,14 +127,10 @@
         
         [Productname removeObjectAtIndex:indexPathForDeletion.row];
         [productDescription removeObjectAtIndex:indexPathForDeletion.row];
-        
-        //add logic to get custID and delete from table
-        
-        
     }
    
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageUsers"];
+        UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ManageProducts"];
         [self presentViewController:manageClientsViewController animated:YES completion:nil];
     }
 
