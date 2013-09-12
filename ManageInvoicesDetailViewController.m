@@ -502,7 +502,7 @@ ProductsReviewDetailCell *cell;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",[InvoiceID stringValue],@"pdf"]];
+    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ %@ %@.%@",@"Invoice #",[InvoiceID stringValue],BusinessNameTextLabel.text,@"pdf"]];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
         

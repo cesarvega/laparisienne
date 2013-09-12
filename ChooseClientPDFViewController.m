@@ -79,8 +79,7 @@ ClientPDFDetailCell * cell;
         for(NSString *existingItem in invoicesFromDateArray){
 
             NSString *str = existingItem;
-            str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-            str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+            str = [str substringWithRange:NSMakeRange(10, 9)];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];
@@ -94,7 +93,7 @@ ClientPDFDetailCell * cell;
                 if ([clientId isEqual:invoiceClientName] ) {
                     [clientsToPrint addObject:businessNames];
                     [InvoiceDate addObject:invoiceDates];
-                    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",invoiceNumbers,@"pdf"];
+                    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@ %@.%@",@"Invoice #",invoiceNumbers,businessNames,@"pdf"];
                     [InvoiceNumbers addObject:newPDFName];
                 }
                

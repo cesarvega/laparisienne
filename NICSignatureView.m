@@ -456,8 +456,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     
     NSString *str = delegate.InvoiceIDGlobal;
     NSNumber * CustomerID;
-    str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-    str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+    str = [str substringWithRange:NSMakeRange(10, 9)];
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     NSNumber * myNumber = [f numberFromString:str];

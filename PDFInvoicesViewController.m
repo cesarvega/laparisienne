@@ -60,8 +60,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-        InvoiceFiltered =[self FindClientFromPdfInvoices:filteredTableData];
-        return [InvoiceFiltered count];
+       // InvoiceFiltered =[self FindClientFromPdfInvoices:filteredTableData];
+        return [filteredTableData count];
    
     }
 
@@ -71,7 +71,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-        cell.textLabel.text = [InvoiceFiltered objectAtIndex:indexPath.row];
+        cell.textLabel.text = [filteredTableData objectAtIndex:indexPath.row];
         cell.textLabel.textColor = [UIColor brownColor];
         return cell;
 }
@@ -118,8 +118,7 @@
         [fetchRequest setEntity:entity];
         NSString * ID = [filteredTableData objectAtIndex:indexPathForDeletion.row];
         NSString *str = ID;
-        str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-        str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+        str = [str substringWithRange:NSMakeRange(10, 9)];
         NSPredicate *p =[NSPredicate predicateWithFormat:@"invoiceID = %@", str];
         [fetchRequest setPredicate:p];
         
@@ -297,8 +296,7 @@
         for(NSString *existingItem in invoicesFromDateArray){
             
             NSString *str = existingItem;
-            str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
-            str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
+            str = [str substringWithRange:NSMakeRange(10, 9)];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];

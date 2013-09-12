@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="hRT-eI-V89">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="hRT-eI-V89">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
     </dependencies>
     <scenes>
@@ -9,11 +10,11 @@
             <objects>
                 <viewController storyboardIdentifier="Login" id="hRT-eI-V89" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xpc-az-F9K">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1244"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="BG.png" id="d6u-kB-eIx">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1244"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Logo.png" id="vOu-rh-2DI">
@@ -76,14 +77,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSp-yN-K78" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-550" y="-788"/>
+            <point key="canvasLocation" x="-521" y="-983"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="4u5-TX-CEZ">
             <objects>
                 <tableViewController storyboardIdentifier="mainMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m99-Wj-D4p" customClass="MainMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="cBm-Zd-YYy">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.33224269750000002" green="0.32067343590000003" blue="0.3364366889" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,7 +111,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KmW-Wh-gPg">
-                                            <rect key="frame" x="30" y="29" width="35" height="21"/>
+                                            <rect key="frame" x="30" y="29" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.30261479591836737" green="0.18020936851503994" blue="0.067138279341579885" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,7 +144,7 @@
             <objects>
                 <viewController restorationIdentifier="ManageClients" storyboardIdentifier="ManageClients" id="Fd2-tU-OhK" customClass="ManageClientsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rmZ-c4-CTD">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="qAM-e9-imy">
@@ -166,7 +167,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9E3-zn-SmV">
-                                <rect key="frame" x="0.0" y="44" width="768" height="967"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="947"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.30261479590000001" green="0.18020936849999999" blue="0.067138279339999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,11 +189,11 @@
             <objects>
                 <viewController storyboardIdentifier="editClients" id="ZO8-AW-ivK" customClass="ManageClientsDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dN5-iV-LxA">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="BG.png" id="Pwy-y5-Ti2">
-                                <rect key="frame" x="0.0" y="-102" width="768" height="1126"/>
+                                <rect key="frame" x="0.0" y="-102" width="768" height="1106"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Logo.png" id="5Bp-as-ETS">
@@ -454,11 +455,11 @@
             <objects>
                 <viewController restorationIdentifier="ManageUsers" storyboardIdentifier="ManageUsers" id="YDX-ty-IAK" customClass="UserManagmentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zoG-kM-K7j">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6px-aW-BSq">
-                                <rect key="frame" x="0.0" y="44" width="768" height="975"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="955"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -505,14 +506,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7h-Ne-ada" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072" y="326"/>
+            <point key="canvasLocation" x="1077" y="375"/>
         </scene>
         <!--Manage Products View Controller-->
         <scene sceneID="fTD-ej-6Rv">
             <objects>
                 <viewController restorationIdentifier="ManageProducts" storyboardIdentifier="ManageProducts" id="4Lq-3O-aUP" customClass="ManageProductsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SKT-sn-9Cg">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="ctx-UE-qDt">
@@ -535,7 +536,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tA4-zk-hjL">
-                                <rect key="frame" x="0.0" y="44" width="768" height="966"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="946"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -556,7 +557,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="DeleteAllData" id="Fu2-Vq-cpm" customClass="DeleteAllDataViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z9D-Hz-Jx1">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="mWq-t5-US6">
@@ -603,11 +604,11 @@
             <objects>
                 <viewController restorationIdentifier="ManageInvoices" storyboardIdentifier="ManageInvoices" id="fC2-B1-XFI" customClass="ManageInvoicesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pjg-2X-mUI">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="y3m-j8-NhL">
-                                <rect key="frame" x="0.0" y="44" width="768" height="971"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="951"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -650,7 +651,7 @@
             <objects>
                 <viewController restorationIdentifier="invoicesDetails" storyboardIdentifier="invoicesDetails" id="2e1-jZ-IW3" customClass="ManageInvoicesDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xRM-ak-pDm">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="ipE-9E-mfD">
@@ -743,15 +744,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XeT-pd-RxV">
-                                <rect key="frame" x="16" y="321" width="731" height="683"/>
+                                <rect key="frame" x="16" y="321" width="731" height="663"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ProducReviewDetailsCell" rowHeight="44" id="vYX-jG-5wf" customClass="ProductsReviewDetailCell">
-                                        <rect key="frame" x="0.0" y="22" width="731.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="731" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vYX-jG-5wf" id="dlc-br-gEH">
-                                            <rect key="frame" x="0.0" y="0.0" width="731.5" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="731" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XW6-H0-C9Y">
@@ -829,7 +830,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" id="43F-ix-GS8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" clearsOnBeginEditing="YES" minimumFontSize="17" id="43F-ix-GS8">
                                 <rect key="frame" x="578" y="156" width="122" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -911,11 +912,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController restorationIdentifier="ManageProductsDetail" storyboardIdentifier="ManageProductsDetail" id="wyF-VV-nS3" customClass="ManageProductsDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HxV-my-MEE">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="BG.png" id="Eoo-mi-ZlN">
-                                <rect key="frame" x="-1" y="-102" width="769" height="1126"/>
+                                <rect key="frame" x="-1" y="-102" width="769" height="1106"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Logo.png" id="UX8-Ha-MpL">
@@ -1007,11 +1008,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController storyboardIdentifier="userManagementDetailView" id="rKV-xt-K3R" customClass="UserManagmentDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Ve-4N-aOr">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="BG.png" id="p2z-Ml-4Pf">
-                                <rect key="frame" x="0.0" y="-102" width="768" height="1126"/>
+                                <rect key="frame" x="0.0" y="-102" width="768" height="1106"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Logo.png" id="9hP-2u-STm">
@@ -1080,11 +1081,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController restorationIdentifier="ChooseCLientsFOrInvoice" storyboardIdentifier="ChooseCLientsFOrInvoice" id="OAM-qQ-qcd" customClass="ChooseClientForInvoiceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X6n-8p-FfN">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SMp-zH-mJb">
-                                <rect key="frame" x="0.0" y="44" width="768" height="971"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="951"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1119,7 +1120,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController restorationIdentifier="SelectProductsForInvoice" storyboardIdentifier="SelectProductsForInvoice" id="Str-26-YQd" customClass="ChooseProductsForInvoiceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fRO-42-JYq">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="o6d-8b-YQY">
@@ -1142,7 +1143,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3PI-2K-8qD">
-                                <rect key="frame" x="0.0" y="44" width="768" height="973"/>
+                                <rect key="frame" x="0.0" y="44" width="768" height="953"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1252,7 +1253,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController restorationIdentifier="PDFInvoices" storyboardIdentifier="PDFInvoices" id="zqd-Kk-xTU" customClass="PDFInvoicesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VB3-6s-W7n">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" text="" id="H9o-CP-HwY">
@@ -1293,7 +1294,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </timeZone>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wih-5a-QCs">
-                                <rect key="frame" x="0.0" y="175" width="768" height="841"/>
+                                <rect key="frame" x="0.0" y="175" width="768" height="821"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1332,14 +1333,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ht-Ma-lkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240" y="326"/>
+            <point key="canvasLocation" x="258" y="375"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="0c0-SX-Xhh">
             <objects>
                 <viewController restorationIdentifier="GLKView" storyboardIdentifier="GLKView" id="Yn3-Wf-WLb" customClass="GLKViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="juj-of-aGE" customClass="NICSignatureView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="SignBG.png" id="5zD-gH-Ceo">
@@ -1389,7 +1390,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Signature.png" id="FpT-Eh-VVk">
-                                <rect key="frame" x="134" y="471" width="528" height="119"/>
+                                <rect key="frame" x="134" y="471" width="528" height="55"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
@@ -1411,7 +1412,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController restorationIdentifier="ChooseClientPDF" storyboardIdentifier="ChooseClientPDF" id="MAP-89-E9C" customClass="ChooseClientPDFViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ff6-cu-hTl">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="ThO-gp-pcn">
@@ -1443,7 +1444,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </timeZone>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="70T-kC-rA6">
-                                <rect key="frame" x="0.0" y="185" width="768" height="839"/>
+                                <rect key="frame" x="0.0" y="185" width="768" height="819"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1551,14 +1552,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBv-Wm-Nuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-550" y="343"/>
+            <point key="canvasLocation" x="-550" y="375"/>
         </scene>
         <!--View Signed Invoices View Controller-->
         <scene sceneID="2Ue-8n-8Vp">
             <objects>
                 <viewController restorationIdentifier="ViewSignedInvoices" storyboardIdentifier="ViewSignedInvoices" id="9zj-cM-kWf" customClass="ViewSignedInvoicesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zHC-es-MJw">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" text="" id="99H-0z-Ayc">
@@ -1596,7 +1597,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </timeZone>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ute-d0-Q4m">
-                                <rect key="frame" x="0.0" y="174" width="768" height="850"/>
+                                <rect key="frame" x="0.0" y="174" width="768" height="830"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1636,7 +1637,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <tableViewController storyboardIdentifier="DeleteSignedPdf" id="yKl-o8-BH9" customClass="DeleteSignedPdfViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pvS-vH-vce">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="pCl-e5-Say">
@@ -1690,12 +1691,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="cellBg.png" width="1522" height="268"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OJe-Ri-g9o"/>
+        <segue reference="1Hh-vD-U6d"/>
         <segue reference="Vao-2g-q4t"/>
         <segue reference="2NW-ym-3GV"/>
     </inferredMetricsTieBreakers>
