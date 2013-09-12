@@ -18,6 +18,7 @@
 @property(strong,nonatomic)NSString* LoginUserPassword;
 @property(strong,nonatomic)NSString* SignedInvoiceName;
 @property(strong,nonatomic)NSString* SignedInvoiceNumber;
+@property(strong,nonatomic)NSString* BusinessName;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

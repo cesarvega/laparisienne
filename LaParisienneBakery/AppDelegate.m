@@ -11,7 +11,7 @@
 #import "User.h"
 @implementation AppDelegate{NSUserDefaults *userDefaults;}
 
-@synthesize managedObjectContext = _managedObjectContext,InvoiceIDGlobal, LoginUserName,LoginUserPassword;
+@synthesize managedObjectContext = _managedObjectContext,InvoiceIDGlobal, LoginUserName,LoginUserPassword, BusinessName;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 

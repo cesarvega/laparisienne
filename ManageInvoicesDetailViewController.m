@@ -478,7 +478,7 @@ ProductsReviewDetailCell *cell;
    int dateDocNum = [name intValue];
    NSString* newStrting =[NSString stringWithFormat:@"%d",dateDocNum];
 
-    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@.%@",@"Invoice #",newStrting,@"pdf"];
+    NSString *newPDFName = [NSString stringWithFormat:@"%@ %@ %@.%@",@"Invoice #",newStrting,delegate.BusinessName,@"pdf"];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     

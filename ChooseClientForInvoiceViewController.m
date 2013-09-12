@@ -73,7 +73,7 @@
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         NSNumber * numberVal = [f numberFromString:val];
-   
+        delegate.BusinessName = [businessName objectAtIndex:indexPath.row];
         [manageInvoices setCustIDValue:numberVal];
         [self presentViewController:manageInvoices animated:YES completion:nil];
     
