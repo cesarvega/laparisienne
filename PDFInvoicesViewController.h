@@ -33,6 +33,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSString* currentDate;
 @property (strong, nonatomic) IBOutlet UIDatePicker *InvoiceDatePicker;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *Loading;
+
 
 @end

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-     [_Loading startAnimating];
+
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -275,7 +275,7 @@
 }
 
 -(NSMutableArray*)FindClientFromPdfInvoices :(NSMutableArray*)invoicesFromDateArray{
-    _Loading.alpha =1;
+  
     clientsToPrint = [[NSMutableArray alloc] init];
     InvoiceDate = [[NSMutableArray alloc] init];
     InvoiceNumbers = [[NSMutableArray alloc] init];
@@ -319,7 +319,7 @@
         }
        
     }
-       _Loading.alpha =0;
+     
     return clientsToPrint;
 }
 
