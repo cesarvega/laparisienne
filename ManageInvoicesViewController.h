@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *InvoicesTableView;
 @property (strong, nonatomic)NSMutableArray* InvoiceID;
 @property (strong, nonatomic) NSNumber * custIDValue;
+@property (strong, nonatomic) NSString * BusinnesName;
 - (IBAction)CreateANewInvoiceButton:(id)sender;
 
 @end

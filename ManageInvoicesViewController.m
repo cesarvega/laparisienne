@@ -15,7 +15,7 @@
 
 @implementation ManageInvoicesViewController
 @synthesize CustomersPickerDataSrc,ProductsPickerDataSrc;
-@synthesize custIDValue, invoiceDocDates, invoicesDocNums,InvoiceID, InvoicesTableView;
+@synthesize custIDValue, invoiceDocDates, invoicesDocNums,InvoiceID, InvoicesTableView,BusinnesName;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -120,26 +120,26 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return NO;
+    return YES;
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        
-//        indexPathForDeletion = indexPath;
-//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
-//                                                          message:nil
-//                                                         delegate:self
-//                                                cancelButtonTitle:@"No"
-//                                                otherButtonTitles:@"Yes", nil];
-//        
-//        [message show];
-//        
-//    }
-//    
-//    
-//    
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        indexPathForDeletion = indexPath;
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this invoice?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+        
+        [message show];
+        
+    }
+    
+    
+    
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
@@ -155,6 +155,16 @@
         [fetchRequest setPredicate:p];
         
         NSError *error;
+        
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString * invoiceToDelete =  [NSString stringWithFormat:@"Invoice # %@ %@",[invoicesDocNums objectAtIndex:indexPathForDeletion.row],BusinnesName];
+        NSString* fullPath = [NSString stringWithFormat:@"%@/%@%@",documentsDirectory,invoiceToDelete,@".pdf" ];
+        if (invoicesDocNums.count >0) {
+            [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
+        
+        
         NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         
         
@@ -181,16 +191,11 @@
         [invoicesDocNums removeAllObjects];
         
     }
-//    NSError *error = nil;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString * invoiceToDelete =  [NSString stringWithFormat:@"Invoice # :%@",[invoicesDocNums objectAtIndex:indexPathForDeletion.row]];
-//    NSString* fullPath = [NSString stringWithFormat:@"%@/%@%@",documentsDirectory,invoiceToDelete,@".pdf" ];
-//      if (invoicesDocNums.count >0) {
-//        [[NSFileManager defaultManager] removeItemAtPath: fullPath error:&error];
-//
-//    }
-//   
+   
+    
+
+    }
+   
     
        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         UIViewController *manageClientsViewController = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ChooseCLientsFOrInvoice"];

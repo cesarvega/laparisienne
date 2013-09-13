@@ -75,6 +75,7 @@
         NSNumber * numberVal = [f numberFromString:val];
         delegate.BusinessName = [businessName objectAtIndex:indexPath.row];
         [manageInvoices setCustIDValue:numberVal];
+        [manageInvoices setBusinnesName:[businessName objectAtIndex:indexPath.row]];
         [self presentViewController:manageInvoices animated:YES completion:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

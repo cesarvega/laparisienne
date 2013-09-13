@@ -410,7 +410,7 @@ ProductsReviewDetailCell *cell;
     
     [self addText:[NSString stringWithFormat:@"%@\n%@\n%@", BusinessNameTextLabel.text, ClientAddressTextLabel.text,ClientNameTextLabel.text]
         withFrame:CGRectMake(130, 328, 150, 150) fontSize:15.0f];
-    
+    if (customerPOLabel.text.length<1){customerPOLabel.text=@" ";}
     [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDateTextLabel.text, InvoiceNumberTextLabel.text, customerPOLabel.text]
         withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
     
