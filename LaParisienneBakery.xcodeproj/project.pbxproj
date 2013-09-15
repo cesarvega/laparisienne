@@ -88,6 +88,7 @@
 		829C19ED17681C2F00F2CDE8 /* Signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C19EC17681C2F00F2CDE8 /* Signature.png */; };
 		82A6CF9C1749416600BDB8E8 /* ManageClientsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */; };
 		82A9FEE3175599CC00A41AF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */; };
+		82B6C41E17E668BE00A2C4E0 /* EmailClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6C41D17E668BE00A2C4E0 /* EmailClientsViewController.m */; };
 		82C4A56317BAF37300A80A66 /* DeleteAllDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */; };
 		82CE8BF31796321D004E2BFF /* ChooseClientPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CE8BF21796321D004E2BFF /* ChooseClientPDFViewController.m */; };
 		82EDE1D5173F19DD00E27BB3 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EDE1D4173F19DD00E27BB3 /* BG.png */; };
@@ -223,6 +224,8 @@
 		82A6CF9A1749416600BDB8E8 /* ManageClientsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageClientsDetailViewController.h; sourceTree = "<group>"; };
 		82A6CF9B1749416600BDB8E8 /* ManageClientsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageClientsDetailViewController.m; sourceTree = "<group>"; };
 		82A9FEE2175599CC00A41AF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		82B6C41C17E668BE00A2C4E0 /* EmailClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailClientsViewController.h; path = EmailClients/EmailClientsViewController.h; sourceTree = "<group>"; };
+		82B6C41D17E668BE00A2C4E0 /* EmailClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmailClientsViewController.m; path = EmailClients/EmailClientsViewController.m; sourceTree = "<group>"; };
 		82C4A56117BAF37300A80A66 /* DeleteAllDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteAllDataViewController.h; sourceTree = "<group>"; };
 		82C4A56217BAF37300A80A66 /* DeleteAllDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteAllDataViewController.m; sourceTree = "<group>"; };
 		82CE8BF11796321D004E2BFF /* ChooseClientPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseClientPDFViewController.h; sourceTree = "<group>"; };
@@ -497,6 +500,15 @@
 			name = Clients;
 			sourceTree = "<group>";
 		};
+		82B6C41F17E668C600A2C4E0 /* EmailCLients */ = {
+			isa = PBXGroup;
+			children = (
+				82B6C41C17E668BE00A2C4E0 /* EmailClientsViewController.h */,
+				82B6C41D17E668BE00A2C4E0 /* EmailClientsViewController.m */,
+			);
+			name = EmailCLients;
+			sourceTree = "<group>";
+		};
 		82C4A55D17BAF21700A80A66 /* DeleteData */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +543,7 @@
 		82EDE1D6173F19ED00E27BB3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				82B6C41F17E668C600A2C4E0 /* EmailCLients */,
 				82C4A55D17BAF21700A80A66 /* DeleteData */,
 				82802CCB179770A10030AF3F /* Login and Menu */,
 				828E6DB717669CD000C666C6 /* PDFInvoices */,
@@ -675,6 +688,7 @@
 				8252BE031756ED660061F803 /* ReaderViewController.m in Sources */,
 				8252BE041756ED660061F803 /* ThumbsMainToolbar.m in Sources */,
 				8252BE051756ED660061F803 /* ThumbsViewController.m in Sources */,
+				82B6C41E17E668BE00A2C4E0 /* EmailClientsViewController.m in Sources */,
 				8252BE061756ED660061F803 /* UIXToolbarView.m in Sources */,
 				828E6DBA17669CF000C666C6 /* PDFInvoicesViewController.m in Sources */,
 				828E6DBD1766A70700C666C6 /* NICSignatureView.m in Sources */,
