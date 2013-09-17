@@ -13,7 +13,7 @@
 @end
 
 @implementation EmailClientsViewController
-
+@synthesize emails;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,10 +42,10 @@
 //        [mailer setToRecipients:toRecipients];
         UIImage *myImage = [UIImage imageNamed:@"SocialLogo.png"];
         NSData *imageData = UIImagePNGRepresentation(myImage);
-        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"emailLogo"];
+        [mailer addAttachmentData:imageData mimeType:@"images/png" fileName:@"LogoDark"];
         NSString *emailBody = @"Please tell us the bug you found";
         [mailer setMessageBody:emailBody isHTML:NO];
-        [self presentModalViewController:mailer animated:YES];
+        [self presentViewController:mailer animated:YES completion:nil];
         
     }
     else

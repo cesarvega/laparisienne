@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 @interface EmailClientsViewController : UIViewController<MFMailComposeViewControllerDelegate>
+{
+    NSMutableArray *emails;
+}
 
+@property (nonatomic, retain) NSMutableArray *emails;
+-(void)SendEmail :(NSArray*)toRecipients;
 @end

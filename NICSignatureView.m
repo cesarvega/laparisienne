@@ -7,7 +7,7 @@
 //
 
 #import "NICSignatureView.h"
-
+#import "EmailClientsViewController.h"
 #define kPadding 20
 #define             STROKE_WIDTH_MIN 0.002 // Stroke width determined by touch velocity
 #define             STROKE_WIDTH_MAX 0.010
@@ -450,6 +450,8 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     [self  DrawTheInvoiceProductsContent];
     
     [self finishPDF];
+    
+    [self sendEmail];
 }
 
 -(void)DrawTheInvoiceProductsContent{
@@ -704,8 +706,37 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 }
 
-CGPDFDocumentRef MyGetPDFDocumentRef (const char *filename)
-{
+- (void)sendEmail{
+
+    NSArray* email = [self email:delegate.custID];
+    EmailClientsViewController * emailControl;
+    emailControl  = [[EmailClientsViewController alloc] init];
+    [emailControl SendEmail:email];
+}
+
+-(NSArray*) email :(NSString*)ClienId{
+    NSString *email;
+    NSManagedObjectContext *contexts = [delegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Customer" inManagedObjectContext:contexts];
+    NSError *error;
+    [fetchRequest setEntity:entity];
+    NSPredicate *p =[NSPredicate predicateWithFormat:@"custID = %@", ClienId];
+    [fetchRequest setPredicate:p];
+    
+    NSArray *items = [delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (NSArray *item in items) {
+        
+        email = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
+        
+    }
+    return email;
+    
+}
+
+CGPDFDocumentRef MyGetPDFDocumentRef (const char *filename){
     CFStringRef path;
     CFURLRef url;
     CGPDFDocumentRef document;

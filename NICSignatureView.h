@@ -13,7 +13,7 @@
 #import "Invoice.h"
 #import "Invoice_Lines.h"
 #import "AppDelegate.h"
-@interface NICSignatureView : GLKView{
+@interface NICSignatureView : GLKView<MFMailComposeViewControllerDelegate,UIViewControllerTransitioningDelegate>{
     AppDelegate *delegate;
     NSNumber* InvoiceID;
     Invoice_Lines * Invoice_Lines;

@@ -209,6 +209,7 @@
             NSString *custID = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
             
             NSString * BusinessName =  [self ClientName:custID];
+            delegate.custID =custID;
             delegate.SignedInvoiceName = SignedDate;
             delegate.SignedInvoiceNumber = BusinessName;
            
