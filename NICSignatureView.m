@@ -688,12 +688,12 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     str =[str stringByReplacingOccurrencesOfString:@"-"withString:@""];
 
     NSString *newPDFName = [NSString stringWithFormat:@"%@ %@ %@.%@",@"Signed #",str ,SignedInvoiceNumber ,@"pdf"];
-    
+    documentName=newPDFName;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:newPDFName];
-    
+    fullPath =pdfPath;
     UIGraphicsBeginPDFContextToFile(pdfPath, CGRectZero, nil);
 }
 
@@ -711,10 +711,11 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     NSArray* email = [self email:delegate.custID];
     EmailClientsViewController * emailControl;
     emailControl  = [[EmailClientsViewController alloc] init];
-    [emailControl SendEmail:email];
+    [emailControl  SendEmail:email DocumentPath:fullPath DocumetName:documentName];
 }
 
 -(NSArray*) email :(NSString*)ClienId{
+    
     NSString *email;
     NSManagedObjectContext *contexts = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -732,7 +733,9 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         email = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
         
     }
-    return email;
+    
+    NSArray *listItems = [email componentsSeparatedByString:@", "];
+    return listItems;
     
 }
 

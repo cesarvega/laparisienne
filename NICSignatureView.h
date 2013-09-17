@@ -23,6 +23,9 @@
     NSString* totalOfTheWholeInvoice;
     NSString* InvoiceDate;
     NSString* InvoicePO;
+    NSString *fullPath;
+    NSString* documentName;
+    
 
 }
 

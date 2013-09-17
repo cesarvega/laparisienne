@@ -14,5 +14,5 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *emails;
--(void)SendEmail :(NSArray*)toRecipients;
+-(void)SendEmail :(NSArray*)toRecipients DocumentPath:(NSString*)Path DocumetName:(NSString*)Name;
 @end
