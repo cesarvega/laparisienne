@@ -118,7 +118,7 @@
         [fetchRequest setEntity:entity];
         NSString * ID = [filteredTableData objectAtIndex:indexPathForDeletion.row];
         NSString *str = ID;
-        str = [str substringWithRange:NSMakeRange(10, 9)];
+        str = [str substringWithRange:NSMakeRange(10, 10)];
         NSPredicate *p =[NSPredicate predicateWithFormat:@"invoiceID = %@", str];
         [fetchRequest setPredicate:p];
         
@@ -297,7 +297,7 @@
         for(NSString *existingItem in invoicesFromDateArray){
             
             NSString *str = existingItem;
-            str = [str substringWithRange:NSMakeRange(10, 9)];
+            str = [str substringWithRange:NSMakeRange(10, 10)];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];

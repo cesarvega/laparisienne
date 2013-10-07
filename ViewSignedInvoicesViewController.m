@@ -224,7 +224,7 @@
         for(NSString *existingItem in invoicesFromDateArray){
             
             NSString *str = existingItem;
-            str = [str substringWithRange:NSMakeRange(10, 9)];
+            str = [str substringWithRange:NSMakeRange(10, 10)];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];

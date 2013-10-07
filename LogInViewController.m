@@ -85,11 +85,11 @@
         
 
     }
-//  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-//
-//   MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-//    
-//    [self presentViewController:centerController animated:YES completion:nil];
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+
+   MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+    
+    [self presentViewController:centerController animated:YES completion:nil];
 
 }
 }
