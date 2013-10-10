@@ -17,7 +17,10 @@
 @property(strong,nonatomic)NSString* LoginUserName;
 @property(strong,nonatomic)NSString* LoginUserPassword;
 @property(strong,nonatomic)NSString* SignedInvoiceName;
+@property(strong,nonatomic)NSString* SignedInvoicefullPath;
+@property(strong,nonatomic)NSString* SignedInvoiceFlag;
 @property(strong,nonatomic)NSString* SignedInvoiceNumber;
+@property(strong,nonatomic)NSString* SignedInvoiceEmails;
 @property(strong,nonatomic)NSString* BusinessName;
 @property(strong,nonatomic)NSString* custID;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

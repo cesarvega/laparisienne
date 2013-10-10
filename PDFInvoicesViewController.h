@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "ReaderViewController.h"
-@interface PDFInvoicesViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
+@interface PDFInvoicesViewController : UIViewController<MFMailComposeViewControllerDelegate,UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate,ReaderViewControllerDelegate>{
     AppDelegate *delegate;
     NSString * searchDate;
     NSArray * directoryContents;

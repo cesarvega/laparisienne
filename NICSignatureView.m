@@ -7,7 +7,7 @@
 //
 
 #import "NICSignatureView.h"
-#import "EmailClientsViewController.h"
+
 #define kPadding 20
 #define             STROKE_WIDTH_MIN 0.002 // Stroke width determined by touch velocity
 #define             STROKE_WIDTH_MAX 0.010
@@ -451,7 +451,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     
     [self finishPDF];
     
-//    [self sendEmail];
+    [self sendEmail];
 }
 
 -(void)DrawTheInvoiceProductsContent{
@@ -708,10 +708,11 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 - (void)sendEmail{
 
-    NSArray* email = [self email:delegate.custID];
-    EmailClientsViewController * emailControl;
-    emailControl  = [[EmailClientsViewController alloc] init];
-    [emailControl  SendEmail:email DocumentPath:fullPath DocumetName:documentName];
+
+      [self email:delegate.custID];
+      [delegate setSignedInvoicefullPath:fullPath] ;
+      [delegate setSignedInvoiceFlag:@"YES"] ;
+      [delegate setSignedInvoiceName:documentName] ;
 }
 
 -(NSArray*) email :(NSString*)ClienId{
@@ -733,7 +734,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         email = [NSString stringWithFormat:@"%@",[item valueForKey:@"email"]];
         
     }
-    
+    [delegate setSignedInvoiceEmails:email];
     NSArray *listItems = [email componentsSeparatedByString:@", "];
     return listItems;
     

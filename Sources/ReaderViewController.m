@@ -409,6 +409,8 @@
 	{
 		[self performSelector:@selector(showDocument:) withObject:nil afterDelay:0.02];
 	}
+    delegates = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    [self sendEmail:delegates.SignedInvoiceFlag];
 
 #if (READER_DISABLE_IDLE == TRUE) // Option
 
@@ -932,9 +934,9 @@
 		if (attachment != nil) // Ensure that we have valid document file attachment data
 		{
 			MFMailComposeViewController *mailComposer = [MFMailComposeViewController new];
-
-			[mailComposer addAttachmentData:attachment mimeType:@"application/pdf" fileName:fileName];
-
+            [mailComposer addAttachmentData:attachment mimeType:@"application/pdf" fileName:fileName];
+             NSArray *listItems = [delegates.SignedInvoiceEmails componentsSeparatedByString:@", "];
+            [mailComposer setToRecipients:listItems];
 			[mailComposer setSubject:fileName]; // Use the document file name for the subject
 
 			mailComposer.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -948,7 +950,51 @@
 		}
 	}
 
+
+    
 #endif // end of READER_ENABLE_MAIL Option
+}
+
+-(void) sendEmail : (NSString*) InstantEmail{
+    
+    if ([InstantEmail isEqualToString:@"YES"]) {
+        [delegates setSignedInvoiceFlag:@"NO"];
+        if ([MFMailComposeViewController canSendMail] == NO) return;
+        
+        if (printInteraction != nil) [printInteraction dismissAnimated:YES];
+        
+        unsigned long long fileSize = [document.fileSize unsignedLongLongValue];
+        
+        if (fileSize < (unsigned long long)15728640) // Check attachment size limit (15MB)
+        {
+            NSURL *fileURL = document.fileURL; NSString *fileName = document.fileName; // Document
+            
+            NSData *attachment = [NSData dataWithContentsOfURL:fileURL options:(NSDataReadingMapped|NSDataReadingUncached) error:nil];
+            
+            if (attachment != nil) // Ensure that we have valid document file attachment data
+            {
+                MFMailComposeViewController *mailComposer = [MFMailComposeViewController new];
+                delegates = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+                [mailComposer addAttachmentData:attachment mimeType:@"application/pdf" fileName:fileName];
+                NSArray *listItems = [delegates.SignedInvoiceEmails componentsSeparatedByString:@", "];
+                [mailComposer setToRecipients:listItems];
+                [mailComposer setSubject:fileName]; // Use the document file name for the subject
+                
+                mailComposer.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+                mailComposer.modalPresentationStyle = UIModalPresentationFormSheet;
+                
+                mailComposer.mailComposeDelegate = self; // Set the delegate
+                
+                [self presentViewController:mailComposer animated:YES completion:nil];
+                
+                // Cleanup
+            }
+        }
+        
+        
+
+    }
+    
 }
 
 - (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIButton *)button

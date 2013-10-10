@@ -8,7 +8,7 @@
 
 #import "PDFInvoicesViewController.h"
 #import "NICSignatureView.h"
-
+#import "EmailClientsViewController.h"
 @interface PDFInvoicesViewController ()
 
 @end
@@ -27,6 +27,9 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 
+    
+    
+    
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -45,8 +48,40 @@
     NSString *dateString = [dateFormat stringFromDate:[InvoiceDatePicker date]];
     searchDate =dateString;
     [self changeValues:nil];
+    
+    
+    if ([delegate.SignedInvoiceFlag isEqualToString:@"YES"]) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Email the signed invoice to the customers"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Email", nil];
+        
+        [message show];
+    }
+  
 }
 
+- (void)didClickOpenPDF {
+    
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory    , NSUserDomainMask, YES);
+    //NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pdfPath = [NSString stringWithFormat:@"%@", delegate.SignedInvoicefullPath];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:pdfPath]) {
+        
+        ReaderDocument *document = [ReaderDocument withDocumentFilePath:pdfPath password:nil];
+        
+        if (document != nil)
+        {
+            ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+            readerViewController.delegate = self;
+            readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self presentViewController:readerViewController animated:YES completion:nil];
+        }
+   }
+}
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -109,6 +144,11 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Email"])
+    {
+        [self didClickOpenPDF];
+    }
     
     if([title isEqualToString:@"Yes"])
     {
@@ -203,7 +243,7 @@
         NSArray * Number = [self GetInvoicesByInvoiceID:str];
         for (NSArray *item in Number) {
             
-            NSString *SignedNumber = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
+            //NSString *SignedNumber = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
             NSString *SignedDate = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
 
             NSString *custID = [NSString stringWithFormat:@"%@",[item valueForKey:@"custID"]];
@@ -229,7 +269,7 @@
                                    entityForName:@"Customer" inManagedObjectContext:context];
     NSError *error;
     [fetchRequest setEntity:entity];
-    NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
+    //NSArray * innerStringdictionary = [context executeFetchRequest:fetchRequest error:&error];
     NSPredicate *p =[NSPredicate predicateWithFormat:@"custID = %@", ClienId];
     [fetchRequest setPredicate:p];
     
@@ -422,4 +462,6 @@
         //        [UIView commitAnimations];
     }
 }
+
+
 @end

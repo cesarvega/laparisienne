@@ -25,7 +25,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-
+#import "AppDelegate.h"
 #import "ReaderDocument.h"
 #import "ReaderContentView.h"
 #import "ReaderMainToolbar.h"
@@ -48,7 +48,7 @@
 													ThumbsViewControllerDelegate>
 {
 @private // Instance variables
-
+    AppDelegate *delegates;
 	ReaderDocument *document;
 
 	UIScrollView *theScrollView;

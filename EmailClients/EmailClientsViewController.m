@@ -26,8 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
+        delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        NSArray *email = [delegate.SignedInvoiceEmails componentsSeparatedByString:@", "];
+	    [self  SendEmail:email DocumentPath:delegate.SignedInvoicefullPath DocumetName: delegate.SignedInvoiceName];}
 
 
 
