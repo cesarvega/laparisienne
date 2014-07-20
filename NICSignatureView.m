@@ -473,7 +473,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         InvoiceDate = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
         InvoicePO = [NSString stringWithFormat:@"%@",[item valueForKey:@"custPONum"]];
     }
-    
+  
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
     totalOfTheWholeInvoice=@"0";
@@ -511,11 +511,14 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         
     }
     
-    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 800, 150, 150) fontSize:13.0f];
+    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 985, 150, 150) fontSize:13.0f];
+
+    //add the image signature
+ 
     UIImage * signature = [self signatureImage];
     CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
-    [self addImage:cropedImg  atPoint:CGPointMake(460, 850)];
+    [self addImage:cropedImg  atPoint:CGPointMake(460, 1015)];
    
     
     NSError *error = nil;
@@ -540,7 +543,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDate, myNumber, InvoicePO]
         withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
         
-         [self addText:[NSString stringWithFormat:@"%@" ,recieversName.text] withFrame:CGRectMake(530, 920, 150, 150) fontSize:15.0f];
+         [self addText:[NSString stringWithFormat:@"%@" ,recieversName.text] withFrame:CGRectMake(530, 1080, 150, 150) fontSize:15.0f];
     }
 }
 
