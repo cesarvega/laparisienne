@@ -265,7 +265,8 @@
     filteredTableData = [[NSMutableArray alloc] init];
     for (NSString* pdf in directoryContents)
     {
-        if ([pdf rangeOfString:searchDate].location != NSNotFound) {
+        NSRange range = NSMakeRange(8,5);
+        if ([pdf rangeOfString:dateToBeFound options:0 range:range].location != NSNotFound) {
             [filteredTableData addObject:pdf];
         }
     }

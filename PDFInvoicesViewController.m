@@ -27,13 +27,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 
-    
-    
-    
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-   NSArray * results = [[NSArray alloc] init];
+    NSArray * results = [[NSArray alloc] init];
     results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
     NSString *match = @"Invoice*pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
@@ -239,7 +236,6 @@
         str = [str stringByReplacingOccurrencesOfString:@".pdf"withString:@""];
         str =[str stringByReplacingOccurrencesOfString:@"Invoice # "withString:@""];
 
-        
         NSArray * Number = [self GetInvoicesByInvoiceID:str];
         for (NSArray *item in Number) {
             
@@ -341,7 +337,8 @@
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * InvoiceNumber = [f numberFromString:str];
-            NSArray *invoices= [self GetInvoicesByInvoiceID:InvoiceNumber];
+            NSString *InvoiceNumberString = [InvoiceNumber stringValue];
+            NSArray *invoices= [self GetInvoicesByInvoiceID:InvoiceNumberString];
             NSString *invoiceClientName;
             for(NSString *invoice in invoices){
                 
@@ -378,7 +375,8 @@
     filteredTableData = [[NSMutableArray alloc] init];
     for (NSString* pdf in directoryContents)
     {
-        if ([pdf rangeOfString:dateToBeFound].location != NSNotFound) {
+        NSRange range = NSMakeRange(9,4);
+        if ([pdf rangeOfString:dateToBeFound options:0 range:range].location != NSNotFound) {
             [filteredTableData addObject:pdf];
         }
     }
@@ -396,7 +394,7 @@
     return Invoice_Lines;
 }
 
--(NSArray*)GetInvoicesByInvoiceID : (NSNumber*)InvoiceIDs{
+-(NSArray*)GetInvoicesByInvoiceID : (NSString*)InvoiceIDs{
     NSError *error = nil;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Invoice" inManagedObjectContext:contextForHeader]];

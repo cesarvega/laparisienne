@@ -123,9 +123,9 @@ UIViewController *manageClientsViewController = (UIViewController *)[storyboard 
             }
         }
         
-        int maxID = [prodID integerValue];
+        NSInteger maxID = [prodID integerValue];
         maxID = maxID+1;
-        NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
+        NSString *finalString = [NSString stringWithFormat:@"%li", (long)maxID];
         
         
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];

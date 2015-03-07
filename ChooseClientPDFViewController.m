@@ -211,16 +211,22 @@ ClientPDFDetailCell * cell;
         void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
         ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
             if (!completed && error)
-                NSLog(@"FAILED! due to error in domain %@ with error code %u",
-                      error.domain, error.code);
+                NSLog(@"FAILED! due to error in domain %@ with error code %ld",
+                      error.domain, (long)error.code);
         };
-        //if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        //    [pic presentFromBarButtonItem:self.printButton animated:YES
-        //                completionHandler:completionHandler];
-        //  }
-        // else {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            //[pic presentFromBarButtonItem:self.printButton animated:YES
+                   //     completionHandler:completionHandler];
+          }
+         else {
         [pic presentAnimated:YES completionHandler:completionHandler];
-        // }
+         }
     }
+}
+- (BOOL)presentFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated completionHandler:(UIPrintInteractionCompletionHandler)completion{return false;}
+
+- (BOOL)presentFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated completionHandler:(UIPrintInteractionCompletionHandler)completion{
+
+        return false;
 }
 @end

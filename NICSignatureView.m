@@ -7,7 +7,7 @@
 //
 
 #import "NICSignatureView.h"
-
+#include <OpenGLES/ES2/glext.h>
 #define kPadding 20
 #define             STROKE_WIDTH_MIN 0.002 // Stroke width determined by touch velocity
 #define             STROKE_WIDTH_MAX 0.010
@@ -189,12 +189,12 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     // Drawing of signature lines
     if (length > 2) {
         glBindVertexArrayOES(vertexArray);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, length);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, (int)length);
     }
 
     if (dotsLength > 0) {
         glBindVertexArrayOES(dotsArray);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, dotsLength);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, (int)dotsLength);
     }
 
 }
@@ -511,15 +511,15 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         
     }
     
-    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 985, 150, 150) fontSize:13.0f];
+    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(565, 895, 150, 150) fontSize:13.0f];
 
     //add the image signature
  
     UIImage * signature = [self signatureImage];
     CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
-    [self addImage:cropedImg  atPoint:CGPointMake(460, 1015)];
-   
+
+    [self addImage:cropedImg  atPoint:CGPointMake(460, 960)];
     
     NSError *error = nil;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -543,7 +543,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     [self addText:[NSString stringWithFormat:@"%@\n%@\n\n%@",InvoiceDate, myNumber, InvoicePO]
         withFrame:CGRectMake(630, 227, 150, 150) fontSize:13.0f];
         
-         [self addText:[NSString stringWithFormat:@"%@" ,recieversName.text] withFrame:CGRectMake(530, 1080, 150, 150) fontSize:15.0f];
+         [self addText:[NSString stringWithFormat:@"%@" ,recieversName.text] withFrame:CGRectMake(530, 1033, 150, 150) fontSize:15.0f];
     }
 }
 

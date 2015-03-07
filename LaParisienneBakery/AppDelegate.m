@@ -15,15 +15,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
     delegate =(AppDelegate *) [[UIApplication sharedApplication] delegate];
     [self populateProductsTable];
     return YES;
     
 }
-
 
 -(void)populateProductsTable{
     
@@ -77,37 +75,31 @@
     }
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application{
      userDefaults = [NSUserDefaults standardUserDefaults];}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application{
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults synchronize];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application{
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults synchronize];
 
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application{
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application{
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults synchronize];
     [self saveContext];
 }
 
-- (void)saveContext
-{
+- (void)saveContext{
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
@@ -124,8 +116,7 @@
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-- (NSManagedObjectContext *)managedObjectContext
-{
+- (NSManagedObjectContext *)managedObjectContext{
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
@@ -140,8 +131,7 @@
 
 // Returns the managed object model for the application.
 // If the model doesn't already exist, it is created from the application's model.
-- (NSManagedObjectModel *)managedObjectModel
-{
+- (NSManagedObjectModel *)managedObjectModel{
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
@@ -152,8 +142,7 @@
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator{
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }

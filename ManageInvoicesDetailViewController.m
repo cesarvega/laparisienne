@@ -399,7 +399,7 @@ ProductsReviewDetailCell *cell;
         
     }
     
-    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(561, 985, 150, 150) fontSize:13.0f];
+    [self addText: totalOfTheWholeInvoice withFrame:CGRectMake(565, 895, 150, 150) fontSize:13.0f];
     
 }
 
