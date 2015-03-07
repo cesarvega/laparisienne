@@ -1,0 +1,32 @@
+diff -r a/Classes/Unity/CMVideoSampling.mm b/Classes/Unity/CMVideoSampling.mm
+7a8
+> #include <OpenGLES/ES2/glext.h>
+50c51
+<         sampling->cvTextureCacheTexture = CreateTextureFromCVTextureCache(sampling->cvTextureCache, cvImageBuffer, w, h, GL_BGRA_EXT, GL_RGBA, GL_UNSIGNED_BYTE);
+---
+>         sampling->cvTextureCacheTexture = CreateTextureFromCVTextureCache(sampling->cvTextureCache, cvImageBuffer, w, h, GL_BGRA, GL_RGBA, GL_UNSIGNED_BYTE);
+63c64
+<         GLES_CHK(glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, texData));
+---
+>         GLES_CHK(glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_BGRA, GL_UNSIGNED_BYTE, texData));
+diff -r a/Classes/Unity/GlesHelper.mm b/Classes/Unity/GlesHelper.mm
+63c63
+< 	surface->colorFormat = surface->use32bitColor ? GL_RGBA8_OES : GL_RGB565;
+---
+> 	surface->colorFormat = surface->use32bitColor ? GL_RGBA8 : GL_RGB565;
+123c123
+< 		GLES_CHK(glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, surface->msaaSamples, surface->colorFormat, surface->targetW, surface->targetH));
+---
+> 		GLES_CHK(glRenderbufferStorageMultisample(GL_RENDERBUFFER, surface->msaaSamples, surface->colorFormat, surface->targetW, surface->targetH));
+133c133
+< 	surface->depthFormat = surface->use24bitDepth ? GL_DEPTH_COMPONENT24_OES : GL_DEPTH_COMPONENT16;
+---
+> 	surface->depthFormat = surface->use24bitDepth ? GL_DEPTH_COMPONENT24 : GL_DEPTH_COMPONENT16;
+135c135
+< 		surface->depthFormat = GL_DEPTH24_STENCIL8_OES;
+---
+> 		surface->depthFormat = GL_DEPTH24_STENCIL8;
+143c143
+< 		GLES_CHK(glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, surface->msaaSamples, surface->depthFormat, surface->targetW, surface->targetH));
+---
+> 		GLES_CHK(glRenderbufferStorageMultisample(GL_RENDERBUFFER, surface->msaaSamples, surface->depthFormat, surface->targetW, surface->targetH));
