@@ -248,7 +248,6 @@ ProductsReviewDetailCell *cell;
                 [InvoiceNumberTextLabel setText:[NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]]];
                 NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
                 NSArray *invoices_lines= [self GetInvoiceLines:InvoiceLinesID];
-                
                 for(NSArray *item in invoices_lines){
                     NSString *lineTotals = [NSString stringWithFormat:@"%@",[item valueForKey:@"lineTotal"]];
                     NSString *productIDs = [NSString stringWithFormat:@"%@",[item valueForKey:@"productID"]];
@@ -368,7 +367,6 @@ ProductsReviewDetailCell *cell;
     int textPosititonDX=607;
     int textPosititonY = 456;
     int productCounter =0;
-    //This will sort by stringProperty ascending, then dateProperty ascending
     [InvoiceLines sortUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"product" ascending:YES], nil]];
     for (Invoice_Lines *invoices_lines in InvoiceLines){
         

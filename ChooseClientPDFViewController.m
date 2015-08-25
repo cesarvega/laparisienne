@@ -185,7 +185,7 @@ ClientPDFDetailCell * cell;
     DocumentsToPrint = [[NSMutableArray alloc]init];
 }
 
-- (IBAction)PrintInvoices:(id)sender {
+	- (IBAction)PrintInvoices:(id)sender {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentsDirectory = [paths objectAtIndex:0];

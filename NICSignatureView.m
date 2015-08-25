@@ -465,6 +465,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     InvoiceID = myNumber;
     NSArray *invoices= [self GetInvoicesByInvoiceID];
     NSArray *invoices_lines2;
+    
     for (NSArray *item in invoices) {
         
         NSString *InvoiceLinesID = [NSString stringWithFormat:@"%@",[item valueForKey:@"docNum"]];
@@ -473,7 +474,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         InvoiceDate = [NSString stringWithFormat:@"%@",[item valueForKey:@"docDate"]];
         InvoicePO = [NSString stringWithFormat:@"%@",[item valueForKey:@"custPONum"]];
     }
-  
+    //[invoices_lines2 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];®
     UIImage *anImage = [UIImage imageNamed:@"InvoiceTemplate.png"];
     [self addImage:anImage  atPoint:CGPointMake(100, 60)];
     totalOfTheWholeInvoice=@"0";
@@ -483,16 +484,14 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     int textPosititonDX=607;
     int textPosititonY = 456;
     int productCounter =0;
-    for (NSArray *invoices_lines in invoices_lines2){
+     InvoiceLines = [invoices_lines2 mutableCopy];
+    [InvoiceLines sortUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"product" ascending:YES], nil]];
+    for (NSArray *invoices_lines in InvoiceLines){
         
         NSString *productIDs = [NSString stringWithFormat:@"%@",[invoices_lines valueForKey:@"productID"]];
         
         NSArray *products= [self Getproducts:productIDs];
-        NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"product" ascending:YES];
-        NSArray *descriptors = [NSArray arrayWithObjects:valueDescriptor, nil];
-        NSArray *sortedArray = [products sortedArrayUsingDescriptors:descriptors];
-
-        for(NSArray *item in products){
+                for(NSArray *item in products){
             
             NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];
             [self addText: Productnames  withFrame:CGRectMake(textPosititonAX, textPosititonY, 150, 150) fontSize:13.0f];}

@@ -1311,7 +1311,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="SignBG.png" id="5zD-gH-Ceo">
-                                <rect key="frame" x="-24" y="62" width="808" height="928"/>
+                                <rect key="frame" x="-20" y="62" width="808" height="928"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Logo.png" id="d2U-qg-vAr">
@@ -1338,6 +1338,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Signature.png" id="FpT-Eh-VVk">
+                                <rect key="frame" x="134" y="471" width="528" height="55"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" id="CDe-IX-4PH">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1357,10 +1361,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Signature.png" id="FpT-Eh-VVk">
-                                <rect key="frame" x="134" y="471" width="528" height="55"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -1623,7 +1623,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Vao-2g-q4t"/>
-        <segue reference="CAq-32-pSj"/>
         <segue reference="2NW-ym-3GV"/>
+        <segue reference="Ebc-Qj-PmF"/>
     </inferredMetricsTieBreakers>
 </document>

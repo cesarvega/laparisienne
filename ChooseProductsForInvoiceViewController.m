@@ -170,7 +170,7 @@ ProductsDetailCell *cell;
             CurrentInvoice_Lines.productID = myProductID;
             CurrentInvoice_Lines.quantity = [quantity objectAtIndex:index.row];
             CurrentInvoice_Lines.unitPrice =  [unitPrice objectAtIndex:index.row];
-            CurrentInvoice_Lines.product =  [productDescription objectAtIndex:index.row];
+            CurrentInvoice_Lines.product =  [Productname objectAtIndex:index.row];
             if ([CurrentInvoice_Lines.quantity isEqual:@""]||[CurrentInvoice_Lines.unitPrice isEqual:@""]) {
                 invoiceincomplete =NO;
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];
@@ -191,6 +191,7 @@ ProductsDetailCell *cell;
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
+        [InvoiceLinesArray sortUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"product" ascending:YES], nil]];
     if (invoiceincomplete){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
         ManageInvoicesDetailViewController * InvoiceDetailView = (ManageInvoicesDetailViewController*)
