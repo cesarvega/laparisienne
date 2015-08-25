@@ -23,14 +23,17 @@
     NSMutableArray* clientsToPrint;
     NSManagedObjectContext *contextForHeader;
     UIPrintInteractionController *printInteraction;
+    UIButton *printButton;
 
 }
 @property (nonatomic, retain) NSMutableArray *SelectedClientsIndexPaths;
 @property (strong, nonatomic) IBOutlet UIDatePicker *InvoiceDatePicker;
 @property (strong, nonatomic) IBOutlet UITableView *ClientPDFTableView;
-- (IBAction)PrintInvoices:(id)sender;
-@end
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *printmyInvoice;
 
+- (IBAction)PrintInvoices:(id)sender;
+
+@end
 @interface ClientPDFDetailCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *ClientName;
 @property (strong, nonatomic) IBOutlet UILabel *InvocieDate;

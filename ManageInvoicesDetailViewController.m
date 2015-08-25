@@ -368,6 +368,8 @@ ProductsReviewDetailCell *cell;
     int textPosititonDX=607;
     int textPosititonY = 456;
     int productCounter =0;
+    //This will sort by stringProperty ascending, then dateProperty ascending
+    [InvoiceLines sortUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"product" ascending:YES], nil]];
     for (Invoice_Lines *invoices_lines in InvoiceLines){
         
         

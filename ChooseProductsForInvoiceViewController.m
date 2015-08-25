@@ -170,6 +170,7 @@ ProductsDetailCell *cell;
             CurrentInvoice_Lines.productID = myProductID;
             CurrentInvoice_Lines.quantity = [quantity objectAtIndex:index.row];
             CurrentInvoice_Lines.unitPrice =  [unitPrice objectAtIndex:index.row];
+            CurrentInvoice_Lines.product =  [productDescription objectAtIndex:index.row];
             if ([CurrentInvoice_Lines.quantity isEqual:@""]||[CurrentInvoice_Lines.unitPrice isEqual:@""]) {
                 invoiceincomplete =NO;
                 NSString *errorMSG = [NSString stringWithFormat:@"%@ %@",@"Please Review the quantity field for ",cell.ProductNameLabel.text];

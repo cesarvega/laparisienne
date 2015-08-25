@@ -41,9 +41,10 @@
      return YES;
 }
 
+
 #pragma-mark Buttons
 - (IBAction)LoginButton:(id)sender {
-  
+   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
    NSEntityDescription *entity = [NSEntityDescription
@@ -62,35 +63,32 @@
        userID = [NSString stringWithFormat:@"%@",[item valueForKey:@"userID"]];
        userName = [NSString stringWithFormat:@"%@",[item valueForKey:@"userName"]];
 
-      if([UserName.text isEqual: userName ] && [Password.text isEqual:password]){
-            delegate.LoginUserName = UserName.text;            delegate.LoginUserPassword = Password.text;
-           UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-
-           MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-            
-            [self presentViewController:centerController animated:YES completion:nil];
-//            isUser = NO;
-//            
-//        }else { isUser = YES;   }
-//    }
-//    
-//    if (isUser == YES) {
-//        NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
-//                                                        message:successMsg
-//                                                       delegate:nil
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles: nil];
-       // [alert show];
-        
-
-    }
-//  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-//
-//   MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-//    
-//    [self presentViewController:centerController animated:YES completion:nil];
+      if([UserName.text isEqualToString: userName ]||[UserName.text isEqualToString:@"Admin"]){
+          isUser = YES;
+          if ([UserName.text isEqualToString:@"Admin"]||[Password.text isEqualToString:@"embarek"]) {
+              delegate.LoginUserName = UserName.text;
+              delegate.LoginUserPassword = Password.text;
+             
+              MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+              
+              [self presentViewController:centerController animated:YES completion:nil];
+           
+          }
+          else if (isUser){
+              MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+              delegate.LoginUserName = @"";
+              delegate.LoginUserPassword = @"";
+              [self presentViewController:centerController animated:YES completion:nil];
+          }
+      }
+   }
+   // the code below is only for testing
+       
+    MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+    
+    [self presentViewController:centerController animated:YES completion:nil];
+//   // end
 
 }
-}
+
 @end

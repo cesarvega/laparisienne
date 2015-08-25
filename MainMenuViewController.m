@@ -41,32 +41,35 @@
     if ([delegate.LoginUserName isEqual: @"Admin"] && [delegate.LoginUserPassword isEqual: @"embarek"] ) {
         
         [titleOfSections addObject:@"Admin"];
-        //[titleOfSections addObject:@"Invoices"];
         [firstSection addObject:@"Print Pdf Invoices"];
         [firstSection addObject:@"Sign Pdf  Invoices"];
         [firstSection addObject:@"View Signed Invoices"];
         [firstSection addObject:@"Manage Invoices"];
         [firstSection addObject:@"Manage Clients"];
         [firstSection addObject:@"Manage Products"];
-        //[firstSection addObject:@"Manage Users"];
+        [firstSection addObject:@"Manage Users"];
         [firstSection addObject:@"Delete All Invoices Data and pdfs"];
         [firstSection addObject:@"Delete Signed pdfs"];
         
       
     }else{
     
-        [titleOfSections addObject:@"Admin"];
-        //[titleOfSections addObject:@"Invoices"];
+//        [titleOfSections addObject:@"Invoices"];
+//        [firstSection addObject:@"Print Pdf Invoices"];
+//        [firstSection addObject:@"Sign Pdf  Invoices"];
+//        [firstSection addObject:@"View Signed Invoices"];
+        
+        /* for testing */
+        [titleOfSections addObject:@"Invoices"];
         [firstSection addObject:@"Print Pdf Invoices"];
         [firstSection addObject:@"Sign Pdf  Invoices"];
         [firstSection addObject:@"View Signed Invoices"];
-         //[firstSection addObject:@"Manage Invoices"];
-         //[firstSection addObject:@"Manage Clients"];
-        //[firstSection addObject:@"Manage Products"];
-        //[firstSection addObject:@"Manage Users"];
-        //[firstSection addObject:@"Delete All Invoices Data and pdfs"];
-       // [firstSection addObject:@"Delete Signed pdfs"];
-
+        [firstSection addObject:@"Manage Invoices"];
+        [firstSection addObject:@"Manage Clients"];
+        [firstSection addObject:@"Manage Products"];
+        [firstSection addObject:@"Manage Users"];
+        [firstSection addObject:@"Delete All Invoices Data and pdfs"];
+        [firstSection addObject:@"Delete Signed pdfs"];
 
         }
     
@@ -122,7 +125,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[self.menuDataSource objectForKey:[NSString stringWithFormat:@"%d",section]] count];
+    return [[self.menuDataSource objectForKey:[NSString stringWithFormat:@"%ld",(long)section]] count];
     
     
 }
@@ -154,7 +157,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    NSArray *arrayForCurrentSection = [menuDataSource objectForKey:[NSString stringWithFormat:@"%d",indexPath.section]];
+    NSArray *arrayForCurrentSection = [menuDataSource objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.section]];
     
     cell.textLabel.text = [arrayForCurrentSection objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor brownColor];
@@ -170,7 +173,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * newController=@"";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-
+    
     switch (indexPath.row) {
         case 0:
             newController=@"ChooseClientPDF";
@@ -199,17 +202,17 @@
               
             break;
             
-//        case 6:
-//            newController=@"ManageUsers";
-//            
-//            break;
-            
         case 6:
-            newController=@"DeleteAllData";
+            newController=@"manageUsers";
             
             break;
             
         case 7:
+            newController=@"DeleteAllData";
+            
+            break;
+            
+        case 8:
             newController=@"DeleteSignedPdf";
             
             break;

@@ -488,7 +488,10 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
         NSString *productIDs = [NSString stringWithFormat:@"%@",[invoices_lines valueForKey:@"productID"]];
         
         NSArray *products= [self Getproducts:productIDs];
-        
+        NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"product" ascending:YES];
+        NSArray *descriptors = [NSArray arrayWithObjects:valueDescriptor, nil];
+        NSArray *sortedArray = [products sortedArrayUsingDescriptors:descriptors];
+
         for(NSArray *item in products){
             
             NSString *Productnames = [NSString stringWithFormat:@"%@",[item valueForKey:@"name"]];

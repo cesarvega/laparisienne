@@ -61,25 +61,22 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-//    UserManagmentDetailViewController * userManagementDetailView = (UserManagmentDetailViewController*)
-//    [storyboard instantiateViewControllerWithIdentifier:@"userManagementDetailView"];
-//    
-//    userManagementDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    if ([userManagementDetailView view]) {
-//        [userManagementDetailView setUserName:[userNames objectAtIndex:indexPath.row]];
-//        [userManagementDetailView setPassword:[passwords objectAtIndex:indexPath.row]];
-//      
-//        
-//  
-//        
-//    }
-//    [self presentViewController:userManagementDetailView animated:YES completion:nil];
-//    
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UserManagmentDetailViewController * userManagementDetailView = (UserManagmentDetailViewController*)
+    [storyboard instantiateViewControllerWithIdentifier:@"userManagementDetailView"];
+    
+    userManagementDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    if ([userManagementDetailView view]) {
+        [userManagementDetailView setUserName:[userNames objectAtIndex:indexPath.row]];
+        [userManagementDetailView setPassword:[passwords objectAtIndex:indexPath.row]];
+      
+    }
+    [self presentViewController:userManagementDetailView animated:YES completion:nil];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
@@ -115,7 +112,7 @@
         [fetchRequest setEntity:entity];
         
         NSString *val = [userNames  objectAtIndex:indexPathForDeletion.row];
-        NSPredicate *p =[NSPredicate predicateWithFormat:@"userID = %@", val];
+        NSPredicate *p =[NSPredicate predicateWithFormat:@"userName = %@", val];
         [fetchRequest setPredicate:p];
         
         NSError *error;

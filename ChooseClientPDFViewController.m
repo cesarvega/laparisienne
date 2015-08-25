@@ -16,7 +16,7 @@
 @end
 
 @implementation ChooseClientPDFViewController
-@synthesize InvoiceDatePicker,ClientPDFTableView,SelectedClientsIndexPaths;
+@synthesize InvoiceDatePicker,ClientPDFTableView,SelectedClientsIndexPaths,printmyInvoice;
 ClientPDFDetailCell * cell;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -190,16 +190,19 @@ ClientPDFDetailCell * cell;
     
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSMutableArray * pathss = [[NSMutableArray alloc]init];
+    NSData *pdfData ;
     for (int i =0; i<[DocumentsToPrint count]; i++) {
         NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:    [DocumentsToPrint objectAtIndex:i]];
-        NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
+        
+        pdfData = [NSData dataWithContentsOfFile:pdfPath];
         [pathss addObject:pdfData];
     }
-    NSString *pdfPath = [documentsDirectory stringByAppendingPathComponent:    [DocumentsToPrint objectAtIndex:0]];
-    NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
-    
+    if ([pathss count]>0){
+
+        
+    // Printing methods
     UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
-    if  (pic && [UIPrintInteractionController canPrintData:pdfData] ) {
+    if  (pic && [UIPrintInteractionController canPrintData:pathss[0]] ) {
         [pic.delegate self ];
         UIPrintInfo *printInfo = [UIPrintInfo printInfo];
         printInfo.outputType = UIPrintInfoOutputGeneral;
@@ -214,19 +217,19 @@ ClientPDFDetailCell * cell;
                 NSLog(@"FAILED! due to error in domain %@ with error code %ld",
                       error.domain, (long)error.code);
         };
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            //[pic presentFromBarButtonItem:self.printButton animated:YES
-                   //     completionHandler:completionHandler];
-          }
-         else {
-        [pic presentAnimated:YES completionHandler:completionHandler];
-         }
+        if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            
+            if (self.view.window != nil) {
+                 [pic presentAnimated:YES completionHandler:completionHandler];
+            }
+           
+        }
+        else {
+            [pic presentAnimated:YES completionHandler:completionHandler];
+        }
     }
+  }
 }
-- (BOOL)presentFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated completionHandler:(UIPrintInteractionCompletionHandler)completion{return false;}
 
-- (BOOL)presentFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated completionHandler:(UIPrintInteractionCompletionHandler)completion{
 
-        return false;
-}
 @end

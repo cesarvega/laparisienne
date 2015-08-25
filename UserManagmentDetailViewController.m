@@ -25,8 +25,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning{
@@ -80,9 +79,9 @@
             }
         }
         
-        int maxID = [prodID integerValue];
+        NSInteger maxID = [prodID integerValue];
         maxID = maxID+1;
-        NSString *finalString = [NSString stringWithFormat:@"%i", maxID];
+        NSString *finalString = [NSString stringWithFormat:@"%li", (long)maxID];
         
         
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -100,6 +99,11 @@
                                                   otherButtonTitles:nil];
             [alert show];
             
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+            
+            UserManagmentDetailViewController *centerController = (UserManagmentDetailViewController *)[storyboard instantiateViewControllerWithIdentifier:@"manageUsers"];
+            
+            [self presentViewController:centerController animated:YES completion:nil];
         }
     }
     
