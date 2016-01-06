@@ -133,7 +133,7 @@ UIViewController *manageClientsViewController = (UIViewController *)[storyboard 
         
         product.productID = [f numberFromString:finalString];
         
-        NSLog(@"product id: %@", product.productID);
+     
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
