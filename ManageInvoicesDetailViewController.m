@@ -24,6 +24,7 @@ ProductsReviewDetailCell *cell;
 @synthesize InvoiceDateTextLabel,InvoiceDepartmentTextLabel,InvoiceNumberTextLabel,InvoiceID,invocieDatePicker;
 @synthesize ClientAddressTextLabel,BusinessNameTextLabel,ClientNameTextLabel,InvoiceLines,custID,customerPOLabel;
 @synthesize Productname, productID, productDescription,unitPrice,SelectedProductsIndexPaths,ProductsTableView,ClientID,quantity,lineTotal;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -62,7 +63,7 @@ ProductsReviewDetailCell *cell;
             
             NSDate *selected = [invocieDatePicker date];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-            [dateFormat setDateFormat:@"MM -dd - YYYY"];
+            [dateFormat setDateFormat:@"MM-dd-yyyy"];
             NSString *dateString = [dateFormat stringFromDate:selected];
             NSString *Date =dateString;
             
@@ -232,7 +233,7 @@ ProductsReviewDetailCell *cell;
                                      [item valueForKey:@"city"],[item valueForKey:@"state"],[item valueForKey:@"zipcode"]];
         NSDate *date = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-        [dateFormat setDateFormat:@"MM -dd - YYYY"];
+        [dateFormat setDateFormat:@"MM-dd-yyyy"];
         NSString *dateString = [dateFormat stringFromDate:date];
         NSString *Date =dateString;
         NSString *telefono = [NSString stringWithFormat:@"%@",[item valueForKey:@"telefone"]];

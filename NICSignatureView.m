@@ -439,7 +439,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 }
 
 
-#pragma Mark PDF Methods
+#pragma mark - PDF Methods
 
 - (void)createPDF{
     

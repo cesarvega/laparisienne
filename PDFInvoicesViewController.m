@@ -24,8 +24,8 @@
     return self;
 }
 
-- (void)viewDidLoad{
-    [super viewDidLoad];
+- (void)viewDidLoad{	
+    [super viewDidLoad];	
 
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -368,14 +368,14 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSArray * results = [[NSArray alloc] init];
     results  =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
-    NSString *match = @"Invoice #*pdf";
+    NSString *match = @"Invoice # *.pdf";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@", match];
     directoryContents = [results filteredArrayUsingPredicate:predicate];
     
     filteredTableData = [[NSMutableArray alloc] init];
     for (NSString* pdf in directoryContents)
     {
-        NSRange range = NSMakeRange(9,4);
+        NSRange range = NSMakeRange(10,4);
         if ([pdf rangeOfString:dateToBeFound options:0 range:range].location != NSNotFound) {
             [filteredTableData addObject:pdf];
         }

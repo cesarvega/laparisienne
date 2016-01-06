@@ -38,16 +38,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NICSignatureView.m"
-            timestampString = "456510906.20245"
+            filePath = "PDFInvoicesViewController.m"
+            timestampString = "473110437.278112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
-            landmarkName = "-DrawTheInvoiceProductsContent"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "-findInvoicesByDate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

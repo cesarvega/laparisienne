@@ -237,6 +237,7 @@
 		82EDE1E7173F264D00E27BB3 /* MainMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		82EDE1E8173F264D00E27BB3 /* MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = displayMenuBtn.png; sourceTree = "<group>"; };
+		C03DD8751C31E97100449C16 /* LaParisienneBakery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LaParisienneBakery.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +301,7 @@
 		13283BBD1735B0CE00E2C286 /* LaParisienneBakery */ = {
 			isa = PBXGroup;
 			children = (
+				C03DD8751C31E97100449C16 /* LaParisienneBakery.entitlements */,
 				13283BC61735B0CE00E2C286 /* AppDelegate.h */,
 				13283BC71735B0CE00E2C286 /* AppDelegate.m */,
 				13283BCF1735B0CE00E2C286 /* LaParisienneBakery.xcdatamodeld */,
@@ -586,6 +588,11 @@
 				TargetAttributes = {
 					13283BB11735B0CE00E2C286 = {
 						DevelopmentTeam = 3PHQFHUHZE;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -730,8 +737,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Cesar Vega (3PHQFHUHZE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cesar Vega (3PHQFHUHZE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -746,9 +753,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=*]" = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "eb669365-66a8-4170-8e9c-c808817598c6";
+				"PROVISIONING_PROFILE[sdk=*]" = "eb669365-66a8-4170-8e9c-c808817598c6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "eb669365-66a8-4170-8e9c-c808817598c6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -766,8 +773,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -775,8 +782,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -787,18 +794,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Cesar Vega (3PHQFHUHZE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaParisienneBakery/LaParisienneBakery-Prefix.pch";
 				INFOPLIST_FILE = "LaParisienneBakery/LaParisienneBakery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb669365-66a8-4170-8e9c-c808817598c6";
-				"PROVISIONING_PROFILE[sdk=*]" = "eb669365-66a8-4170-8e9c-c808817598c6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "eb669365-66a8-4170-8e9c-c808817598c6";
+				PROVISIONING_PROFILE = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				"PROVISIONING_PROFILE[sdk=*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -808,15 +815,15 @@
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaParisienneBakery/LaParisienneBakery-Prefix.pch";
 				INFOPLIST_FILE = "LaParisienneBakery/LaParisienneBakery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb669365-66a8-4170-8e9c-c808817598c6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "eb669365-66a8-4170-8e9c-c808817598c6";
+				PROVISIONING_PROFILE = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
