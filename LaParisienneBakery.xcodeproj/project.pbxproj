@@ -794,18 +794,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cesar Vega (MTQS648B9R)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaParisienneBakery/LaParisienneBakery-Prefix.pch";
 				INFOPLIST_FILE = "LaParisienneBakery/LaParisienneBakery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
-				"PROVISIONING_PROFILE[sdk=*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "6fa1b622-941b-4c5c-b865-a67730d962ba";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6fa1b622-941b-4c5c-b865-a67730d962ba";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -814,16 +814,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cesar Vega (MTQS648B9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaParisienneBakery/LaParisienneBakery-Prefix.pch";
 				INFOPLIST_FILE = "LaParisienneBakery/LaParisienneBakery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b20c95d7-bbab-42cc-b01b-8a3e1daccb55";
+				PROVISIONING_PROFILE = "6fa1b622-941b-4c5c-b865-a67730d962ba";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6fa1b622-941b-4c5c-b865-a67730d962ba";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
