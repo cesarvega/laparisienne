@@ -518,10 +518,10 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     //add the image signature
  
     UIImage * signature = [self signatureImage];
-    CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(100, 300, 800, 260));
+    CGImageRef imgRef = CGImageCreateWithImageInRect([signature CGImage], CGRectMake(300, 700, 999, 400));
 	UIImage* cropedImg =[UIImage imageWithCGImage:imgRef];
 
-    [self addImage:cropedImg  atPoint:CGPointMake(460, 960)];
+    [self addImage:cropedImg  atPoint:CGPointMake(460, 930)];
     
     NSError *error = nil;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];

@@ -70,13 +70,15 @@
               MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
               
               [self presentViewController:centerController animated:YES completion:nil];
-           
+             break;
           }
           else{
               MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-              delegate.LoginUserName = @"";
-              delegate.LoginUserPassword = @"";
-              [self presentViewController:centerController animated:YES completion:nil];
+              if([UserName.text isEqualToString:@"Admin"]&&[Password.text isEqualToString:@"embarek"]){}else{
+                  delegate.LoginUserName = @"";
+                  delegate.LoginUserPassword = @"";
+              }
+                           [self presentViewController:centerController animated:YES completion:nil];
           }
       }
    }
