@@ -535,8 +535,8 @@
 				8261239C1769674600AC3E5B /* LogoDark.png */,
 				82921498176942D300AA44F9 /* InvoiceTemplate.png */,
 				829C19EC17681C2F00F2CDE8 /* Signature.png */,
-				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
 				82EDE1DA173F1DF200E27BB3 /* Logo.png */,
+				82EDE1E9173F2ABA00E27BB3 /* displayMenuBtn.png */,
 				82EDE1D4173F19DD00E27BB3 /* BG.png */,
 			);
 			name = Images;

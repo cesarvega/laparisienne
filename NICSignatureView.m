@@ -717,8 +717,7 @@ static NICSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
       [self email:delegate.custID];
       [delegate setSignedInvoicefullPath:fullPath] ;
       [delegate setSignedInvoiceFlag:@"YES"] ;
-      [delegate setSignedInvoiceName:documentName] ;
-}
+      [delegate setSignedInvoiceName:documentName] ;}
 
 -(NSArray*) email :(NSString*)ClienId{
     
