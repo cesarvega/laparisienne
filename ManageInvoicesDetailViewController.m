@@ -157,6 +157,9 @@ ProductsReviewDetailCell *cell;
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+        
+//    alertControllerWithTitle:(nullable NSString *) message:(nullable NSString *) preferredStyle:(UIAlertControllerStyle)];
+        
         [alert show];
         
     }
@@ -259,7 +262,7 @@ ProductsReviewDetailCell *cell;
                     [productID addObject:productIDs];
                     [quantity addObject:quantitys];
                     [unitPrice addObject:unitPrices];
-                    NSArray *products= [self Getproducts:productIDs ];
+	     NSArray *products= [self Getproducts:productIDs ];
                     
                     for(NSArray *item in products){
                         
